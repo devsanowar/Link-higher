@@ -28,8 +28,10 @@
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
 
-            <li class="active open"><a href="{{ route('admin.dashboard') }}"><i
-                        class="zmdi zmdi-home"></i><span>Dashboard</span></a>
+            <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="zmdi zmdi-home"></i><span>Dashboard</span>
+                </a>
             </li>
 
             <li><a href="blog-dashboard.html"><i class="zmdi zmdi-blogger"></i><span>Blogger</span> </a></li>
@@ -44,15 +46,21 @@
             </li>
 
 
-            <li><a href="javascript:void(0);" class="menu-toggle"><i
-                        class="zmdi zmdi-settings"></i><span>Settings</span> </a>
+            <li
+                class="menu-item {{ request()->routeIs('website_settings.*') || request()->routeIs('social.icon.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-settings"></i><span>Settings</span>
+                </a>
                 <ul class="ml-menu">
-                    <li><a href="{{ route('website_settings.index') }}">Website Settings</a></li>
-                    <li><a href="ec-product.html">Product</a></li>
-                    <li><a href="ec-product-List.html">Product List</a></li>
-                    <li><a href="ec-product-detail.html">Product detail</a></li>
+                    <li class="{{ request()->routeIs('website_settings.*') ? 'active' : '' }}">
+                        <a href="{{ route('website_settings.index') }}">Website Settings</a>
+                    </li>
+                    <li class="{{ request()->routeIs('social.icon.*') ? 'active' : '' }}">
+                        <a href="{{ route('social.icon.index') }}">Social Icon</a>
+                    </li>
                 </ul>
             </li>
+
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -69,4 +77,3 @@
     </div>
     <!-- #Menu -->
 </aside>
-

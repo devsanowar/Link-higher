@@ -8,7 +8,7 @@
                     <h4> Website Settings </h4>
                 </div>
                 <div class="body">
-                    <form id="websiteSettingForm" method="POST" enctype="multipart/form-data">
+                    <form id="websiteSettingForm" class="form_label" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         {{-- Website Title --}}
@@ -54,7 +54,8 @@
                                         <input type="file" id="website_logo" class="form-control" name="website_logo"
                                             accept=".jpg,.jpeg,.png,.gif"
                                             onchange="previewImage(event, 'website_logo_preview')">
-                                            <input type="hidden" name="remove_website_logo" id="remove_website_logo" value="0">
+                                        <input type="hidden" name="remove_website_logo" id="remove_website_logo"
+                                            value="0">
                                     </div>
                                 </div>
 
@@ -80,7 +81,8 @@
                                         <input type="file" id="website_favicon" class="form-control"
                                             name="website_favicon" accept=".jpg,.jpeg,.png,.gif"
                                             onchange="previewImage(event, 'website_favicon_preview')">
-                                            <input type="hidden" name="remove_website_favicon" id="remove_website_favicon" value="0">
+                                        <input type="hidden" name="remove_website_favicon" id="remove_website_favicon"
+                                            value="0">
 
                                     </div>
                                 </div>
@@ -107,7 +109,8 @@
                                         <input type="file" id="website_footer_logo" class="form-control"
                                             name="website_footer_logo" accept=".jpg,.jpeg,.png,.gif"
                                             onchange="previewImage(event, 'website_footer_logo_preview')">
-                                        <input type="hidden" name="remove_website_footer_logo" id="remove_website_footer_logo" value="0">
+                                        <input type="hidden" name="remove_website_footer_logo"
+                                            id="remove_website_footer_logo" value="0">
 
                                     </div>
                                 </div>

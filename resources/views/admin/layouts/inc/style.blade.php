@@ -5,6 +5,7 @@
 <!-- Custom Css -->
 <link rel="stylesheet" href="{{ asset('backend') }}/assets/css/main.css">
 <link rel="stylesheet" href="{{ asset('backend') }}/assets/css/color_skins.css">
+<link rel="stylesheet" href="{{ asset('backend') }}/assets/css/toastr.min.css">
 
 <style>
     .form-group .form-line {
@@ -12,7 +13,7 @@
         padding: 0 10px;
     }
 
-    form#websiteSettingForm label {
+    form.form_label label {
         font-weight: 700;
     }
 </style>

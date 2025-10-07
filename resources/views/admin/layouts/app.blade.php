@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="theme-orange">
+<body class="theme-red">
 <!-- Page Loader -->
 @include('admin.layouts.inc.page-loader')
 
