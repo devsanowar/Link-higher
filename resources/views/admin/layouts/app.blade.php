@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 <title>:: {{ $website_settings->website_title ?? '' }} :: @yield('title')</title>
 

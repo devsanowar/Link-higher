@@ -5,19 +5,32 @@
             <img src="assets/images/xs/avatar1.jpg" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown">John Doe</div>
+            <div class="name" data-toggle="dropdown">{{ Auth::user()->name }}</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
                     role="button"> keyboard_arrow_down </i>
                 <ul class="dropdown-menu slideUp">
-                    <li><a href="profile.html"><i class="material-icons">person</i>Profile</a></li>
+                    <li>
+                        <a href="{{ route('profile.setting.index') }}">
+                            <i class="material-icons">person</i>Profile
+                        </a>
+                    </li>
+
                     <li class="divider"></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                    <li class="divider"></li>
-                    <li><a href="sign-in.html"><i class="material-icons">input</i>Sign Out</a></li>
+
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="material-icons">input</i>Sign Out
+                        </a>
+                    </li>
                 </ul>
+
+                <!-- Hidden form (UL-এর বাইরে) -->
+                <form id="logout-form" method="POST" action="{{ route('logout') }}" class="d-none">
+                    @csrf
+                </form>
+
             </div>
             <div class="email">john.doe@example.com</div>
         </div>
@@ -26,8 +39,6 @@
     <!-- Menu -->
     <div class="menu">
         <ul class="list">
-            <li class="header">MAIN NAVIGATION</li>
-
             <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="zmdi zmdi-home"></i><span>Dashboard</span>
@@ -46,7 +57,8 @@
             </li>
 
 
-            <li class="menu-item {{ request()->routeIs(['website_settings.*','social.icon.*','website.color.*']) ? 'active open' : '' }}">
+            <li
+                class="menu-item {{ request()->routeIs(['website_settings.*', 'social.icon.*', 'website.color.*']) ? 'active open' : '' }}">
 
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-settings"></i><span>Settings</span>

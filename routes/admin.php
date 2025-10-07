@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\WebsiteColorController;
@@ -28,6 +29,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('website-color')->group(function () {
         Route::get('/', [WebsiteColorController::class,'index'])->name('website.color.index');
         Route::put('/update', [WebsiteColorController::class,'update'])->name('website.color.update');
+    });
+
+    Route::prefix('profile-setting')->group(function () {
+        Route::get('/', [ProfileSettingController::class,'index'])->name('profile.setting.index');
+        Route::put('/profile/image/update', [ProfileSettingController::class,'updateImage'])->name('profile.image.update');
     });
 
 

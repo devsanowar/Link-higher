@@ -16,6 +16,11 @@
     form.form_label label {
         font-weight: 700;
     }
+
+    .bootstrap-select.btn-group.show-tick>.btn {
+        border: 1px solid #ddd !important;
+        padding-left: 10px;
+    }
 </style>
 
 @stack('styles')
