@@ -17,3 +17,5 @@
         font-weight: 700;
     }
 </style>
+
+@stack('styles')

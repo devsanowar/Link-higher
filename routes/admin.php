@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\WebsiteColorController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,6 +22,12 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('social-icon')->group(function () {
         Route::get('/', [SocialIconController::class,'index'])->name('social.icon.index');
         Route::put('/update', [SocialIconController::class,'update'])->name('social.icon.update');
+    });
+
+
+    Route::prefix('website-color')->group(function () {
+        Route::get('/', [WebsiteColorController::class,'index'])->name('website.color.index');
+        Route::put('/update', [WebsiteColorController::class,'update'])->name('website.color.update');
     });
 
 

@@ -46,8 +46,8 @@
             </li>
 
 
-            <li
-                class="menu-item {{ request()->routeIs('website_settings.*') || request()->routeIs('social.icon.*') ? 'active open' : '' }}">
+            <li class="menu-item {{ request()->routeIs(['website_settings.*','social.icon.*','website.color.*']) ? 'active open' : '' }}">
+
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-settings"></i><span>Settings</span>
                 </a>
@@ -57,6 +57,9 @@
                     </li>
                     <li class="{{ request()->routeIs('social.icon.*') ? 'active' : '' }}">
                         <a href="{{ route('social.icon.index') }}">Social Icon</a>
+                    </li>
+                    <li class="{{ request()->routeIs('website.color.*') ? 'active' : '' }}">
+                        <a href="{{ route('website.color.index') }}">Website Color Settings</a>
                     </li>
                 </ul>
             </li>
