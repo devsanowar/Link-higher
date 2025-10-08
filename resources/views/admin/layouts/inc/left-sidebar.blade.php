@@ -2,7 +2,13 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="assets/images/xs/avatar1.jpg" width="48" height="48" alt="User" />
+            @if (Auth::user()->image)
+                <img src="{{ asset(Auth::user()->image) }}" width="48" height="48" alt="User" />
+            @else
+                <img src="{{ asset('backend') }}/assets/images/xs/avatar1.jpg" width="48" height="48"
+                    alt="User" />
+            @endif
+
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown">{{ Auth::user()->name }}</div>
@@ -32,7 +38,19 @@
                 </form>
 
             </div>
-            <div class="email">john.doe@example.com</div>
+            @php
+                $email = Auth::user()->email ?? '';
+                if (str_contains($email, '@')) {
+                    [$local, $domain] = explode('@', $email, 2);
+                    $prefix = mb_substr($local, 0, 6); // প্রথম ৬ অক্ষর
+                    $masked = $prefix . '***' . '@' . $domain;
+                } else {
+                    $masked = $email; // fallback
+                }
+            @endphp
+
+            <div class="email">{{ $masked }}</div>
+
         </div>
     </div>
     <!-- #User Info -->
@@ -58,7 +76,15 @@
 
 
             <li
-                class="menu-item {{ request()->routeIs(['website_settings.*', 'social.icon.*', 'website.color.*']) ? 'active open' : '' }}">
+                class="menu-item">
+                <a href="{{ route('user.management.index') }}" class="menu-toggle">
+                    <i class="zmdi zmdi-accounts"></i><span>Users</span>
+                </a>
+            </li>
+
+
+            <li
+                class="menu-item {{ request()->routeIs(['website_settings.*', 'social.icon.*', 'website.color.*', 'login.page.*']) ? 'active open' : '' }}">
 
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-settings"></i><span>Settings</span>
@@ -72,6 +98,9 @@
                     </li>
                     <li class="{{ request()->routeIs('website.color.*') ? 'active' : '' }}">
                         <a href="{{ route('website.color.index') }}">Website Color Settings</a>
+                    </li>
+                    <li class="{{ request()->routeIs('login.page.*') ? 'active' : '' }}">
+                        <a href="{{ route('login.page.index') }}">Login Page Settings</a>
                     </li>
                 </ul>
             </li>

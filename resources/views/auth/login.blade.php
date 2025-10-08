@@ -19,20 +19,34 @@
 
 <body class="theme-orange">
 
-    <div class="authentication">
+    @php
+        $bgStyle = 'background:#f5f5f5;'; // fallback default
 
+        if (!empty($login_settings->login_page_bg)) {
+            $bgStyle =
+                "background-image: url('" .
+                asset($login_settings->login_page_bg) .
+                "'); background-size: cover; background-position: center; background-repeat: no-repeat;";
+        } elseif (!empty($login_settings->login_page_bg_color)) {
+            $bgStyle = 'background:' . $login_settings->login_page_bg_color . ';';
+        }
+    @endphp
+
+    <div class="authentication" style="{{ $bgStyle }}">
         <div class="card">
             <div class="body">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header slideDown">
-                            <div class="logo"><img src="assets/images/logo.png" alt="Nexa"></div>
-                            <h1>Nexa Admin</h1>
-                            <ul class="list-unstyled l-social">
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-facebook-box"></i></a></li>
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-linkedin-box"></i></a></li>
-                                <li><a href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a></li>
-                            </ul>
+                            <div class="logo">
+                                @if ($website_settings->website_logo)
+                                    <img src="{{ asset($website_settings->website_logo) }}" alt="Link Higher"
+                                        width="150px">
+                                @else
+                                    <img src="{{ asset('backend') }}/assets/images/logo.png" alt="Link Higher">
+                                @endif
+                            </div>
+
                         </div>
                     </div>
                     <form class="col-lg-12" id="sign_in" method="POST" action="{{ route('login') }}">
@@ -43,7 +57,8 @@
                         <!-- Email Address -->
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="email" class="form-control" name="email" :value="old('email')" required autofocus autocomplete="username">
+                                <input type="email" class="form-control" name="email" :value="old('email')"
+                                    required autofocus autocomplete="username">
                                 <label class="form-label" for="email">Username</label>
                             </div>
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -53,8 +68,8 @@
                         <!-- Password -->
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="password" class="form-control" name="password"
-                            required autocomplete="current-password" >
+                                <input type="password" class="form-control" name="password" required
+                                    autocomplete="current-password">
                                 <label class="form-label" for="password">Password</label>
                             </div>
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -73,8 +88,8 @@
                     </form>
                     <div class="col-lg-12 m-t-20">
                         @if (Route::has('password.request'))
-                        <a class="" href="{{ route('password.request') }}">Forgot Password?</a>
-                         @endif
+                            <a class="" href="{{ route('password.request') }}">Forgot Password?</a>
+                        @endif
                     </div>
                 </div>
             </div>

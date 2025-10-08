@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\AdminPanel;
 use App\Models\WebsiteSetting;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -23,5 +24,8 @@ class WebsiteSettingServiceProvider extends ServiceProvider
     {
         $website_settings = WebsiteSetting::first();
         View::share("website_settings", $website_settings);
+
+        $login_settings = AdminPanel::first();
+        View::share("login_settings", $login_settings);
     }
 }

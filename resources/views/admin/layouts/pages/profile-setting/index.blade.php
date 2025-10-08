@@ -1,7 +1,9 @@
 @extends('admin.layouts.app')
 @section('title', 'Profile Settings')
 @push('styles')
-<link href="{{ asset('backend') }}/assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="{{ asset('backend') }}/assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
     <style>
         .profile-image-wrapper {
@@ -47,6 +49,38 @@
 
         .camera-btn i {
             font-size: 22px;
+        }
+
+        /* Password show style design*/
+        .password-group {
+            position: relative;
+        }
+
+        .password-group input {
+            padding-right: 45px;
+            /* জায়গা রাখলাম বাটনের জন্য */
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #555;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: #0d6efd;
+        }
+
+        .password-toggle i {
+            vertical-align: middle;
         }
     </style>
 @endpush
@@ -96,7 +130,7 @@
                         <div class="profile-sub-header">
                             <div class="box-list">
                                 <ul class="text-center">
-                                    <li><a href="mail-inbox.html" class="">
+                                    <li><a href="#" class="">
                                             <p>Welcome to my profile - {{ Auth::user()->name }}</p>
                                         </a></li>
                                 </ul>
@@ -107,29 +141,82 @@
                 </div>
             </div>
             <div class="row clearfix">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-5 col-md-12">
                     <div class="card">
-                        <div class="header">
-                            <h2>About Me</h2>
+                        <div class="card-header">
+                            <h4>Password Update</h4>
                         </div>
                         <div class="body">
-                            <p class="text-default">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-                                an unknown printer took a galley of type and scrambled it to make a type specimen book. It
-                                has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.</p>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Designer <cite title="Source Title">Source Title</cite></small>
-                            </blockquote>
+                            <form id="passwordUpdateForm" class="form_label" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <!-- Current Password -->
+                                <div class="form-group password-group mb-3">
+                                    <label for="current_password">Current Password</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="password" id="current_password" name="current_password"
+                                                class="form-control" required>
+                                            <button type="button" class="password-toggle" data-target="#current_password">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- New Password -->
+                                <div class="form-group password-group mb-3">
+                                    <label for="password">New Password</label>
+                                    <div class="form-group mb-0">
+                                        <div class="form-line">
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                required minlength="8">
+                                            <button type="button" class="password-toggle" data-target="#password">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <small class="text-muted">At least 8 characters, with uppercase, number &
+                                        symbol.</small>
+
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div class="form-group password-group mb-3">
+                                    <label for="password_confirmation">Confirm Password</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                                class="form-control" required>
+                                            <button type="button" class="password-toggle"
+                                                data-target="#password_confirmation">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button id="pwdSubmitBtn" type="submit" class="btn btn-primary w-100">
+                                    <span id="pwdBtnSpinner" class="d-none spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    <span id="pwdBtnText">UPDATE PASSWORD</span>
+                                </button>
+                            </form>
+
                         </div>
                     </div>
 
                 </div>
-                <div class="col-lg-8 col-md-12">
+                <div class="col-lg-7 col-md-12">
                     <div class="card">
+                        <div class="card-header">
+                            <h4>Profile Info update</h4>
+                        </div>
                         <div class="body">
-                            <form id="ProfileUpdateForm" class="form_label" method="POST">
+                            <form id="ProfileInfoUpdateForm" class="form_label" method="POST">
+                                @csrf
+                                @method('PUT')
                                 <!-- Name -->
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-5 form-control-label">
@@ -139,7 +226,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" id="name" name="name" class="form-control"
-                                                    placeholder="Enter full name" required>
+                                                    value="{{ old('name', auth()->user()->name) }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -154,28 +241,8 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="email" id="email" name="email" class="form-control"
-                                                    placeholder="name@example.com" required>
+                                                    value="{{ old('email', auth()->user()->email) }}" required>
                                             </div>
-                                            <small class="text-muted">This email must be unique.</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- System Admin (enum: admin, user, editor) -->
-                                <div class="row clearfix">
-                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="system_admin">Role</label>
-                                    </div>
-                                    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-
-                                            <select id="system_admin" name="system_admin" class="form-control show-tick">
-                                                <option value="editor" selected>Editor</option>
-                                                <option value="user">User</option>
-                                                <option value="admin">Admin</option>
-                                            </select>
-
-                                            <small class="text-muted">Choose one of: admin / user / editor</small>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +256,8 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="tel" id="phone" name="phone" class="form-control"
-                                                    placeholder="+8801XXXXXXXXX">
+                                                    value="{{ old('phone', auth()->user()->phone) }}"
+                                                    placeholder="017XXXXXXXXXX">
                                             </div>
                                         </div>
                                     </div>
@@ -204,7 +272,8 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" id="address" name="address" class="form-control"
-                                                    placeholder="House, Road, City">
+                                                    placeholder="Enter Address"
+                                                    value="{{ old('address', auth()->user()->address) }}">
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +287,7 @@
                                     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-7">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <textarea id="about" name="about" rows="4" class="form-control" placeholder="Write a short bio..."></textarea>
+                                                <textarea id="about" name="about" rows="4" class="form-control" placeholder="Write a short bio...">{!! old('about', auth()->user()->about) !!}</textarea>
                                             </div>
                                             <small class="text-muted">A short description about yourself.</small>
                                         </div>
@@ -228,8 +297,11 @@
                                 <!-- Submit -->
                                 <div class="row clearfix">
                                     <div class="col-lg-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-raised btn-primary m-t-15 waves-effect">
-                                            Update Profile
+                                        <button id="submitBtn" type="submit"
+                                            class="btn btn-raised btn-primary m-t-15 waves-effect">
+                                            <span id="btnSpinner" class="d-none spinner-border spinner-border-sm"
+                                                role="status" aria-hidden="true"></span>
+                                            <span id="btnText">UPDATE</span>
                                         </button>
                                     </div>
                                 </div>
@@ -287,6 +359,110 @@
                 });
             });
 
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#ProfileInfoUpdateForm').on('submit', function(e) {
+                e.preventDefault();
+
+                const data = $(this).serialize();
+
+                $('#submitBtn').prop('disabled', true);
+                $('#btnText').text('Processing...');
+                $('#btnSpinner').removeClass('d-none');
+
+                $.ajax({
+                    url: "{{ route('profile.info.update') }}",
+                    method: "POST",
+                    data: data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $('#submitBtn').prop('disabled', false);
+                        $('#btnText').text('UPDATE');
+                        $('#btnSpinner').addClass('d-none');
+                        toastr.success(response.message || 'Social icons updated successfully');
+                    },
+                    error: function(xhr) {
+                        $('#submitBtn').prop('disabled', false);
+                        $('#btnText').text('UPDATE');
+                        $('#btnSpinner').addClass('d-none');
+
+                        if (xhr.responseJSON && xhr.responseJSON.errors) {
+                            $.each(xhr.responseJSON.errors, function(_, messages) {
+                                toastr.error(messages[0]);
+                            });
+                        } else {
+                            toastr.error(xhr.responseJSON?.message || 'Something went wrong!');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            // Toggle password visibility
+            $(document).on('click', '.password-toggle', function() {
+                const target = $($(this).data('target'));
+                const icon = $(this).find('i');
+                const type = target.attr('type') === 'password' ? 'text' : 'password';
+                target.attr('type', type);
+
+                // Change icon
+                if (type === 'text') {
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash').css('color', '#0d6efd');
+                } else {
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye').css('color', '#555');
+                }
+            });
+
+            // Password Update Ajax
+            $('#passwordUpdateForm').on('submit', function(e) {
+                e.preventDefault();
+
+                const data = $(this).serialize();
+
+                $('#pwdSubmitBtn').prop('disabled', true);
+                $('#pwdBtnText').text('Processing...');
+                $('#pwdBtnSpinner').removeClass('d-none');
+
+                $.ajax({
+                    url: "{{ route('profile.password.update') }}",
+                    type: "POST", // @method('PUT') serializes automatically
+                    data: data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $('#pwdSubmitBtn').prop('disabled', false);
+                        $('#pwdBtnText').text('UPDATE PASSWORD');
+                        $('#pwdBtnSpinner').addClass('d-none');
+
+                        toastr.success(response.message || 'Password updated successfully');
+
+                        $('#current_password, #password, #password_confirmation').val('');
+                    },
+                    error: function(xhr) {
+                        $('#pwdSubmitBtn').prop('disabled', false);
+                        $('#pwdBtnText').text('UPDATE PASSWORD');
+                        $('#pwdBtnSpinner').addClass('d-none');
+
+                        if (xhr.responseJSON && xhr.responseJSON.errors) {
+                            $.each(xhr.responseJSON.errors, function(_, messages) {
+                                toastr.error(messages[0]);
+                            });
+                        } else {
+                            toastr.error(xhr.responseJSON?.message || 'Something went wrong!');
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endpush

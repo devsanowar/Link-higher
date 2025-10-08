@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileSettingController extends Controller
 {
@@ -48,6 +51,65 @@ class ProfileSettingController extends Controller
             'status' => 'success',
             'message' => 'Profile image updated successfully!',
             'image_url' => asset($user->image)
+        ]);
+    }
+
+    public function profileInfoUpdate(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name'    => ['required','string','max:255'],
+            'email'   => [
+                'required','email','max:255',
+                Rule::unique('users','email')->ignore($user->id), // ignore current user
+            ],
+            'phone'   => ['nullable','string','max:30'],
+            'address' => ['nullable','string','max:255'],
+            'about'   => ['nullable','string','max:5000'],
+        ]);
+
+        $user->fill($validated)->save();
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Profile updated successfully.',
+            'data'    => [
+                'name'    => $user->name,
+                'email'   => $user->email,
+                'phone'   => $user->phone,
+                'address' => $user->address,
+                'about'   => $user->about,
+            ],
+        ]);
+    }
+
+
+    public function passwordUpdate(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => [
+                'required',
+                'confirmed',                     // matches password_confirmation
+                Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),          // checks haveibeenpwned
+            ],
+        ]);
+
+        $user->forceFill([
+            'password' => Hash::make($validated['password']),
+        ])->save();
+
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Password updated successfully.',
         ]);
     }
 
