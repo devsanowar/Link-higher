@@ -9,8 +9,8 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 mt-4">
                 <div class="card">
-                    <div class="header d-flex justify-content-between align-items-center">
-                        <h2 class="mb-0">All Users</h2>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">All Users</h4>
 
                         <a href="javascript:void(0)" id="addUserBtn" class="btn btn-primary">
                             <i class="zmdi zmdi-account-add"></i> Add User
@@ -49,10 +49,24 @@
                                         <td>{{ $user->name ?? '' }}</td>
                                         <td>{{ $user->email ?? '' }}</td>
                                         <td>{{ $user->phone ?? '' }}</td>
-                                        <td>
-                                            <a href="">Edit</a>
-                                            <a href="">Delete</a>
+                                        <td class="text-center">
+                                            <!-- Edit Link -->
+                                            <a href="{{ route("user.management.edit", $user->id) }}" class="btn btn-sm btn-icon btn-info" title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </a>
+
+                                            <!-- Delete Link -->
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="btn btn-sm btn-icon btn-danger deleteBtn"
+                                                data-id="{{ $user->id }}">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </button>
+                                        </form>
                                         </td>
+
                                     </tr>
                                 @endforeach
 
@@ -68,6 +82,32 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('backend') }}/assets/js/sweetalert2.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '.deleteBtn', function() {
+                let button = $(this);
+                let form = button.closest('form');
+                let rowId = button.data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(function() {
             // Open modal

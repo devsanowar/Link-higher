@@ -21,6 +21,11 @@
         border: 1px solid #ddd !important;
         padding-left: 10px;
     }
+
+    .table td,
+    .table th {
+        vertical-align: middle;
+    }
 </style>
 
 @stack('styles')

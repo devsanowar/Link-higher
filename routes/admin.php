@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminPanelController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebsiteColorController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProfileSettingController;
+use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
-use App\Http\Controllers\WebsiteColorController;
-use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
@@ -49,8 +51,22 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('User-management')->group(function () {
         Route::get('/', [UserManageMentController::class,'index'])->name('user.management.index');
-        Route::post('/admin/users', [UserManageMentController::class,'store'])->name('users.store');
+        Route::post('/store', [UserManageMentController::class,'store'])->name('users.store');
+        Route::get('/edit/{id}', [UserManageMentController::class,'edit'])->name('user.management.edit');
+        Route::put('/update/{id}', [UserManageMentController::class,'update'])->name('users.update');
+        Route::delete('/delete/{id}', [UserManageMentController::class,'destroy'])->name('users.destroy');
     });
+
+    Route::prefix('home')->name('home.')->group(function () {
+        Route::get('/hero-section', [HeroSectionController::class, 'index'])->name('hero.section.index');
+        Route::put('/hero-section/update', [HeroSectionController::class,'update'])->name('hero.section.update');
+    });
+
+
+    Route::prefix('services')->name('services.')->group(function () {
+        Route::resource('/', ServicesController::class);
+    });
+
 
 
 });

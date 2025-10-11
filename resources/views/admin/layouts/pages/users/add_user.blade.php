@@ -83,10 +83,10 @@
                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                             <div class="form-group">
                                 <div class="form-line">
-                                    {{-- ব্যাকএন্ডে যেটা এক্সপেক্ট করছেন, সেই name ব্যবহার করুন: role / system_admin --}}
-                                    <select id="au_role" name="role" class="form-control show-tick">
-                                        <option value="user">User</option>
+                                    <select id="au_role" name="system_admin" class="form-control show-tick">
                                         <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                        <option value="editor">Editor</option>
                                     </select>
                                 </div>
                             </div>
@@ -108,20 +108,7 @@
                         </div>
                     </div>
 
-                    {{-- (উদাহরণ) YouTube URL / Social field — আপনার দেওয়া স্টাইলে --}}
-                    <div class="row clearfix">
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                            <label for="youtube_url">YouTube URL</label>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="url" id="youtube_url" name="youtube_url" class="form-control"
-                                        placeholder="Enter YouTube URL" value="{{ old('youtube_url') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
                 {{-- Footer buttons --}}

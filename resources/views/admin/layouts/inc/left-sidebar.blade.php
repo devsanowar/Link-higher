@@ -63,21 +63,25 @@
                 </a>
             </li>
 
-            <li><a href="blog-dashboard.html"><i class="zmdi zmdi-blogger"></i><span>Blogger</span> </a></li>
-            <li><a href="javascript:void(0);" class="menu-toggle"><i
-                        class="zmdi zmdi-shopping-cart"></i><span>Ecommerce</span> </a>
+            <li class="menu-item {{ request()->routeIs('home.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-home"></i><span>Home</span>
+                </a>
                 <ul class="ml-menu">
-                    <li><a href="ec-dashboard.html">Dashboard</a></li>
-                    <li><a href="ec-product.html">Product</a></li>
-                    <li><a href="ec-product-List.html">Product List</a></li>
-                    <li><a href="ec-product-detail.html">Product detail</a></li>
+                    <li class="{{ request()->routeIs('home.hero.section.*') ? 'active' : '' }}">
+                        <a href="{{ route('home.hero.section.index') }}">Hero Section</a>
+                    </li>
                 </ul>
             </li>
 
 
-            <li
-                class="menu-item">
-                <a href="{{ route('user.management.index') }}" class="menu-toggle">
+
+            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span> </a></li>
+
+
+
+            <li class="menu-item {{ request()->routeIs(['user.management.*']) ? 'active open' : '' }}">
+                <a href="{{ route('user.management.index') }}">
                     <i class="zmdi zmdi-accounts"></i><span>Users</span>
                 </a>
             </li>
