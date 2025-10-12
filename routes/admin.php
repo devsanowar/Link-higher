@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\Admin\CaseStudyCategoryController;
 
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
@@ -63,9 +65,20 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     });
 
 
-    Route::prefix('services')->name('services.')->group(function () {
-        Route::resource('/', ServicesController::class);
+
+    Route::resource('services', ServicesController::class);
+
+    Route::prefix('case-study')->group(function () {
+        Route::resource('category', CaseStudyCategoryController::class);
+        Route::get('/', [CaseStudyController::class, 'index'])->name('case.study.index');
+        Route::get('/create', [CaseStudyController::class, 'create'])->name('case.study.create');
+        Route::post('/store', [CaseStudyController::class, 'store'])->name('case.study.store');
+        Route::get('/edit/{id}', [CaseStudyController::class, 'edit'])->name('case.study.edit');
+        Route::put('/edit/{id}', [CaseStudyController::class, 'update'])->name('case.study.update');
+        Route::delete('/delete/{id}', [CaseStudyController::class, 'destroy'])->name('case.study.destroy');
     });
+
+
 
 
 

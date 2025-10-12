@@ -43,20 +43,21 @@
                                         <td>{{ $service->service_title ?? '' }}</td>
                                         <td class="text-center">
                                             <!-- Edit Link -->
-                                            <a href="" class="btn btn-sm btn-icon btn-info" title="Edit">
+                                            <a href="{{ route('services.edit', $service->id) }}"
+                                                class="btn btn-sm btn-icon btn-info" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
 
                                             <!-- Delete Link -->
-                                            <form action="" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button"
-                                                class="btn btn-sm btn-icon btn-danger deleteBtn"
-                                                data-id="{{ $service->id }}">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                        </form>
+                                            <form action="{{ route('services.destroy', $service->id) }}" method="POST"
+                                                style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-sm btn-icon btn-danger deleteBtn"
+                                                    data-id="{{ $service->id }}">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>
@@ -72,3 +73,32 @@
         <!-- #END# Bordered Table -->
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('backend') }}/assets/js/sweetalert2.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '.deleteBtn', function() {
+                let button = $(this);
+                let form = button.closest('form');
+                let rowId = button.data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

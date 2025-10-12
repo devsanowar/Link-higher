@@ -45,7 +45,7 @@
                             </div>
 
                             {{-- Service Slug --}}
-                            {{-- <div class="row clearfix">
+                            <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
                                     <label for="service_slug">Service Slug <strong class="text-danger">*</strong></label>
                                 </div>
@@ -62,7 +62,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
                             {{-- Short Description --}}
                             <div class="row clearfix">

@@ -79,6 +79,24 @@
             <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span> </a></li>
 
 
+            <li
+                class="menu-item {{ request()->routeIs(['category.*', 'case.study.*']) ? 'active open' : '' }}">
+
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-case"></i><span>Case Studies</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('category.*') ? 'active' : '' }}">
+                        <a href="{{ route('category.index') }}">Category</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('case.study.*') ? 'active' : '' }}">
+                        <a href="{{ route('case.study.index') }}">Case Study</a>
+                    </li>
+
+                </ul>
+            </li>
+
 
             <li class="menu-item {{ request()->routeIs(['user.management.*']) ? 'active open' : '' }}">
                 <a href="{{ route('user.management.index') }}">

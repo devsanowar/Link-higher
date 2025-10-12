@@ -51,20 +51,21 @@
                                         <td>{{ $user->phone ?? '' }}</td>
                                         <td class="text-center">
                                             <!-- Edit Link -->
-                                            <a href="{{ route("user.management.edit", $user->id) }}" class="btn btn-sm btn-icon btn-info" title="Edit">
+                                            <a href="{{ route('user.management.edit', $user->id) }}"
+                                                class="btn btn-sm btn-icon btn-info" title="Edit">
                                                 <i class="zmdi zmdi-edit"></i>
                                             </a>
 
                                             <!-- Delete Link -->
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button"
-                                                class="btn btn-sm btn-icon btn-danger deleteBtn"
-                                                data-id="{{ $user->id }}">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                        </form>
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                                style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-sm btn-icon btn-danger deleteBtn"
+                                                    data-id="{{ $user->id }}">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </form>
                                         </td>
 
                                     </tr>
