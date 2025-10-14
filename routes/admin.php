@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
@@ -70,13 +71,23 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('case-study')->group(function () {
         Route::resource('category', CaseStudyCategoryController::class);
+
+        // Case Study
         Route::get('/', [CaseStudyController::class, 'index'])->name('case.study.index');
         Route::get('/create', [CaseStudyController::class, 'create'])->name('case.study.create');
         Route::post('/store', [CaseStudyController::class, 'store'])->name('case.study.store');
         Route::get('/edit/{id}', [CaseStudyController::class, 'edit'])->name('case.study.edit');
         Route::put('/edit/{id}', [CaseStudyController::class, 'update'])->name('case.study.update');
         Route::delete('/delete/{id}', [CaseStudyController::class, 'destroy'])->name('case.study.destroy');
+
+        // Soft Delete
+
+        Route::get('/trashed', [CaseStudyController::class, 'trashed'])->name('case.study.trashed');
+        Route::get('/restore/{id}', [CaseStudyController::class, 'restore'])->name('case.study.restore');
+        Route::delete('/force-delete/{id}', [CaseStudyController::class, 'forceDelete'])->name('case.study.force.delete');
     });
+
+    Route::resource('faqs', FaqController::class);
 
 
 

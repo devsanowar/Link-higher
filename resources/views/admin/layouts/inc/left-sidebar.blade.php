@@ -78,6 +78,8 @@
 
             <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span> </a></li>
 
+            <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a href="{{ route('faqs.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>FAQs</span> </a></li>
+
 
             <li
                 class="menu-item {{ request()->routeIs(['category.*', 'case.study.*']) ? 'active open' : '' }}">

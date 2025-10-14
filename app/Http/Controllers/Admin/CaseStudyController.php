@@ -13,7 +13,8 @@ class CaseStudyController extends Controller
     public function index()
     {
         $cases = CaseStudy::with('category')->latest()->where("status", 1)->get();
-        return view("admin.layouts.pages.case-study.index", compact("cases"));
+        $trashedDataCount = CaseStudy::onlyTrashed()->count();
+        return view("admin.layouts.pages.case-study.index", compact("cases", "trashedDataCount"));
     }
 
     public function create()
@@ -270,6 +271,55 @@ class CaseStudyController extends Controller
         $case->delete();
 
         return redirect()->route('case.study.index')->with('success', 'Case Study deleted successfully.');
+    }
+
+    // Trashed case studies
+    public function trashed(){
+        $cases = CaseStudy::onlyTrashed();
+        return view("admin.layouts.pages.case-study.recycle-bin", compact("cases"));
+    }
+
+    // Restore a trashed case study
+    public function restore($id){
+        $case = CaseStudy::onlyTrashed()->findOrFail($id);
+        $case->restore();
+        return redirect()->route('case.study.trashed')->with('success', 'Case Study restored successfully.');
+    }
+
+    // Permanently delete a trashed case study
+    public function forceDelete($id){
+        $case = CaseStudy::onlyTrashed()->findOrFail($id);
+
+        // delete main image
+        if (! empty($case->image)) {
+            $oldPath = public_path($case->image);
+            if (File::exists($oldPath)) {
+                @unlink($oldPath);
+            }
+        }
+
+        // delete gallery images
+        $gallery = [];
+        if (! empty($case->images)) {
+            $decoded = is_array($case->images) ? $case->images : json_decode($case->images, true);
+            if (is_array($decoded)) {
+                $gallery = $decoded;
+            }
+        }
+
+        if (count($gallery)) {
+            foreach ($gallery as $imgPath) {
+                $abs = public_path($imgPath);
+                if (File::exists($abs)) {
+                    @unlink($abs);
+                }
+            }
+        }
+
+        // finally force delete the record
+        $case->forceDelete();
+
+        return redirect()->route('case.study.trashed')->with('success', 'Case Study permanently deleted.');
     }
 
 }
