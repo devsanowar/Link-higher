@@ -75,10 +75,17 @@
             </li>
 
 
-
+            <!--Services Menu-->
             <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span> </a></li>
 
+             <!--FAQ Menu-->
             <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a href="{{ route('faqs.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>FAQs</span> </a></li>
+
+            <!--Review Menu-->
+            <li class="{{ request()->routeIs(['reviews.*']) ? 'active open' : '' }}"><a href="{{ route('reviews.index') }}"><i class="zmdi zmdi-ticket-star"></i><span>Rivews</span> </a></li>
+
+            <!--Trusted Menu-->
+            <li class="{{ request()->routeIs(['clients.*']) ? 'active open' : '' }}"><a href="{{ route('clients.index') }}"><i class="zmdi zmdi-accounts"></i><span>Trusted Client</span> </a></li>
 
 
             <li

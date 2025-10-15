@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\TrustedClientController;
 use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
@@ -87,9 +89,14 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::delete('/force-delete/{id}', [CaseStudyController::class, 'forceDelete'])->name('case.study.force.delete');
     });
 
+    // Faq resource route
     Route::resource('faqs', FaqController::class);
 
+    // Review resource route
+    Route::resource('reviews',ReviewController::class);
 
+    // Trusted Client resource route
+    Route::resource('clients', TrustedClientController::class);
 
 
 
