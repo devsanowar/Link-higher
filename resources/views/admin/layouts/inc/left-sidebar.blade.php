@@ -63,7 +63,8 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->routeIs('home.*', 'home.smart-strategy.*', 'home.smarter-workflows.*', 'home.goal-progress-insight.*', 'home.smart-solution.*') ? 'active open' : '' }}">
+            <li
+                class="menu-item {{ request()->routeIs('home.*', 'home.smart-strategy.*', 'home.smarter-workflows.*', 'home.goal-progress-insight.*', 'home.smart-solution.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-home"></i><span>Home</span>
                 </a>
@@ -84,28 +85,37 @@
                         <a href="{{ route('home.goal-progress-insight.index') }}">Goal Progress Insights</a>
                     </li>
 
-                    <li class="{{ request()->routeIs('home.smart-solution.*') ? 'active' : '' }}">
+                    <li
+                        class="{{ request()->routeIs('home.smart-solution.*', 'home.smart-solution-features.*') ? 'active' : '' }}">
                         <a href="{{ route('home.smart-solution.index') }}">Smart Solution</a>
                     </li>
+
                 </ul>
             </li>
 
 
             <!--Services Menu-->
-            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span> </a></li>
+            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a
+                    href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span>
+                </a></li>
 
-             <!--FAQ Menu-->
-            <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a href="{{ route('faqs.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>FAQs</span> </a></li>
+            <!--FAQ Menu-->
+            <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a
+                    href="{{ route('faqs.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>FAQs</span> </a>
+            </li>
 
             <!--Review Menu-->
-            <li class="{{ request()->routeIs(['reviews.*']) ? 'active open' : '' }}"><a href="{{ route('reviews.index') }}"><i class="zmdi zmdi-ticket-star"></i><span>Rivews</span> </a></li>
+            <li class="{{ request()->routeIs(['reviews.*']) ? 'active open' : '' }}"><a
+                    href="{{ route('reviews.index') }}"><i class="zmdi zmdi-ticket-star"></i><span>Rivews</span> </a>
+            </li>
 
             <!--Trusted Menu-->
-            <li class="{{ request()->routeIs(['clients.*']) ? 'active open' : '' }}"><a href="{{ route('clients.index') }}"><i class="zmdi zmdi-accounts"></i><span>Trusted Client</span> </a></li>
+            <li class="{{ request()->routeIs(['clients.*']) ? 'active open' : '' }}"><a
+                    href="{{ route('clients.index') }}"><i class="zmdi zmdi-accounts"></i><span>Trusted Client</span>
+                </a></li>
 
 
-            <li
-                class="menu-item {{ request()->routeIs(['category.*', 'case.study.*']) ? 'active open' : '' }}">
+            <li class="menu-item {{ request()->routeIs(['category.*', 'case.study.*']) ? 'active open' : '' }}">
 
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-case"></i><span>Case Studies</span>

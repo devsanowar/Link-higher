@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\Admin\SmarterWorkflowsController;
 use App\Http\Controllers\Admin\CaseStudyCategoryController;
+use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -86,6 +87,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         // Smart solution
         Route::get('smart-solution', [SmartSolutionsController::class,'index'])->name('smart-solution.index');
         Route::put('smart-solution/update', [SmartSolutionsController::class,'update'])->name('smart-solution.update');
+
+        // smart solution feature resource route
+        Route::resource('smart-solution-features', SmartSolutionFeatureController::class);
 
     });
 
