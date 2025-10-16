@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SmartSolutionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -79,6 +80,12 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
         // Goal progress insight resource route
         Route::resource('goal-progress-insight', GoalProgressController::class);
+
+        Route::put('goal-progress-section-title/update', [GoalProgressController::class, 'updateTitle'])->name('goal-progress-section-title.update');
+
+        // Smart solution
+        Route::get('smart-solution', [SmartSolutionsController::class,'index'])->name('smart-solution.index');
+        Route::put('smart-solution/update', [SmartSolutionsController::class,'update'])->name('smart-solution.update');
 
     });
 

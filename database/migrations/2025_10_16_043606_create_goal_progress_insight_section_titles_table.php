@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('goal_progress', function (Blueprint $table) {
+        Schema::create('goal_progress_insight_section_titles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('image')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->string('section_title');
+            $table->string('section_subtitle')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('goal_progress');
+        Schema::dropIfExists('goal_progress_insight_section_titles');
     }
 };

@@ -63,7 +63,7 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->routeIs('home.*', 'home.smart-strategy.*', 'home.smarter-workflows.*', 'home.goal-progress-insight.*') ? 'active open' : '' }}">
+            <li class="menu-item {{ request()->routeIs('home.*', 'home.smart-strategy.*', 'home.smarter-workflows.*', 'home.goal-progress-insight.*', 'home.smart-solution.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-home"></i><span>Home</span>
                 </a>
@@ -82,6 +82,10 @@
 
                     <li class="{{ request()->routeIs('home.goal-progress-insight.*') ? 'active' : '' }}">
                         <a href="{{ route('home.goal-progress-insight.index') }}">Goal Progress Insights</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('home.smart-solution.*') ? 'active' : '' }}">
+                        <a href="{{ route('home.smart-solution.index') }}">Smart Solution</a>
                     </li>
                 </ul>
             </li>

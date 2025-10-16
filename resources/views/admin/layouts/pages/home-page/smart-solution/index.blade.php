@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Goal Progress Insights')
+@section('title', 'Smart Solution')
 
 @section('admin_content')
     <div class="container-fluid">
@@ -7,49 +7,135 @@
             <div class="col-lg-12 col-md-12 col-sm-12 mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Section Title</h4>
+                        <h4>Smart Solution and real time result</h4>
                     </div>
                     <div class="card-body">
-                        <form id="addSectionTitleForm">
+                        <form id="updateSmartSolutionForm" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
-                            <!--Section title-->
+                            {{-- Title --}}
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="section_title">Section Title <strong class="text-danger">*</strong></label>
+                                    <label for="title">Title <strong class="text-danger">*</strong></label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="section_title" name="section_title"
-                                                class="form-control @error('section_title') is-invalid @enderror"
-                                                placeholder="Enter goal section_title"
-                                                value="{{ $sectionTitle->section_title ?? '' }}" required>
+                                            <input type="text" id="title" name="title"
+                                                class="form-control @error('title') is-invalid @enderror"
+                                                placeholder="Enter title"
+                                                value="{{ old('title', $smartSolution->title ?? '') }}" required>
                                         </div>
-                                        @error('section_title')
+                                        @error('title')
                                             <span class="text-danger small">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
 
-                            <!--Section subtitle-->
+                            {{-- Subtitle --}}
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="section_subtitle">Section Sub title</label>
+                                    <label for="subtitle">Subtitle</label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" id="section_title" name="section_subtitle"
-                                                class="form-control @error('section_title') is-invalid @enderror"
-                                                placeholder="Enter goal section subtitle"
-                                                value="{{ $sectionTitle->section_subtitle ?? '' }}">
+                                            <input type="text" id="subtitle" name="subtitle"
+                                                class="form-control @error('subtitle') is-invalid @enderror"
+                                                placeholder="Enter subtitle"
+                                                value="{{ old('subtitle', $smartSolution->subtitle ?? '') }}">
                                         </div>
-                                        @error('section_subtitle')
+                                        @error('subtitle')
                                             <span class="text-danger small">{{ $message }}</span>
                                         @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Description --}}
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="description">Description</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea id="description" name="description" rows="5"
+                                                class="form-control @error('description') is-invalid @enderror" placeholder="Write description...">{{ old('description', $smartSolution->description ?? '') }}</textarea>
+                                        </div>
+                                        @error('description')
+                                            <span class="text-danger small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Image One --}}
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="image_one">Image One</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" id="image_one" name="image_one" accept="image/*"
+                                                class="form-control @error('image_one') is-invalid @enderror">
+                                        </div>
+                                        @error('image_one')
+                                            <span class="text-danger small">{{ $message }}</span>
+                                        @enderror
+
+                                        {{-- Preview --}}
+                                        @php
+                                            $img1 = !empty($smartSolution->image_one)
+                                                ? asset($smartSolution->image_one)
+                                                : '#';
+                                            $hasImg1 = !empty($smartSolution->image_one);
+                                        @endphp
+                                        <div class="mt-3">
+                                            <img id="imageOnePreview" src="{{ $hasImg1 ? $img1 : '#' }}"
+                                                alt="Image One Preview"
+                                                class="img-fluid rounded shadow-sm {{ $hasImg1 ? '' : 'd-none' }}"
+                                                style="max-width:200px;border:1px solid #ddd;padding:4px;">
+                                        </div>
+                                        <small class="text-muted d-block mt-2">Allowed: JPG, PNG, GIF, SVG, WebP •
+                                            Suggestion: &lt;1MB</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Image Two --}}
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="image_two">Image Two</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" id="image_two" name="image_two" accept="image/*"
+                                                class="form-control @error('image_two') is-invalid @enderror">
+                                        </div>
+                                        @error('image_two')
+                                            <span class="text-danger small">{{ $message }}</span>
+                                        @enderror
+
+                                        {{-- Preview --}}
+                                        @php
+                                            $img2 = !empty($smartSolution->image_two)
+                                                ? asset($smartSolution->image_two)
+                                                : '#';
+                                            $hasImg2 = !empty($smartSolution->image_two);
+                                        @endphp
+                                        <div class="mt-3">
+                                            <img id="imageTwoPreview" src="{{ $hasImg2 ? $img2 : '#' }}"
+                                                alt="Image Two Preview"
+                                                class="img-fluid rounded shadow-sm {{ $hasImg2 ? '' : 'd-none' }}"
+                                                style="max-width:200px;border:1px solid #ddd;padding:4px;">
+                                        </div>
+                                        <small class="text-muted d-block mt-2">Allowed: JPG, PNG, GIF, SVG, WebP •
+                                            Suggestion: &lt;1MB</small>
                                     </div>
                                 </div>
                             </div>
@@ -64,11 +150,12 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4> All Goal Progress </h4>
+                        <h4> All Solution Feature </h4>
                         <a href="{{ route('home.goal-progress-insight.create') }}" class="btn btn-primary">
                             <i class="zmdi zmdi-plus"></i> Create Insight
                         </a>
@@ -130,7 +217,6 @@
                                 </tbody>
                             </table>
 
-                            {{-- Pagination (optional) --}}
                             @if (method_exists($items, 'links'))
                                 <div class="mt-3">
                                     {{ $items->links() }}
@@ -139,7 +225,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -171,7 +257,33 @@
 
     <script>
         $(document).ready(function() {
-            $("#addSectionTitleForm").submit(function(e) {
+
+            // Live preview: Image One
+            $('#image_one').on('change', function(e) {
+                const file = e.target.files[0];
+                const $img = $('#imageOnePreview');
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = ev => $img.attr('src', ev.target.result).removeClass('d-none').hide()
+                        .fadeIn(200);
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Live preview: Image Two
+            $('#image_two').on('change', function(e) {
+                const file = e.target.files[0];
+                const $img = $('#imageTwoPreview');
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = ev => $img.attr('src', ev.target.result).removeClass('d-none').hide()
+                        .fadeIn(200);
+                    reader.readAsDataURL(file);
+                }
+            });
+
+
+            $("#updateSmartSolutionForm").submit(function(e) {
                 e.preventDefault();
                 let formData = new FormData(this);
 
@@ -180,7 +292,7 @@
                 $('#submitBtn').prop('disabled', true);
 
                 $.ajax({
-                    url: "{{ route('home.goal-progress-section-title.update') }}",
+                    url: "{{ route('home.smart-solution.update') }}",
                     type: "POST",
                     data: formData,
                     contentType: false,

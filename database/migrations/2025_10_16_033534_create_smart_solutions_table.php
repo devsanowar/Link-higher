@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('goal_progress', function (Blueprint $table) {
+        Schema::create('smart_solutions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->string('subtitle')->nullable();
+            $table->string('feature_title')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('feature_description')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('goal_progress');
+        Schema::dropIfExists('smart_solutions');
     }
 };
