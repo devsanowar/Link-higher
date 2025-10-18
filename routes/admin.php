@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\About\AboutController;
+use App\Http\Controllers\Admin\About\MissionAndVissionController;
+use App\Http\Controllers\Admin\About\WhoWeAreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -21,6 +24,8 @@ use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\Admin\SmarterWorkflowsController;
 use App\Http\Controllers\Admin\CaseStudyCategoryController;
+use App\Http\Controllers\Admin\CustomerFocusToneController;
+use App\Http\Controllers\Admin\EmployeController;
 use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\WhyChoseUsController;
@@ -105,6 +110,24 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         // Why chose us reason route here
         Route::resource('why-chose-us/reason', ReasonController::class);
 
+        // Customer focus tone route here
+        Route::get('customer-focus-tone', [CustomerFocusToneController::class,'index'])->name('customer-focus-tone.index');
+        Route::put('customer-focus-tone/update', [CustomerFocusToneController::class,'update'])->name('customer-focus-tone.update');
+
+
+    });
+
+    Route::prefix('about-page')->name('about-page.')->group(function () {
+        Route::get('about-us', [AboutController::class, 'index'])->name('about-us.index');
+        Route::put('about-us/update', [AboutController::class, 'update'])->name('about-us.update');
+
+        // Mission and Vision route
+        Route::get('mission-vision', [MissionAndVissionController::class, 'index'])->name('mission-vision.index');
+        Route::put('mission-vision/update', [MissionAndVissionController::class, 'update'])->name('mission-vision.update');
+
+        // Who we are route
+        Route::get('who-we-are', [WhoWeAreController::class, 'index'])->name('who-we-are.index');
+        Route::put('who-we-are/update', [WhoWeAreController::class, 'update'])->name('who-we-are.update');
     });
 
     Route::resource('services', ServicesController::class);
@@ -126,6 +149,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('/restore/{id}', [CaseStudyController::class, 'restore'])->name('case.study.restore');
         Route::delete('/force-delete/{id}', [CaseStudyController::class, 'forceDelete'])->name('case.study.force.delete');
     });
+
+    // Employee route
+    Route::resource('employe', EmployeController::class);
 
     // Faq resource route
     Route::resource('faqs', FaqController::class);

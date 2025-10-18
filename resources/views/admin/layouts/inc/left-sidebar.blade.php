@@ -94,8 +94,36 @@
                         <a href="{{ route('home.achievements.index') }}">Achievements</a>
                     </li>
 
+
+
                     <li class="{{ request()->routeIs('home.why-chose-us.*','home.reason.*') ? 'active' : '' }}">
                         <a href="{{ route('home.why-chose-us.index') }}">Why chose us</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('home.customer-focus-tone.*') ? 'active' : '' }}">
+                        <a href="{{ route('home.customer-focus-tone.index') }}">Customer focus tone</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li
+                class="menu-item {{ request()->routeIs('about-page.*', 'about-page.mission-vision.*', 'about-page.who-we-are.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-view-list"></i><span>About Page</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('about-page.about-us.*') ? 'active' : '' }}">
+                        <a href="{{ route('about-page.about-us.index') }}">About Us</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('about-page.mission-vision.*') ? 'active' : '' }}">
+                        <a href="{{ route('about-page.mission-vision.index') }}">Mission & Vision</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('about-page.who-we-are.*') ? 'active' : '' }}">
+                        <a href="{{ route('about-page.who-we-are.index') }}">Who We Are</a>
                     </li>
 
                 </ul>
@@ -103,9 +131,14 @@
 
 
             <!--Services Menu-->
-            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a
-                    href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span>
-                </a></li>
+            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span>
+            </a></li>
+
+            <!--Employe Menu-->
+            <li class="{{ request()->routeIs(['employe.*']) ? 'active open' : '' }}">
+                <a href="{{ route('employe.index') }}"><i class="zmdi zmdi-accounts"></i><span>Employes</span>
+                </a>
+            </li>
 
             <!--FAQ Menu-->
             <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a
