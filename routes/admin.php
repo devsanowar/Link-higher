@@ -1,25 +1,29 @@
 <?php
 
-use App\Http\Controllers\Admin\SmartSolutionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
+use App\Http\Controllers\Admin\CountdownController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\GoalProgressController;
 use App\Http\Controllers\Admin\SmartStrategyController;
 use App\Http\Controllers\Admin\TrustedClientController;
 use App\Http\Controllers\Admin\ProfileSettingController;
+use App\Http\Controllers\Admin\SmartSolutionsController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\Admin\SmarterWorkflowsController;
 use App\Http\Controllers\Admin\CaseStudyCategoryController;
+use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
+use App\Http\Controllers\Admin\WhyChoseUsController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -90,6 +94,16 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
         // smart solution feature resource route
         Route::resource('smart-solution-features', SmartSolutionFeatureController::class);
+
+        // Count down resource route
+        Route::resource('achievements', AchievementController::class);
+
+        // Why Chose us route
+        Route::get('why-chose-us', [WhyChoseUsController::class, 'index'])->name('why-chose-us.index');
+        Route::put('why-chose-us/update', [WhyChoseUsController::class, 'update'])->name('why-chose-us.update');
+
+        // Why chose us reason route here
+        Route::resource('why-chose-us/reason', ReasonController::class);
 
     });
 
