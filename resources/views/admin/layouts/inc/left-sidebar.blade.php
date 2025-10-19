@@ -140,6 +140,12 @@
                 </a>
             </li>
 
+            <!--Package Plan Menu-->
+            <li class="{{ request()->routeIs(['package_plans.*']) ? 'active open' : '' }}">
+                <a href="{{ route('package_plans.index') }}"><i class="zmdi zmdi-money-box"></i><span>Package Plan</span>
+                </a>
+            </li>
+
             <!--FAQ Menu-->
             <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a
                     href="{{ route('faqs.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>FAQs</span> </a>

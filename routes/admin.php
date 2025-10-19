@@ -1,23 +1,26 @@
 <?php
 
-use App\Http\Controllers\Admin\About\AboutController;
-use App\Http\Controllers\Admin\About\MissionAndVissionController;
-use App\Http\Controllers\Admin\About\WhoWeAreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\WebsiteColorController;
+use App\Http\Controllers\Admin\EmployeController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\CountdownController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\WhyChoseUsController;
+use App\Http\Controllers\Admin\About\AboutController;
 use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\PackagePlanController;
 use App\Http\Controllers\Admin\GoalProgressController;
 use App\Http\Controllers\Admin\SmartStrategyController;
 use App\Http\Controllers\Admin\TrustedClientController;
+use App\Http\Controllers\Admin\About\WhoWeAreController;
 use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\SmartSolutionsController;
 use App\Http\Controllers\Admin\UserManageMentController;
@@ -25,10 +28,8 @@ use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\Admin\SmarterWorkflowsController;
 use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
-use App\Http\Controllers\Admin\EmployeController;
-use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
-use App\Http\Controllers\Admin\WhyChoseUsController;
+use App\Http\Controllers\Admin\About\MissionAndVissionController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -161,5 +162,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     // Trusted Client resource route
     Route::resource('clients', TrustedClientController::class);
+
+    // Package plan route here
+    Route::resource('package_plans', PackagePlanController::class);
 
 });
