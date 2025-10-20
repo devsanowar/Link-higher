@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -16,19 +15,28 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // লগইন না থাকলে লগইন পেজে পাঠাবে
-        if (!Auth::check()) {
-            return redirect('/login');
+
+        if (! Auth::check()) {
+            return redirect()->guest(route('login'));
         }
 
-        $user = Auth::user();
+        $user     = Auth::user();
+        $userRole = $user->system_admin;
 
-        // যদি ইউজারের system_admin রোল $roles এর মধ্যে থাকে
-        if (in_array($user->system_admin, $roles)) {
-            return $next($request); // অনুমোদিত, পরবর্তী middleware বা কন্ট্রোলার চালাবে
+        if (empty($roles)) {
+            return $next($request);
         }
 
-        // অনুমোদিত না হলে 403
+
+        if ($userRole === 'admin') {
+            return $next($request);
+        }
+
+        if (in_array($userRole, $roles, true)) {
+            return $next($request);
+        }
+
         abort(403, 'Unauthorized');
     }
+
 }

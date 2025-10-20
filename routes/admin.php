@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CtaController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -115,6 +116,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('customer-focus-tone', [CustomerFocusToneController::class,'index'])->name('customer-focus-tone.index');
         Route::put('customer-focus-tone/update', [CustomerFocusToneController::class,'update'])->name('customer-focus-tone.update');
 
+        // CTA route
+        Route::get('CTA', [CtaController::class, 'index'])->name('cta.index');
+        Route::put('cta/update', [CtaController::class, 'update'])->name('cta.update');
+
 
     });
 
@@ -165,5 +170,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     // Package plan route here
     Route::resource('package_plans', PackagePlanController::class);
+
+
 
 });

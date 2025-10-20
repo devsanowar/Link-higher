@@ -104,6 +104,10 @@
                         <a href="{{ route('home.customer-focus-tone.index') }}">Customer focus tone</a>
                     </li>
 
+                    <li class="{{ request()->routeIs('home.cta.*') ? 'active' : '' }}">
+                        <a href="{{ route('home.cta.index') }}">CTA</a>
+                    </li>
+
                 </ul>
             </li>
 
