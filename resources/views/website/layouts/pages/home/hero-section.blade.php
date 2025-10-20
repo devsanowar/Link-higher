@@ -9,12 +9,11 @@
                             <!-- Title -->
                             <h2
                                 class="s-54 w--700 xl:!text-[3.375rem] lg:max-xl:!text-[3.125rem] md:max-lg:!text-[2.79411rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35] xl:!mb-[28px] lg:max-xl:!mb-[24px] md:max-lg:!mb-[18px] sm:max-md:!mb-[15px] xsm:max-sm:!mb-[18px]">
-                                Digital marketing that drives results for your business</h2>
+                                {{ $hero->title ?? '' }}</h2>
                             <!-- Text -->
                             <p
                                 class="p-lg xl:!mb-[32px] lg:max-xl:!mb-[28px] md:max-lg:!mb-[24px] sm:max-md:!mb-[25px] xsm:max-sm:!mb-[25px]">
-                                Mauris donec ociis magnis sapien ipsum sagittis sapien tempor and volute
-                                gravida aliquet quaerat vitae
+                                {!! $hero->short_description ?? '' !!}
                             </p>
                             <!-- HERO QUICK FORM -->
                             <form name="quickform"
@@ -36,12 +35,6 @@
                                 </div>
                             </form>
                             <!-- END HERO QUICK FORM -->
-                            <!-- Text -->
-                            <p
-                                class="p-sm btn-txt ico-15 !p-0 !m-[20px_0_0_0] lg:max-xl:!mt-[15px] lg:max-xl:!mb-0 lg:max-xl:mx-0 md:max-lg:!mt-[13px] md:max-lg:!mb-0 md:max-lg:mx-0 xsm:max-sm:!mt-[18px] xsm:max-sm:!mb-0 sm:max-md:!mt-[15px] sm:max-md:!mb-0 sm:max-md:mx-0">
-                                <span class="flaticon-check relative right-[2px] top-[0.5px]"></span> No credit
-                                card needed, free 14-day trial
-                            </p>
                         </div>
                     </div>
                     <!-- END HERO TEXT -->
@@ -49,7 +42,11 @@
                     <div
                         class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                         <div class="hero-7-img !text-center wow fadeInLeft">
-                            <img class="img-fluid" src="images/img-06.png" alt="hero-image">
+                            @if($hero->image)
+                            <img class="img-fluid" src="{{ asset($hero->image) }}" alt="hero-image">
+                            @else
+                            <img class="img-fluid" src="{{ asset('frontend') }}/images/img-06.png" alt="hero-image">
+                            @endif
                         </div>
                     </div>
                 </div>

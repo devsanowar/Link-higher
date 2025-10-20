@@ -21,7 +21,7 @@
                     <div class="wsmainwp clearfix">
                         <!-- HEADER BLACK LOGO -->
                         <div class="desktoplogo">
-                            <a href="#hero-7" class="logo-black">
+                            <a href="{{ route('home') }}" class="logo-black">
                                 @if ($website_settings->website_logo)
                                     <img class="light-theme-img w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
                                         src="{{ asset($website_settings->website_logo) }}" alt="logo">
@@ -33,9 +33,15 @@
                         </div>
                         <!-- HEADER WHITE LOGO -->
                         <div class="desktoplogo">
-                            <a href="#hero-7" class="logo-white">
+                            <a href="{{ route('home') }}" class="logo-white">
+                                @if ($website_settings->website_logo)
                                 <img class=" w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
-                                    src="images/logo-white.png" alt="logo"></a>
+                                    src="{{ asset($website_settings->website_logo) }}" alt="logo">
+                                @else
+                                <img class=" w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
+                                    src="{{ asset('frontend') }}/images/logo-white.png" alt="logo">
+                                @endif
+                            </a>
                         </div>
                         <!-- MAIN MENU -->
                         <nav class="wsmenu clearfix">
