@@ -1,0 +1,30 @@
+/* আইকন-কন্টেইনারে ব্লব ব্যাকগ্রাউন্ড */
+.icon-card{
+  --blob-w: 135px;      /* xl */
+  --blob-h: 95px;
+  position: relative;
+}
+
+.icon-card::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-30px;                /* স্ক্রিনশটের মতো আইকনের একটু ওপর থেকে শুরু */
+  transform:translateX(-50%) rotate(-8deg);
+  width:var(--blob-w);
+  height:var(--blob-h);
+  z-index:1;
+  /* এলোমেলো ওভাল ব্লব—মাত্র radial-gradients দিয়ে */
+  background:
+    radial-gradient(60% 70% at 35% 55%, rgba(155, 100, 255, .28) 0 60%, rgba(155,100,255,0) 61%),
+    radial-gradient(50% 60% at 70% 40%, rgba(155, 100, 255, .22) 0 55%, rgba(155,100,255,0) 56%);
+  border-radius: 60% 40% 50% 50%/55% 45% 55% 45%;
+}
+
+/* রেসপনসিভ সাইজ (স্ক্রিনশটের ব্রেকপয়েন্ট অনুকরণ) */
+@media (max-width: 1536px){ .icon-card{ --blob-w:115px; --blob-h:85px; } }   /* lg–xl */
+@media (max-width: 1024px){  .icon-card{ --blob-w:100px; --blob-h:78px; } }   /* md–lg */
+@media (max-width: 768px){   .icon-card{ --blob-w:135px; --blob-h:95px; } }   /* sm–md */
+@media (max-width: 640px){   .icon-card{ --blob-w:125px; --blob-h:90px; } }   /* xsm–sm */
+.icon-purple { filter: invert(26%) sepia(58%) saturate(3200%) hue-rotate(235deg) brightness(95%) contrast(90%); }
+/* <img class="... icon-purple"> */

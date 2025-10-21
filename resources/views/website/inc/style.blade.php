@@ -15,6 +15,7 @@
 
     <!-- TEMPLATE CSS -->
     <link href="{{ asset('frontend/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/custom.css') }}" rel="stylesheet">
 
     <!-- Style Switcher CSS -->
     <link href="{{ asset('frontend/css/colors/crocus-theme.css') }}" rel="stylesheet">

@@ -6,7 +6,7 @@
     <!-- END HERO-7 -->
     <!-- FEATURES-6
                          ============================================= -->
-        @include('website.layouts.pages.home.feature-section')
+    @include('website.layouts.pages.home.feature-section')
     <!-- END FEATURES-6 -->
     <!-- DIVIDER LINE -->
     <hr
