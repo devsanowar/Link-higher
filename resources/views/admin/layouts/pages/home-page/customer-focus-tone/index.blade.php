@@ -89,6 +89,53 @@
                                 </div>
                             </div>
 
+                            {{-- Image --}}
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="video_thumbnail">Image</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" id="video_thumbnail" name="video_thumbnail"
+                                                class="form-control @error('video_thumbnail') is-invalid @enderror">
+                                        </div>
+                                        <small class="text-muted">PNG/JPG/WEBP, max 2MB</small>
+                                        @error('video_thumbnail')
+                                            <span class="text-danger small d-block">{{ $message }}</span>
+                                        @enderror>
+
+                                        @php
+                                            $existingImage = $customerFocusTone->video_thumbnail ?? null;
+                                            $imgSrc = $existingImage
+                                                ? (\Illuminate\Support\Str::startsWith($existingImage, [
+                                                    'http://',
+                                                    'https://',
+                                                    '/storage',
+                                                ])
+                                                    ? $existingImage
+                                                    : asset($existingImage))
+                                                : null;
+                                        @endphp
+
+                                        @if ($imgSrc)
+                                            <div class="mt-2">
+                                                <small class="text-muted d-block mb-1">Current Image</small>
+                                                <img id="currentImage" src="{{ $imgSrc }}" alt="Current Image"
+                                                    class="border rounded" width="120">
+                                            </div>
+                                            <input type="hidden" name="current_image" value="{{ $existingImage }}">
+                                        @else
+                                            <img id="currentImage"
+                                                src="{{ asset('backend/assets/images/placeholder-rect.png') }}"
+                                                alt="Preview" class="border rounded" width="120"
+                                                style="display:none">
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </div>
+
                             {{-- Submit --}}
                             <div class="row clearfix">
                                 <div class="col-lg-12 d-flex justify-content-end">
@@ -108,109 +155,122 @@
 @endsection
 
 @push('scripts')
+
     <script>
-        function buildEmbedSrc(url) {
-            if (!url) return '';
-            try {
-                const u = new URL(url);
-                const host = u.hostname.replace('www.', '');
+        $(document).on('change', '#video_thumbnail', function() {
+            const file = this.files?.[0];
+            if (!file) return;
 
-                if (host.includes('youtube.com')) {
-                    const v = u.searchParams.get('v');
-                    if (v) return 'https://www.youtube.com/embed/' + v;
-                    if (u.pathname.startsWith('/embed/')) return url;
-                }
-                if (host === 'youtu.be') {
-                    const id = u.pathname.replace('/', '');
-                    if (id) return 'https://www.youtube.com/embed/' + id;
-                }
-                if (host.includes('vimeo.com')) {
-                    const id = u.pathname.split('/').filter(Boolean).pop();
-                    if (id) return 'https://player.vimeo.com/video/' + id;
-                }
-                return '';
-            } catch (e) {
-                return '';
-            }
-        }
-
-        function refreshPreview() {
-            const val = $('#video_url').val().trim();
-            const src = buildEmbedSrc(val);
-            if (src) {
-                $('#videoPreview').attr('src', src);
-                $('#videoPreviewWrap').removeClass('d-none');
-            } else {
-                $('#videoPreview').attr('src', '');
-                $('#videoPreviewWrap').addClass('d-none');
-            }
-        }
-
-        $(document).ready(function() {
-            // initial value from server (safe for both create & edit)
-            const initialUrl = @json($videoUrl);
-            if (initialUrl) {
-                const src = buildEmbedSrc(initialUrl);
-                if (src) {
-                    $('#videoPreview').attr('src', src);
-                    $('#videoPreviewWrap').removeClass('d-none');
-                }
-            }
-
-            // live update
-            $('#video_url').on('input change', refreshPreview);
-        });
-
-        $(document).ready(function() {
-            // Initial preview from existing value
-            refreshPreview();
-
-            // Live preview on change
-            $('#video_url').on('input change', refreshPreview);
-
-            // Submit (AJAX)
-            $("#EditCustomerFocusToneForm").submit(function(e) {
-                e.preventDefault();
-                let formData = new FormData(this);
-
-                $('#btnText').text('Processing...');
-                $('#btnSpinner').removeClass('d-none');
-                $('#submitBtn').prop('disabled', true);
-
-                $.ajax({
-                   url: "{{ route('home.customer-focus-tone.update') }}",
-                    type: "POST",
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            toastr.success(response.message || 'Updated successfully.');
-                        } else {
-                            toastr.error(response.message ?? 'Something went wrong!');
-                        }
-                    },
-                    error: function(xhr) {
-                        if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
-                            $.each(xhr.responseJSON.errors, function(key, value) {
-                                toastr.error(value[0]);
-                            });
-                        } else {
-                            toastr.error('An unexpected error occurred. Please try again.');
-                        }
-                    },
-                    complete: function() {
-                        $('#btnText').text('UPDATED');
-                        $('#btnSpinner').addClass('d-none');
-                        $('#submitBtn').prop('disabled', false);
-
-                        // 3s পরে আবার আগের বাটন টেক্সট
-                        setTimeout(function() {
-                            $('#btnText').text('UPDATE');
-                        }, 3000);
-                    }
-                });
-            });
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#currentImage').attr('src', e.target.result).show();
+            };
+            reader.readAsDataURL(file);
         });
     </script>
+
+
+    <script>
+  function buildEmbedSrc(url) {
+    if (!url) return '';
+    try {
+      const u = new URL(url);
+      const host = u.hostname.replace('www.', '');
+      if (host.includes('youtube.com')) {
+        const v = u.searchParams.get('v');
+        if (v) return 'https://www.youtube.com/embed/' + v;
+        if (u.pathname.startsWith('/embed/')) return url;
+      }
+      if (host === 'youtu.be') {
+        const id = u.pathname.replace('/', '');
+        if (id) return 'https://www.youtube.com/embed/' + id;
+      }
+      if (host.includes('vimeo.com')) {
+        const id = u.pathname.split('/').filter(Boolean).pop();
+        if (id) return 'https://player.vimeo.com/video/' + id;
+      }
+      return '';
+    } catch(e){ return ''; }
+  }
+
+  function refreshPreview(srcFromServer = '') {
+    const val = (srcFromServer || $('#video_url').val() || '').trim();
+    const src = buildEmbedSrc(val);
+    if (src) {
+      $('#videoPreview').attr('src', src);
+      $('#videoPreviewWrap').removeClass('d-none');
+    } else {
+      $('#videoPreview').attr('src', '');
+      $('#videoPreviewWrap').addClass('d-none');
+    }
+  }
+
+  $(document).ready(function () {
+    // initial from Blade
+    const initialUrl = @json($videoUrl);
+    if (initialUrl) refreshPreview(initialUrl);
+
+    // live update
+    $('#video_url').on('input change', () => refreshPreview());
+
+    // image instant preview
+    $(document).on('change', '#video_thumbnail', function () {
+      const file = this.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => $('#currentImage').attr('src', e.target.result).show();
+      reader.readAsDataURL(file);
+    });
+
+    // AJAX submit
+    $("#EditCustomerFocusToneForm").on('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      $('#btnText').text('Processing...');
+      $('#btnSpinner').removeClass('d-none');
+      $('#submitBtn').prop('disabled', true);
+
+      $.ajax({
+        url: "{{ route('home.customer-focus-tone.update') }}",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          if (response.status === 'success') {
+            toastr.success(response.message || 'Updated successfully.');
+            // ✅ আপডেটের পর প্রিভিউ রিফ্রেশ (সার্ভারের video_url থাকলে সেটি প্রাধান্য)
+            if (response.video_url) {
+              $('#video_url').val(response.video_url);
+              refreshPreview(response.video_url);
+            } else {
+              refreshPreview();
+            }
+            // থাম্বনেইল ফিরলে UI আপডেট
+            if (response.video_thumbnail_url) {
+              $('#currentImage').attr('src', response.video_thumbnail_url).show();
+            }
+          } else {
+            toastr.error(response.message ?? 'Something went wrong!');
+          }
+        },
+        error: function (xhr) {
+          if (xhr.status === 422 && xhr.responseJSON?.errors) {
+            $.each(xhr.responseJSON.errors, (_, msgs) => toastr.error(msgs[0]));
+          } else {
+            toastr.error('An unexpected error occurred. Please try again.');
+          }
+        },
+        complete: function () {
+          $('#btnText').text('UPDATED');
+          $('#btnSpinner').addClass('d-none');
+          $('#submitBtn').prop('disabled', false);
+          setTimeout(() => $('#btnText').text('UPDATE'), 3000);
+        }
+      });
+    });
+  });
+</script>
+
 @endpush

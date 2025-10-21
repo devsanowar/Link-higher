@@ -17,11 +17,11 @@
 <!-- Custom Script -->
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
 
-<script>
+{{-- <script>
     $(document).on({
         "contextmenu": function(e) {
             console.log("ctx menu button:", e.which);
-            e.preventDefault(); // Disable right-click
+            e.preventDefault();
         },
         "mousedown": function(e) {
             console.log("normal mouse down:", e.which);
@@ -30,7 +30,7 @@
             console.log("normal mouse up:", e.which);
         }
     });
-</script>
+</script> --}}
 
 <script>
     $(function() {
@@ -73,5 +73,9 @@
 </script>
 -->
 
+
+
 <script src="{{ asset('frontend/js/changer.js') }}"></script>
 <script defer src="{{ asset('frontend/js/styleswitch.js') }}"></script>
+
+@stack('scripts')

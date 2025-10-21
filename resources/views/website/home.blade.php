@@ -33,11 +33,10 @@
     <!-- END TEXT CONTENT -->
     <!-- STATISTIC-1
                          ============================================= -->
-    @include('website.layouts.pages.home.achievement-section')
+    {{-- @include('website.layouts.pages.home.achievement-section') --}}
     <!-- END STATISTIC-1 -->
     <!-- DIVIDER LINE -->
-    <hr
-        class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
+
     <!-- FEATURES-13
                          ============================================= -->
     @include('website.layouts.pages.home.why-chose-us-section')

@@ -16,70 +16,29 @@
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]">
                 <div class="col !text-center w-full flex-[1_0_0%] px-[calc(0.5*_1.5rem)] max-w-full">
                     <div class="owl-carousel brands-carousel-6">
+
                         <!-- BRAND LOGO IMAGE -->
+                        @foreach ($clients as $client)
+
                         <div
                             class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-1.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-1-white.png" alt="brand-logo"></a>
+                            <a href="#">
+                                @if(empty($client->company_image))
+                                <img class="img-fluid light-theme-img" src="{{ asset('frontend') }}/images/brand-6.png"
+                                    alt="brand-logo">
+                                @else
+                                <img class="img-fluid light-theme-img" src="{{ asset($client->company_image) }}"
+                                    alt="brand-logo">
+                                @endif
+                            </a>
+
+                            <a href="#">
+                                <img class="img-fluid dark-theme-img hidden absolute"
+                                    src="images/brand-6-white.png" alt="brand-logo">
+                            </a>
                         </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-2.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-3-white.png" alt="brand-logo"></a>
-                        </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-4.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-4-white.png" alt="brand-logo"></a>
-                        </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-5.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-5-white.png" alt="brand-logo"></a>
-                        </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-6.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-6-white.png" alt="brand-logo"></a>
-                        </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-7.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-7-white.png" alt="brand-logo"></a>
-                        </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-8.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-8-white.png" alt="brand-logo"></a>
-                        </div>
-                        <!-- BRAND LOGO IMAGE -->
-                        <div
-                            class="brand-logo p-[0_20px] lg:max-xl:px-3 lg:max-xl:py-0 md:max-lg:px-[10px] md:max-lg:py-0 xsm:max-sm:px-[25px] xsm:max-sm:py-0 overflow-hidden relative transition-all duration-[400ms] ease-[ease-in-out] top-0 hover:-top-1.5">
-                            <a href="#"><img class="img-fluid light-theme-img" src="images/brand-9.png"
-                                    alt="brand-logo"></a>
-                            <a href="#"><img class="img-fluid dark-theme-img hidden absolute"
-                                    src="images/brand-9-white.png" alt="brand-logo"></a>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>

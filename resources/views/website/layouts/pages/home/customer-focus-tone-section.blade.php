@@ -14,12 +14,11 @@
                                 <!-- Title -->
                                 <h2
                                     class="s-50 w--700 xl:!text-[3.125rem] lg:max-xl:!text-[2.875rem] md:max-lg:!text-[2.64705rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold !tracking-[-0.5px] leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35]">
-                                    Build a customer-centric marketing strategy</h2>
+                                    {{ $customerFocusTone->title ?? '' }}</h2>
                                 <!-- Text -->
                                 <p
                                     class="p-xl mt-[18px] !mb-0 lg:max-xl:!mt-[15px] md:max-lg:!mt-[12px] sm:max-md:!mt-[14px] xsm:max-sm:!text-[1.125rem] xsm:max-sm:!mt-[14px] xsm:max-sm:px-[5%] xsm:max-sm:py-0 !p-0">
-                                    Aliquam a augue suscipit luctus neque purus ipsum neque diam
-                                    dolor primis libero tempus, blandit and cursus varius and magnis sodales
+                                    {!! $customerFocusTone->description ?? '' !!}
                                 </p>
                             </div>
                         </div>
@@ -30,7 +29,7 @@
                             <div
                                 class="bc-5-img bc-5-tablet img-block-hidden video-preview wow fadeInUp mb-[-200px] md:max-lg:!mb-[-150px] sm:max-md:!mb-[-100px] xsm:max-sm:!mb-[-70px] relative !text-center">
                                 <!-- Play Icon -->
-                                <a class="video-popup1" href="https://www.youtube.com/embed/SZEflIVnhH8">
+                                <a class="video-popup1" href="{{ $customerFocusTone->video_url ?? '' }}">
                                     <div
                                         class="video-btn video-btn-xl bg--theme w-[6.25rem] h-[6.25rem] mt-[-3.125rem] ml-[-3.125rem] hover:before:opacity-75 md:max-lg:w-28 md:max-lg:!h-28 md:max-lg:!mt-[-3.5rem] md:max-lg:ml-[-3.5rem] top-[calc(50%_-_70px)] md:max-lg:top-[calc(50%_-_60px)] xsm:max-sm:top-[calc(50%_-_30px)] !absolute inline-block !text-center !text-white rounded-[100%] left-2/4 before:content-[''] before:absolute before:left-[-5px] before:right-[-5px] before:top-[-5px] before:bottom-[-5px] before:opacity-0 before:transition-all before:duration-[400ms] before:ease-[ease-in-out] before:rounded-[50%] before:bg-[rgba(255,255,255,0.2)] group">
                                         <div
@@ -40,7 +39,13 @@
                                     </div>
                                 </a>
                                 <!-- Preview Image -->
-                                <img class="img-fluid inline-block" src="images/tablet-02.png" alt="content-image">
+                                @if (empty($customerFocusTone->video_thumbnail))
+                                    <img class="img-fluid inline-block"
+                                        src="{{ asset('frontend') }}/images/tablet-02.png" alt="content-image">
+                                @else
+                                    <img class="img-fluid inline-block"
+                                        src="{{ asset($customerFocusTone->video_thumbnail) }}" alt="content-image">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -51,3 +56,37 @@
         </div>
         <!-- End container -->
     </section>
+
+@push('scripts')
+<script>
+  $(function () {
+    $('.video-popup1').magnificPopup({
+      type: 'iframe',
+      iframe: {
+        patterns: {
+          youtube: {
+            index: ['youtube.com/', 'youtu.be/'],
+            id: function (url) {
+              // watch?v=ID
+              var vMatch = url.match(/[?&]v=([^?&]+)/);
+              if (vMatch && vMatch[1]) return vMatch[1];
+
+              // youtu.be/ID
+              var short = url.match(/youtu\.be\/([^?&/]+)/);
+              if (short && short[1]) return short[1];
+
+              // embed/ID
+              var embed = url.match(/embed\/([^?&/]+)/);
+              if (embed && embed[1]) return embed[1];
+
+              return null;
+            },
+            src: 'https://www.youtube.com/embed/%id%?autoplay=1&rel=0'
+          }
+        }
+      }
+    });
+  });
+</script>
+@endpush
+

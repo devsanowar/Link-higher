@@ -39,11 +39,11 @@
                     <div class="col-lg-12">
                         <div class="header slideDown">
                             <div class="logo">
-                                @if ($website_settings->website_logo)
-                                    <img src="{{ asset($website_settings->website_logo) }}" alt="Link Higher"
-                                        width="150px">
+                                @if (empty($website_settings->website_logo))
+                                <img src="{{ asset('backend') }}/assets/images/logo.png" alt="Link Higher">
                                 @else
-                                    <img src="{{ asset('backend') }}/assets/images/logo.png" alt="Link Higher">
+                                    <img src="{{ asset($website_settings->website_logo ?? '') }}" alt="Link Higher"
+                                        width="150px">
                                 @endif
                             </div>
 

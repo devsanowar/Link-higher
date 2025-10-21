@@ -27,4 +27,3 @@
 @media (max-width: 768px){   .icon-card{ --blob-w:135px; --blob-h:95px; } }   /* sm–md */
 @media (max-width: 640px){   .icon-card{ --blob-w:125px; --blob-h:90px; } }   /* xsm–sm */
 .icon-purple { filter: invert(26%) sepia(58%) saturate(3200%) hue-rotate(235deg) brightness(95%) contrast(90%); }
-/* <img class="... icon-purple"> */
