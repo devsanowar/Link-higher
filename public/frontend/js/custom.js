@@ -1,29 +1,29 @@
 // JavaScript Document
 
 
-	$(window).on('load', function() {
+	// $(window).on('load', function() {
 
-		"use strict";
+	// 	"use strict";
 
-		/*----------------------------------------------------*/
-		/*	Preloader
-		/*----------------------------------------------------*/
+	// 	/*----------------------------------------------------*/
+	// 	/*	Preloader
+	// 	/*----------------------------------------------------*/
 
-		var preloader = $('#loading'),
-			loader = preloader.find('#loading-center');
-			loader.fadeOut();
-			preloader.delay(400).fadeOut('slow');
+	// 	// var preloader = $('#loading'),
+	// 	// 	loader = preloader.find('#loading-center');
+	// 	// 	loader.fadeOut();
+	// 	// 	preloader.delay(400).fadeOut('slow');
 
 
-		/*----------------------------------------------------*/
-		/*	Modal Window
-		/*----------------------------------------------------*/
+	// 	/*----------------------------------------------------*/
+	// 	/*	Modal Window
+	// 	/*----------------------------------------------------*/
 
-		setTimeout(function () {
-		    $(".modal:not(.auto-off)").modal("show");
-		},3600);
+	// 	// setTimeout(function () {
+	// 	//     $(".modal:not(.auto-off)").modal("show");
+	// 	// },3600);
 
-	});
+	// });
 
 
 	$(window).on('scroll', function() {
@@ -117,70 +117,70 @@
 		/*	Video Link #1 Lightbox
 		/*----------------------------------------------------*/
 
-		$('.video-popup1').magnificPopup({
-		    type: 'iframe',
-				iframe: {
-					patterns: {
-						youtube: {
-							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/SZEflIVnhH8'
-								}
-							}
-						}
-		});
+		// $('.video-popup1').magnificPopup({
+		//     type: 'iframe',
+		// 		iframe: {
+		// 			patterns: {
+		// 				youtube: {
+		// 					index: 'youtube.com',
+		// 					src: 'https://www.youtube.com/embed/SZEflIVnhH8'
+		// 						}
+		// 					}
+		// 				}
+		// });
 
 
 		/*----------------------------------------------------*/
 		/*	Video Link #2 Lightbox
 		/*----------------------------------------------------*/
 
-		$('.video-popup2').magnificPopup({
-		    type: 'iframe',
-				iframe: {
-					patterns: {
-						youtube: {
-							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/7e90gBu4pas'
-								}
-							}
-						}
-		});
+		// $('.video-popup2').magnificPopup({
+		//     type: 'iframe',
+		// 		iframe: {
+		// 			patterns: {
+		// 				youtube: {
+		// 					index: 'youtube.com',
+		// 					src: 'https://www.youtube.com/embed/7e90gBu4pas'
+		// 						}
+		// 					}
+		// 				}
+		// });
 
 
 		/*----------------------------------------------------*/
 		/*	Video Link #3 Lightbox
 		/*----------------------------------------------------*/
 
-		$('.video-popup3').magnificPopup({
-		    type: 'iframe',
-				iframe: {
-					patterns: {
-						youtube: {
-							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/0gv7OC9L2s8'
-								}
-							}
-						}
-		});
+		// $('.video-popup3').magnificPopup({
+		//     type: 'iframe',
+		// 		iframe: {
+		// 			patterns: {
+		// 				youtube: {
+		// 					index: 'youtube.com',
+		// 					src: 'https://www.youtube.com/embed/0gv7OC9L2s8'
+		// 						}
+		// 					}
+		// 				}
+		// });
 
 
 		/*----------------------------------------------------*/
 		/*	Statistic Counter
 		/*----------------------------------------------------*/
 
-		$('.count-element').each(function () {
-			$(this).appear(function() {
-				$(this).prop('Counter',0).animate({
-					Counter: $(this).text()
-				}, {
-					duration: 4000,
-					easing: 'swing',
-					step: function (now) {
-						$(this).text(Math.ceil(now));
-					}
-				});
-			},{accX: 0, accY: 0});
-		});
+		// $('.count-element').each(function () {
+		// 	$(this).appear(function() {
+		// 		$(this).prop('Counter',0).animate({
+		// 			Counter: $(this).text()
+		// 		}, {
+		// 			duration: 4000,
+		// 			easing: 'swing',
+		// 			step: function (now) {
+		// 				$(this).text(Math.ceil(now));
+		// 			}
+		// 		});
+		// 	},{accX: 0, accY: 0});
+		// });
 
 
 		/*----------------------------------------------------*/
@@ -316,21 +316,21 @@
 		/*	Newsletter Subscribe Form
 		/*----------------------------------------------------*/
 
-		$('.newsletter-form').ajaxChimp({
-        language: 'cm',
-        url: 'https://elite-themes24.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e'
-            //http://xxx.xxx.list-manage.com/subscribe/post?u=xxx&id=xxx
-		});
+		// $('.newsletter-form').ajaxChimp({
+        // language: 'cm',
+        // url: 'https://elite-themes24.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e'
+        //     //http://xxx.xxx.list-manage.com/subscribe/post?u=xxx&id=xxx
+		// });
 
-		$.ajaxChimp.translations.cm = {
-			'submit': 'Submitting...',
-			0: 'We have sent you a confirmation email',
-			1: 'Please enter your email address',
-			2: 'An email address must contain a single @',
-			3: 'The domain portion of the email address is invalid (the portion after the @: )',
-			4: 'The username portion of the email address is invalid (the portion before the @: )',
-			5: 'This email address looks fake or invalid. Please enter a real email address'
-		};
+		// $.ajaxChimp.translations.cm = {
+		// 	'submit': 'Submitting...',
+		// 	0: 'We have sent you a confirmation email',
+		// 	1: 'Please enter your email address',
+		// 	2: 'An email address must contain a single @',
+		// 	3: 'The domain portion of the email address is invalid (the portion after the @: )',
+		// 	4: 'The username portion of the email address is invalid (the portion before the @: )',
+		// 	5: 'This email address looks fake or invalid. Please enter a real email address'
+		// };
 
 
 	});

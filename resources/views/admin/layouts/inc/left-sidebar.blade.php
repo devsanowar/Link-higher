@@ -64,7 +64,7 @@
             </li>
 
             <li
-                class="menu-item {{ request()->routeIs('home.*', 'home.smart-strategy.*', 'home.smarter-workflows.*', 'home.goal-progress-insight.*', 'home.smart-solution.*','home.count-down.*', 'home.why-chose-us.*') ? 'active open' : '' }}">
+                class="menu-item {{ request()->routeIs('home.*', 'home.smart-strategy.*', 'home.smarter-workflows.*', 'home.goal-progress-insight.*', 'home.smart-solution.*', 'home.count-down.*', 'home.why-chose-us.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-home"></i><span>Home</span>
                 </a>
@@ -96,7 +96,7 @@
 
 
 
-                    <li class="{{ request()->routeIs('home.why-chose-us.*','home.reason.*') ? 'active' : '' }}">
+                    <li class="{{ request()->routeIs('home.why-chose-us.*', 'home.reason.*') ? 'active' : '' }}">
                         <a href="{{ route('home.why-chose-us.index') }}">Why chose us</a>
                     </li>
 
@@ -135,8 +135,26 @@
 
 
             <!--Services Menu-->
-            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span>
-            </a></li>
+            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a
+                    href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span>
+                </a></li>
+
+            <!--Project with category Menu-->
+            <li class="menu-item {{ request()->routeIs(['project-category.*']) ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-case"></i><span>Portfolio</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('project-category.*') ? 'active' : '' }}">
+                        <a href="{{ route('project-category.index') }}">Category</a>
+                    </li>
+
+                    {{-- <li class="{{ request()->routeIs('case.study.*') ? 'active' : '' }}">
+                        <a href="{{ route('case.study.index') }}">Case Study</a>
+                    </li> --}}
+
+                </ul>
+            </li>
 
             <!--Employe Menu-->
             <li class="{{ request()->routeIs(['employe.*']) ? 'active open' : '' }}">
@@ -146,7 +164,8 @@
 
             <!--Package Plan Menu-->
             <li class="{{ request()->routeIs(['package_plans.*']) ? 'active open' : '' }}">
-                <a href="{{ route('package_plans.index') }}"><i class="zmdi zmdi-money-box"></i><span>Package Plan</span>
+                <a href="{{ route('package_plans.index') }}"><i class="zmdi zmdi-money-box"></i><span>Package
+                        Plan</span>
                 </a>
             </li>
 

@@ -214,14 +214,9 @@ $(function () {
         }
     }
 
-    // ======== REAL-TIME MUTUAL EXCLUSIVITY ========
+    // ======== ALLOW BOTH FIELDS (no exclusivity) ========
     $('#image').on('change', function(e){
         const file = e.target.files[0];
-
-        $('#video_url').val('');
-        refreshPreview();
-
-        // Live image preview
         if (!file) {
             $('#previewImg').addClass('d-none');
             return;
@@ -235,24 +230,11 @@ $(function () {
         $('#currentImageWrap').addClass('d-none');
     });
 
-
     $('#video_url').on('input change', function(){
-        const val = $(this).val().trim();
-
-        if (val.length) {
-            $('#image').val('');
-            $('#previewImg').addClass('d-none');
-            $('#currentImageWrap').addClass('d-none');
-        } else {
-            if ($('#currentImageWrap img').length) {
-                $('#currentImageWrap').removeClass('d-none');
-            }
-        }
-
         refreshPreview();
     });
 
-    // ======== AJAX SUBMIT (unchanged except success UI refresh) ========
+    // ======== AJAX SUBMIT ========
     $("#EditWhoWeAreForm").submit(function(e){
         e.preventDefault();
         const formData = new FormData(this);
@@ -271,41 +253,30 @@ $(function () {
                 if(res.status === 'success'){
                     toastr.success(res.message || 'Updated successfully!');
 
-                    const v = $('#video_url').val().trim();
-                    if (v.length) {
-                        $('#image').val('');
-                        $('#previewImg').addClass('d-none');
-                        $('#currentImageWrap').addClass('d-none');
-                        refreshPreview();
-                    } else {
-                        const hadFile = (this.querySelector('#image')?.files?.length || 0) > 0;
-                        if (hadFile) {
+                    // ➜ এই ভার্সনে দুটোই থাকাতে পারবে।
+                    // ভিডিও থাকলে প্রিভিউ রিফ্রেশ করব
+                    refreshPreview();
 
-                            const src = $('#previewImg').attr('src');
-                            if (src) {
-
-                                if ($('#currentImageWrap').length === 0) {
-                                    const html = `
-                                        <div id="currentImageWrap" class="mt-2">
-                                            <small class="text-muted d-block mb-1">Current image:</small>
-                                            <img id="currentImage" src="${src}" alt="Profile Image" style="max-height: 100px;">
-                                        </div>`;
-                                    $('#image').closest('.form-group').append(html);
-                                } else {
-                                    $('#currentImage').attr('src', src);
-                                    $('#currentImageWrap').removeClass('d-none');
-                                }
-
-                                $('#previewImg').addClass('d-none');
-                                $('#videoPreview').attr('src','');
-                                $('#videoPreviewWrap').addClass('d-none');
-                                $('#video_url').val('');
+                    // ইমেজ আপলোড হয়ে থাকলে কারেন্ট ইমেজ আপডেট দেখাব
+                    const hadFile = (this.querySelector('#image')?.files?.length || 0) > 0;
+                    if (hadFile) {
+                        const src = $('#previewImg').attr('src');
+                        if (src) {
+                            if ($('#currentImageWrap').length === 0) {
+                                const html = `
+                                    <div id="currentImageWrap" class="mt-2">
+                                        <small class="text-muted d-block mb-1">Current image:</small>
+                                        <img id="currentImage" src="${src}" alt="Profile Image" style="max-height: 100px;">
+                                    </div>`;
+                                $('#image').closest('.form-group').append(html);
+                            } else {
+                                $('#currentImage').attr('src', src);
+                                $('#currentImageWrap').removeClass('d-none');
                             }
-                        } else {
-                            // No new file & no video: nothing special
+                            // প্রিভিউ ইমেজ হাইড করে দিব
+                            $('#previewImg').addClass('d-none');
                         }
                     }
-
                 } else {
                     toastr.error(res.message ?? 'Something went wrong!');
                 }
@@ -329,5 +300,6 @@ $(function () {
     });
 });
 </script>
+
 
 @endpush

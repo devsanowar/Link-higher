@@ -47,20 +47,15 @@
                         <nav class="wsmenu clearfix">
                             <div class="overlapblackbg"></div>
                             <ul class="wsmenu-list nav-theme">
-                                <!-- DROPDOWN SUB MENU -->
-                                <li aria-haspopup="true">
-                                    <a href="#" class="h-link">About <span class="wsarrow"></span></a>
-                                    <ul class="sub-menu">
-                                        <li aria-haspopup="true"><a href="#lnk-1">Why Martex?</a></li>
-                                        <li aria-haspopup="true"><a href="#lnk-2">Integrations</a></li>
-                                        <li aria-haspopup="true"><a href="#lnk-3">How It Works</a></li>
-                                        <li aria-haspopup="true"><a href="#features-2">Best Solutions</a></li>
-                                        <li aria-haspopup="true"><a href="#reviews-1">Testimonials</a></li>
-                                    </ul>
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('home') }}"
+                                        class="h-link">Home</a>
                                 </li>
-                                <!-- SIMPLE NAVIGATION LINK -->
-                                <li class="nl-simple" aria-haspopup="true"><a href="#features-6"
-                                        class="h-link">Features</a></li>
+
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('about.page') }}"
+                                        class="h-link">About</a>
+                                </li>
+
+                               
                                 <!-- MEGAMENU -->
                                 <li aria-haspopup="true" class="mg_link">
                                     <a href="#" class="h-link">Pages <span class="wsarrow"></span></a>

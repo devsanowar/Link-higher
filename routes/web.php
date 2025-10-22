@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Frontend\AboutPageController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
+Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

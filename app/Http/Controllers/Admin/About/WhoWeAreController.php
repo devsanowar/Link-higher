@@ -14,55 +14,45 @@ class WhoWeAreController extends Controller
     }
 
     public function update(Request $request)
-    {
-        $request->validate([
-            "name"        => ["required", "string"],
-            "profession"  => ["required", "string"],
-            "description" => ["nullable", "string"],
-            'video_url'   => ['nullable', 'url'],
-            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-        ]);
+{
+    $request->validate([
+        "name"        => ["required", "string"],
+        "profession"  => ["required", "string"],
+        "description" => ["nullable", "string"],
+        'video_url'   => ['nullable', 'url'],
+        'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+    ]);
 
-        $WhoWeAre = WhoWeAre::first() ?? new WhoWeAre();
+    $whoWeAre = WhoWeAre::first() ?? new WhoWeAre();
 
-
-        if ($request->hasFile('image')) {
-            if ($WhoWeAre->image && file_exists(public_path($WhoWeAre->image))) {
-                @unlink(public_path($WhoWeAre->image));
-            }
-
-            $image     = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads/who_we_are/'), $imageName);
-
-            $WhoWeAre['image']   = 'uploads/who_we_are/' . $imageName;
-            $WhoWeAre->video_url = null;
+    if ($request->hasFile('image')) {
+        if ($whoWeAre->image && file_exists(public_path($whoWeAre->image))) {
+            @unlink(public_path($whoWeAre->image));
         }
 
+        $image     = $request->file('image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('uploads/who_we_are/'), $imageName);
 
-        if (! $request->hasFile('image') && $request->filled('video_url')) {
-            if ($WhoWeAre->image && file_exists(public_path($WhoWeAre->image))) {
-                @unlink(public_path($WhoWeAre->image));
-            }
-            $WhoWeAre->image     = null;
-            $WhoWeAre->video_url = $request->video_url;
-        }
-
-        // ফিল্ডস
-        $WhoWeAre->name        = $request->name;
-        $WhoWeAre->profession  = $request->profession;
-        $WhoWeAre->description = $request->description;
-
-        if (isset($WhoWeAre['image'])) {
-            $WhoWeAre->image = $WhoWeAre['image'];
-        }
-
-        $WhoWeAre->save();
-
-        return response()->json([
-            'status'  => 'success',
-            'message' => 'Data updated successfully!',
-        ]);
+        $whoWeAre->image = 'uploads/who_we_are/' . $imageName;
     }
+
+    if ($request->filled('video_url')) {
+        $whoWeAre->video_url = $request->video_url;
+    }
+
+
+    $whoWeAre->name        = $request->name;
+    $whoWeAre->profession  = $request->profession;
+    $whoWeAre->description = $request->description;
+
+    $whoWeAre->save();
+
+    return response()->json([
+        'status'  => 'success',
+        'message' => 'Data updated successfully!',
+    ]);
+}
+
 
 }

@@ -9,7 +9,6 @@ use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\EmployeController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
-use App\Http\Controllers\Admin\CountdownController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
@@ -31,6 +30,7 @@ use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
+use App\Http\Controllers\Admin\ProjectCategoryController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -170,6 +170,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     // Package plan route here
     Route::resource('package_plans', PackagePlanController::class);
+
+    //Project category resource route
+    Route::resource('project-category', ProjectCategoryController::class);
 
 
 
