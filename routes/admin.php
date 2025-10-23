@@ -151,7 +151,6 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [CaseStudyController::class, 'destroy'])->name('case.study.destroy');
 
         // Soft Delete
-
         Route::get('/trashed', [CaseStudyController::class, 'trashed'])->name('case.study.trashed');
         Route::get('/restore/{id}', [CaseStudyController::class, 'restore'])->name('case.study.restore');
         Route::delete('/force-delete/{id}', [CaseStudyController::class, 'forceDelete'])->name('case.study.force.delete');
@@ -177,6 +176,12 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     // Project resource route
     Route::resource('project', ProjectController::class);
+
+    // Soft Delete
+
+    Route::get('/trashed', [ProjectController::class, 'trashed'])->name('project.trashed');
+    Route::get('/restore/{id}', [ProjectController::class, 'restore'])->name('project.restore');
+    Route::delete('/force-delete/{id}', [ProjectController::class, 'forceDelete'])->name('project.force.delete');
 
 
 

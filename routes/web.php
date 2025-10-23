@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\Frontend\AboutPageController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\ProfileController;
@@ -7,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
+Route::get('/portfolio-page', [ProjectController::class, 'index'])->name('portfolio.page');
+Route::get('/portfolio/{id}/details', [ProjectController::class, 'projectDetails'])->name('portfolio.details');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

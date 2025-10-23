@@ -374,7 +374,7 @@
                             <div class="row clearfix">
                                 <div class="col-lg-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary px-5 rounded-0" id="submitBtn">
-                                        <span id="btnText">CREATE CASE STUDIES</span>
+                                        <span id="btnText">CREATE PROJECT</span>
                                         <span id="btnSpinner"
                                             class="spinner-border spinner-border-sm d-none ms-2"></span>
                                     </button>
@@ -560,7 +560,7 @@
                         }
                     },
                     complete: function() {
-                        $('#btnText').text('CASE STUDY CREATED');
+                        $('#btnText').text('PROJECT CREATED');
                         $('#btnSpinner').addClass('d-none');
                         $('#submitBtn').prop('disabled', false);
                     }

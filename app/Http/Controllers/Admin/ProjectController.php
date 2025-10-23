@@ -281,11 +281,12 @@ class ProjectController extends Controller
         return response()->json([
             'status'  => 'success',
             'message' => 'project study updated successfully!',
+            'redirect_url' => route('project.index'),
             'data'    => [
                 'id'     => $project->id,
                 'image'  => $project->image,
                 'images' => $existing,
-                'redirect_url' => route('project.index'),
+
             ],
         ]);
     }
@@ -295,6 +296,61 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect()->route('project.index')->with('success', 'Project deleted successfully.');
     }
+
+    public function trashed(){
+        $projects = Project::onlyTrashed();
+        return view("admin.layouts.pages.project.recycle-bin", compact("projects"));
+    }
+
+
+    // Restore a trashed Project
+    public function restore($id){
+        $case = Project::onlyTrashed()->findOrFail($id);
+        $case->restore();
+        return redirect()->route('project.trashed')->with('success', 'Project restored successfully.');
+    }
+
+    // Permanently delete a trashed project
+    public function forceDelete($id){
+        $case = Project::onlyTrashed()->findOrFail($id);
+
+        // delete main image
+        if (! empty($case->image)) {
+            $oldPath = public_path($case->image);
+            if (File::exists($oldPath)) {
+                @unlink($oldPath);
+            }
+        }
+
+        // delete gallery images
+        $gallery = [];
+        if (! empty($case->images)) {
+            $decoded = is_array($case->images) ? $case->images : json_decode($case->images, true);
+            if (is_array($decoded)) {
+                $gallery = $decoded;
+            }
+        }
+
+        if (count($gallery)) {
+            foreach ($gallery as $imgPath) {
+                $abs = public_path($imgPath);
+                if (File::exists($abs)) {
+                    @unlink($abs);
+                }
+            }
+        }
+
+        // finally force delete the record
+        $case->forceDelete();
+
+        return redirect()->route('project.trashed')->with('success', 'Project permanently deleted.');
+    }
+
+
+
 }

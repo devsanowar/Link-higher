@@ -55,9 +55,13 @@
                                         class="h-link">About</a>
                                 </li>
 
-                               
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('portfolio.page') }}"
+                                        class="h-link">Portfolio</a>
+                                </li>
+
+
                                 <!-- MEGAMENU -->
-                                <li aria-haspopup="true" class="mg_link">
+                                {{-- <li aria-haspopup="true" class="mg_link">
                                     <a href="#" class="h-link">Pages <span class="wsarrow"></span></a>
                                     <div class="wsmegamenu w-75 clearfix">
                                         <div class="container">
@@ -107,12 +111,11 @@
                                         <!-- End container -->
                                     </div>
                                     <!-- End wsmegamenu -->
-                                </li>
+                                </li> --}}
                                 <!-- END MEGAMENU -->
                                 <!-- SIMPLE NAVIGATION LINK -->
-                                <li class="nl-simple" aria-haspopup="true"><a href="pricing-1.html"
-                                        class="h-link">Pricing</a></li>
-                                <!-- SIMPLE NAVIGATION LINK -->
+                                <li class="nl-simple" aria-haspopup="true"><a href="pricing-1.html" class="h-link">Pricing</a></li>
+
                                 <li class="nl-simple" aria-haspopup="true"><a href="#faqs-3" class="h-link">FAQs</a>
                                 </li>
                                 <!-- SIGN IN LINK -->
