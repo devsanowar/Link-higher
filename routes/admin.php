@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\EmployeController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -25,12 +26,12 @@ use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\SmartSolutionsController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\Admin\ProjectCategoryController;
 use App\Http\Controllers\Admin\SmarterWorkflowsController;
 use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
-use App\Http\Controllers\Admin\ProjectCategoryController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -173,6 +174,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     //Project category resource route
     Route::resource('project-category', ProjectCategoryController::class);
+
+    // Project resource route
+    Route::resource('project', ProjectController::class);
 
 
 

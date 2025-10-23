@@ -140,7 +140,7 @@
                 </a></li>
 
             <!--Project with category Menu-->
-            <li class="menu-item {{ request()->routeIs(['project-category.*']) ? 'active open' : '' }}">
+            <li class="menu-item {{ request()->routeIs(['project-category.*', 'project.*']) ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-case"></i><span>Portfolio</span>
                 </a>
@@ -149,9 +149,9 @@
                         <a href="{{ route('project-category.index') }}">Category</a>
                     </li>
 
-                    {{-- <li class="{{ request()->routeIs('case.study.*') ? 'active' : '' }}">
-                        <a href="{{ route('case.study.index') }}">Case Study</a>
-                    </li> --}}
+                    <li class="{{ request()->routeIs('project.*') ? 'active' : '' }}">
+                        <a href="{{ route('project.index') }}">Projects</a>
+                    </li>
 
                 </ul>
             </li>
