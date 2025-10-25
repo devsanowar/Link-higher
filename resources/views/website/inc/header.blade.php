@@ -17,7 +17,7 @@
                 </div>
                 <!-- NAVIGATION MENU -->
                 <div
-                    class="wsmainfull menu clearfix !text-[#b1b7cd] p-[20px_0] w-full h-auto z-[1031] [transition:all_450ms_ease-in-out]">
+                    class="wsmainfull menu clearfix !text-[#b1b7cd] p-[15px_0] w-full h-auto z-[1031] [transition:all_450ms_ease-in-out]">
                     <div class="wsmainwp clearfix">
                         <!-- HEADER BLACK LOGO -->
                         <div class="desktoplogo">
@@ -53,6 +53,10 @@
 
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('about.page') }}"
                                         class="h-link">About</a>
+                                </li>
+
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('service.page') }}"
+                                        class="h-link">Services</a>
                                 </li>
 
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('portfolio.page') }}"

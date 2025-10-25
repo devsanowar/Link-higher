@@ -80,33 +80,56 @@
                             </p>
 
                             @php
-                                // DB তে images = ["uploads/project/1.jpg","uploads/project/2.jpg", ...]
-                                $imgs = collect($project->images ?? [])->filter(); // ফাঁকা বাদ
+                                use Illuminate\Support\Str;
+
+                                // 1) JSON → array
+                                $raw = $project->images ?? [];
+                                $paths = is_array($raw) ? $raw : (is_string($raw) ? json_decode($raw, true) : []);
+
+                                // 2) ফাঁকা বাদ + path নরমালাইজ + URL তৈরি
+                                $imgs = collect($paths)
+                                    ->filter()
+                                    ->map(function ($p) {
+                                        $p = trim($p);
+
+                                        // full URL হলে 그대로
+                                        if (Str::startsWith($p, ['http://', 'https://'])) {
+                                            return $p;
+                                        }
+
+                                        // ভুল করে 'public/' থেকে থাকলে কেটে দিন
+                                        if (Str::startsWith($p, 'public/')) {
+                                            $p = Str::after($p, 'public/');
+                                        }
+
+                                        // লিডিং স্ল্যাশ থাকলে কেটে দিন
+                                        $p = ltrim($p, '/');
+
+                                        // আপনার কেস: uploads/project/file.jpg → asset()
+                                        return asset($p); // base-url + /uploads/project/file.jpg
+                                    });
                             @endphp
 
                             @if ($imgs->isNotEmpty())
                                 <div style="padding: 10px;"
                                     class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] items-center project-inner-img mt-[50px] lg:max-xl:!mt-[45px] md:max-lg:!mt-[30px]">
-                                    @foreach ($imgs as $i => $imgPath)
+                                    @foreach ($imgs as $i => $imgUrl)
                                         <div
                                             class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                                             <div
                                                 class="project-image project-preview relative overflow-hidden group rounded-[10px] {{ $i === 0 ? 'top-img' : '' }}">
-                                                <!-- Project Preview -->
                                                 <div class="hover-overlay w-full h-auto overflow-hidden relative">
                                                     <img class="img-fluid overflow-hidden transition-transform duration-[400ms] scale-100 group-hover:scale-105"
-                                                        src="{{ asset($imgPath) }}"
+                                                        src="{{ $imgUrl }}"
                                                         alt="{{ $project->title ?? 'project-preview' }}" loading="lazy">
                                                     <div
                                                         class="item-overlay opacity-0 !absolute w-full h-full transition-all duration-[400ms] ease-[ease-in-out] left-0 top-0 bg-[rgba(20,20,20,0.25)] group-hover:opacity-100">
                                                     </div>
                                                 </div>
-
-                                                <!-- Project Link (eye icon) -->
                                                 <div
                                                     class="project-link ico-35 color--white w-full !absolute -translate-y-2/4 opacity-0 !text-center !text-white transition-all duration-[400ms] ease-[ease-in-out] top-[55%] group-hover:opacity-100 group-hover:top-2/4">
-                                                    <a class="image-link" href="{{ asset($imgPath) }}"
-                                                        data-gallery="project-{{ $project->id }}" {{-- একই প্রজেক্টের ইমেজগুলো গ্রুপ হবে --}}
+                                                    <a class="image-link" href="{{ $imgUrl }}"
+                                                        data-gallery="project-{{ $project->id }}"
                                                         data-glightbox="title: {{ addslashes($project->title) }};"
                                                         title="{{ $project->title }}">
                                                         <span class="flaticon-visibility"></span>
@@ -132,7 +155,7 @@
                             <div
                                 class="project-image project-inner-img video-preview mt-[50px] lg:max-xl:!mt-[45px] md:max-lg:!mt-[30px] relative !text-center">
                                 <!-- Play Icon -->
-                                <a class="video-popup1" href="https://www.youtube.com/embed/SZEflIVnhH8">
+                                <a class="video-popup1" href="{{ $project->video_url ?? '' }}">
                                     <div
                                         class="video-btn video-btn-xl !w-[6.25rem] !h-[6.25rem] mt-[-3.125rem] ml-[-3.125rem] md:max-lg:w-28 md:max-lg:!h-28 md:max-lg:!mt-[-3.5rem] md:max-lg:ml-[-3.5rem] !absolute inline-block !text-center !text-white rounded-[100%] left-2/4 top-2/4 before:content-[''] before:absolute before:left-[-5px] before:right-[-5px] before:top-[-5px] before:bottom-[-5px] before:opacity-0 before:transition-all before:duration-[400ms] before:ease-[ease-in-out] before:rounded-[50%] before:bg-[rgba(255,255,255,0.2)] group hover:before:opacity-75  hover:before:left-[-1.5rem]  hover:before:right-[-1.5rem]  hover:before:top-[-1.5rem]  hover:before:bottom-[-1.5rem] bg--pink-400">
                                         <div
@@ -142,7 +165,8 @@
                                     </div>
                                 </a>
                                 <!-- Preview Image -->
-                                <img class="img-fluid rounded-[10px] " src="{{ asset($project->image ?? 'frontend/assets/images/projects/project-09.jpg') }}"
+                                <img class="img-fluid rounded-[10px] "
+                                    src="{{ asset($project->image ?? 'frontend/assets/images/projects/project-09.jpg') }}"
                                     alt="video-preview">
                             </div>
                             <!-- END VIDEO PREVIEW -->
@@ -178,3 +202,36 @@
     </section>
     <!-- END SINGLE PROJECT-1 -->
 @endsection
+@push('scripts')
+    <script>
+        $(function() {
+            $('.video-popup1').magnificPopup({
+                type: 'iframe',
+                iframe: {
+                    patterns: {
+                        youtube: {
+                            index: ['youtube.com/', 'youtu.be/'],
+                            id: function(url) {
+                                // watch?v=ID
+                                var vMatch = url.match(/[?&]v=([^?&]+)/);
+                                if (vMatch && vMatch[1]) return vMatch[1];
+
+                                // youtu.be/ID
+                                var short = url.match(/youtu\.be\/([^?&/]+)/);
+                                if (short && short[1]) return short[1];
+
+                                // embed/ID
+                                var embed = url.match(/embed\/([^?&/]+)/);
+                                if (embed && embed[1]) return embed[1];
+
+                                return null;
+                            },
+                            src: 'https://www.youtube.com/embed/%id%?autoplay=1&rel=0'
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+@endpush

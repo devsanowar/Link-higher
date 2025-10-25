@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects         = Project::with('category')->latest()->where("status", 1)->get();
+        $projects         = Project::with('category')->latest()->get();
         $trashedDataCount = Project::onlyTrashed()->count();
         return view("admin.layouts.pages.project.index", compact("projects", "trashedDataCount"));
     }
@@ -45,6 +45,7 @@ class ProjectController extends Controller
             'website_url'        => 'nullable|url|max:255',
             'start_date'         => 'nullable|date',
             'end_date'           => 'nullable|date|after_or_equal:start_date',
+            'video_url'           => 'nullable|string|url',
 
             // features: array -> JSON
             'features'           => 'nullable|array',
@@ -102,6 +103,7 @@ class ProjectController extends Controller
         $project->website_url        = $request->website_url;
         $project->start_date         = $request->start_date;
         $project->end_date           = $request->end_date;
+        $project->video_url           = $request->video_url;
 
         // features -> JSON (schema: longText)
         $project->features = json_encode($request->input('features', []));
@@ -174,6 +176,7 @@ class ProjectController extends Controller
             'website_url'               => 'nullable|string|max:255',
             'start_date'                => 'nullable|date',
             'end_date'                  => 'nullable|date|after_or_equal:start_date',
+            'video_url'                 => 'nullable|string|url',
 
             'status'                    => 'required|in:0,1',
         ]);
@@ -191,6 +194,7 @@ class ProjectController extends Controller
         $project->overview_challenge = $request->overview_challenge;
         $project->project_summary    = $request->project_summary;
         $project->solution_result    = $request->solution_result;
+        $project->video_url    = $request->video_url;
 
         // features -> JSON (longText)
         $project->features = json_encode($request->input('features', []));

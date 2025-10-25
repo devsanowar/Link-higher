@@ -165,6 +165,26 @@
                                 </div>
                             </div>
 
+                            {{-- Video Url --}}
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="video_url">Video Url</label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" id="video_url" name="video_url"
+                                                class="form-control @error('video_url') is-invalid @enderror"
+                                                placeholder="Enter Video Url" value="{{ old('video_url') }}"
+                                                required>
+                                        </div>
+                                        @error('video_url')
+                                            <span class="text-danger small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
                             {{-- Solution & Result (optional) --}}
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">

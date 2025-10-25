@@ -27,3 +27,93 @@
 @media (max-width: 768px){   .icon-card{ --blob-w:135px; --blob-h:95px; } }   /* sm–md */
 @media (max-width: 640px){   .icon-card{ --blob-w:125px; --blob-h:90px; } }   /* xsm–sm */
 .icon-purple { filter: invert(26%) sepia(58%) saturate(3200%) hue-rotate(235deg) brightness(95%) contrast(90%); }
+
+
+/*=========== Breadcrumb CSS ==================*/
+
+#service-page-breadcrumb {
+    background: linear-gradient(135deg, #5229F2, #A91063);
+    margin: 100px 0 100px 0;
+    padding: 60px 0;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* #service-page-breadcrumb::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at center, #00C6FF 0%, #8A00FF 100%);
+
+
+} */
+
+.breadcrumb-container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.breadcrumb-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+.breadcrumb-list {
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.breadcrumb-list li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-list li a:hover {
+    color: #fff;
+}
+
+.breadcrumb-list li span {
+    color: #94a3b8;
+}
+
+.breadcrumb-list li.active {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+/*================For header================*/
+
+.wsmainfull {
+  padding: 15px !important;
+}
+
+/* =========== For service ==============*/
+.service-custom-design {
+    box-shadow: 1px 1px 7px #cccccc70;
+    padding: 45px 10px 15px 10px;
+    height: 305px;
+    width: 100%;
+}
+
+.custom-service-button{
+    color: #A91063;
+}
+
+.service-title:hover h6{
+    color: #A91063;
+}
