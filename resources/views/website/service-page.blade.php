@@ -5,7 +5,7 @@
     <div class="breadcrumb-container">
         <h2 class="breadcrumb-title">Our Services</h2>
         <ul class="breadcrumb-list">
-            <li><a href="/">Home</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
             <li><span>›</span></li>
             <li class="active">Services</li>
         </ul>
@@ -33,12 +33,12 @@
                             <!-- End Icon -->
                             <!-- Text -->
                             <div class="fbox-txt">
-                                <a href="http://" class="service-title">
+                                <a href="{{ route('service.details.page', $service->id) }}" class="service-title">
                                     <h6
                                         class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
                                         {{ $service->service_title ?? '' }}</h6>
                                 </a>
-                                <p class="!mb-0">{!! Str::limit($service->service_short_description, 50, '...') !!} <a class="custom-service-button" href="">Read More</a></p>
+                                <p class="!mb-0">{!! Str::limit($service->service_short_description, 50, '...') !!} <a class="custom-service-button" href="{{ route('service.details.page', $service->id) }}">Read More</a></p>
                             </div>
                         </div>
                     </div>

@@ -33,7 +33,7 @@
 
 #service-page-breadcrumb {
     background: linear-gradient(135deg, #5229F2, #A91063);
-    margin: 100px 0 100px 0;
+    margin: 100px 0 80px 0;
     padding: 60px 0;
     text-align: center;
     color: #fff;
@@ -116,4 +116,34 @@
 
 .service-title:hover h6{
     color: #A91063;
+}
+
+
+.other-services{
+    padding-top: 80px;
+}
+
+
+.custom-section-title {
+  position: relative;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  padding-left: 18px;
+  margin-bottom: 35px;
+}
+
+.custom-section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 5px;
+  height: 80%;
+    background: linear-gradient(135deg, #5229F2, #A91063);
+  border-radius: 5px;
+}
+
+#faqs-2{
+    background-color: #fff;
 }

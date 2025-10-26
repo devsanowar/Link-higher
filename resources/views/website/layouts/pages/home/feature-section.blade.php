@@ -7,7 +7,7 @@
                 @foreach ($services as $key => $service)
                     <div
                         class="col md:max-lg:w-6/12 lg:max-xl:w-3/12 xl:w-3/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div class="fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px]">
+                        <div class="service-custom-design fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px]">
                             <!-- Icon -->
                             <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
                                 <div class="shape-ico relative inline-block m-0 icon-card">
@@ -19,10 +19,12 @@
                             <!-- End Icon -->
                             <!-- Text -->
                             <div class="fbox-txt">
-                                <h6
-                                    class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                    {{ $service->service_title ?? '' }}</h6>
-                                <p class="!mb-0">{!! $service->service_short_description !!}</p>
+                                <a href="{{ route('service.details.page', $service->id) }}" class="service-title">
+                                    <h6
+                                        class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
+                                        {{ $service->service_title ?? '' }}</h6>
+                                </a>
+                                <p class="!mb-0">{!! Str::limit($service->service_short_description, 50, '...') !!} <a class="custom-service-button" href="{{ route('service.details.page', $service->id) }}">Read More</a></p>
                             </div>
                         </div>
                     </div>

@@ -120,7 +120,7 @@
                                 <!-- SIMPLE NAVIGATION LINK -->
                                 <li class="nl-simple" aria-haspopup="true"><a href="pricing-1.html" class="h-link">Pricing</a></li>
 
-                                <li class="nl-simple" aria-haspopup="true"><a href="#faqs-3" class="h-link">FAQs</a>
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}" class="h-link">FAQs</a>
                                 </li>
                                 <!-- SIGN IN LINK -->
                                 <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">

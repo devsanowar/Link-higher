@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\Frontend\AboutPageController;
+use App\Http\Controllers\Frontend\FaqPageController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\ProfileController;
@@ -12,6 +13,8 @@ Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.pa
 Route::get('/portfolio-page', [ProjectController::class, 'index'])->name('portfolio.page');
 Route::get('/portfolio/{id}/details', [ProjectController::class, 'projectDetails'])->name('portfolio.details');
 Route::get('service-page', [ServicePageController::class, 'index'])->name('service.page');
+Route::get('service-page/{id}/details', [ServicePageController::class, 'serviceDetails'])->name('service.details.page');
+Route::get('faq-page', [FaqPageController::class, 'index'])->name('faq.page');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

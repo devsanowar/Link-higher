@@ -1,8 +1,19 @@
 @extends('website.layouts.app')
 @section('title', 'Portfolio Single Page')
 @section('website_content')
+    <section id="service-page-breadcrumb">
+        <div class="breadcrumb-container">
+            <h2 class="breadcrumb-title"> Portfolio Details Page</h2>
+            <ul class="breadcrumb-list">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><span>›</span></li>
+                <li class="active">{{ $project->title ?? '' }}</li>
+            </ul>
+        </div>
+    </section>
+
     <section id="project-1"
-        class="gr--whitesmoke inner-page-hero single-project pt-[180px] lg:max-xl:pt-[160px] md:max-lg:!mt-[80px] md:max-lg:pt-[70px]">
+        class="inner-page-hero single-project pt-[0px] lg:max-xl:pt-[0px] md:max-lg:!mt-[0px] md:max-lg:pt-[0px]">
         <div class="container">
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
                 <!-- PROJECT DISCRIPTION -->
@@ -201,6 +212,8 @@
         <!-- End container -->
     </section>
     <!-- END SINGLE PROJECT-1 -->
+        <hr
+        class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
 @endsection
 @push('scripts')
     <script>
