@@ -223,6 +223,22 @@
                             </div>
                         </div>
 
+                        <!-- Google Map -->
+                        <div class="row clearfix ">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                <label for="google_map">Google Map</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="google_map" class="form-control" name="google_map"
+                                            placeholder="Enter google map embed link"
+                                            value="{{ old('google_map', $settings->google_map ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Footer Copyright Text -->
                         <div class="row clearfix ">
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">

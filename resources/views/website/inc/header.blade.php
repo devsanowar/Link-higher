@@ -122,6 +122,11 @@
 
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}" class="h-link">FAQs</a>
                                 </li>
+
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('contact.page') }}" class="h-link">Contact Us</a>
+                                </li>
+
+
                                 <!-- SIGN IN LINK -->
                                 <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
                                     <a href="login-2.html" class="h-link">Sign in</a>

@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
+use App\Http\Controllers\Admin\ContactUsController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -182,6 +183,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/trashed', [ProjectController::class, 'trashed'])->name('project.trashed');
     Route::get('/restore/{id}', [ProjectController::class, 'restore'])->name('project.restore');
     Route::delete('/force-delete/{id}', [ProjectController::class, 'forceDelete'])->name('project.force.delete');
+
+    // Contact Message route here
+    Route::get('/contact-messages', [ContactUsController::class, 'index'])->name(name: 'contact.messages.index');
+    Route::delete('contact-messages/{id}', [ContactUsController::class, 'destroy'])->name('contact.destroy');
 
 
 

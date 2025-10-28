@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\Frontend\AboutPageController;
+use App\Http\Controllers\Frontend\ContactUsPageController;
 use App\Http\Controllers\Frontend\FaqPageController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ServicePageController;
@@ -15,6 +16,8 @@ Route::get('/portfolio/{id}/details', [ProjectController::class, 'projectDetails
 Route::get('service-page', [ServicePageController::class, 'index'])->name('service.page');
 Route::get('service-page/{id}/details', [ServicePageController::class, 'serviceDetails'])->name('service.details.page');
 Route::get('faq-page', [FaqPageController::class, 'index'])->name('faq.page');
+Route::get('contact-page', [ContactUsPageController::class, 'index'])->name('contact.page');
+Route::post('contact-form/submit', [ContactUsPageController::class, 'submit'])->name('contact.form.submit');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

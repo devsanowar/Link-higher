@@ -9,6 +9,8 @@
     <meta name="keywords"
         content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <title>Martex - Tailwind CSS Software, SaaS & Startup Template</title>
 

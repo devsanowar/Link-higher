@@ -202,6 +202,12 @@
                 </ul>
             </li>
 
+            <!--Contact message Menu-->
+            <li class="{{ request()->routeIs(['contact.messages.*']) ? 'active open' : '' }}">
+                <a href="{{ route('contact.messages.index') }}"><i class="zmdi zmdi-email"></i><span>Message</span>
+                </a>
+            </li>
+
 
             <li class="menu-item {{ request()->routeIs(['user.management.*']) ? 'active open' : '' }}">
                 <a href="{{ route('user.management.index') }}">
