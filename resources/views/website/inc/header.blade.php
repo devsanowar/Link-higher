@@ -133,7 +133,7 @@
                                 </li>
                                 <!-- SIGN UP BUTTON -->
                                 <li class="nl-simple" aria-haspopup="true">
-                                    <a href="signup-2.html"
+                                    <a href="{{ route('customer.register') }}"
                                         class="btn r-04 !rounded-[4px] btn--theme hover--theme last-link">Sign up</a>
                                 </li>
                             </ul>

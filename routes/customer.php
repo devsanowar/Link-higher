@@ -1,7 +1,26 @@
 <?php
 
+use App\Http\Controllers\Frontend\Auth\CustomerLoginController;
+use App\Http\Controllers\Frontend\Auth\CustomerProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\CustomerDashboardController;
+use App\Http\Controllers\Frontend\Auth\CustomerRegisterController;
 
-// Route::middleware(['auth', 'role:customer'])->group(function () {
-//     Route::get('/support', [SupportController::class, 'index'])->name('support.index');
-// });
+
+
+Route::prefix("customer")->group(function(){
+    Route::get("signup", [CustomerRegisterController::class, "register"])->name("customer.register");
+    Route::post('/signup', [CustomerRegisterController::class, 'store'])->name('signup.store');
+
+    Route::get("sign-in", [CustomerLoginController::class, "signIn"])->name("customer.signin");
+    Route::post('/sign-in', [CustomerLoginController::class, 'login'])->name('login.store');
+
+
+    Route::middleware(['role:customer'])->group(function () {
+        Route::get('/dashboard', [CustomerDashboardController::class, 'dashboard'])->name('customer.dashboard');
+        Route::post('/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
+        Route::put('customer/profile/update', [CustomerProfileController::class, 'update'])->name('customer.profile.update');
+
+    });
+
+});

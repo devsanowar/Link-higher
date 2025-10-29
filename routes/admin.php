@@ -34,7 +34,7 @@ use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
 use App\Http\Controllers\Admin\ContactUsController;
 
-Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
     // Dashboard route here
     Route::group(['prefix' => 'dashboard'], function () {
