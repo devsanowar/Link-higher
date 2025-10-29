@@ -147,3 +147,9 @@
 #faqs-2{
     background-color: #fff;
 }
+
+
+.custom-logout-button {
+	padding: 10px 20px;
+	margin-top: 14px;
+}

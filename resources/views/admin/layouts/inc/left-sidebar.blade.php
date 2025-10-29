@@ -238,6 +238,28 @@
                 </ul>
             </li>
 
+            <li class="header">LEGAL PAGE</li>
+
+            <li class="menu-item {{ request()->routeIs(['privacy.policy.*']) ? 'active open' : '' }}">
+                <a href="{{ route('privacy.policy.index') }}">
+                    <i class="zmdi zmdi-comment-list"></i>
+                    <span>Privacy Policy</span>
+                </a>
+            </li>
+
+            <li class="menu-item {{ request()->routeIs(['terms.and.conditions.*']) ? 'active open' : '' }}">
+                <a href="{{ route('terms.and.conditions.index') }}">
+                    <i class="zmdi zmdi-comment-list"></i>
+                    <span>Terms & Conditions</span>
+                </a>
+            </li>
+
+            <li class="menu-item {{ request()->routeIs(['return.refund.policy.*']) ? 'active open' : '' }}">
+                <a href="{{ route('return.refund.policy.index') }}">
+                    <i class="zmdi zmdi-comment-list"></i>
+                    <span>Return & Refund</span>
+                </a>
+            </li>
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

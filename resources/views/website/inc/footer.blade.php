@@ -6,10 +6,16 @@
                     <!-- FOOTER LOGO -->
                     <div class="xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
                         <div class="footer-info !mb-[40px] lg:max-xl:!mb-[50px]">
+                            @if (empty($website_settings->website_footer_logo))
+                                <img class="footer-logo w-auto max-w-[inherit] xl:!max-h-[40px] lg:max-xl:!max-h-[34px] md:max-lg:!max-h-[33px] sm:max-md:!max-h-[38px] xsm:max-sm:!max-h-[37px]"
+                                    src="images/logo-purple.png" alt="footer-logo">
+
+
+                            @else
                             <img class="footer-logo w-auto max-w-[inherit] xl:!max-h-[40px] lg:max-xl:!max-h-[34px] md:max-lg:!max-h-[33px] sm:max-md:!max-h-[38px] xsm:max-sm:!max-h-[37px]"
-                                src="images/logo-purple.png" alt="footer-logo">
-                            <img class="footer-logo-dark hidden w-auto max-w-[inherit] xl:!max-h-[40px] lg:max-xl:!max-h-[34px] md:max-lg:!max-h-[33px] sm:max-md:!max-h-[38px] xsm:max-sm:!max-h-[37px]"
-                                src="images/logo-purple-white.png" alt="footer-logo">
+                                src="{{ asset($website_settings->website_footer_logo) }}" alt="footer-logo">
+                            @endif
+
                         </div>
                     </div>
                     <!-- FOOTER LINKS -->
@@ -23,20 +29,21 @@
                             <!-- Links -->
                             <ul class="foo-links clearfix">
                                 <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a href="about.html">About
+                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                            href="{{ route('about.page') }}">About
                                             Us</a></p>
                                 </li>
                                 <li class=" w-auto block align-top clear-none !m-0 !p-0">
                                     <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="careers.html">Careers</a></p>
+                                            href="{{ route('service.page') }}">Service</a></p>
                                 </li>
                                 <li class=" w-auto block align-top clear-none !m-0 !p-0">
                                     <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="blog-listing.html">Our Blog</a></p>
+                                            href="{{ route('faq.page') }}">FAQ</a></p>
                                 </li>
                                 <li class=" w-auto block align-top clear-none !m-0 !p-0">
                                     <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="contacts.html">Contact Us</a></p>
+                                            href="{{ route('contact.page') }}">Contact Us</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -49,25 +56,23 @@
                             <!-- Title -->
                             <h6
                                 class="s-17 w--700 !font-bold xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] leading-none xl:!mb-[25px] lg:max-xl:!mb-[20px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] xsm:max-sm:!text-[1.21875rem] xsm:max-sm:!mb-[20px] font-Jakarta">
-                                Product</h6>
+                                Services</h6>
                             <!-- Links -->
                             <ul class="foo-links clearfix">
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="features.html">Integration</a></p>
-                                </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="reviews.html">Customers</a></p>
-                                </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="pricing-1.html">Pricing</a></p>
-                                </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="help-center.html">Help Center</a></p>
-                                </li>
+
+                                @php
+                                    use App\Models\Service;
+
+                                    $services = Service::where('status', 1)->latest()->take(6)->get();
+                                @endphp
+                                @foreach ($services as $service)
+                                    <li class=" w-auto block align-top clear-none !m-0 !p-0">
+                                        <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                                href="{{ route('service.details.page', $service->id) }}">{{ $service->service_title }}</a>
+                                        </p>
+                                    </li>
+                                @endforeach
+
                             </ul>
                         </div>
                     </div>

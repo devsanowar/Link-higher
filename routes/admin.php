@@ -33,6 +33,9 @@ use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\PrivacyPolicyController;
+use App\Http\Controllers\Admin\ReturnAndRefundController;
+use App\Http\Controllers\Admin\TermsAndConditonController;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
@@ -188,6 +191,16 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     Route::get('/contact-messages', [ContactUsController::class, 'index'])->name(name: 'contact.messages.index');
     Route::delete('contact-messages/{id}', [ContactUsController::class, 'destroy'])->name('contact.destroy');
 
+    // PPrivacy Policy route here
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy.policy.index');
+    Route::put('/privacy-policy/update', [PrivacyPolicyController::class, 'update'])->name('privacy.policy.update');
 
+    // Terms and Conditions route here
+    Route::get('/terms-and-conditions', [TermsAndConditonController::class, 'index'])->name('terms.and.conditions.index');
+    Route::put('/terms-and-conditions/update', [TermsAndConditonController::class, 'update'])->name('terms.and.conditions.update');
+
+    // Return & Refund Policy route here
+    Route::get('/return-refund-policy', [ReturnAndRefundController::class, 'index'])->name('return.refund.policy.index');
+    Route::put('/return-refund-policy/update', [ReturnAndRefundController::class, 'update'])->name('return.refund.policy.update');
 
 });

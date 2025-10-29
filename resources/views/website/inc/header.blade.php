@@ -35,11 +35,11 @@
                         <div class="desktoplogo">
                             <a href="{{ route('home') }}" class="logo-white">
                                 @if ($website_settings->website_logo)
-                                <img class=" w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
-                                    src="{{ asset($website_settings->website_logo) }}" alt="logo">
+                                    <img class=" w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
+                                        src="{{ asset($website_settings->website_logo) }}" alt="logo">
                                 @else
-                                <img class=" w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
-                                    src="{{ asset('frontend') }}/images/logo-white.png" alt="logo">
+                                    <img class=" w-auto max-w-[inherit] !max-h-[38px] lg:max-xl:!max-h-[34px] inline-block"
+                                        src="{{ asset('frontend') }}/images/logo-white.png" alt="logo">
                                 @endif
                             </a>
                         </div>
@@ -51,9 +51,24 @@
                                         class="h-link">Home</a>
                                 </li>
 
-                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('about.page') }}"
-                                        class="h-link">About</a>
+                                <li aria-haspopup="true">
+                                    <a href="#" class="h-link">Company <span class="wsarrow"></span></a>
+                                    <ul class="sub-menu">
+                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('about.page') }}"
+                                                class="h-link">About</a>
+                                        </li>
+
+                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('contact.page') }}"
+                                                class="h-link">Contact Us</a>
+                                        </li>
+
+                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}"
+                                                class="h-link">FAQs</a>
+                                        </li>
+                                    </ul>
                                 </li>
+
+
 
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('service.page') }}"
                                         class="h-link">Services</a>
@@ -118,24 +133,48 @@
                                 </li> --}}
                                 <!-- END MEGAMENU -->
                                 <!-- SIMPLE NAVIGATION LINK -->
-                                <li class="nl-simple" aria-haspopup="true"><a href="pricing-1.html" class="h-link">Pricing</a></li>
-
-                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}" class="h-link">FAQs</a>
-                                </li>
-
-                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('contact.page') }}" class="h-link">Contact Us</a>
-                                </li>
+                                <li class="nl-simple" aria-haspopup="true"><a href="pricing-1.html"
+                                        class="h-link">Pricing</a></li>
 
 
-                                <!-- SIGN IN LINK -->
-                                <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
-                                    <a href="login-2.html" class="h-link">Sign in</a>
-                                </li>
-                                <!-- SIGN UP BUTTON -->
-                                <li class="nl-simple" aria-haspopup="true">
-                                    <a href="{{ route('customer.register') }}"
-                                        class="btn r-04 !rounded-[4px] btn--theme hover--theme last-link">Sign up</a>
-                                </li>
+
+
+                                <!-- If user is logged in -->
+                                @auth
+                                    <!-- DASHBOARD LINK -->
+                                    <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
+                                        <a href="{{ route('customer.dashboard') }}" class="h-link">Dashboard</a>
+                                    </li>
+
+                                    <!-- LOGOUT BUTTON -->
+                                    <li class="nl-simple" aria-haspopup="true">
+                                        <form action="{{ route('customer.logout') }}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn r-04 !rounded-[4px] btn--theme hover--theme last-link custom-logout-button">
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                @endauth
+
+                                <!-- If user is not logged in -->
+                                @guest
+                                    <!-- SIGN IN LINK -->
+                                    <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
+                                        <a href="{{ route('customer.signin') }}" class="h-link">Sign In</a>
+                                    </li>
+
+                                    <!-- SIGN UP BUTTON -->
+                                    <li class="nl-simple" aria-haspopup="true">
+                                        <a href="{{ route('customer.register') }}"
+                                            class="btn r-04 !rounded-[4px] btn--theme hover--theme last-link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                @endguest
+
                             </ul>
                         </nav>
                         <!-- END MAIN MENU -->

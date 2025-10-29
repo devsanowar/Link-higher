@@ -19,7 +19,10 @@ Route::prefix("customer")->group(function(){
     Route::middleware(['role:customer'])->group(function () {
         Route::get('/dashboard', [CustomerDashboardController::class, 'dashboard'])->name('customer.dashboard');
         Route::post('/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
-        Route::put('customer/profile/update', [CustomerProfileController::class, 'update'])->name('customer.profile.update');
+        Route::put('/profile/info/update', [CustomerProfileController::class, 'update'])->name('customer.profile.update');
+        Route::put('/profile/image/update', [CustomerProfileController::class, 'profileImageUpdate'])->name('customer.profile.image.update');
+        Route::post('/customer/change-password', [CustomerProfileController::class, 'changePassword'])->name('customer.change.password');
+        Route::delete('/customer/delete/account/{id}', [CustomerProfileController::class, 'destroy'])->name('customer.destroy');
 
     });
 

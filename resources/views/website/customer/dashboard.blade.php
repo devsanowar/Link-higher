@@ -4,11 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Customer Dashboard</title>
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/toastr.min.css">
     <style>
@@ -114,6 +118,11 @@
             .sidebar {
                 display: none;
             }
+
+            .nav-link {
+                padding: 10px 0;
+                border-bottom: 1px solid #ccc3;
+            }
         }
 
         @media (max-width: 576px) {
@@ -138,6 +147,85 @@
             .offcanvas-lg {
                 display: none;
             }
+
+
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #eee;
+            display: block;
+        }
+
+        .camera-btn {
+            position: absolute;
+            right: -14px;
+            bottom: -9px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 0;
+            background: #fff;
+            color: #444;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+            transition: transform .1s ease;
+        }
+
+        .camera-btn:hover {
+            transform: scale(1.03);
+        }
+
+        .camera-btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .camera-btn i {
+            font-size: 18px;
+        }
+
+        /* Password show style design*/
+        .password-group {
+            position: relative;
+        }
+
+        .password-group input {
+            padding-right: 45px;
+            /* জায়গা রাখলাম বাটনের জন্য */
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #555;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: #0d6efd;
+        }
+
+        .password-toggle i {
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -148,7 +236,10 @@
     <div class="offcanvas offcanvas-start offcanvas-lg" tabindex="-1" id="mobileSidebar">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title d-flex align-items-center gap-2">
-                <span class="logo">C</span>
+                <span class="logo">
+                    <img class="rounded-4" id="mobileProfileImage" src="{{ asset(Auth::user()->image) }}" alt="Profile"
+                        class="profile-image" width="50" height="50">
+                </span>
                 <span class="fw-semibold">Customer Panel</span>
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -159,8 +250,15 @@
                 <a class="nav-link" href="#orders"><i class="bi bi-bag"></i> Orders</a>
                 <a class="nav-link" href="#profile"><i class="bi bi-person"></i> Profile</a>
                 <a class="nav-link" href="#settings"><i class="bi bi-gear"></i> Settings</a>
-                <hr>
-                <a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+
+                <a class="nav-link logout-button" href="#"
+                    onclick="event.preventDefault(); document.getElementById('customer-logout-form').submit();">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+
+                <form id="customer-logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </nav>
         </div>
     </div>
@@ -169,10 +267,17 @@
         <!-- Sidebar (desktop) -->
         <aside class="sidebar d-none d-lg-flex flex-column">
             <div class="brand d-flex align-items-center gap-3">
-                <div class="logo">C</div>
+                <div class="logo">
+                    <img class="rounded-4" id="customerpanelprofileImage" src="{{ asset(Auth::user()->image) }}"
+                        alt="Profile" class="profile-image" width="50" height="50">
+                </div>
                 <div class="d-flex flex-column">
                     <span class="fw-semibold">Customer Panel</span>
-                    <small class="text-secondary">Welcome, <span id="welcomeName">Customer</span></small>
+                    <small class="text-secondary">Welcome, <span id="welcomeName">
+                            {{ Auth::user()->name ?? 'Customer' }}
+
+                        </span>
+                    </small>
                 </div>
             </div>
             <div class="p-2">
@@ -213,29 +318,37 @@
                         <span class="fw-semibold">Dashboard</span>
                     </div>
                     <!-- Mobile search (shown < md) -->
-                    <div class="ms-auto flex-grow-1 d-md-none search-mobile" style="display:none;">
-                        <div class="input-group">
+                    <div class="ms-auto flex-grow-1 d-md-none search-mobile">
+                        <a class="btn btn-outline-primary btn-sm" href="{{ route('home') }}">Visit Website</a>
+                        {{-- <div class="input-group" style="display:none">
                             <span class="input-group-text bg-transparent"><i class="bi bi-search"></i></span>
                             <input type="text" class="form-control border-start-0"
                                 placeholder="Search orders, products...">
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Desktop search (>= md) -->
                     <div class="ms-auto d-none d-md-block">
-                        <div class="input-group">
+                        <a class="btn btn-outline-primary" href="{{ route('home') }}" target="_blank">Visit Website</a>
+                        {{-- <div class="input-group" style="display:none">
                             <span class="input-group-text bg-transparent"><i class="bi bi-search"></i></span>
                             <input type="text" class="form-control border-start-0"
                                 placeholder="Search orders, products...">
-                        </div>
+                        </div> --}}
                     </div>
                     <button id="themeToggle" class="btn btn-outline-secondary ms-2 d-none d-md-inline-flex"
                         title="Toggle theme"><i class="bi bi-moon-stars"></i></button>
                     <div class="dropdown ms-1">
                         <button class="btn btn-light border-0 d-flex align-items-center gap-2"
                             data-bs-toggle="dropdown">
-                            <img src="https://i.pravatar.cc/40?img=12" class="rounded-circle" width="32"
-                                height="32" alt="avatar">
-                            <span class="d-none d-sm-inline fw-medium">{{ Auth::user()->system_admin ?? '' }} h</span>
+                            @if (Auth::user()->image)
+                                <img id="topHeaderImage" src="{{ asset(Auth::user()->image) }}"
+                                    class="rounded-circle" width="32" height="32" alt="avatar">
+                            @else
+                                <img id="topHeaderImage" src="https://i.pravatar.cc/40?img=12" class="rounded-circle"
+                                    width="32" height="32" alt="avatar">
+                            @endif
+
+                            <span class="d-none d-sm-inline fw-medium">{{ Auth::user()->name ?? '' }}</span>
                             <i class="bi bi-chevron-down small"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end shadow">
@@ -479,11 +592,31 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-flex align-items-center gap-3 mb-3">
-                                    <img src="https://i.pravatar.cc/72?img=12" class="rounded-4" width="72"
-                                        height="72" alt="avatar">
+                                    <div class="profile-image-wrapper">
+                                        @if (empty(Auth::user()->image))
+                                            <img class="rounded-4" id="profileImage"
+                                                src="https://i.pravatar.cc/72?img=12" alt="Profile"
+                                                class="profile-image" width="72" height="72">
+                                        @else
+                                            <img class="rounded-4" id="profileImage"
+                                                src="{{ asset(Auth::user()->image) }}" alt="Profile"
+                                                class="profile-image" width="72" height="72">
+                                        @endif
+
+                                        <button type="button" id="cameraBtn" class="camera-btn"
+                                            title="Change photo">
+                                            <i class="material-icons">photo_camera</i>
+                                        </button>
+
+                                        <!-- id now matches JS -->
+                                        <input type="file" id="profileFile" class="d-none"
+                                            accept="image/png,image/jpeg,image/jpg,image/webp">
+                                    </div>
+
                                     <div>
-                                        <div class="fw-bold fs-5">Jabir IT</div>
-                                        <div class="text-secondary small">customer@example.com</div>
+                                        <div class="fw-bold fs-5">{{ Auth::user()->name ?? 'Customer' }}</div>
+                                        <div class="text-secondary small">
+                                            {{ Auth::user()->email ?? 'customer@gmail.com' }}</div>
                                     </div>
                                 </div>
                                 <form id="customerProfileUpdate" method="POST">
@@ -540,35 +673,33 @@
                                 <h5 class="mb-0">Account Settings</h5>
                             </div>
                             <div class="card-body">
+
                                 <div class="row g-4">
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-6">
                                         <h6 class="fw-semibold">Security</h6>
                                         <p class="text-secondary small mb-3">Manage password and 2‑factor
                                             authentication to keep your account secure.</p>
-                                        <button class="btn btn-outline-primary w-100 mb-2"><i
-                                                class="bi bi-key me-2"></i>Change Password</button>
-                                        <button class="btn btn-outline-secondary w-100"><i
-                                                class="bi bi-shield-lock me-2"></i>Enable 2FA</button>
+                                        <!-- Trigger Button -->
+                                        <button class="btn btn-outline-primary w-100 mb-2" data-bs-toggle="modal"
+                                            data-bs-target="#changePasswordModal">
+                                            <i class="bi bi-key me-2"></i>Change Password
+                                        </button>
                                     </div>
-                                    <div class="col-12 col-lg-4">
-                                        <h6 class="fw-semibold">Preferences</h6>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" checked id="emailSwitch">
-                                            <label class="form-check-label" for="emailSwitch">Email
-                                                notifications</label>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="smsSwitch">
-                                            <label class="form-check-label" for="smsSwitch">SMS alerts</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-4">
+
+                                    <div class="col-12 col-lg-6">
                                         <h6 class="fw-semibold">Danger Zone</h6>
                                         <p class="text-secondary small mb-2">Delete your account and all associated
                                             data.</p>
-                                        <button class="btn btn-outline-danger w-100"
-                                            onclick="confirm('Are you sure?') && alert('Account deleted (demo).');"><i
-                                                class="bi bi-trash me-2"></i>Delete Account</button>
+
+                                        <form action="{{ route('customer.destroy', Auth::user()->id) }}"
+                                            method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-outline-danger w-100 deleteBtn"
+                                                data-id="{{ Auth::user()->id }}">
+                                                <i class="bi bi-trash me-2"></i>Delete Account
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -577,6 +708,76 @@
                 </div>
 
             </div>
+
+
+            <!-- Change Password Modal -->
+            <div class="modal fade" id="changePasswordModal" tabindex="-1"
+                aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="POST" action="{{ route('customer.change.password') }}">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+
+                            <div class="modal-body">
+                                <!-- Current Password -->
+                                <div class="mb-3 position-relative">
+                                    <label for="current_password" class="form-label">Current Password</label>
+                                    <div class="input-group">
+                                        <input type="password" name="current_password" id="current_password"
+                                            class="form-control" required>
+                                        <button type="button" class="btn btn-outline-secondary toggle-password"
+                                            data-target="current_password">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- New Password -->
+                                <div class="mb-3 position-relative">
+                                    <label for="password" class="form-label">New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            required minlength="8">
+                                        <button type="button" class="btn btn-outline-secondary toggle-password"
+                                            data-target="password">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Confirm New Password -->
+                                <div class="mb-3 position-relative">
+                                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                    <div class="input-group">
+                                        <input type="password" name="password_confirmation"
+                                            id="password_confirmation" class="form-control" required>
+                                        <button type="button" class="btn btn-outline-secondary toggle-password"
+                                            data-target="password_confirmation">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <!-- Footer -->
             <footer class="app-footer py-3 text-center">
@@ -615,6 +816,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
     <script src="{{ asset('frontend') }}/js/toastr.min.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/sweetalert2.js"></script>
     <script>
         @if (session('success'))
             toastr.success("{{ session('success') }}");
@@ -636,8 +838,35 @@
 
 
     <script>
+        $(document).ready(function() {
+            $(document).on('click', '.deleteBtn', function() {
+                let button = $(this);
+                let form = button.closest('form');
+                let rowId = button.data('id');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+    <script>
         // Demo: set welcome name if available from your backend
-        document.getElementById('welcomeName').textContent = 'Customer';
+        // document.getElementById('welcomeName').textContent = 'Customer';
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Theme toggle (light/dark)
@@ -727,6 +956,84 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+
+            // when click on camera icon → open file picker
+            $('#cameraBtn').on('click', function() {
+                $('#profileFile').trigger('click');
+            });
+
+            // when a file is chosen → upload
+            $('#profileFile').on('change', function() {
+                const file = this.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('image', file);
+                formData.append('_method', 'PUT'); // spoof PUT request
+
+                $('#cameraBtn').prop('disabled', true);
+
+                $.ajax({
+                    url: "{{ route('customer.profile.image.update') }}",
+                    type: "POST", // POST + _method=PUT
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // ✅ main fix
+                    },
+                    success: function(response) {
+                        toastr.success(response.message);
+                        // instantly update profile image
+                        $('#profileImage').attr('src', response.image_url + '?t=' + Date.now());
+
+                        $('#topHeaderImage').attr('src', response.image_url + '?t=' + Date
+                            .now());
+
+                        $('#customerpanelprofileImage').attr('src', response.image_url + '?t=' +
+                            Date.now());
+
+                        $('#mobileProfileImage').attr('src', response.image_url + '?t=' + Date
+                            .now());
+                    },
+                    error: function(xhr) {
+                        toastr.error('Image upload failed!');
+                    },
+                    complete: function() {
+                        $('#cameraBtn').prop('disabled', false);
+                        $('#profileFile').val('');
+                    }
+                });
+            });
+
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.toggle-password').forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = document.getElementById(this.dataset.target);
+                    const icon = this.querySelector('i');
+
+                    if (target.type === 'password') {
+                        target.type = 'text';
+                        icon.classList.remove('bi-eye');
+                        icon.classList.add('bi-eye-slash');
+                    } else {
+                        target.type = 'password';
+                        icon.classList.remove('bi-eye-slash');
+                        icon.classList.add('bi-eye');
+                    }
+                });
+            });
+        });
+    </script>
+
 
 </body>
 
