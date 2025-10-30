@@ -51,33 +51,13 @@
                                         class="h-link">Home</a>
                                 </li>
 
-                                <li aria-haspopup="true">
-                                    <a href="#" class="h-link">Company <span class="wsarrow"></span></a>
-                                    <ul class="sub-menu">
-                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('about.page') }}"
-                                                class="h-link">About</a>
-                                        </li>
 
-                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('contact.page') }}"
-                                                class="h-link">Contact Us</a>
-                                        </li>
-
-                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}"
-                                                class="h-link">FAQs</a>
-                                        </li>
-                                    </ul>
-                                </li>
 
 
 
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('service.page') }}"
                                         class="h-link">Services</a>
                                 </li>
-
-                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('portfolio.page') }}"
-                                        class="h-link">Portfolio</a>
-                                </li>
-
 
                                 <!-- MEGAMENU -->
                                 {{-- <li aria-haspopup="true" class="mg_link">
@@ -133,11 +113,32 @@
                                 </li> --}}
                                 <!-- END MEGAMENU -->
                                 <!-- SIMPLE NAVIGATION LINK -->
-                                <li class="nl-simple" aria-haspopup="true"><a href="pricing-1.html"
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('pricing.page') }}"
                                         class="h-link">Pricing</a></li>
 
 
+                                <li aria-haspopup="true">
+                                    <a href="#" class="h-link">Company <span class="wsarrow"></span></a>
+                                    <ul class="sub-menu">
+                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('about.page') }}"
+                                                class="h-link">About</a>
+                                        </li>
 
+                                        <li class="nl-simple" aria-haspopup="true"><a
+                                                href="{{ route('portfolio.page') }}" class="h-link">Portfolio</a>
+                                        </li>
+
+                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}"
+                                                class="h-link">FAQs</a>
+                                        </li>
+
+                                        <li class="nl-simple" aria-haspopup="true"><a
+                                                href="{{ route('contact.page') }}" class="h-link">Contact Us</a>
+                                        </li>
+
+
+                                    </ul>
+                                </li>
 
                                 <!-- If user is logged in -->
                                 @auth

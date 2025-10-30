@@ -2,143 +2,125 @@
             class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px] footer !pb-[50px] lg:max-xl:!pb-[35px] md:max-lg:!pb-[25px] sm:max-md:!pb-[30px] xsm:max-sm:!pb-[30px] footer">
             <div class="container">
                 <!-- FOOTER CONTENT -->
-                <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] ">
-                    <!-- FOOTER LOGO -->
-                    <div class="xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
-                        <div class="footer-info !mb-[40px] lg:max-xl:!mb-[50px]">
-                            @if (empty($website_settings->website_footer_logo))
-                                <img class="footer-logo w-auto max-w-[inherit] xl:!max-h-[40px] lg:max-xl:!max-h-[34px] md:max-lg:!max-h-[33px] sm:max-md:!max-h-[38px] xsm:max-sm:!max-h-[37px]"
-                                    src="images/logo-purple.png" alt="footer-logo">
-
-
-                            @else
-                            <img class="footer-logo w-auto max-w-[inherit] xl:!max-h-[40px] lg:max-xl:!max-h-[34px] md:max-lg:!max-h-[33px] sm:max-md:!max-h-[38px] xsm:max-sm:!max-h-[37px]"
-                                src="{{ asset($website_settings->website_footer_logo) }}" alt="footer-logo">
-                            @endif
-
-                        </div>
-                    </div>
-                    <!-- FOOTER LINKS -->
+                <div class="flex flex-wrap mx-[calc(-0.4*_1.5rem)] ">
+                    <!-- FOOTER LINKS - COLUMN 1 -->
                     <div
-                        class="sm:w-4/12 md:max-lg:w-3/12 lg:max-xl:w-3/12 xl:w-2/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
+                        class="xl:w-3/12 lg:w-3/12 md:w-6/12 sm:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                         <div class="footer-links !mb-[40px] fl-1">
                             <!-- Title -->
                             <h6
-                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] leading-none xl:!mb-[25px] lg:max-xl:!mb-[20px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] xsm:max-sm:!text-[1.21875rem] xsm:max-sm:!mb-[20px] font-Jakarta">
-                                Company</h6>
+                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] leading-none xl:!mb-[25px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] font-Jakarta">
+                                Company
+                            </h6>
                             <!-- Links -->
                             <ul class="foo-links clearfix">
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="{{ route('about.page') }}">About
-                                            Us</a></p>
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                            href="{{ route('about.page') }}">About Us</a></p>
                                 </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
                                             href="{{ route('service.page') }}">Service</a></p>
                                 </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
                                             href="{{ route('faq.page') }}">FAQ</a></p>
                                 </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
                                             href="{{ route('contact.page') }}">Contact Us</a></p>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <!-- END FOOTER LINKS -->
-                    <!-- FOOTER LINKS -->
+
+                    <!-- FOOTER LINKS - COLUMN 2 -->
                     <div
-                        class="sm:w-4/12 md:max-lg:w-3/12 lg:max-xl:w-3/12 xl:w-2/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
+                        class="xl:w-3/12 lg:w-3/12 md:w-6/12 sm:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                         <div class="footer-links !mb-[40px] fl-2">
                             <!-- Title -->
                             <h6
-                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] leading-none xl:!mb-[25px] lg:max-xl:!mb-[20px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] xsm:max-sm:!text-[1.21875rem] xsm:max-sm:!mb-[20px] font-Jakarta">
-                                Services</h6>
+                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] leading-none xl:!mb-[25px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] font-Jakarta">
+                                Services
+                            </h6>
                             <!-- Links -->
                             <ul class="foo-links clearfix">
-
                                 @php
                                     use App\Models\Service;
-
                                     $services = Service::where('status', 1)->latest()->take(6)->get();
                                 @endphp
                                 @foreach ($services as $service)
-                                    <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                        <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                    <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                        <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]">
+                                            <a
                                                 href="{{ route('service.details.page', $service->id) }}">{{ $service->service_title }}</a>
                                         </p>
                                     </li>
                                 @endforeach
-
                             </ul>
                         </div>
                     </div>
-                    <!-- END FOOTER LINKS -->
-                    <!-- FOOTER LINKS -->
+
+                    <!-- FOOTER LINKS - COLUMN 3 -->
                     <div
-                        class="sm:w-4/12 md:max-lg:w-3/12 lg:max-xl:w-3/12 xl:w-2/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                        <div class="footer-links !mb-[40px] fl-3 lg:max-xl:!pl-[28%]">
+                        class="xl:w-3/12 lg:w-3/12 md:w-6/12 sm:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
+                        <div class="footer-links !mb-[40px] fl-3">
                             <!-- Title -->
                             <h6
-                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] leading-none xl:!mb-[25px] lg:max-xl:!mb-[20px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] xsm:max-sm:!text-[1.21875rem] xsm:max-sm:!mb-[20px] font-Jakarta">
-                                Legal</h6>
+                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] leading-none xl:!mb-[25px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] font-Jakarta">
+                                Legal
+                            </h6>
                             <!-- Links -->
                             <ul class="foo-links clearfix">
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a href="terms.html">Terms
-                                            of Use</a></p>
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                            href="{{ route('privacy.policy.page') }}">Privacy Policy</a></p>
                                 </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="privacy.html">Privacy Policy</a></p>
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                            href="{{ route('terms.condition.page') }}">Terms And condition</a></p>
                                 </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
-                                            href="cookies.html">Cookie Policy</a></p>
-                                </li>
-                                <li class=" w-auto block align-top clear-none !m-0 !p-0">
-                                    <p class=" !font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a href="#">Site
-                                            Map</a></p>
+                                <li class="w-auto block align-top clear-none !m-0 !p-0">
+                                    <p class="!font-normal !mb-[10px] md:max-lg:!mb-[8px]"><a
+                                            href="{{ route('return.refund.page') }}">Return Refund Policy</a></p>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <!-- END FOOTER LINKS -->
-                    <!-- FOOTER LINKS -->
+
+                    <!-- FOOTER LINKS - COLUMN 4 -->
                     <div
-                        class="sm:w-6/12 md:max-lg:w-3/12 lg:max-xl:w-3/12 xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
+                        class="xl:w-3/12 lg:w-3/12 md:w-6/12 sm:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                         <div class="footer-links !mb-[40px] fl-4">
                             <!-- Title -->
                             <h6
-                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] leading-none xl:!mb-[25px] lg:max-xl:!mb-[20px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] xsm:max-sm:!text-[1.21875rem] xsm:max-sm:!mb-[20px] font-Jakarta">
-                                Connect With Us</h6>
+                                class="s-17 w--700 !font-bold xl:!text-[1.0625rem] leading-none xl:!mb-[25px] md:max-lg:!text-[1.17647rem] md:max-lg:!mb-[16px] sm:max-md:!text-[1.21875rem] sm:max-md:!mb-[20px] font-Jakarta">
+                                Connect With Us
+                            </h6>
                             <!-- Mail Link -->
                             <p
                                 class="footer-mail-link ico-25 !ml-0 !mb-[20px] lg:max-xl:!mb-[14px] md:max-lg:!mb-[10px]">
-                                <a class="font-normal" href="mailto:yourdomain@mail.com">hello@yourdomain.com</a>
+                                <a class="font-normal" href="mailto:yourdomain@mail.com">{{ $website_settings->email_one ?? '' }}</a>
                             </p>
                             <!-- Social Links -->
                             <ul class="footer-socials ico-25 !text-center clearfix inline-block !m-0">
-                                <li class=" float-left w-auto inline-block align-top clear-none !m-0"><a
-                                        class=" block mr-[16px] lg:max-xl:mr-[14px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
+                                <li class="float-left w-auto inline-block align-top clear-none !m-0"><a
+                                        class="block mr-[16px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
                                         href="#"><span class="flaticon-facebook"></span></a></li>
-                                <li class=" float-left w-auto inline-block align-top clear-none !m-0"><a
-                                        class=" block mr-[16px] lg:max-xl:mr-[14px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
+                                <li class="float-left w-auto inline-block align-top clear-none !m-0"><a
+                                        class="block mr-[16px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
                                         href="#"><span class="flaticon-twitter"></span></a></li>
-                                <li class=" float-left w-auto inline-block align-top clear-none !m-0"><a
-                                        class=" block mr-[16px] lg:max-xl:mr-[14px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
+                                <li class="float-left w-auto inline-block align-top clear-none !m-0"><a
+                                        class="block mr-[16px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
                                         href="#"><span class="flaticon-github"></span></a></li>
-                                <li class=" float-left w-auto inline-block align-top clear-none !m-0"><a
-                                        class=" block mr-[16px] lg:max-xl:mr-[14px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
+                                <li class="float-left w-auto inline-block align-top clear-none !m-0"><a
+                                        class="block mr-[16px] md:max-lg:mr-[11px] hover:!text-[#353f4f]"
                                         href="#"><span class="flaticon-dribbble"></span></a></li>
                             </ul>
                         </div>
                     </div>
-                    <!-- END FOOTER LINKS -->
                 </div>
+
                 <!-- END FOOTER CONTENT -->
                 <hr
                     class=" mt-[30px] !mb-[50px] lg:max-xl:!mt-[10px] lg:max-xl:lg:!mb-[35px] md:max-lg:!mt-[5px] md:max-lg:!mb-[25px] sm:max-md:!mt-[15px] sm:max-md:!mb-[30px] xsm:max-sm:!mt-[5px] xsm:max-sm:!mb-[30px]">

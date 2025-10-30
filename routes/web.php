@@ -1,13 +1,16 @@
 <?php
 
-use App\Http\Controllers\Frontend\ProjectController;
-use App\Http\Controllers\Frontend\AboutPageController;
-use App\Http\Controllers\Frontend\ContactUsPageController;
-use App\Http\Controllers\Frontend\FaqPageController;
-use App\Http\Controllers\Frontend\HomePageController;
-use App\Http\Controllers\Frontend\ServicePageController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\LegalController;
+use App\Http\Controllers\Frontend\FaqPageController;
+use App\Http\Controllers\Frontend\ProjectController;
+use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\AboutPageController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\PricingPageController;
+use App\Http\Controllers\Frontend\ServicePageController;
+use App\Http\Controllers\Frontend\ContactUsPageController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
@@ -18,6 +21,17 @@ Route::get('service-page/{id}/details', [ServicePageController::class, 'serviceD
 Route::get('faq-page', [FaqPageController::class, 'index'])->name('faq.page');
 Route::get('contact-page', [ContactUsPageController::class, 'index'])->name('contact.page');
 Route::post('contact-form/submit', [ContactUsPageController::class, 'submit'])->name('contact.form.submit');
+
+// PricingPage Route
+Route::get('/pricing-page', [PricingPageController::class, 'index'])->name('pricing.page');
+
+// Checkout route
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.page');
+
+// Legal page route
+Route::get('/privacy-policy/page', [LegalController::class, 'privacyPolicy'])->name('privacy.policy.page');
+Route::get('/terms-and-condition/page', [LegalController::class, 'termsAndCondition'])->name('terms.condition.page');
+Route::get('/return-refund/page', [LegalController::class, 'returnRefund'])->name('return.refund.page');
 
 
 
