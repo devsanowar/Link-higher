@@ -149,9 +149,9 @@
                                     <!-- End Price -->
 
                                     <!-- Button -->
-                                    <a href="{{ route('checkout.page') }}"
+                                    <a href="{{ route('contact.page') }}"
                                         class="pt--btn btn  !rounded-[4px]  btn--theme hover--theme">
-                                        {{ $package->cta_text ?? ($package->is_free ? 'Get Started' : 'Start ' . ($package->trial_days ? $package->trial_days . '-day trial' : 'Free Trial')) }}
+                                        {{ $package->cta_text ?? 'Get a quote' }}
                                     </a>
 
                                     <p

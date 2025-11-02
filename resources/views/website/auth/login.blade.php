@@ -9,15 +9,10 @@
     <meta name="keywords"
         content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $website_settings->website_title ?? '' }} - Customer Login Page</title>
+    <title>Customer Login - {{ $website_settings->website_title ?? '' }}</title>
 
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="icon" href="images/apple-touch-icon.png" type="image/x-icon">
+    <!-- FAVICON AND TOUCH ICONS -->
+    <link rel="shortcut icon" href="{{ asset($website_settings->website_favicon ?? '') }}" type="image/x-icon">
 
     @include('website.inc.style')
 </head>

@@ -5,23 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="elite-themes24">
-    <meta name="description" content="Martex - Tailwind CSS Software, SaaS & Startup Template">
+    <meta name="description" content="{{ $website_settings->website_title ?? '' }}">
     <meta name="keywords"
         content="Responsive, HTML5, elite-themes24, Landing, Software, Mobile App, SaaS, Startup, Creative, Digital Product">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>Martex - Tailwind CSS Software, SaaS & Startup Template</title>
+    <title>@yield('title') - {{ $website_settings->website_title ?? '' }}</title>
 
     <!-- FAVICON AND TOUCH ICONS -->
-    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('frontend/images/apple-touch-icon-152x152.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('frontend/images/apple-touch-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('frontend/images/apple-touch-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
-    <link rel="icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset($website_settings->website_favicon ?? '') }}" type="image/x-icon">
+
 
     @include('website.inc.style')
 </head>

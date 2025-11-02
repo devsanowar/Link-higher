@@ -27,8 +27,8 @@
                             <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
                                 <div class="shape-ico relative inline-block m-0">
                                     <img src="
-                                    {{ asset('frontend') }}/images/icons/phone.png" alt="Service One"
-                                        class="relative z-[2] w-16 h-16 object-contain mx-auto" />
+                                    {{ asset('frontend') }}/images/icons/phone.png"
+                                        alt="Service One" class="relative z-[2] w-16 h-16 object-contain mx-auto" />
                                 </div>
                             </div>
                             <!-- Text -->
@@ -42,7 +42,7 @@
                                 <p class="!mb-0">
                                     {{ $website_settings->phone_one }}
                                 </p>
-                                 <p class="!mb-0">
+                                <p class="!mb-0">
                                     {{ $website_settings->phone_two }}
                                 </p>
                             </div>
@@ -67,10 +67,10 @@
                                 </h6>
 
                                 <p class="!mb-0">
-                                    {{ $website_settings->email_one ?? ''}}
+                                    {{ $website_settings->email_one ?? '' }}
                                 </p>
-                                 <p class="!mb-0">
-                                    {{ $website_settings->email_two ?? ''}}
+                                <p class="!mb-0">
+                                    {{ $website_settings->email_two ?? '' }}
                                 </p>
                             </div>
                         </div>
@@ -175,9 +175,6 @@
                                 <p
                                     class="p-lg text-[#353f4f] !text-[1.125rem] !leading-none font-medium !mb-[10px] pl-[8px]">
                                     Your Name: </p>
-                                <span
-                                    class="block !text-[0.95rem] leading-none !font-light xl:!mb-[20px] pl-[8px] lg:max-xl:!mb-[15px] md:max-lg:!mb-[15px] sm:max-md:!mb-[15px] xsm:max-sm:!leading-[1.4] xsm:max-sm:!mb-[15px]">Please
-                                    enter your real name: </span>
                                 <input type="text" name="name"
                                     class="form-control block w-full name xl:!h-[62px] bg-[#f5f6f8] border shadow-[0_0_0_0] !text-[#3a4a56] !text-[1rem] !font-normal mb--30 mb-[30px] p-[0_15px] rounded-[6px] border-solid border-transparent lg:max-xl:!h-[54px] md:max-lg:!h-[52px] sm:max-md:!h-[54px] xsm:max-sm:!h-[54px] focus:shadow-none focus:bg-[#fcfdfd] focus:border-[#1680fb] focus:[outline:0px_none]"
                                     placeholder="Your Name*">
@@ -186,20 +183,35 @@
                                 <p
                                     class="p-lg text-[#353f4f] !text-[1.125rem] !leading-none font-medium !mb-[10px] pl-[8px]">
                                     Your Email Address: </p>
-                                <span
-                                    class="block !text-[0.95rem] leading-none !font-light xl:!mb-[20px] pl-[8px] lg:max-xl:!mb-[15px] md:max-lg:!mb-[15px] sm:max-md:!mb-[15px] xsm:max-sm:!leading-[1.4] xsm:max-sm:!mb-[15px]">Please
-                                    carefully check your email address for accuracy</span>
+
                                 <input type="text" name="email"
                                     class="form-control block w-full email xl:!h-[62px] bg-[#f5f6f8] border shadow-[0_0_0_0] !text-[#3a4a56] !text-[1rem] !font-normal mb--30 mb-[30px] p-[0_15px] rounded-[6px] border-solid border-transparent lg:max-xl:!h-[54px] md:max-lg:!h-[52px] sm:max-md:!h-[54px] xsm:max-sm:!h-[54px] focus:shadow-none focus:bg-[#fcfdfd] focus:border-[#1680fb] focus:[outline:0px_none]"
                                     placeholder="Email Address*">
                             </div>
+
+                            <div class="w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
+                                <p class="p-lg text-[#353f4f] !text-[1.125rem] !leading-none font-medium !mb-[10px] pl-[8px]">
+                                    Services:
+                                </p>
+
+                                <div class="relative">
+                                    <select name="service_name" id="services"
+                                        class="form-control block w-full email xl:!h-[62px] bg-[#f5f6f8] border shadow-[0_0_0_0] !text-[#3a4a56] !text-[1rem] !font-normal mb--30 mb-[30px] p-[0_15px] rounded-[6px] border-solid border-transparent lg:max-xl:!h-[54px] md:max-lg:!h-[52px] sm:max-md:!h-[54px] xsm:max-sm:!h-[54px] focus:shadow-none focus:bg-[#fcfdfd] focus:border-[#1680fb] focus:[outline:0px_none]">
+                                        <option value="">-- Select a service --</option>
+                                        @foreach ($services as $service)
+                                        <option value="{{ $service->service_title ?? '' }}">{{ $service->service_title ?? '' }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+
                             <div class="w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                                 <p
                                     class="p-lg text-[#353f4f] !text-[1.125rem] !leading-none font-medium !mb-[10px] pl-[8px]">
                                     Explain your question in details: </p>
-                                <span
-                                    class="block !text-[0.95rem] leading-none !font-light xl:!mb-[20px] pl-[8px] lg:max-xl:!mb-[15px] md:max-lg:!mb-[15px] sm:max-md:!mb-[15px] xsm:max-sm:!leading-[1.4] xsm:max-sm:!mb-[15px]">Your
-                                    OS version, Martex version & build, steps you did. Be VERY precise!</span>
+
                                 <textarea
                                     class="form-control block w-full message xl:!h-[62px] bg-[#f5f6f8] border shadow-[0_0_0_0] !text-[#3a4a56] !text-[1rem] !font-normal mb--30 mb-[30px] p-[0_15px] rounded-[6px] border-solid border-transparent lg:max-xl:!h-[54px] md:max-lg:!h-[52px] sm:max-md:!h-[54px] xsm:max-sm:!h-[54px] focus:shadow-none focus:bg-[#fcfdfd] focus:border-[#1680fb] focus:[outline:0px_none]"
                                     name="message" rows="6" placeholder="I have a problem with..."></textarea>
@@ -216,7 +228,8 @@
                                 class="contact-form-msg w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full block mt-[20px] pl-0">
                                 <span
                                     class="loading !text-[#00b2e4] !text-[1.0625rem] leading-none font-medium pl-[15px]"></span>
-                                <div id="globalSuccess" class="hidden rounded-md bg-green-50 p-3 text-green-700 mt-2"></div>
+                                <div id="globalSuccess" class="hidden rounded-md bg-green-50 p-3 text-green-700 mt-2">
+                                </div>
                                 <div id="globalError" class="hidden rounded-md bg-red-50 p-3 text-red-700 mt-2"></div>
                             </div>
 
@@ -255,8 +268,7 @@
                 <!-- GOOGLE MAP -->
                 <div class="w-full h-[500px] md:h-[450px] sm:h-[400px] overflow-hidden">
                     <iframe title="Google Map" width="100%" height="400" style="border:0;" allowfullscreen
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        src="{!! $website_settings->google_map ?? '' !!}">
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="{!! $website_settings->google_map ?? '' !!}">
                     </iframe>
                 </div>
                 <!-- END GOOGLE MAP -->

@@ -26,7 +26,9 @@ Route::post('contact-form/submit', [ContactUsPageController::class, 'submit'])->
 Route::get('/pricing-page', [PricingPageController::class, 'index'])->name('pricing.page');
 
 // Checkout route
-Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.page');
+// Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.page');
+
+
 
 // Legal page route
 Route::get('/privacy-policy/page', [LegalController::class, 'privacyPolicy'])->name('privacy.policy.page');

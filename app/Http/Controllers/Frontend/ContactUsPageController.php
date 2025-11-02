@@ -1,15 +1,17 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Service;
+use App\Models\ContactUs;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContectMessageStoreRequest;
-use App\Models\ContactUs;
 
 class ContactUsPageController extends Controller
 {
     public function index()
     {
-        return view("website.contact-page");
+        $services = Service::latest()->get();
+        return view("website.contact-page", compact("services"));
     }
 
     public function submit(ContectMessageStoreRequest $request)
@@ -19,6 +21,7 @@ class ContactUsPageController extends Controller
         ContactUs::create([
             'name'    => $request->input('name'),
             'email'   => $request->input('email'),
+            'service_name'   => $request->input('service_name'),
             'message' => $request->input('message'),
         ]);
 
