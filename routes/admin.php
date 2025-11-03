@@ -7,9 +7,11 @@ use App\Http\Controllers\Admin\ReasonController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\WebsiteColorController;
 use App\Http\Controllers\Admin\EmployeController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\CaseStudyController;
+use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\SocialIconController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\PackagePlanController;
 use App\Http\Controllers\Admin\GoalProgressController;
+use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\SmartStrategyController;
 use App\Http\Controllers\Admin\TrustedClientController;
 use App\Http\Controllers\Admin\About\WhoWeAreController;
@@ -26,16 +29,16 @@ use App\Http\Controllers\Admin\ProfileSettingController;
 use App\Http\Controllers\Admin\SmartSolutionsController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProjectCategoryController;
+use App\Http\Controllers\Admin\ReturnAndRefundController;
 use App\Http\Controllers\Admin\SmarterWorkflowsController;
+use App\Http\Controllers\Admin\TermsAndConditonController;
 use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
-use App\Http\Controllers\Admin\ContactUsController;
-use App\Http\Controllers\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Admin\ReturnAndRefundController;
-use App\Http\Controllers\Admin\TermsAndConditonController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
@@ -141,6 +144,18 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
         Route::put('who-we-are/update', [WhoWeAreController::class, 'update'])->name('who-we-are.update');
     });
 
+    // Product category resource route
+    Route::resource('product-category', ProductCategoryController::class);
+    // Product resource route
+    Route::resource('products', ProductController::class);
+    // Soft Delete
+    Route::get('/product/trashed', [ProductController::class, 'trashed'])->name('products.trashed');
+    Route::get('/products/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
+    Route::delete('/products/force-delete/{id}', [ProductController::class, 'forceDelete'])->name('products.force.delete');
+
+    // Service category resouce route
+    Route::resource('service-category', ServiceCategoryController::class);
+    // Services resource route
     Route::resource('services', ServicesController::class);
 
     Route::prefix('case-study')->group(function () {

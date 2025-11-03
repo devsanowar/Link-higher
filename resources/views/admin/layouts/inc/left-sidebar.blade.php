@@ -134,10 +134,37 @@
             </li>
 
 
+            <li class="menu-item {{ request()->routeIs('product-category.*', 'products.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-shopping-cart"></i><span>Product</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('product-category.*') ? 'active' : '' }}">
+                        <a href="{{ route('product-category.index') }}">Category</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('products.*') ? 'active' : '' }}">
+                        <a href="{{ route('products.index') }}">Products</a>
+                    </li>
+                </ul>
+            </li>
+
             <!--Services Menu-->
-            <li class="{{ request()->routeIs(['services.*']) ? 'active open' : '' }}"><a
-                    href="{{ route('services.index') }}"><i class="zmdi zmdi-collection-plus"></i><span>Services</span>
-                </a></li>
+            <li class="menu-item {{ request()->routeIs('service-category.*', 'services.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-collection-plus"></i><span>Services</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('service-category.*') ? 'active' : '' }}">
+                        <a href="{{ route('service-category.index') }}">Category</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('services.*') ? 'active' : '' }}">
+                        <a href="{{ route('services.index') }}">Services</a>
+                    </li>
+                </ul>
+            </li>
+
 
             <!--Project with category Menu-->
             <li class="menu-item {{ request()->routeIs(['project-category.*', 'project.*']) ? 'active open' : '' }}">

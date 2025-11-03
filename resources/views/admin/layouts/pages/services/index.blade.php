@@ -22,6 +22,7 @@
                                     <th>#</th>
                                     <th>Image</th>
                                     <th>Title</th>
+                                    <th>Service Category</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                         </td>
 
                                         <td>{{ $service->service_title ?? '' }}</td>
+                                        <td>{{ $service->ServiceCategory->category_name ?? 'Uncategorized' }}</td>
                                         <td class="text-center">
                                             <!-- Edit Link -->
                                             <a href="{{ route('services.edit', $service->id) }}"

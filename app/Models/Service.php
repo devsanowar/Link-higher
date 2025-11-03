@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ServiceCategory;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
@@ -11,6 +12,12 @@ class Service extends Model
     // protected $casts = [
     //     'service_features' => 'array',
     // ];
+
+    public function ServiceCategory()
+    {
+        return $this->belongsTo(ServiceCategory::class, 'service_category_id');
+    }
+
 }
 
 

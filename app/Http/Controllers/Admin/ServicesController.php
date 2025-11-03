@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Service;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ServiceCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
@@ -23,7 +24,8 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view("admin.layouts.pages.services.create");
+        $categories = ServiceCategory::latest()->get();
+        return view("admin.layouts.pages.services.create", compact("categories"));
     }
 
     /**
@@ -32,6 +34,7 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'service_category_id'        => 'required|exists:service_categories,id',
             'service_title'             => 'required|string|max:255',
             'service_short_description' => 'nullable|string',
             'service_long_description'  => 'nullable|string',
@@ -42,6 +45,7 @@ class ServicesController extends Controller
         ]);
 
         $service                = new Service();
+        $service->service_category_id = $request->service_category_id;
         $service->service_title = $request->service_title;
         $service->service_slug  = Str::slug($request->service_title);
 
@@ -99,6 +103,7 @@ class ServicesController extends Controller
         $service = Service::findOrFail($id);
 
         $request->validate([
+            'service_category_id'        => 'required|exists:service_categories,id',
             'service_title'             => 'required|string|max:255',
             'service_slug'              => 'nullable|string|max:255|unique:services,service_slug,' . $service->id,
             'service_short_description' => 'nullable|string',
@@ -109,6 +114,7 @@ class ServicesController extends Controller
         ]);
 
         // Basic fields
+        $service->service_category_id = $request->service_category_id;
         $service->service_title = $request->service_title;
 
         // If user provided slug, use it; else derive from title

@@ -27,6 +27,28 @@
                             {{-- Service Title --}}
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="service_category_id">Service Category <strong class="text-danger">*</strong></label>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                            <select name="service_category_id" id="service_category_id" class="form-control show-tick">
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}"
+                                                        {{ old('service_category_id') == $category->id ? 'selected' : '' }}>
+                                                        {{ $category->category_name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                        @error('service_category_id')
+                                            <span class="text-danger small">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Service Title --}}
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
                                     <label for="service_title">Service Title <strong class="text-danger">*</strong></label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
@@ -44,25 +66,6 @@
                                 </div>
                             </div>
 
-                            {{-- Service Slug --}}
-                            <div class="row clearfix">
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="service_slug">Service Slug <strong class="text-danger">*</strong></label>
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" id="service_slug" name="service_slug"
-                                                class="form-control @error('service_slug') is-invalid @enderror"
-                                                placeholder="premium-seo-audit" value="{{ old('service_slug') }}" required>
-                                        </div>
-
-                                        @error('service_slug')
-                                            <span class="text-danger small">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
 
                             {{-- Short Description --}}
                             <div class="row clearfix">
