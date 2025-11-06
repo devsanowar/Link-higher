@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PackagePlan;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PackagePlanController extends Controller
@@ -12,7 +13,7 @@ class PackagePlanController extends Controller
      */
     public function index()
     {
-        $plans = PackagePlan::all();
+        $plans = PackagePlan::latest()->get();
         return view("admin.layouts.pages.package-plan.index", compact("plans"));
     }
 
@@ -21,7 +22,8 @@ class PackagePlanController extends Controller
      */
     public function create()
     {
-        return view("admin.layouts.pages.package-plan.create");
+        $services = Service::where('status', 1)->latest()->get();
+        return view("admin.layouts.pages.package-plan.create", compact("services"));
     }
 
     /**
@@ -30,33 +32,66 @@ class PackagePlanController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'                => 'required|string|max:120',
-            'slug'                => 'required|string|max:120|unique:package_plans,slug',
-            'subtitle'            => 'nullable|string|max:500',
-            'cta_text'            => 'nullable|string|max:120',
-            'cta_url'             => 'nullable|string|max:255',
-            'currency'            => 'required|string|size:3',
-            'monthly_amount'      => 'required|numeric|min:0',
-            'yearly_amount'       => 'required|numeric|min:0',
-            'monthly_label'       => 'nullable|string|max:10',
-            'yearly_label'        => 'nullable|string|max:10',
-            'yearly_save_percent' => 'nullable|integer|min:0|max:100',
-            'yearly_save_text'    => 'nullable|string|max:160',
-            'trial_days'          => 'nullable|integer|min:0',
-            'money_back_days'     => 'nullable|integer|min:0',
-            'position'            => 'nullable|integer|unique:package_plans,position',
-            'features'            => 'nullable|string', // JSON string
-            'is_free'             => 'nullable|boolean',
-            'is_popular'          => 'nullable|boolean',
-            'is_active'           => 'nullable|boolean',
+            'service_id'    => 'nullable|exists:services,id',
+            'name'          => 'required|string|max:255',
+            'slug'          => 'required|string|max:255',
+            'price'         => 'required|numeric|min:0',
+            'discount'      => 'nullable|numeric|min:0',
+            'discount_type' => 'nullable|in:percent,amount',
+            'currency'      => 'required|string|max:10',
+            'features'      => 'nullable',
+            'is_active'     => 'nullable|boolean',
         ]);
 
-        $validated['features']   = $validated['features'] ?: '[]';
-        $validated['is_free']    = $request->boolean('is_free');
-        $validated['is_popular'] = $request->boolean('is_popular');
-        $validated['is_active']  = (int) $request->input('is_active', 1);
+        // Normalize features: accept JSON string or array -> ensure an array (empty array if none)
+        $featuresInput = $request->input('features', null);
 
-        $plan = PackagePlan::create($validated);
+        if (is_string($featuresInput)) {
+            $decoded  = json_decode($featuresInput, true);
+            $features = (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) ? $decoded : [];
+        } elseif (is_array($featuresInput)) {
+            $features = $featuresInput;
+        } else {
+            $features = [];
+        }
+
+        // Calculate final_price based on discount and discount_type
+        $price    = (float) ($validated['price'] ?? 0);
+        $discount = isset($validated['discount']) ? (float) $validated['discount'] : 0;
+        $dtype    = $validated['discount_type'] ?? null;
+
+        if ($discount > 0 && $dtype) {
+            if ($dtype === 'percent') {
+                $finalPrice = $price - (($price * $discount) / 100);
+            } elseif ($dtype === 'amount') {
+                $finalPrice = $price - $discount;
+            } else {
+                $finalPrice = $price;
+            }
+        } else {
+            $finalPrice = $price;
+        }
+
+        // ensure not negative and round to 2 decimals
+        $finalPrice = max($finalPrice, 0);
+        $finalPrice = round($finalPrice, 2);
+
+        // Prepare final data to save
+        $data = [
+            'service_id'    => $validated['service_id'] ?? null,
+            'name'          => $validated['name'],
+            'slug'          => $validated['slug'],
+            'price'         => $validated['price'],
+            'discount'      => $validated['discount'] ?? null,
+            'discount_type' => $validated['discount_type'] ?? null,
+            'currency'      => $validated['currency'],
+            'features'      => $features,
+            'is_active'     => (int) ($validated['is_active'] ?? 1),
+            'final_price'   => $finalPrice, // <-- calculated field
+        ];
+
+        $plan = PackagePlan::create($data);
+
 
         return response()->json([
             'status'  => 'success',
@@ -78,8 +113,9 @@ class PackagePlanController extends Controller
      */
     public function edit(string $id)
     {
-        $plan = PackagePlan::findOrFail($id);
-        return view("admin.layouts.pages.package-plan.edit", compact("plan"));
+        $plan     = PackagePlan::findOrFail($id);
+        $services = Service::where('status', 1)->latest()->get();
+        return view("admin.layouts.pages.package-plan.edit", compact("plan", "services"));
     }
 
     /**
@@ -90,37 +126,71 @@ class PackagePlanController extends Controller
         $plan = PackagePlan::findOrFail($id);
 
         $validated = $request->validate([
-            'name'                => 'required|string|max:255',
-            'slug'                => 'required|string|max:255|unique:package_plans,slug,' . $plan->id,
-            'subtitle'            => 'nullable|string',
-            'monthly_amount'      => 'nullable|numeric',
-            'yearly_amount'       => 'nullable|numeric',
-            'yearly_save_percent' => 'nullable|numeric',
-            'currency'            => 'nullable|string|max:5',
-            'position'       => ['required', 'numeric', 'unique:package_plans,position,' . $id],
-            'is_active'           => 'nullable|boolean',
+            'service_id'    => 'nullable|exists:services,id',
+            'name'          => 'required|string|max:255',
+            'slug'          => 'required|string|max:255',
+            'price'         => 'required|numeric|min:0',
+            'discount'      => 'nullable|numeric|min:0',
+            'discount_type' => 'nullable|in:percent,amount',
+            'currency'      => 'required|string|max:10',
+            'features'      => 'nullable',
+            'is_active'     => 'nullable|boolean',
         ]);
 
-        $plan->update([
-            'name'                => $request->name,
-            'slug'                => $request->slug,
-            'subtitle'            => $request->subtitle,
-            'cta_text'            => $request->cta_text,
-            'cta_url'             => $request->cta_url,
-            'currency'            => $request->currency,
-            'monthly_amount'      => $request->monthly_amount,
-            'yearly_amount'       => $request->yearly_amount,
-            'yearly_save_percent' => $request->yearly_save_percent,
-            'yearly_save_text'    => $request->yearly_save_text,
-            'features'            => $request->features,
-            'position'            => $request->position,
-            'is_active'           => $request->is_active ?? 1,
-        ]);
+        // Normalize features: accept JSON string or array -> ensure an array (empty array if none)
+        $featuresInput = $request->input('features', null);
+
+        if (is_string($featuresInput)) {
+            $decoded  = json_decode($featuresInput, true);
+            $features = (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) ? $decoded : [];
+        } elseif (is_array($featuresInput)) {
+            $features = $featuresInput;
+        } else {
+            $features = [];
+        }
+
+        // Calculate final_price based on discount and discount_type
+        $price    = (float) ($validated['price'] ?? 0);
+        $discount = isset($validated['discount']) ? (float) $validated['discount'] : 0;
+        $dtype    = $validated['discount_type'] ?? null;
+
+        if ($discount > 0 && $dtype) {
+            if ($dtype === 'percent') {
+                $finalPrice = $price - (($price * $discount) / 100);
+            } elseif ($dtype === 'amount') {
+                $finalPrice = $price - $discount;
+            } else {
+                $finalPrice = $price;
+            }
+        } else {
+            $finalPrice = $price;
+        }
+
+        // ensure not negative and round to 2 decimals
+        $finalPrice = max($finalPrice, 0);
+        $finalPrice = round($finalPrice, 2);
+
+        // Prepare data to update
+        $data = [
+            'service_id'    => $validated['service_id'] ?? null,
+            'name'          => $validated['name'],
+            'slug'          => $validated['slug'],
+            'price'         => $validated['price'],
+            'discount'      => $validated['discount'] ?? null,
+            'discount_type' => $validated['discount_type'] ?? null,
+            'currency'      => $validated['currency'],
+            'features'      => $features,
+            'is_active'     => (int) ($validated['is_active'] ?? 1),
+            'final_price'   => $finalPrice,
+        ];
+
+        $plan->update($data);
 
         return response()->json([
             'status'  => 'success',
             'message' => 'Package Plan updated successfully.',
             'id'      => $plan->id,
+            'redirectUrl' => route('package_plans.index'),
         ]);
     }
 

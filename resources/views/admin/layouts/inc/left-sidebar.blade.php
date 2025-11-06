@@ -150,7 +150,7 @@
             </li>
 
             <!--Services Menu-->
-            <li class="menu-item {{ request()->routeIs('service-category.*', 'services.*') ? 'active open' : '' }}">
+            <li class="menu-item {{ request()->routeIs('service-category.*', 'services.*', 'package_plans.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-collection-plus"></i><span>Services</span>
                 </a>
@@ -162,8 +162,19 @@
                     <li class="{{ request()->routeIs('services.*') ? 'active' : '' }}">
                         <a href="{{ route('services.index') }}">Services</a>
                     </li>
+
+                    <li class="{{ request()->routeIs('package_plans.*') ? 'active' : '' }}">
+                        <a href="{{ route('package_plans.index') }}">Package Plan</a>
+                    </li>
                 </ul>
             </li>
+
+            <!--Employe Menu-->
+            <li class="{{ request()->routeIs(['country.*']) ? 'active open' : '' }}">
+                <a href="{{ route('country.index') }}"><i class="zmdi zmdi-flag"></i><span>Country</span>
+                </a>
+            </li>
+
 
 
             <!--Project with category Menu-->
@@ -189,12 +200,7 @@
                 </a>
             </li>
 
-            <!--Package Plan Menu-->
-            <li class="{{ request()->routeIs(['package_plans.*']) ? 'active open' : '' }}">
-                <a href="{{ route('package_plans.index') }}"><i class="zmdi zmdi-money-box"></i><span>Package
-                        Plan</span>
-                </a>
-            </li>
+
 
             <!--FAQ Menu-->
             <li class="{{ request()->routeIs(['faqs.*']) ? 'active open' : '' }}"><a

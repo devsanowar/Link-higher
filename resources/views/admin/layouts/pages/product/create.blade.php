@@ -292,8 +292,12 @@
                     success: function(response) {
                         if (response.status === 'success') {
                             $("#addProductForm")[0].reset();
-                            $('#previewImage').attr('src', '#').addClass('d-none');
                             toastr.success(response.message);
+                            if (response.redirectUrl) {
+                                setTimeout(function() {
+                                    window.location.href = response.redirectUrl;
+                                }, 1000);
+                            }
                         } else {
                             toastr.error(response.message ?? 'Something went wrong!');
                         }

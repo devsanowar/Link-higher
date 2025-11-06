@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
@@ -195,6 +196,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
 
     // Project resource route
     Route::resource('project', ProjectController::class);
+
+    // Country route here
+    Route::get('country', [CountryController::class, 'index'])->name('country.index');
+    Route::post('country/store', [CountryController::class, 'store'])->name('country.store');
+    Route::put('country/update/{id}', [CountryController::class, 'update'])->name('country.update');
+    Route::delete('country/destroy/{id}', [CountryController::class, 'destroy'])->name('country.destroy');
 
     // Soft Delete
 

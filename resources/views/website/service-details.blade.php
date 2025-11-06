@@ -1,5 +1,6 @@
 @extends('website.layouts.app')
 @section('title', 'Service Details Page')
+
 @section('website_content')
     <section id="service-page-breadcrumb">
         <div class="breadcrumb-container">
@@ -58,59 +59,114 @@
         <!-- End container -->
     </section>
     <!-- END CAREER ROLE -->
-
-<!-- DIVIDER LINE -->
     <hr
         class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
 
-    <section id="features-6" class="other-services pb--100 !pb-[100px] lg:max-xl:!pb-[80px] md:max-lg:!pb-[70px]  features-section division">
-    <div class="container">
 
-<h2 class="custom-section-title">Other Services</h2>
+    <section class="products-section">
+        <h2 class="custom-section-title">Packages</h2>
+        <div class="product-grid">
+
+            <!-- Product 1 -->
+            @foreach ($service->PackagePlans as $plan)
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ asset($service->image) }}" alt="Product Image">
+                        <span class="category-label">{{ $service->service_title ?? '' }}</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>{{ $plan->name ?? 'Basic' }}</h3>
+                        <p>
+                            @if ($plan->discount && $plan->discount_type)
+                                <span style="color: red; text-decoration: line-through; margin-right: 10px;">
+                                    ${{ number_format($plan->price, 2) }}
+                                </span>
+                                <span style="font-weight: bold;">
+                                    ${{ number_format($plan->final_price, 2) }}
+                                </span>
+                            @else
+                                <span style="color: #111; font-weight: 600;">
+                                    ${{ number_format($plan->price, 2) }}
+                                </span>
+                            @endif
+                        </p>
+                        <div class="product-buttons">
+                            <a href="{{ route('service.plan.details.page', $plan->id) }}" class="add-to-cart">
+                            <button class="add-to-cart">View Details</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            @endforeach
+
+        </div>
+    </section>
 
 
-        <!-- FEATURES-6 WRAPPER -->
-        <div class="fbox-wrapper !text-center">
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  row-cols-1 row-cols-md-2 row-cols-lg-4">
-                <!-- FEATURE BOX #1 -->
-                @foreach ($otherServices as $key => $service)
-                    <div
-                        class="col md:max-lg:w-6/12 lg:max-xl:w-3/12 xl:w-3/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div class="service-custom-design fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px]">
-                            <!-- Icon -->
-                            <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
-                                <div class="shape-ico relative inline-block m-0 icon-card">
+
+
+    <!-- DIVIDER LINE -->
+    <hr
+        class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
+
+    <section id="features-6"
+        class="other-services pb--100 !pb-[100px] lg:max-xl:!pb-[80px] md:max-lg:!pb-[70px]  features-section division">
+        <div class="container">
+
+            <h2 class="custom-section-title">Other Services</h2>
+
+
+            <!-- FEATURES-6 WRAPPER -->
+            <div class="fbox-wrapper !text-center">
+                <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  row-cols-1 row-cols-md-2 row-cols-lg-4">
+                    <!-- FEATURE BOX #1 -->
+                    @foreach ($otherServices as $key => $service)
+                        <div
+                            class="col md:max-lg:w-6/12 lg:max-xl:w-4/12 xl:w-4/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
+                            <div class="service-custom-design fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px]">
+                                <!-- Icon -->
+                                <div class="fbox-ico ico-55 service-image">
+                                    <div class="shape-ico relative inline-block m-0 icon-card">
                                         <img src="{{ asset($service->image) }}"
                                             alt="{{ $service->service_title ?? 'Service' }}"
                                             class="relative z-[2] w-16 h-16 object-contain mx-auto" />
                                     </div>
-                            </div>
-                            <!-- End Icon -->
-                            <!-- Text -->
-                            <div class="fbox-txt">
-                                <a href="{{ route('service.details.page', $service->id) }}" class="service-title">
-                                    <h6
-                                        class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                        {{ $service->service_title ?? '' }}</h6>
-                                </a>
-                                <p class="!mb-0">{!! Str::limit($service->service_short_description, 50, '...') !!} <a class="custom-service-button" href="{{ route('service.details.page', $service->id) }}">Read More</a></p>
+                                </div>
+                                <!-- End Icon -->
+
+                                <!-- Text -->
+                                <div class="fbox-txt service-text">
+                                    <a href="{{ route('service.details.page', $service->id) }}" class="service-title">
+                                        <h6
+                                            class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
+                                            {{ $service->service_title ?? '' }}
+                                        </h6>
+                                    </a>
+                                    <p class="!mb-0">
+                                        {!! Str::limit($service->service_short_description, 50, '...') !!}
+                                        <a class="custom-service-button"
+                                            href="{{ route('service.details.page', $service->id) }}">
+                                            Read More
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
 
-                <!-- END FEATURE BOX #1 -->
+                    <!-- END FEATURE BOX #1 -->
 
+                </div>
+                <!-- End row -->
             </div>
-            <!-- End row -->
+            <!-- END FEATURES-6 WRAPPER -->
         </div>
-        <!-- END FEATURES-6 WRAPPER -->
-    </div>
-    <!-- End container -->
-</section>
-<!-- END FEATURES-6 -->
+        <!-- End container -->
+    </section>
+    <!-- END FEATURES-6 -->
 
-<!-- DIVIDER LINE -->
+    <!-- DIVIDER LINE -->
     <hr
         class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
 

@@ -18,6 +18,11 @@ class Service extends Model
         return $this->belongsTo(ServiceCategory::class, 'service_category_id');
     }
 
+    public function PackagePlans()
+    {
+        return $this->hasMany(PackagePlan::class, 'service_id');
+    }
+
 }
 
 

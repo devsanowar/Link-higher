@@ -27,3 +27,4 @@
     <link href="{{ asset('frontend/css/colors/skyblue-theme.css') }}" rel="alternate stylesheet" title="skyblue-theme">
     <link href="{{ asset('frontend/css/colors/red-theme.css') }}" rel="alternate stylesheet" title="red-theme">
     <link href="{{ asset('frontend/css/colors/violet-theme.css') }}" rel="alternate stylesheet" title="violet-theme">
+    @stack('styles')

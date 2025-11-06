@@ -15,7 +15,8 @@ class ServicePageController extends Controller
     public function serviceDetails($id)
     {
 
-        $service = Service::find($id);
+        $service = Service::with('PackagePlans', 'ServiceCategory')->findOrFail($id);
+
 
         $otherServices = Service::query()
             ->where('id', '!=', $service->id)

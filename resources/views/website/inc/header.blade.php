@@ -52,65 +52,56 @@
                                 </li>
 
 
-
-
-
-                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('service.page') }}"
-                                        class="h-link">Services</a>
-                                </li>
-
                                 <!-- MEGAMENU -->
-                                {{-- <li aria-haspopup="true" class="mg_link">
-                                    <a href="#" class="h-link">Pages <span class="wsarrow"></span></a>
+                                <li aria-haspopup="true" class="mg_link">
+                                    <a href="{{ route('service.page') }}" class="h-link">Services <span
+                                            class="wsarrow"></span></a>
+                                    @php
+                                        use App\Models\ServiceCategory;
+
+                                        $categories = ServiceCategory::with([
+                                            'services' => function ($q) {
+                                                $q->where('status', 1)->orderBy('service_title');
+                                            },
+                                        ])
+                                            ->where('status', 1)
+                                            ->orderBy('category_name')
+                                            ->get()
+                                            ->filter(function ($category) {
+                                                // শুধু সেই ক্যাটাগরিগুলো রাখবো যেগুলোর services আছে
+                                                return $category->services->isNotEmpty();
+                                            });
+                                    @endphp
+
                                     <div class="wsmegamenu w-75 clearfix">
                                         <div class="container">
                                             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]">
                                                 <!-- MEGAMENU LINKS -->
-                                                <ul
-                                                    class="lg:w-3/12 xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full link-list">
-                                                    <li class="fst-li"><a href="about.html">About Us</a></li>
-                                                    <li><a href="team.html">Our Team</a></li>
-                                                    <li><a href="careers.html">Careers <span
-                                                                class="sm-info">4</span></a></li>
-                                                    <li><a href="career-role.html">Career Details</a></li>
-                                                    <li><a href="contacts.html">Contact Us</a></li>
-                                                </ul>
-                                                <!-- MEGAMENU LINKS -->
-                                                <ul
-                                                    class="lg:w-3/12 xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full link-list">
-                                                    <li><a href="features.html">Core Features</a></li>
-                                                    <li class="fst-li"><a href="projects.html">Our Projects</a></li>
-                                                    <li><a href="project-details.html">Project Details</a></li>
-                                                    <li><a href="reviews.html">Testimonials</a></li>
-                                                    <li><a href="download.html">Download Page</a></li>
-                                                </ul>
-                                                <!-- MEGAMENU LINKS -->
-                                                <ul
-                                                    class="lg:w-3/12 xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full link-list">
-                                                    <li class="fst-li"><a href="pricing-1.html">Pricing Page #1</a>
-                                                    </li>
-                                                    <li><a href="pricing-2.html">Pricing Page #2</a></li>
-                                                    <li><a href="faqs.html">FAQs Page</a></li>
-                                                    <li><a href="help-center.html">Help Center</a></li>
-                                                    <li><a href="404.html">404 Page</a></li>
-                                                </ul>
-                                                <!-- MEGAMENU LINKS -->
-                                                <ul
-                                                    class="lg:w-3/12 xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full link-list">
-                                                    <li class="fst-li"><a href="blog-listing.html">Blog Listing</a>
-                                                    </li>
-                                                    <li><a href="single-post.html">Single Blog Post</a></li>
-                                                    <li><a href="login-2.html">Login Page</a></li>
-                                                    <li><a href="signup-2.html">Signup Page</a></li>
-                                                    <li><a href="reset-password.html">Reset Password</a></li>
-                                                </ul>
+                                                @foreach ($categories as $category)
+                                                    <ul id="menu-items"
+                                                        class="lg:w-3/12 xl:w-3/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full link-list">
+                                                        <div id="service-category">
+                                                            <h4>{{ $category->category_name }}</h4>
+                                                        </div>
+
+                                                        <!-- CATEGORY WISE SERVICES -->
+                                                        @foreach ($category->services as $service)
+                                                            <li class="fst-li">
+                                                                <a href="{{ route('service.details.page', $service->id) }}">
+                                                                    {{ $service->service_title }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endforeach
                                             </div>
                                             <!-- End row -->
                                         </div>
                                         <!-- End container -->
                                     </div>
+
                                     <!-- End wsmegamenu -->
-                                </li> --}}
+                                </li>
                                 <!-- END MEGAMENU -->
                                 <!-- SIMPLE NAVIGATION LINK -->
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('pricing.page') }}"
