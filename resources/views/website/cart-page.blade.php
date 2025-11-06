@@ -71,7 +71,7 @@
                                             </div>
                                         </td>
 
-                                        <td class="price">{{ $item['currency'] ?? '' }}{{ number_format($price, 2) }}</td>
+                                        <td class="price">${{ number_format($price, 2) }}</td>
 
                                         <td>
                                             <div class="qty" data-id="{{ $key }}">
@@ -84,7 +84,7 @@
                                             </div>
                                         </td>
 
-                                        <td class="subtotal">{{ $item['currency'] ?? '' }}{{ number_format($subtotal, 2) }}</td>
+                                        <td class="subtotal">${{ number_format($subtotal, 2) }}</td>
 
                                         <td>
                                             <form action="{{ route('cart.remove', $key) }}" method="POST" onsubmit="return confirm('Remove this item?');">
@@ -110,10 +110,10 @@
                         <div class="panel">
                             <div class="line total">
                                 <div>Total</div>
-                                <div id="totalVal">{{ session('currency', '') }}{{ number_format($totalAmount ?? 0, 2) }}</div>
+                                <div id="totalVal">${{ number_format($totalAmount ?? 0, 2) }}</div>
                             </div>
 
-                            <a href="#" class="checkout-button">Proceed to Checkout</a>
+                            <a href="{{ route('checkout.page') }}" class="checkout-button">Proceed to Checkout</a>
                         </div>
                     </div>
 

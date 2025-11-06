@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\Frontend\ServicePlanController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
+use App\Http\Controllers\Frontend\OrderController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
@@ -35,6 +36,8 @@ Route::post('/cart/remove/{key}', [CartPageController::class, 'remove'])->name('
 
 // Checkout route
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.page');
+Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('order.process');
+Route::get('order/confirmation/{id}', [CheckoutController::class, 'showOrderConfirmation'])->name('order.success');
 
 
 
