@@ -1,45 +1,46 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CtaController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\ReasonController;
-use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\WebsiteColorController;
-use App\Http\Controllers\Admin\EmployeController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\About\AboutController;
+use App\Http\Controllers\Admin\About\MissionAndVissionController;
+use App\Http\Controllers\Admin\About\WhoWeAreController;
+use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\Admin\AdminPanelController;
+use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CaseStudyController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CtaController;
+use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AdminPanelController;
-use App\Http\Controllers\Admin\SocialIconController;
-use App\Http\Controllers\Admin\WhyChoseUsController;
-use App\Http\Controllers\Admin\About\AboutController;
-use App\Http\Controllers\Admin\AchievementController;
-use App\Http\Controllers\Admin\HeroSectionController;
-use App\Http\Controllers\Admin\PackagePlanController;
+use App\Http\Controllers\Admin\EmployeController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\GoalProgressController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PackagePlanController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Admin\SmartStrategyController;
-use App\Http\Controllers\Admin\TrustedClientController;
-use App\Http\Controllers\Admin\About\WhoWeAreController;
+use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileSettingController;
+use App\Http\Controllers\Admin\ProjectCategoryController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ReasonController;
+use App\Http\Controllers\Admin\ReturnAndRefundController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\SmarterWorkflowsController;
+use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\SmartSolutionsController;
+use App\Http\Controllers\Admin\SmartStrategyController;
+use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\TermsAndConditonController;
+use App\Http\Controllers\Admin\TrustedClientController;
 use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
-use App\Http\Controllers\Admin\ProductCategoryController;
-use App\Http\Controllers\Admin\ProjectCategoryController;
-use App\Http\Controllers\Admin\ReturnAndRefundController;
-use App\Http\Controllers\Admin\SmarterWorkflowsController;
-use App\Http\Controllers\Admin\TermsAndConditonController;
-use App\Http\Controllers\Admin\CaseStudyCategoryController;
-use App\Http\Controllers\Admin\CustomerFocusToneController;
-use App\Http\Controllers\Admin\SmartSolutionFeatureController;
-use App\Http\Controllers\Admin\About\MissionAndVissionController;
-use App\Http\Controllers\Admin\CountryController;
-use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\WhyChoseUsController;
+use App\Http\Controllers\WebsiteColorController;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
@@ -105,8 +106,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
         Route::put('goal-progress-section-title/update', [GoalProgressController::class, 'updateTitle'])->name('goal-progress-section-title.update');
 
         // Smart solution
-        Route::get('smart-solution', [SmartSolutionsController::class,'index'])->name('smart-solution.index');
-        Route::put('smart-solution/update', [SmartSolutionsController::class,'update'])->name('smart-solution.update');
+        Route::get('smart-solution', [SmartSolutionsController::class, 'index'])->name('smart-solution.index');
+        Route::put('smart-solution/update', [SmartSolutionsController::class, 'update'])->name('smart-solution.update');
 
         // smart solution feature resource route
         Route::resource('smart-solution-features', SmartSolutionFeatureController::class);
@@ -122,13 +123,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
         Route::resource('why-chose-us/reason', ReasonController::class);
 
         // Customer focus tone route here
-        Route::get('customer-focus-tone', [CustomerFocusToneController::class,'index'])->name('customer-focus-tone.index');
-        Route::put('customer-focus-tone/update', [CustomerFocusToneController::class,'update'])->name('customer-focus-tone.update');
+        Route::get('customer-focus-tone', [CustomerFocusToneController::class, 'index'])->name('customer-focus-tone.index');
+        Route::put('customer-focus-tone/update', [CustomerFocusToneController::class, 'update'])->name('customer-focus-tone.update');
 
         // CTA route
         Route::get('CTA', [CtaController::class, 'index'])->name('cta.index');
         Route::put('cta/update', [CtaController::class, 'update'])->name('cta.update');
-
 
     });
 
@@ -158,6 +158,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     Route::resource('service-category', ServiceCategoryController::class);
     // Services resource route
     Route::resource('services', ServicesController::class);
+
+    // Order route here
+    Route::get('order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('order/show/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('order/invoice', [OrderController::class, 'invoice'])->name('invoice.page.index');
+    Route::get('order/invoice/show/{id}', [OrderController::class, 'invoiceShow'])->name('order.invoice.show');
 
     Route::prefix('case-study')->group(function () {
         Route::resource('category', CaseStudyCategoryController::class);

@@ -23,7 +23,7 @@ class CustomerLoginController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->system_admin === 'customer') {
-                return redirect()->intended('/customer/dashboard')
+                return redirect()->intended('/service-page')
                     ->with('success', 'Welcome back!');
             }
 

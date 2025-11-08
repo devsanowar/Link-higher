@@ -150,7 +150,8 @@
             </li>
 
             <!--Services Menu-->
-            <li class="menu-item {{ request()->routeIs('service-category.*', 'services.*', 'package_plans.*') ? 'active open' : '' }}">
+            <li
+                class="menu-item {{ request()->routeIs('service-category.*', 'services.*', 'package_plans.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-collection-plus"></i><span>Services</span>
                 </a>
@@ -165,6 +166,26 @@
 
                     <li class="{{ request()->routeIs('package_plans.*') ? 'active' : '' }}">
                         <a href="{{ route('package_plans.index') }}">Package Plan</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--Services Menu-->
+            <li class="menu-item {{ request()->routeIs('order.*', 'invoice.page.*') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+
+
+                    <i class="zmdi zmdi-shopping-basket"></i>
+
+                    <span>Orders</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('order.*') ? 'active' : '' }}">
+                        <a href="{{ route('order.index') }}">All Order</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('invoice.page.*') ? 'active' : '' }}">
+                        <a href="{{ route('invoice.page.index') }}">Invoice</a>
                     </li>
                 </ul>
             </li>

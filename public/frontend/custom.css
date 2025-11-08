@@ -919,5 +919,8 @@ table.cart tbody td {
 }
 
 
-/*============= Checkout page css ==============*/
+/*============= Profile image ==============*/
 
+.profile-image img {
+	width: 47px;
+}

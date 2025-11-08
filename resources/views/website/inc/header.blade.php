@@ -51,8 +51,6 @@
                                         class="h-link">Home</a>
                                 </li>
 
-                                
-
 
                                 <!-- MEGAMENU -->
                                 <li aria-haspopup="true" class="mg_link">
@@ -89,7 +87,8 @@
                                                         <!-- CATEGORY WISE SERVICES -->
                                                         @foreach ($category->services as $service)
                                                             <li class="fst-li">
-                                                                <a href="{{ route('service.details.page', $service->id) }}">
+                                                                <a
+                                                                    href="{{ route('service.details.page', $service->id) }}">
                                                                     {{ $service->service_title }}
                                                                 </a>
                                                             </li>
@@ -135,10 +134,23 @@
 
                                 <!-- If user is logged in -->
                                 @auth
-                                    <!-- DASHBOARD LINK -->
-                                    <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
-                                        <a href="{{ route('customer.dashboard') }}" class="h-link">Dashboard</a>
+
+                                    <li aria-haspopup="true">
+                                        <a href="#" class="h-link"><span class="profile-image"><img src="{{ asset('frontend/images/profile.png') }}" alt=""></span> <span class="wsarrow"></span></a>
+                                        <ul class="sub-menu">
+                                            <li class="nl-simple reg-fst-link mobile-last-link" aria-haspopup="true">
+                                                <a href="{{ route('customer.dashboard') }}" class="h-link">Dashboard</a>
+                                            </li>
+                                            <li aria-haspopup="true">
+                                                <a href="{{ route('cart.page') }}">Cart Page</a>
+                                            </li>
+                                            <li aria-haspopup="true">
+                                                <a href="{{ route('checkout.page') }}">Checkout</a>
+                                            </li>
+                                        </ul>
                                     </li>
+                                    <!-- DASHBOARD LINK -->
+
 
                                     <!-- LOGOUT BUTTON -->
                                     <li class="nl-simple" aria-haspopup="true">

@@ -92,7 +92,7 @@
                         </p>
                         <div class="product-buttons">
                             <a href="{{ route('service.plan.details.page', $plan->id) }}" class="add-to-cart">
-                            <button class="add-to-cart">View Details</button>
+                                <button class="add-to-cart">View Details</button>
                             </a>
                         </div>
                     </div>
@@ -127,11 +127,14 @@
                             <div class="service-custom-design fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px]">
                                 <!-- Icon -->
                                 <div class="fbox-ico ico-55 service-image">
-                                    <div class="shape-ico relative inline-block m-0 icon-card">
-                                        <img src="{{ asset($service->image) }}"
-                                            alt="{{ $service->service_title ?? 'Service' }}"
-                                            class="relative z-[2] w-16 h-16 object-contain mx-auto" />
-                                    </div>
+                                    <a class="custom-service-button"
+                                        href="{{ route('service.details.page', $service->id) }}">
+                                        <div class="shape-ico relative inline-block m-0 icon-card">
+                                            <img src="{{ asset($service->image) }}"
+                                                alt="{{ $service->service_title ?? 'Service' }}"
+                                                class="relative z-[2] w-16 h-16 object-contain mx-auto" />
+                                        </div>
+                                    </a>
                                 </div>
                                 <!-- End Icon -->
 
@@ -145,10 +148,6 @@
                                     </a>
                                     <p class="!mb-0">
                                         {!! Str::limit($service->service_short_description, 50, '...') !!}
-                                        <a class="custom-service-button"
-                                            href="{{ route('service.details.page', $service->id) }}">
-                                            Read More
-                                        </a>
                                     </p>
                                 </div>
                             </div>
