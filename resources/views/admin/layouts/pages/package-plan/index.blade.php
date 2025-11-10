@@ -7,7 +7,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 mt-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">All Package Plans</h4>
+                        <h4 class="mb-0">All Package Plans - <span><a href="{{ route('plan.trashed') }}" class="btn btn-danger">Recycle Bin ({{ $trashedDataCount }})</a></span></h4>
 
                         <a href="{{ route('package_plans.create') }}" class="btn btn-primary">
                             <i class="zmdi zmdi-plus"></i> Add New Plan

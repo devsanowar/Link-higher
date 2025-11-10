@@ -273,7 +273,7 @@
 
                     <div style="flex:1"></div>
 
-                    <div style="min-width:260px">
+                    <div style="min-width:260px;text-align:right">
                         <h3 style="margin:0 0 8px 0">Order Details</h3>
                         <p class="muted" style="margin:0">Items:
                             <strong>{{ $order->items->sum('quantity') ?? ($order->orderItems->sum('quantity') ?? 0) }}</strong>

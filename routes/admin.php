@@ -40,6 +40,7 @@ use App\Http\Controllers\Admin\UserManageMentController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\Admin\WhyChoseUsController;
 use App\Http\Controllers\WebsiteColorController;
+use App\Models\PackagePlan;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
@@ -159,11 +160,30 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     // Services resource route
     Route::resource('services', ServicesController::class);
 
+
+    // Package plan route here
+    Route::resource('package_plans', PackagePlanController::class);
+    // Soft deletes route here
+    Route::get('/plan/trashed', [PackagePlanController::class, 'trashed'])->name('plan.trashed');
+    Route::get('/plan/restore/{id}', [PackagePlanController::class, 'restore'])->name('plan.restore');
+    Route::delete('/plan/force-delete/{id}', [PackagePlanController::class, 'forceDelete'])->name('plan.force.delete');
+
     // Order route here
     Route::get('order', [OrderController::class, 'index'])->name('order.index');
+    Route::post('/order/change-status/{id}', [OrderController::class, 'orderChangeStatus'])->name('orderChangeStatus');
+
     Route::get('order/show/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::delete('order/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+    // Invoice module route here
     Route::get('order/invoice', [OrderController::class, 'invoice'])->name('invoice.page.index');
     Route::get('order/invoice/show/{id}', [OrderController::class, 'invoiceShow'])->name('order.invoice.show');
+
+    // Soft deletes route here
+    Route::get('/order/trashed', [OrderController::class, 'trashed'])->name('order.trashed');
+    Route::get('/order/restore/{id}', [OrderController::class, 'restore'])->name('order.restore');
+    Route::delete('/order/force-delete/{id}', [OrderController::class, 'forceDelete'])->name('order.force.delete');
+
 
     Route::prefix('case-study')->group(function () {
         Route::resource('category', CaseStudyCategoryController::class);
@@ -194,8 +214,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     // Trusted Client resource route
     Route::resource('clients', TrustedClientController::class);
 
-    // Package plan route here
-    Route::resource('package_plans', PackagePlanController::class);
+
 
     //Project category resource route
     Route::resource('project-category', ProjectCategoryController::class);

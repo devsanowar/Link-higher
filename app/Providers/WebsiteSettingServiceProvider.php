@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\AdminPanel;
+use App\Models\User;
 use App\Models\WebsiteSetting;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,5 +29,6 @@ class WebsiteSettingServiceProvider extends ServiceProvider
 
         $login_settings = AdminPanel::first();
         View::share("login_settings", $login_settings);
+
     }
 }

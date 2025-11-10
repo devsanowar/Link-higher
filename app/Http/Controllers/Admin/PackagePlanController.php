@@ -13,8 +13,9 @@ class PackagePlanController extends Controller
      */
     public function index()
     {
-        $plans = PackagePlan::latest()->get();
-        return view("admin.layouts.pages.package-plan.index", compact("plans"));
+        $plans            = PackagePlan::latest()->get();
+        $trashedDataCount = PackagePlan::onlyTrashed()->count();
+        return view("admin.layouts.pages.package-plan.index", compact("plans", "trashedDataCount"));
     }
 
     /**
@@ -91,7 +92,6 @@ class PackagePlanController extends Controller
         ];
 
         $plan = PackagePlan::create($data);
-
 
         return response()->json([
             'status'  => 'success',
@@ -187,9 +187,9 @@ class PackagePlanController extends Controller
         $plan->update($data);
 
         return response()->json([
-            'status'  => 'success',
-            'message' => 'Package Plan updated successfully.',
-            'id'      => $plan->id,
+            'status'      => 'success',
+            'message'     => 'Package Plan updated successfully.',
+            'id'          => $plan->id,
             'redirectUrl' => route('package_plans.index'),
         ]);
     }
@@ -203,4 +203,25 @@ class PackagePlanController extends Controller
         $plan->delete();
         return redirect()->back()->with('success', 'Plan deleted successfully!');
     }
+
+    public function trashed()
+    {
+        $plans = PackagePlan::onlyTrashed();
+        return view('admin.layouts.pages.package-plan.recycle-bin', compact('plans'));
+    }
+
+    public function restore($id)
+    {
+        $plan = PackagePlan::onlyTrashed()->findOrFail($id);
+        $plan->restore();
+        return redirect()->route('plan.trashed')->with('success', 'Order restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        $plan = PackagePlan::onlyTrashed()->findOrFail($id);
+        $plan->forceDelete();
+        return redirect()->route('plan.trashed')->with('success', 'Order deleted successfully.');
+    }
+
 }
