@@ -134,6 +134,24 @@
             </li>
 
 
+            <!--Post with category Menu-->
+            <li class="menu-item {{ request()->routeIs(['post-category.*', 'post.*']) ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-edit"></i><span>Post</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('post-category.*') ? 'active' : '' }}">
+                        <a href="{{ route('post-category.index') }}">Category</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('post.*') ? 'active' : '' }}">
+                        <a href="{{ route('post.index') }}">Posts</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
             <li class="menu-item {{ request()->routeIs('product-category.*', 'products.*') ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-shopping-cart"></i><span>Product</span>
@@ -187,6 +205,24 @@
                     <li class="{{ request()->routeIs('invoice.page.*') ? 'active' : '' }}">
                         <a href="{{ route('invoice.page.index') }}">Invoice</a>
                     </li>
+                </ul>
+            </li>
+
+
+            <!--Project with category Menu-->
+            <li class="menu-item {{ request()->routeIs(['category.*', 'project.*']) ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="zmdi zmdi-case"></i><span>Case Studies</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ request()->routeIs('category.*') ? 'active' : '' }}">
+                        <a href="{{ route('category.index') }}">Category</a>
+                    </li>
+
+                    <li class="{{ request()->routeIs('project.*') ? 'active' : '' }}">
+                        <a href="{{ route('project.index') }}">Case studies</a>
+                    </li>
+
                 </ul>
             </li>
 

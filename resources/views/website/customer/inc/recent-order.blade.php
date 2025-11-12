@@ -38,7 +38,7 @@
                                 @endif
                             </td>
 
-                            <td>৳ {{ number_format($recentOrder->total_amount, 2) }}</td>
+                            <td>$ {{ number_format($recentOrder->total_amount, 2) }}</td>
 
                             <td>
                                 <button class="btn btn-sm btn-outline-secondary">Details</button>
@@ -51,56 +51,55 @@
             </table>
 
         </div>
-        <div class="mt-3">
-    {{ $recentOrders->links('pagination::bootstrap-5') }}
-</div>
+        <div class="mt-3 for-desktop">
+            {{ $recentOrders->links('pagination::bootstrap-5') }}
+        </div>
         <!-- Mobile order cards -->
         <div class="d-sm-none p-2">
-            <div class="card mb-2 border-0 shadow-sm">
-                <div class="card-body d-flex justify-content-between align-items-start">
-                    <div>
-                        <div class="fw-semibold">#INV-1123</div>
-                        <small class="text-secondary">Oct 26, 2025</small>
-                        <div class="mt-1"><span
-                                class="badge bg-success-subtle text-success border border-success-subtle">Delivered</span>
+            @foreach ($recentOrders as $recentOrder)
+                <div class="card mb-2 border-0 shadow-sm">
+                    <div class="card-body d-flex justify-content-between align-items-start">
+                        <div>
+                            <div class="fw-semibold">#{{ $recentOrder->order_number ?? $recentOrder->id }}</div>
+                            <small class="text-secondary">{{ $recentOrder->created_at->format('d M, Y') }}</small>
+                            <div class="mt-1">
+                                @if ($recentOrder->status == 'processing')
+                                    <span
+                                        class="badge bg-warning-subtle text-warning border border-warning-subtle">Processing</span>
+                                @elseif($recentOrder->status == 'completed')
+                                    <span
+                                        class="badge bg-success-subtle text-success border border-success-subtle">Completed</span>
+                                @elseif($recentOrder->status == 'cancelled')
+                                    <span
+                                        class="badge bg-danger-subtle text-danger border border-danger-subtle">Cancelled</span>
+                                @else
+                                    <span
+                                        class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">{{ ucfirst($recentOrder->status) }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <div class="fw-semibold">${{ number_format($recentOrder->total_amount, 2) }}</div>
+
+                            <a href="javascript:void(0);" class="btn btn-info btn-sm openOrderModal"
+                                data-url="{{ route('order.invoice.show', $recentOrder->id) }}"
+                                data-id="{{ $recentOrder->id }}" title="View / Print">
+                                <i class="zmdi zmdi-print"></i>
+                            </a>
+
+
                         </div>
                     </div>
-                    <div class="text-end">
-                        <div class="fw-semibold">৳ 2,980</div>
-                        <button class="btn btn-sm btn-outline-secondary mt-2">Details</button>
-                    </div>
                 </div>
-            </div>
-            <div class="card mb-2 border-0 shadow-sm">
-                <div class="card-body d-flex justify-content-between align-items-start">
-                    <div>
-                        <div class="fw-semibold">#INV-1122</div>
-                        <small class="text-secondary">Oct 24, 2025</small>
-                        <div class="mt-1"><span
-                                class="badge bg-warning-subtle text-warning border border-warning-subtle">Processing</span>
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <div class="fw-semibold">৳ 4,250</div>
-                        <button class="btn btn-sm btn-outline-secondary mt-2">Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-2 border-0 shadow-sm">
-                <div class="card-body d-flex justify-content-between align-items-start">
-                    <div>
-                        <div class="fw-semibold">#INV-1121</div>
-                        <small class="text-secondary">Oct 22, 2025</small>
-                        <div class="mt-1"><span
-                                class="badge bg-info-subtle text-info border border-info-subtle">Shipped</span>
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <div class="fw-semibold">৳ 1,750</div>
-                        <button class="btn btn-sm btn-outline-secondary mt-2">Details</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+        </div>
+        <div class="mt-3 for-phone">
+            {{ $recentOrders->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>
+
+
+
+
+

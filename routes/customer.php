@@ -24,6 +24,8 @@ Route::prefix("customer")->group(function(){
         Route::post('/customer/change-password', [CustomerProfileController::class, 'changePassword'])->name('customer.change.password');
         Route::delete('/customer/delete/account/{id}', [CustomerProfileController::class, 'destroy'])->name('customer.destroy');
 
+       Route::get('/order/{id}/invoice', [CustomerDashboardController::class, 'invoiceShow'])->name('order.invoice.show');
+
     });
 
 });

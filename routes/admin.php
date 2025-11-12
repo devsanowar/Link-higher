@@ -1,47 +1,49 @@
 <?php
 
-use App\Http\Controllers\Admin\About\AboutController;
-use App\Http\Controllers\Admin\About\MissionAndVissionController;
-use App\Http\Controllers\Admin\About\WhoWeAreController;
-use App\Http\Controllers\Admin\AchievementController;
-use App\Http\Controllers\Admin\AdminPanelController;
-use App\Http\Controllers\Admin\CaseStudyCategoryController;
-use App\Http\Controllers\Admin\CaseStudyController;
-use App\Http\Controllers\Admin\ContactUsController;
-use App\Http\Controllers\Admin\CountryController;
-use App\Http\Controllers\Admin\CtaController;
-use App\Http\Controllers\Admin\CustomerFocusToneController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\EmployeController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\GoalProgressController;
-use App\Http\Controllers\Admin\HeroSectionController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\PackagePlanController;
-use App\Http\Controllers\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Admin\ProductCategoryController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProfileSettingController;
-use App\Http\Controllers\Admin\ProjectCategoryController;
-use App\Http\Controllers\Admin\ProjectController;
-use App\Http\Controllers\Admin\ReasonController;
-use App\Http\Controllers\Admin\ReturnAndRefundController;
-use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\Admin\ServiceCategoryController;
-use App\Http\Controllers\Admin\ServicesController;
-use App\Http\Controllers\Admin\SmarterWorkflowsController;
-use App\Http\Controllers\Admin\SmartSolutionFeatureController;
-use App\Http\Controllers\Admin\SmartSolutionsController;
-use App\Http\Controllers\Admin\SmartStrategyController;
-use App\Http\Controllers\Admin\SocialIconController;
-use App\Http\Controllers\Admin\TermsAndConditonController;
-use App\Http\Controllers\Admin\TrustedClientController;
-use App\Http\Controllers\Admin\UserManageMentController;
-use App\Http\Controllers\Admin\WebsiteSettingController;
-use App\Http\Controllers\Admin\WhyChoseUsController;
-use App\Http\Controllers\WebsiteColorController;
 use App\Models\PackagePlan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CtaController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ReasonController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\WebsiteColorController;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\EmployeController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\CaseStudyController;
+use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminPanelController;
+use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\WhyChoseUsController;
+use App\Http\Controllers\Admin\About\AboutController;
+use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\PackagePlanController;
+use App\Http\Controllers\Admin\GoalProgressController;
+use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\PrivacyPolicyController;
+use App\Http\Controllers\Admin\SmartStrategyController;
+use App\Http\Controllers\Admin\TrustedClientController;
+use App\Http\Controllers\Admin\About\WhoWeAreController;
+use App\Http\Controllers\Admin\ProfileSettingController;
+use App\Http\Controllers\Admin\SmartSolutionsController;
+use App\Http\Controllers\Admin\UserManageMentController;
+use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProjectCategoryController;
+use App\Http\Controllers\Admin\ReturnAndRefundController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\SmarterWorkflowsController;
+use App\Http\Controllers\Admin\TermsAndConditonController;
+use App\Http\Controllers\Admin\CaseStudyCategoryController;
+use App\Http\Controllers\Admin\CustomerFocusToneController;
+use App\Http\Controllers\Admin\SmartSolutionFeatureController;
+use App\Http\Controllers\Admin\About\MissionAndVissionController;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
@@ -183,6 +185,14 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     Route::get('/order/trashed', [OrderController::class, 'trashed'])->name('order.trashed');
     Route::get('/order/restore/{id}', [OrderController::class, 'restore'])->name('order.restore');
     Route::delete('/order/force-delete/{id}', [OrderController::class, 'forceDelete'])->name('order.force.delete');
+
+
+    // Post group route here
+    Route::prefix('post')->group(function () {
+        Route::resource('post-category', PostCategoryController::class);
+        Route::resource('post', PostController::class);
+        
+    });
 
 
     Route::prefix('case-study')->group(function () {

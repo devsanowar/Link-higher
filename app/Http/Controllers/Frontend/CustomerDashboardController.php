@@ -9,8 +9,8 @@ class CustomerDashboardController extends Controller
 {
     public function dashboard()
     {
-        $userId            = Auth::id();
-        $orderCount        = Order::where('user_id', $userId)->count();
+        $userId     = Auth::id();
+        $orderCount = Order::where('user_id', $userId)->count();
 
         // Pending order
         $pendingOrderCount = Order::where('user_id', $userId)
@@ -40,9 +40,6 @@ class CustomerDashboardController extends Controller
             ->latest()
             ->paginate(3);
 
-
-
-
         // Current month orders
         $currentMonthOrders = Order::where('user_id', $userId)
             ->whereMonth('created_at', now()->month)
@@ -66,4 +63,13 @@ class CustomerDashboardController extends Controller
 
         return view('website.customer.dashboard', compact('orderCount', 'percentageChange', 'pendingOrderCount', 'totalAmount', 'recentOrders', 'receivedOrderCount', 'completedOrderCount', 'cancelledOrderCount'));
     }
+
+    public function invoiceShow($id)
+    {
+        $order = Order::with(['items'])->findOrFail($id);
+
+        // return a blade partial (HTML fragment) for modal body
+        return view('website.customer.dashboard', compact('order'));
+    }
+
 }

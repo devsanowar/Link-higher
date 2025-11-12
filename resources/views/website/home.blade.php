@@ -2,391 +2,538 @@
 @section('title', 'Home Page')
 @section('website_content')
 
-@include('website.layouts.pages.home.hero-section')
+    @include('website.layouts.pages.home.hero-section')
     <!-- END HERO-7 -->
+
+    <!-- BRANDS-1
+                                     ============================================= -->
+    @include('website.layouts.pages.home.trusted-client-section')
+
+
     <!-- FEATURES-6
-                         ============================================= -->
+                                     ============================================= -->
     @include('website.layouts.pages.home.feature-section')
     <!-- END FEATURES-6 -->
     <!-- DIVIDER LINE -->
     <hr
         class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
     <!-- TEXT CONTENT
-                         ============================================= -->
+                                     ============================================= -->
     @include('website.layouts.pages.home.smart-strategy-section')
     <!-- END TEXT CONTENT -->
+
+
     <!-- TEXT CONTENT
-                         ============================================= -->
-    @include('website.layouts.pages.home.smart-work-flow-section')
+                                     ============================================= -->
+    {{-- @include('website.layouts.pages.home.smart-work-flow-section') --}}
     <!-- END TEXT CONTENT -->
     <!-- FEATURES-2
-                         ============================================= -->
+                                     ============================================= -->
     @include('website.layouts.pages.home.goal-progress-section')
     <!-- END FEATURES-2 -->
     <!-- BOX CONTENT
-                         ============================================= -->
+                                     ============================================= -->
     @include('website.layouts.pages.home.smart-solution-section')
     <!-- END BOX CONTENT -->
-    <!-- TEXT CONTENT
-                         ============================================= -->
+
+    @include('website.layouts.pages.home.post-slider')
 
     <!-- END TEXT CONTENT -->
     <!-- STATISTIC-1
-                         ============================================= -->
+                                     ============================================= -->
     {{-- @include('website.layouts.pages.home.achievement-section') --}}
     <!-- END STATISTIC-1 -->
     <!-- DIVIDER LINE -->
 
     <!-- FEATURES-13
-                         ============================================= -->
+                                     ============================================= -->
     @include('website.layouts.pages.home.why-chose-us-section')
     <!-- END FEATURES-13 -->
-    <!-- TEXT CONTENT
-                         ============================================= -->
-    {{-- <section class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px]  ct-01 content-section division">
-        <div class="container">
-            <!-- SECTION CONTENT (ROW) -->
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  items-center">
-                <!-- TEXT BLOCK -->
-                <div
-                    class="md:w-6/12 lg:max-xl:w-6/12 xl:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full order-last order-md-2 md:max-lg:order-2 lg:max-xl:order-2 xl:order-2">
-                    <div class="txt-block left-column wow fadeInRight">
-                        <!-- Section ID -->
-                        <span
-                            class="section-id block !text-[0.85rem] leading-none !font-bold !tracking-[0.5px] uppercase xl:!mb-[35px] lg:max-xl:!mb-[30px] md:max-lg:!mb-[25px] sm:max-md:!mb-[25px] font-Jakarta">Easy
-                            Integration</span>
-                        <!-- Title -->
-                        <h2
-                            class="s-46 w--700 xl:!text-[2.875rem] lg:max-xl:!text-[2.625rem] md:max-lg:!text-[2.35294rem] sm:max-md:!text-[2.25rem] xsm:max-sm:!text-[1.8125rem] !font-bold leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35] xl:!mb-[26px] lg:max-xl:!mb-[20px] md:max-lg:!mb-[15px] sm:max-md:!mb-[20px] xsm:max-sm:!mb-[15px]">
-                            Plug your essential tools in few clicks</h2>
-                        <!-- List -->
-                        <ul class="simple-list">
-                            <li class="list-item">
-                                <p>Cursus purus suscipit vitae cubilia magnis volute egestas vitae sapien turpis
-                                    sodales magna undo aoreet primis
-                                </p>
-                            </li>
-                            <li class="list-item">
-                                <p class="!mb-0">Tempor sapien quaerat an ipsum laoreet purus and sapien dolor an
-                                    ultrice ipsum aliquam undo congue dolor cursus purus congue and ipsum purus
-                                    sapien
-                                    a blandit
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- END TEXT BLOCK -->
-                <!-- IMAGE BLOCK -->
-                <div
-                    class="md:w-6/12 lg:max-xl:w-6/12 xl:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full order-first order-md-2 md:max-lg:order-2 lg:max-xl:order-2 xl:order-2">
-                    <div
-                        class="img-block !text-center right-column wow fadeInLeft ml-[30px] lg:max-xl:ml-[5px] md:max-lg:ml-0 sm:max-md:!mx-[3%] xsm:max-sm:!m-[0_2%_35px]">
-                        <img class="img-fluid" src="images/img-02.png" alt="content-image">
-                    </div>
-                </div>
-            </div>
-            <!-- END SECTION CONTENT (ROW) -->
-        </div>
-        <!-- End container -->
-    </section> --}}
-    <!-- END TEXT CONTENT -->
-    <!-- BOX CONTENT
-                         ============================================= -->
-@include('website.layouts.pages.home.customer-focus-tone-section')
+
+    @include('website.layouts.pages.home.case-studies')
+
+    @include('website.layouts.pages.home.customer-focus-tone-section')
     <!-- END BOX CONTENT -->
     <!-- TESTIMONIALS-2
-                         ============================================= -->
-   @include('website.layouts.pages.home.review-section')
+                                     ============================================= -->
+    @include('website.layouts.pages.home.review-section')
     <!-- END TESTIMONIALS-2 -->
-    <!-- BRANDS-1
-                         ============================================= -->
-    @include('website.layouts.pages.home.trusted-client-section')
+
     <!-- END BRANDS-1 -->
     <!-- DIVIDER LINE -->
     <hr
         class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
-    <!-- IMAGE CONTENT
-                         ============================================= -->
-    {{-- <section class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px]  ct-08 content-section division">
-        <div class="container">
-            <!-- SECTION TITLE -->
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
-                <div
-                    class="md:w-10/12 lg:max-xl:w-9/12 xl:w-9/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                    <div class="section-title mb--70 xl:!mb-[70px] lg:max-xl:!mb-[60px] md:max-lg:!mb-[50px] !text-center">
-                        <!-- Title -->
-                        <h2
-                            class="s-50 w--700 xl:!text-[3.125rem] lg:max-xl:!text-[2.875rem] md:max-lg:!text-[2.64705rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold lg:max-xl:!mb-[20px] md:max-lg:!mb-[15px] sm:max-md:!mb-[20px] xsm:max-sm:!mb-[15px] xl:!mb-[26px] xl:!leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35] !tracking-[-0.5px]">
-                            Discover insights across all your data with Martex</h2>
-                        <!-- Text -->
-                        <p
-                            class="s-21 xl:!text-[1.3125rem] mt-[18px] !mb-0 lg:max-xl:!mt-[15px] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.32352rem] md:max-lg:!mt-[12px] sm:max-md:!text-[1.21875rem] sm:max-md:!mt-[12px] xsm:max-sm:!text-[1.1875rem] xsm:max-sm:!mt-[12px] xsm:max-sm:px-[3%] xsm:max-sm:py-0">
-                            Ligula risus auctor tempus magna feugiat lacinia.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- IMAGE BLOCK -->
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] ">
-                <div class="flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                    <div class="img-block !text-center wow fadeInUp">
-                        <img class="img-fluid inline-block" src="images/img-19.png" alt="video-preview">
-                    </div>
-                </div>
-            </div>
-            <!-- ACTION BUTTON -->
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] ">
-                <div class="flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                    <div class="img-block-btn !text-center wow fadeInUp">
-                        <!-- Button -->
-                        <a href="#integrations-2" class="btn  !rounded-[4px]  btn--tra-black hover--theme">Monitor
-                            your
-                            activity</a>
-                        <!-- Advantages List -->
-                        <ul
-                            class="advantages ico-15 clearfix xl:!mt-[20px] lg:max-xl:!mt-[15px] md:max-lg:!mt-[15px] sm:max-md:!mt-[15px] xsm:max-sm:!mt-[15px]">
-                            <li class=" w-auto inline-block align-top clear-none xsm:max-sm:!block xsm:max-sm:!mt-[4px]">
-                                <p class=" inline-block float-left !mb-0 xsm:max-sm:block xsm:max-sm:float-none">
-                                    Free 14 days trial</p>
-                            </li>
-                            <li
-                                class="advantages-links-divider w-auto inline-block align-top clear-none xsm:max-sm:!hidden">
-                                <p class=" inline-block float-left !mb-0 xsm:max-sm:block xsm:max-sm:float-none">
-                                    <span class="flaticon-minus"></span>
-                                </p>
-                            </li>
-                            <li class=" w-auto inline-block align-top clear-none xsm:max-sm:!block xsm:max-sm:!mt-[4px]">
-                                <p class=" inline-block float-left !mb-0 xsm:max-sm:block xsm:max-sm:float-none">
-                                    Exclusive Support</p>
-                            </li>
-                            <li
-                                class="advantages-links-divider w-auto inline-block align-top clear-none xsm:max-sm:!hidden">
-                                <p class=" inline-block float-left !mb-0 xsm:max-sm:block xsm:max-sm:float-none">
-                                    <span class="flaticon-minus"></span>
-                                </p>
-                            </li>
-                            <li class=" w-auto inline-block align-top clear-none xsm:max-sm:!block xsm:max-sm:!mt-[4px]">
-                                <p class=" inline-block float-left !mb-0 xsm:max-sm:block xsm:max-sm:float-none">No
-                                    Fees</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End container -->
-    </section> --}}
-    <!-- END IMAGE CONTENT -->
-    <!-- TEXT CONTENT
-                         ============================================= -->
-    {{-- <section class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px]  ct-02 content-section division">
-        <div class="container">
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  items-center">
-                <!-- IMAGE BLOCK -->
-                <div
-                    class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                    <div
-                        class="img-block !text-center left-column wow fadeInRight mr-[30px] lg:max-xl:mr-[5px] md:max-lg:mr-0 sm:max-md:mx-[3%] xsm:max-sm:m-[0_2%_35px]">
-                        <img class="img-fluid" src="images/img-03.png" alt="content-image">
-                    </div>
-                </div>
-                <!-- TEXT BLOCK -->
-                <div
-                    class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                    <div class="txt-block right-column wow fadeInLeft">
-                        <!-- TEXT BOX -->
-                        <div class="txt-box !mb-[20px] md:max-lg:!mb-[5px] last:!mb-0">
-                            <!-- Title -->
-                            <h5
-                                class="s-24 w--700 xl:!text-[1.5rem] lg:max-xl:!text-[1.375rem] md:max-lg:!text-[1.470588rem] sm:max-md:!text-[1.625rem] xsm:max-sm:!text-[1.4375rem] !font-bold leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4] xl:!mb-[20px] lg:max-xl:!mb-[18px] md:max-lg:!mb-[18px] sm:max-md:!mb-[18px]">
-                                Advanced Analytics Review</h5>
-                            <!-- Text -->
-                            <p>Sodales tempor sapien quaerat ipsum undo congue laoreet turpis neque auctor turpis
-                                vitae dolor luctus placerat magna and ligula cursus purus vitae purus an ipsum
-                                suscipit
-                            </p>
-                        </div>
-                        <!-- END TEXT BOX -->
-                        <!-- TEXT BOX -->
-                        <div class="txt-box  !mb-0 ">
-                            <!-- Title -->
-                            <h5
-                                class="s-24 w--700 xl:!text-[1.5rem] lg:max-xl:!text-[1.375rem] md:max-lg:!text-[1.470588rem] sm:max-md:!text-[1.625rem] xsm:max-sm:!text-[1.4375rem] !font-bold leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4] xl:!mb-[20px] lg:max-xl:!mb-[18px] md:max-lg:!mb-[18px] sm:max-md:!mb-[18px]">
-                                Email Marketing Campaigns</h5>
-                            <!-- Text -->
-                            <p>Tempor sapien sodales quaerat ipsum undo congue laoreet turpis neque auctor turpis
-                                vitae dolor luctus placerat magna and ligula cursus purus an ipsum vitae suscipit
-                                purus
-                            </p>
-                            <!-- List -->
-                            <ul class="simple-list">
-                                <li class="list-item">
-                                    <p>Tempor sapien quaerat an ipsum laoreet purus and sapien dolor an ultrice
-                                        ipsum
-                                        aliquam undo congue dolor cursus
-                                    </p>
-                                </li>
-                                <li class="list-item">
-                                    <p class="!mb-0">Cursus purus suscipit vitae cubilia magnis volute egestas
-                                        vitae
-                                        sapien turpis ultrice auctor congue magna placerat
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- END TEXT BOX -->
-                    </div>
-                </div>
-                <!-- END TEXT BLOCK -->
-            </div>
-            <!-- End row -->
-        </div>
-        <!-- End container -->
-    </section> --}}
-    <!-- END TEXT CONTENT -->
-    <!-- INTEGRATIONS-2
-                         ============================================= -->
-    {{-- <section id="integrations-2" class="pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px] integrations-section">
-        <div class="container">
-            <!-- INTEGRATIONS-2 WRAPPER -->
-            <div
-                class="integrations-2-wrapper bg--white-400 r-12 rounded-[12px] !text-center p-[80px_70px] lg:max-xl:px-[60px] lg:max-xl:py-[80px] md:max-lg:px-[40px] md:max-lg:py-[60px] xsm:max-sm:mr-[-15px] xsm:max-sm:ml-[-15px] xsm:max-sm:my-0 xsm:max-sm:px-[20px] xsm:max-sm:py-[70px] xsm:max-sm:rounded-[0_0]">
-                <!-- SECTION TITLE -->
-                <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
-                    <div
-                        class="md:w-10/12 lg:max-xl:w-9/12 xl:w-9/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                        <div class="section-title mb--60 !mb-[60px] lg:max-xl:!mb-[50px] md:max-lg:!mb-[50px]">
-                            <!-- Title -->
-                            <h2
-                                class="s-50 w--700 xl:!text-[3.125rem] lg:max-xl:!text-[2.875rem] md:max-lg:!text-[2.64705rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold !mb-0 xsm:max-sm:px-[1%] xsm:max-sm:py-0 leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35] !tracking-[-0.5px]">
-                                Easy integrate all your essential tools</h2>
-                            <!-- Text -->
-                            <p
-                                class="s-21 color--grey xl:!text-[1.3125rem] xl:!mt-[18px] !mb-0 lg:max-xl:!mt-[15px] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.32352rem] md:max-lg:!mt-[12px] sm:max-md:!text-[1.21875rem] sm:max-md:!mt-[12px] xsm:max-sm:!text-[1.1875rem] xsm:max-sm:!mt-[12px] xsm:max-sm:px-[3%] xsm:max-sm:py-0">
-                                Ligula risus auctor tempus magna feugiat lacinia.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- TOOLS ROW -->
-                <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  row-cols-1 row-cols-sm-3 row-cols-md-5">
-                    <!-- TOOL #1 -->
-                    <div
-                        class="col md:max-lg:w-1/5 lg:max-xl:w-1/5 xl:w-1/5 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <a href="#"
-                            class="in_tool it-1 rounded-[12px] sm:max-md:block xsm:max-sm:block wow fadeInUp">
-                            <!-- Logo -->
-                            <div
-                                class="in_tool_logo ico-65 bg--white-100 block-shadow rounded-[12px] transition-all duration-[400ms] ease-[ease-in-out] xl:!mb-[25px] px-[30px] py-[50px] lg:max-xl:!mb-[25px] lg:max-xl:px-[30px] lg:max-xl:py-[40px] md:max-lg:!mb-[25px] md:max-lg:!p-[30px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
-                                <img class="img-fluid w-[65px] h-[65px] inline-block" src="images/png_icons/tool-1.png"
-                                    alt="brand-logo">
-                            </div>
-                            <!-- Title -->
-                            <h6
-                                class="s-17 w--700 xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] md:max-lg:!text-[1.066176rem] sm:max-md:!text-[1.125rem] xsm:max-sm:!text-[1.125rem] !font-bold !mb-0 md:max-lg:!leading-[1.3] font-Jakarta leading-none sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                Zapier</h6>
-                        </a>
-                    </div>
-                    <!-- END TOOL #1 -->
-                    <!-- TOOL #2 -->
-                    <div
-                        class="col md:max-lg:w-1/5 lg:max-xl:w-1/5 xl:w-1/5 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <a href="#"
-                            class="in_tool it-2 rounded-[12px] sm:max-md:block xsm:max-sm:block wow fadeInUp">
-                            <!-- Logo -->
-                            <div
-                                class="in_tool_logo ico-65 bg--white-100 block-shadow rounded-[12px] transition-all duration-[400ms] ease-[ease-in-out] xl:!mb-[25px] px-[30px] py-[50px] lg:max-xl:!mb-[25px] lg:max-xl:px-[30px] lg:max-xl:py-[40px] md:max-lg:!mb-[25px] md:max-lg:!p-[30px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
-                                <img class="img-fluid w-[65px] h-[65px] inline-block" src="images/png_icons/tool-2.png"
-                                    alt="brand-logo">
-                            </div>
-                            <!-- Title -->
-                            <h6
-                                class="s-17 w--700 xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] md:max-lg:!text-[1.066176rem] sm:max-md:!text-[1.125rem] xsm:max-sm:!text-[1.125rem] !font-bold !mb-0 md:max-lg:!leading-[1.3] font-Jakarta leading-none sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                Google Analytics</h6>
-                        </a>
-                    </div>
-                    <!-- END TOOL #2 -->
-                    <!-- TOOL #3 -->
-                    <div
-                        class="col md:max-lg:w-1/5 lg:max-xl:w-1/5 xl:w-1/5 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <a href="#"
-                            class="in_tool it-3 rounded-[12px] sm:max-md:block xsm:max-sm:block wow fadeInUp">
-                            <!-- Logo -->
-                            <div
-                                class="in_tool_logo ico-65 bg--white-100 block-shadow rounded-[12px] transition-all duration-[400ms] ease-[ease-in-out] xl:!mb-[25px] px-[30px] py-[50px] lg:max-xl:!mb-[25px] lg:max-xl:px-[30px] lg:max-xl:py-[40px] md:max-lg:!mb-[25px] md:max-lg:!p-[30px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
-                                <img class="img-fluid w-[65px] h-[65px] inline-block" src="images/png_icons/tool-3.png"
-                                    alt="brand-logo">
-                            </div>
-                            <!-- Title -->
-                            <h6
-                                class="s-17 w--700 xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] md:max-lg:!text-[1.066176rem] sm:max-md:!text-[1.125rem] xsm:max-sm:!text-[1.125rem] !font-bold !mb-0 md:max-lg:!leading-[1.3] font-Jakarta leading-none sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                Amplitude</h6>
-                        </a>
-                    </div>
-                    <!-- END TOOL #3 -->
-                    <!-- TOOL #4 -->
-                    <div
-                        class="col md:max-lg:w-1/5 lg:max-xl:w-1/5 xl:w-1/5 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <a href="#"
-                            class="in_tool it-4 rounded-[12px] sm:max-md:block xsm:max-sm:block wow fadeInUp">
-                            <!-- Logo -->
-                            <div
-                                class="in_tool_logo ico-65 bg--white-100 block-shadow rounded-[12px] transition-all duration-[400ms] ease-[ease-in-out] xl:!mb-[25px] px-[30px] py-[50px] lg:max-xl:!mb-[25px] lg:max-xl:px-[30px] lg:max-xl:py-[40px] md:max-lg:!mb-[25px] md:max-lg:!p-[30px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
-                                <img class="img-fluid w-[65px] h-[65px] inline-block" src="images/png_icons/tool-4.png"
-                                    alt="brand-logo">
-                            </div>
-                            <!-- Title -->
-                            <h6
-                                class="s-17 w--700 xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] md:max-lg:!text-[1.066176rem] sm:max-md:!text-[1.125rem] xsm:max-sm:!text-[1.125rem] !font-bold !mb-0 md:max-lg:!leading-[1.3] font-Jakarta leading-none sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                Hubspot</h6>
-                        </a>
-                    </div>
-                    <!-- END TOOL #4 -->
-                    <!-- TOOL #5 -->
-                    <div
-                        class="col md:max-lg:w-1/5 lg:max-xl:w-1/5 xl:w-1/5 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <a href="#"
-                            class="in_tool it-5 rounded-[12px] sm:max-md:block xsm:max-sm:block wow fadeInUp">
-                            <!-- Logo -->
-                            <div
-                                class="in_tool_logo ico-65 bg--white-100 block-shadow rounded-[12px] transition-all duration-[400ms] ease-[ease-in-out] xl:!mb-[25px] px-[30px] py-[50px] lg:max-xl:!mb-[25px] lg:max-xl:px-[30px] lg:max-xl:py-[40px] md:max-lg:!mb-[25px] md:max-lg:!p-[30px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
-                                <img class="img-fluid w-[65px] h-[65px] inline-block" src="images/png_icons/tool-5.png"
-                                    alt="brand-logo">
-                            </div>
-                            <!-- Title -->
-                            <h6
-                                class="s-17 w--700 xl:!text-[1.0625rem] lg:max-xl:!text-[1.0625rem] md:max-lg:!text-[1.066176rem] sm:max-md:!text-[1.125rem] xsm:max-sm:!text-[1.125rem] !font-bold !mb-0 md:max-lg:!leading-[1.3] font-Jakarta leading-none sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                MailChimp</h6>
-                        </a>
-                    </div>
-                    <!-- END TOOL #5 -->
-                </div>
-                <!-- END TOOLS ROW -->
-                <!-- MORE BUTTON -->
-                <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] ">
-                    <div class="flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div
-                            class="more-btn !text-center  mt--60 mt-[60px] lg:max-xl:!mt-[50px] md:max-lg:!mt-[50px]  wow fadeInUp">
-                            <a href="integrations.html" class="btn btn--tra-black hover--theme">View all
-                                integrations</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END INTEGRATIONS-2 WRAPPER -->
-        </div>
-        <!-- End container -->
-    </section> --}}
-    <!-- END INTEGRATIONS-2 -->
-    <!-- FAQs-3
-                         ============================================= -->
+
+
     @include('website.layouts.pages.home.faq-section')
     <!-- END FAQs-3 -->
     <!-- DIVIDER LINE -->
     <hr
         class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
     <!-- BANNER-7
-                         ============================================= -->
+                                     ============================================= -->
     @include('website.layouts.pages.home.cta-section')
     <!-- END BANNER-7 -->
 
 @endsection
+
+@push('scripts')
+    <script>
+        (function() {
+            const track = document.getElementById("ps-track");
+            const prevBtn = document.getElementById("ps-prev");
+            const nextBtn = document.getElementById("ps-next");
+            const slider = document.getElementById("post-slider");
+
+            if (!track) return;
+
+            let visible = getVisibleCount();
+            let slideWidth = 0;
+            let index = 0; // logical index: 0..(n-1)
+            let autoTimer = null;
+            let isTransitioning = false;
+
+            // create clones for seamless loop
+            function addClones() {
+                removeClones();
+                const cards = Array.from(track.querySelectorAll(".post-card"));
+                if (cards.length === 0) return;
+                visible = getVisibleCount();
+                // if posts less than visible, still clone but logic will handle it
+                // append first visible clones
+                for (let i = 0; i < visible; i++) {
+                    const node = cards[i % cards.length].cloneNode(true);
+                    node.classList.add("clone");
+                    track.appendChild(node);
+                }
+                // prepend last visible clones
+                for (let i = cards.length - visible; i < cards.length; i++) {
+                    const node =
+                        cards[(i + cards.length) % cards.length].cloneNode(true);
+                    node.classList.add("clone");
+                    track.insertBefore(node, track.firstChild);
+                }
+            }
+
+            function removeClones() {
+                track.querySelectorAll(".clone").forEach((n) => n.remove());
+            }
+
+            function getVisibleCount() {
+                if (window.matchMedia("(max-width:640px)").matches) return 1;
+                if (window.matchMedia("(max-width:1000px)").matches) return 2;
+                return 3;
+            }
+
+            function recalc() {
+                addClones();
+                const firstCard = track.querySelector(".post-card");
+                if (!firstCard) return;
+                // compute width including gap
+                const style = getComputedStyle(track);
+                const gap = parseFloat(style.gap || 0) || 12;
+                slideWidth = firstCard.getBoundingClientRect().width + gap;
+                // place track to show the first real slide
+                const startOffset = -slideWidth * visible;
+                track.style.transition = "none";
+                track.style.transform = `translateX(${startOffset}px)`;
+                // reset logical index
+                index = 0;
+                // allow transitions on next frame
+                requestAnimationFrame(() => {
+                    track.style.transition = "";
+                });
+            }
+
+            function moveTo(newIndex) {
+                if (isTransitioning) return;
+                const cards = Array.from(
+                    track.querySelectorAll(".post-card:not(.clone)")
+                );
+                if (cards.length === 0) return;
+                isTransitioning = true;
+                const total = cards.length;
+                const startOffset = -slideWidth * visible;
+                const targetOffset = startOffset - newIndex * slideWidth;
+                track.style.transition = "transform 0.8s cubic-bezier(.25,.8,.25,1)";
+                track.style.transform = `translateX(${targetOffset}px)`;
+
+                function onEnd() {
+                    track.removeEventListener("transitionend", onEnd);
+                    // normalize
+                    if (newIndex >= total) {
+                        newIndex = newIndex - total;
+                        track.style.transition = "none";
+                        const resetOffset = startOffset - newIndex * slideWidth;
+                        track.style.transform = `translateX(${resetOffset}px)`;
+                    } else if (newIndex < 0) {
+                        newIndex = newIndex + total;
+                        track.style.transition = "none";
+                        const resetOffset = startOffset - newIndex * slideWidth;
+                        track.style.transform = `translateX(${resetOffset}px)`;
+                    }
+                    index = newIndex;
+                    // small timeout before allowing next transition
+                    setTimeout(() => {
+                        isTransitioning = false;
+                        track.style.transition = "";
+                    }, 20);
+                }
+
+                track.addEventListener("transitionend", onEnd);
+            }
+
+            function next() {
+                moveTo(index + 1);
+            }
+
+            function prev() {
+                moveTo(index - 1);
+            }
+
+            nextBtn &&
+                nextBtn.addEventListener("click", () => {
+                    next();
+                    restartAuto();
+                });
+            prevBtn &&
+                prevBtn.addEventListener("click", () => {
+                    prev();
+                    restartAuto();
+                });
+
+            // Auto
+            function startAuto() {
+                stopAuto();
+                autoTimer = setInterval(() => {
+                    next();
+                }, 4000);
+            }
+
+            function stopAuto() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            function restartAuto() {
+                stopAuto();
+                startAuto();
+            }
+
+            // Pause on hover/focus
+            slider && slider.addEventListener("mouseenter", stopAuto);
+            slider && slider.addEventListener("mouseleave", startAuto);
+            slider && slider.addEventListener("focusin", stopAuto);
+            slider && slider.addEventListener("focusout", startAuto);
+
+            // responsive
+            let resizeTimer = null;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(recalc, 120);
+            });
+
+            // init (short timeout to allow server-rendered DOM to appear)
+            setTimeout(() => {
+                recalc();
+                startAuto();
+            }, 60);
+
+            // expose for debugging
+            window.psSlider = {
+                recalc,
+                next,
+                prev,
+                startAuto,
+                stopAuto
+            };
+        })();
+    </script>
+
+    <script>
+        (function() {
+            const track = document.getElementById("cs-track");
+            const prevBtn = document.getElementById("cs-prev");
+            const nextBtn = document.getElementById("cs-next");
+            const slider = document.getElementById("cs-slider");
+
+            if (!track) return;
+
+            let visible = getVisibleCount();
+            let slideWidth = 0;
+            let index = 0; // logical index over original slides
+            let autoTimer = null;
+            let isTransitioning = false;
+
+            function getVisibleCount() {
+                if (window.matchMedia("(max-width:640px)").matches) return 1;
+                if (window.matchMedia("(max-width:1000px)").matches) return 2;
+                return 3;
+            }
+
+            function removeClones() {
+                track.querySelectorAll(".clone").forEach((n) => n.remove());
+            }
+
+            function addClones() {
+                removeClones();
+                const cards = Array.from(track.querySelectorAll(".cs-card"));
+                if (cards.length === 0) return;
+                visible = getVisibleCount();
+                // append first visible clones
+                for (let i = 0; i < visible; i++) {
+                    const node = cards[i % cards.length].cloneNode(true);
+                    node.classList.add("clone");
+                    track.appendChild(node);
+                }
+                // prepend last visible clones
+                for (let i = cards.length - visible; i < cards.length; i++) {
+                    const node =
+                        cards[(i + cards.length) % cards.length].cloneNode(true);
+                    node.classList.add("clone");
+                    track.insertBefore(node, track.firstChild);
+                }
+            }
+
+            function recalc() {
+                addClones();
+                const first = track.querySelector(".cs-card");
+                if (!first) return;
+                const style = getComputedStyle(track);
+                const gap = parseFloat(style.gap) || 18;
+                slideWidth = first.getBoundingClientRect().width + gap;
+                visible = getVisibleCount();
+                // position to show first real slide
+                const startOffset = -slideWidth * visible;
+                track.style.transition = "none";
+                track.style.transform = `translateX(${startOffset}px)`;
+                index = 0;
+                requestAnimationFrame(() => {
+                    track.style.transition = "";
+                });
+            }
+
+            function moveTo(newIndex) {
+                if (isTransitioning) return;
+                const originals = Array.from(
+                    track.querySelectorAll(".cs-card:not(.clone)")
+                );
+                if (originals.length === 0) return;
+                isTransitioning = true;
+                const total = originals.length;
+                const startOffset = -slideWidth * visible;
+                const targetOffset = startOffset - newIndex * slideWidth;
+                track.style.transition = "transform 0.8s cubic-bezier(.25,.8,.25,1)";
+                track.style.transform = `translateX(${targetOffset}px)`;
+
+                function onEnd() {
+                    track.removeEventListener("transitionend", onEnd);
+                    // normalize index if out of bounds
+                    if (newIndex >= total) {
+                        newIndex = newIndex - total;
+                        track.style.transition = "none";
+                        const resetOffset = startOffset - newIndex * slideWidth;
+                        track.style.transform = `translateX(${resetOffset}px)`;
+                    } else if (newIndex < 0) {
+                        newIndex = newIndex + total;
+                        track.style.transition = "none";
+                        const resetOffset = startOffset - newIndex * slideWidth;
+                        track.style.transform = `translateX(${resetOffset}px)`;
+                    }
+                    index = newIndex;
+                    setTimeout(() => {
+                        isTransitioning = false;
+                        track.style.transition = "";
+                    }, 20);
+                }
+
+                track.addEventListener("transitionend", onEnd);
+            }
+
+            function next() {
+                moveTo(index + 1);
+            }
+
+            function prev() {
+                moveTo(index - 1);
+            }
+
+            nextBtn &&
+                nextBtn.addEventListener("click", () => {
+                    next();
+                    restartAuto();
+                });
+            prevBtn &&
+                prevBtn.addEventListener("click", () => {
+                    prev();
+                    restartAuto();
+                });
+
+            // Auto
+            function startAuto() {
+                stopAuto();
+                autoTimer = setInterval(() => {
+                    next();
+                }, 4200);
+            }
+
+            function stopAuto() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            function restartAuto() {
+                stopAuto();
+                startAuto();
+            }
+
+            // Pause on hover/focus
+            slider && slider.addEventListener("mouseenter", stopAuto);
+            slider && slider.addEventListener("mouseleave", startAuto);
+            slider && slider.addEventListener("focusin", stopAuto);
+            slider && slider.addEventListener("focusout", startAuto);
+
+            // Responsive
+            let resizeTimer = null;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(recalc, 120);
+            });
+
+            // Init (short timeout to allow server-side rendering)
+            setTimeout(() => {
+                recalc();
+                startAuto();
+            }, 60);
+
+            // Expose for debug
+            window.csSlider = {
+                recalc,
+                next,
+                prev,
+                startAuto,
+                stopAuto
+            };
+        })();
+    </script>
+
+
+<script>
+(function(){
+  const track = document.getElementById('reviews-track');
+  const prev = document.getElementById('rev-prev');
+  const next = document.getElementById('rev-next');
+  if(!track) return;
+
+  let visible = getVisibleCount();
+  let slideW = 0;
+  let index = 0;
+  let autoTimer = null;
+  let isTransitioning = false;
+
+  function getVisibleCount(){
+    if(window.matchMedia('(max-width:640px)').matches) return 1;
+    if(window.matchMedia('(max-width:1000px)').matches) return 2;
+    return 3;
+  }
+
+  // clone helpers for seamless loop
+  function removeClones(){ track.querySelectorAll('.clone').forEach(n=>n.remove()); }
+  function addClones(){
+    removeClones();
+    const nodes = Array.from(track.querySelectorAll(':scope > .review-col'));
+    if(nodes.length === 0) return;
+    visible = getVisibleCount();
+    for(let i=0;i<visible;i++){
+      const clone = nodes[i % nodes.length].cloneNode(true);
+      clone.classList.add('clone');
+      track.appendChild(clone);
+    }
+    for(let i=nodes.length-visible;i<nodes.length;i++){
+      const clone = nodes[(i+nodes.length)%nodes.length].cloneNode(true);
+      clone.classList.add('clone');
+      track.insertBefore(clone, track.firstChild);
+    }
+  }
+
+  function recalc(){
+    addClones();
+    const first = track.querySelector('.review-col');
+    if(!first) return;
+    // compute gap if any (fallback 16)
+    const gap = parseFloat(getComputedStyle(track).gap) || 16;
+    slideW = first.getBoundingClientRect().width + gap;
+    visible = getVisibleCount();
+    const startOffset = -slideW * visible;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${startOffset}px)`;
+    index = 0;
+    requestAnimationFrame(()=>{ track.style.transition = '' });
+    // ensure arrows visible
+    [prev, next].forEach(b => { if(b) b.style.display = ''; });
+  }
+
+  function moveTo(newIndex){
+    if(isTransitioning) return;
+    const originals = Array.from(track.querySelectorAll(':scope > .review-col:not(.clone)'));
+    if(originals.length === 0) return;
+    isTransitioning = true;
+    const total = originals.length;
+    const startOffset = -slideW * visible;
+    const targetOffset = startOffset - (newIndex * slideW);
+    track.style.transition = 'transform 700ms cubic-bezier(.25,.8,.25,1)';
+    track.style.transform = `translateX(${targetOffset}px)`;
+
+    function onEnd(){
+      track.removeEventListener('transitionend', onEnd);
+      if(newIndex >= total){
+        newIndex = newIndex - total;
+        track.style.transition = 'none';
+        const resetOffset = startOffset - (newIndex * slideW);
+        track.style.transform = `translateX(${resetOffset}px)`;
+      } else if(newIndex < 0){
+        newIndex = newIndex + total;
+        track.style.transition = 'none';
+        const resetOffset = startOffset - (newIndex * slideW);
+        track.style.transform = `translateX(${resetOffset}px)`;
+      }
+      index = newIndex;
+      setTimeout(()=>{ isTransitioning = false; track.style.transition = '' }, 20);
+    }
+
+    track.addEventListener('transitionend', onEnd);
+  }
+
+  function nextSlide(){ moveTo(index + 1); }
+  function prevSlide(){ moveTo(index - 1); }
+
+  next && next.addEventListener('click', ()=>{ nextSlide(); restartAuto(); });
+  prev && prev.addEventListener('click', ()=>{ prevSlide(); restartAuto(); });
+
+  function startAuto(){ stopAuto(); autoTimer = setInterval(()=>{ nextSlide(); }, 4200); }
+  function stopAuto(){ if(autoTimer){ clearInterval(autoTimer); autoTimer = null; } }
+  function restartAuto(){ stopAuto(); startAuto(); }
+
+  const wrapper = document.querySelector('.reviews-container');
+  wrapper && wrapper.addEventListener('mouseenter', stopAuto);
+  wrapper && wrapper.addEventListener('mouseleave', startAuto);
+  wrapper && wrapper.addEventListener('focusin', stopAuto);
+  wrapper && wrapper.addEventListener('focusout', startAuto);
+
+  let rt = null;
+  window.addEventListener('resize', ()=>{ clearTimeout(rt); rt = setTimeout(recalc, 120); });
+
+  // init after DOM render
+  setTimeout(()=>{ recalc(); startAuto(); }, 60);
+
+  // expose for debug
+  window.reviewsSlider = { recalc, nextSlide, prevSlide, startAuto, stopAuto };
+})();
+</script>
+
+
+@endpush

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- FAVICON AND TOUCH ICONS -->
+    <!-- FAVICON AND TOUCH ICONS -->
     <link rel="shortcut icon" href="{{ asset($website_settings->website_favicon ?? '') }}" type="image/x-icon">
 
     <title>{{ Auth::user()->name }} - Dashboard</title>
@@ -61,7 +61,7 @@
         <!-- Main -->
         <main class="d-flex flex-column min-vh-100">
             <!-- Topbar -->
-           @include('website.customer.inc.header')
+            @include('website.customer.inc.header')
 
             <!-- Content -->
             <div class="container-fluid py-4 px-3 px-lg-4 flex-grow-1">
@@ -73,11 +73,12 @@
                                 <div>
                                     <div class="text-secondary small">Total Orders</div>
                                     <div class="fs-3 fw-bold">{{ $orderCount }}</div>
-                                    <div class="small text-success"><i class="bi bi-arrow-up-right"></i> {{ $percentageChange }}% this
+                                    <div class="small text-success"><i class="bi bi-arrow-up-right"></i>
+                                        {{ $percentageChange }}% this
                                         month</div>
                                 </div>
-                                <div class="rounded-3 p-3 bg-primary-subtle text-primary"><i
-                                        class="bi bi-bag fs-4"></i></div>
+                                <div class="rounded-3 p-3 bg-primary-subtle text-primary"><i class="bi bi-bag fs-4"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -171,7 +172,7 @@
 
 
                 <!-- Charts & Activity -->
-                <div class="row g-3 g-lg-4 mt-1">
+                {{-- <div class="row g-3 g-lg-4 mt-1">
                     <div class="col-12 col-xl-7">
                         <div class="card card-modern h-100">
                             <div
@@ -220,7 +221,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Orders & Profile -->
                 <div class="row g-3 g-lg-4 mt-1">
@@ -237,7 +238,6 @@
 
             <!-- Change Password Modal -->
             @include('website.customer.change-password')
-
 
 
 
@@ -495,6 +495,42 @@
             });
         });
     </script>
+
+
+    <script>
+        $(document).ready(function() {
+            // click handler for any .openOrderModal button
+            $(document).on('click', '.openOrderModal', function(e) {
+                e.preventDefault();
+                let url = $(this).data('url');
+
+                // show modal and loader
+                $('#orderModalContent').hide().empty();
+                $('#orderModalLoading').show();
+                var myModal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+                myModal.show();
+
+                // fetch partial via AJAX
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    dataType: 'html',
+                    success: function(html) {
+                        $('#orderModalLoading').hide();
+                        $('#orderModalContent').html(html).show();
+                    },
+                    error: function(xhr, status, err) {
+                        $('#orderModalLoading').hide();
+                        $('#orderModalContent').html(
+                            '<div class="alert alert-danger">Unable to load order details. Please try again.</div>'
+                            ).show();
+                        console.error(err);
+                    }
+                });
+            });
+        });
+    </script>
+
 
 
 </body>

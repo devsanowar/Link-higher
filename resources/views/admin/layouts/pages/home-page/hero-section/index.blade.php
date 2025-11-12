@@ -60,6 +60,62 @@
                             </div>
                         </div>
 
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                <label for="button_one">Button one </label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="button_one" class="form-control" name="button_one"
+                                            placeholder="Enter button name" value="{{ old('button_one', $heroSection->button_one ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                <label for="button_one_url">Button one url</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="button_one_url" class="form-control" name="button_one_url"
+                                            placeholder="Enter button url" value="{{ old('button_one_url', $heroSection->button_one_url ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                <label for="button_two">Button Two </label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="button_two" class="form-control" name="button_two"
+                                            placeholder="Enter button name" value="{{ old('button_two', $heroSection->button_two ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
+                                <label for="button_two_url">Button Two Url </label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" id="button_two_url" class="form-control" name="button_two_url"
+                                            placeholder="Enter button url" value="{{ old('button_two_url', $heroSection->button_two_url ?? '') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <!-- Update Settings Button -->
                         <div class="row clearfix">

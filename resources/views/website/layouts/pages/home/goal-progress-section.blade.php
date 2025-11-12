@@ -1,9 +1,15 @@
 <section id="features-2" class="pt--90 pt-[90px] lg:max-xl:pt-[70px] md:max-lg:pt-[60px]  features-section division">
     <div class="container">
         <!-- SECTION TITLE -->
-        <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
+        <div class="header">
+            <div class="title">{{ $goalProgressSectionTitile->section_title ?? '' }}</div>
+            <div class="sub-title" style="color: #6b7280; font-size: 13px">
+                {{ $goalProgressSectionTitile->section_subtitle ?? '' }}
+            </div>
+        </div>
+        {{-- <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
             <div class="md:w-10/12 lg:max-xl:w-9/12 xl:w-9/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                <div class="section-title mb--70 xl:!mb-[70px] lg:max-xl:!mb-[60px] md:max-lg:!mb-[50px] !text-center">
+                <div class="section-title lg:max-xl:!mb-[60px] md:max-lg:!mb-[50px] !text-center">
                     <!-- Title -->
                     <h2
                         class="s-50 w--700 xl:!text-[3.125rem] lg:max-xl:!text-[2.875rem] md:max-lg:!text-[2.64705rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold !tracking-[-0.5px] leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35]">
@@ -13,12 +19,12 @@
                         class="s-21 color--grey xl:!text-[1.3125rem] xl:!mt-[18px] !mb-0 lg:max-xl:!mt-[15px] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.32352rem] md:max-lg:!mt-[12px] sm:max-md:!text-[1.21875rem] sm:max-md:!mt-[12px] xsm:max-sm:!text-[1.1875rem] xsm:max-sm:!mt-[12px] xsm:max-sm:px-[3%] xsm:max-sm:py-0">
                         {{ $goalProgressSectionTitile->section_subtitle ?? '' }}</p>
                 </div>
+
             </div>
-        </div>
+        </div> --}}
         <!-- FEATURES-2 WRAPPER -->
         <div class="fbox-wrapper !text-center">
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  row-cols-1 row-cols-md-3">
-
 
                 <!-- FEATURE BOX #2 -->
                 @foreach ($goalProgesses as $goalProgess)
@@ -27,12 +33,12 @@
                             <!-- Image -->
                             <div
                                 class="fbox-img gr--whitesmoke h--175 xl:!m-[0_8px_60px] xl:!pt-[42px] lg:max-xl:!mt-0 lg:max-xl:!mb-[50px] lg:max-xl:mx-0 lg:max-xl:pt-[35px] md:max-lg:!mt-0 md:max-lg:!mb-[45px] md:max-lg:mx-0 md:max-lg:pt-[30px] sm:max-md:!mt-0 sm:max-md:!mb-[50px] sm:max-md:mx-[10%] sm:max-md:pt-[46px] xsm:max-sm:!mt-0 xsm:max-sm:!mb-[50px] xsm:max-sm:mx-3 xsm:max-sm:pt-[40px] rounded-[12px_12px_0_0]">
-                                @if(empty($goalProgess->image))
-                                <img class="img-fluid light-theme-img mb-[-25px] xl:!max-h-[175px] md:max-lg:!max-h-32 sm:max-md:!max-h-[220px] xsm:max-sm:!max-h-[185px] lg:max-xl:!max-h-40 w-auto max-w-[inherit] inline-block"
-                                    src="images/f_02.png" alt="feature-image">
+                                @if (empty($goalProgess->image))
+                                    <img class="img-fluid light-theme-img mb-[-25px] xl:!max-h-[175px] md:max-lg:!max-h-32 sm:max-md:!max-h-[220px] xsm:max-sm:!max-h-[185px] lg:max-xl:!max-h-40 w-auto max-w-[inherit] inline-block"
+                                        src="images/f_02.png" alt="feature-image">
                                 @else
-                                <img class="img-fluid light-theme-img mb-[-25px] xl:!max-h-[175px] md:max-lg:!max-h-32 sm:max-md:!max-h-[220px] xsm:max-sm:!max-h-[185px] lg:max-xl:!max-h-40 w-auto max-w-[inherit] inline-block"
-                                    src="{{ asset($goalProgess->image) }}" alt="feature-image">
+                                    <img class="img-fluid light-theme-img mb-[-25px] xl:!max-h-[175px] md:max-lg:!max-h-32 sm:max-md:!max-h-[220px] xsm:max-sm:!max-h-[185px] lg:max-xl:!max-h-40 w-auto max-w-[inherit] inline-block"
+                                        src="{{ asset($goalProgess->image) }}" alt="feature-image">
                                 @endif
 
                             </div>

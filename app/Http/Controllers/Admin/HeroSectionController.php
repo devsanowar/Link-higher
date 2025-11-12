@@ -20,6 +20,10 @@ class HeroSectionController extends Controller
             'title'             => ['required', 'string', 'max:255'],
             'short_description' => ['required', 'string'],
             'image'             => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'button_one'        => ['nullable', 'string', 'max:255'],
+            'button_one_url'    => ['nullable', 'string', 'url'],
+            'button_two'        => ['nullable', 'string', 'max:255'],
+            'button_two_url'    => ['nullable', 'string', 'url'],
         ]);
 
         $hero = HeroSection::first();
@@ -44,6 +48,10 @@ class HeroSectionController extends Controller
             'title'             => $request->title,
             'short_description' => $request->short_description,
             'image'             => $heroImage,
+            'button_one'        => $request->button_one,
+            'button_one_url'    => $request->button_one_url,
+            'button_two'        => $request->button_two,
+            'button_two_url'    => $request->button_two_url,
         ];
 
         if ($hero) {

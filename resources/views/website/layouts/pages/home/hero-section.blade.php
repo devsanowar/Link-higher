@@ -20,19 +20,24 @@
                                 class="quick-form form-shadow form-half mt--35 mt-[35px] mr-[4%] lg:max-xl:mr-[3%] md:max-lg:mr-[2%] sm:max-md:!mt-[25px] sm:max-md:!mb-0 sm:max-md:mx-[4%] xsm:max-sm:mx-[3%]">
                                 <!-- Form Inputs -->
                                 <div class="input-group [border:none] relative flex flex-wrap items-stretch w-full">
-                                    <input type="email" name="email"
+                                    {{-- <input type="email" name="email"
                                         class="form-control relative flex-[1_1_auto] min-w-0 block w-[1%] email r-06 rounded-[6px] !h-[58px] !text-[1.0625rem] lg:max-xl:!h-[54px] lg:max-xl:!text-[1rem] lg:max-xl:px-[14px] lg:max-xl:py-0 md:max-lg:!h-[48px] md:max-lg:!text-[1.0625rem] md:max-lg:px-[12px] md:max-lg:py-0 xsm:max-sm:!h-[58px] xsm:max-sm:!text-[1.175rem] xsm:max-sm:px-[14px] xsm:max-sm:py-0 shadow-[0_5px_10px_rgba(0,0,0,0.05)] bg-white !text-[#666] !font-normal [transition:all_450ms_ease-in-out] p-[0_20px] [border:2px_solid_transparent] focus:bg-white focus:shadow-none focus:border-[#1680fb] focus:[outline:0] placeholder:text-[#999] "
-                                        placeholder="Your email address" autocomplete="off" required>
+                                        placeholder="Your email address" autocomplete="off" required> --}}
+
                                     <span class="input-group-btn form-btn">
-                                        <button type="submit"
-                                            class="btn r-06 rounded-[6px] btn--theme hover--theme submit !h-[58px] !text-[1rem] xl:ml-[14px] xl:px-[40px] xl:py-[13px] lg:max-xl:!h-[54px] lg:max-xl:!text-[0.985rem] lg:max-xl:ml-[10px] lg:max-xl:px-[40px] lg:max-xl:py-[13px] md:max-lg:!h-[48px] md:max-lg:!text-[1rem] md:max-lg:ml-[10px] md:max-lg:px-[22px] md:max-lg:py-[13px] xsm:max-sm:!h-[58px] xsm:max-sm:!text-[1.15rem]">Get
-                                            Started</button>
+                                        <a href="{{ $hero->button_one_url ?? '#' }}"
+                                            class="custom-button btn r-06 rounded-[6px] hover--theme submit !h-[58px] !text-[1rem] xl:ml-[14px] xl:px-[40px] xl:py-[13px] lg:max-xl:!h-[54px] lg:max-xl:!text-[0.985rem] lg:max-xl:ml-[10px] lg:max-xl:px-[40px] lg:max-xl:py-[13px] md:max-lg:!h-[48px] md:max-lg:!text-[1rem] md:max-lg:ml-[10px] md:max-lg:px-[22px] md:max-lg:py-[13px] xsm:max-sm:!h-[58px] xsm:max-sm:!text-[1.15rem]">
+                                            {{ $hero->button_one ?? 'Get Plan' }}
+                                        </a>
+                                    </span>
+
+
+                                    <span class="input-group-btn form-btn">
+                                        <a href="{{ $hero->button_two_url ?? '#' }}"
+                                            class="get-statred btn r-06 rounded-[6px] btn--theme hover--theme submit !h-[58px] !text-[1rem] xl:ml-[14px] xl:px-[40px] xl:py-[13px] lg:max-xl:!h-[54px] lg:max-xl:!text-[0.985rem] lg:max-xl:ml-[10px] lg:max-xl:px-[40px] lg:max-xl:py-[13px] md:max-lg:!h-[48px] md:max-lg:!text-[1rem] md:max-lg:ml-[10px] md:max-lg:px-[22px] md:max-lg:py-[13px] xsm:max-sm:!h-[58px] xsm:max-sm:!text-[1.15rem]">{{ $hero->button_two ?? 'Get Plan' }}</a>
                                     </span>
                                 </div>
-                                <!-- Form Message -->
-                                <div class="quick-form-msg w-full block ml-[5px] !mr-0 mt-[20px] !mb-[15px]"><span
-                                        class="loading !text-[#3eb1ff] !text-[1.05rem] leading-none font-medium"></span>
-                                </div>
+
                             </form>
                             <!-- END HERO QUICK FORM -->
                         </div>
@@ -42,10 +47,10 @@
                     <div
                         class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                         <div class="hero-7-img !text-center wow fadeInLeft">
-                            @if($hero->image)
-                            <img class="img-fluid" src="{{ asset($hero->image) }}" alt="hero-image">
+                            @if ($hero->image)
+                                <img class="img-fluid" src="{{ asset($hero->image) }}" alt="hero-image">
                             @else
-                            <img class="img-fluid" src="{{ asset('frontend') }}/images/img-06.png" alt="hero-image">
+                                <img class="img-fluid" src="{{ asset('frontend') }}/images/img-06.png" alt="hero-image">
                             @endif
                         </div>
                     </div>

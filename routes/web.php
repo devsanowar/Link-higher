@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CartPageController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\AboutPageController;
+use App\Http\Controllers\Frontend\BlogPageController;
 use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\Frontend\ServicePlanController;
@@ -23,6 +24,10 @@ Route::get('/portfolio/{id}/details', [ProjectController::class, 'projectDetails
 // Service Page route
 Route::get('service-page', [ServicePageController::class, 'index'])->name('service.page');
 Route::get('service-page/{id}/details', [ServicePageController::class, 'serviceDetails'])->name('service.details.page');
+
+// Post page route
+Route::get('blog-page', [BlogPageController::class, 'index'])->name('blog.page');
+Route::get('blog-details/{slug}', [BlogPageController::class, 'blogDetails'])->name('blog.details');
 
 // Service plan route
 Route::get('service-plan/{id}/details', [ServicePlanController::class, 'servicePlanDetails'])->name('service.plan.details.page');

@@ -1523,7 +1523,7 @@
     padding: 45px 0 15px 0;
   }
   .p-\[45px_50px_35px\] {
-    padding: 45px 50px 35px;
+    padding: 45px 30px 30px;
   }
   .p-\[45px_50px_40px\] {
     padding: 45px 50px 40px;
@@ -1628,7 +1628,7 @@
     padding-inline: 80px;
   }
   .px-\[calc\(0\.5\*_1\.5rem\)\] {
-    padding-inline: calc(0.5 * 1.5rem);
+    padding-inline: calc(0.5 * .5rem);
   }
   .px-px {
     padding-inline: 1px;
@@ -1724,10 +1724,10 @@
     padding-top: 80px;
   }
   .pt-\[90px\] {
-    padding-top: 90px;
+    padding-top: 60px;
   }
   .pt-\[100px\] {
-    padding-top: 100px;
+    padding-top: 70px;
   }
   .pt-\[120px\] {
     padding-top: 120px;
@@ -1820,7 +1820,7 @@
     padding-bottom: 85px !important;
   }
   .\!pb-\[100px\] {
-    padding-bottom: 100px !important;
+    padding-bottom: 70px !important;
   }
   .pb-\[40px\] {
     padding-bottom: 40px;
@@ -15020,8 +15020,9 @@ ol.digit-list p {
   color: var(--color-white) !important;
 }
 #hero-7 {
-  padding-top: 140px;
-  padding-bottom: 100px;
+	padding-top: 140px;
+	padding-bottom: 70px;
+
   @media (width >= 414px) {
     @media (width < 480px) {
       padding-block: 80px;
@@ -36513,3 +36514,7 @@ body.theme--dark {
     }
   }
 }
+
+
+
+

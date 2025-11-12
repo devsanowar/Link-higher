@@ -2,7 +2,13 @@
     <div class="container">
         <!-- FEATURES-6 WRAPPER -->
         <div class="fbox-wrapper !text-center">
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <div class="header">
+                <div class="title">Services</div>
+                
+            </div>
+
+            <div style="margin-bottom: 20px"
+                class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  row-cols-1 row-cols-md-2 row-cols-lg-4">
                 <!-- FEATURE BOX #1 -->
                 @foreach ($services as $key => $service)
                     <div
@@ -11,12 +17,12 @@
                             <!-- Icon -->
                             <div class="fbox-ico ico-55 xsm:max-sm:!mb-[0px] service-image">
                                 <a href="{{ route('service.details.page', $service->id) }}" class="service-title">
-                                <div class="shape-ico relative inline-block m-0 icon-card">
+                                    <div class="shape-ico relative inline-block m-0 icon-card">
                                         <img src="{{ asset($service->image) }}"
                                             alt="{{ $service->service_title ?? 'Service' }}"
                                             class="relative z-[2] w-16 h-16 object-contain mx-auto" />
                                     </div>
-                                    </a>
+                                </a>
                             </div>
                             <!-- End Icon -->
                             <!-- Text -->
@@ -36,6 +42,15 @@
 
             </div>
             <!-- End row -->
+
+
+            <span class="input-group-btn form-btn">
+                <a href="{{ route('service.page') }}"
+                    class="custom-button btn r-06 rounded-[6px] hover--theme submit !h-[58px] !text-[1rem] xl:ml-[14px] xl:px-[40px] xl:py-[13px] lg:max-xl:!h-[54px] lg:max-xl:!text-[0.985rem] lg:max-xl:ml-[10px] lg:max-xl:px-[40px] lg:max-xl:py-[13px] md:max-lg:!h-[48px] md:max-lg:!text-[1rem] md:max-lg:ml-[10px] md:max-lg:px-[22px] md:max-lg:py-[13px] xsm:max-sm:!h-[58px] xsm:max-sm:!text-[1.15rem]">
+                    More services
+                </a>
+            </span>
+
         </div>
         <!-- END FEATURES-6 WRAPPER -->
     </div>

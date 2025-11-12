@@ -1,7 +1,11 @@
-<div id="brands-1" class="py-[80px] lg:max-xl:py-[60px] md:max-lg:py-[50px] brands-section">
+<div id="brands-1" class="brands-section">
         <div class="container">
+
+            <div class="header">
+                <div class="title">Our Trusted Clients</div>
+            </div>
             <!-- BRANDS TITLE -->
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
+            {{-- <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
                 <div
                     class="md:w-10/12 lg:max-xl:w-9/12 xl:w-9/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
                     <div
@@ -11,11 +15,11 @@
                             Trusted and used by over 3,400 companies</h5>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- BRANDS CAROUSEL -->
-            <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]">
+            <div id="brand-slider" class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]">
                 <div class="col !text-center w-full flex-[1_0_0%] px-[calc(0.5*_1.5rem)] max-w-full">
-                    <div class="owl-carousel brands-carousel-6">
+                    <div class="brand-logo owl-carousel brands-carousel-6">
 
                         <!-- BRAND LOGO IMAGE -->
                         @foreach ($clients as $client)

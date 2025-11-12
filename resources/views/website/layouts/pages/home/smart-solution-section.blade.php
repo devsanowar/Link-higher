@@ -58,7 +58,7 @@
 </section>
 
 
-<section id="lnk-2"
+{{-- <section id="lnk-2"
     class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px]  ct-01 content-section division">
     <div class="container">
         <!-- SECTION CONTENT (ROW) -->
@@ -107,4 +107,4 @@
         <!-- END SECTION CONTENT (ROW) -->
     </div>
     <!-- End container -->
-</section>
+</section> --}}

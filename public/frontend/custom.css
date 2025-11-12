@@ -711,10 +711,10 @@ button.btn.btn-primary.custom-submit-button {
     max-width: var(--max);
 }
 .card {
-	background: var(--card);
-	border-radius: 16px;
-	padding: 20px;
-	box-shadow: 0 2px 5px rgba(15, 23, 36, 0.13);
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(15, 23, 36, 0.13);
 }
 
 /* -------------------- Header -------------------- */
@@ -863,9 +863,8 @@ table.cart tbody td {
     font-weight: 700;
 }
 
-
 .checkout-button:hover {
-	color: #ffffffa6 !important;
+    color: #ffffffa6 !important;
 }
 
 /* -------------------- Mobile: card layout -------------------- */
@@ -918,9 +917,683 @@ table.cart tbody td {
     font-size: 13px;
 }
 
-
 /*============= Profile image ==============*/
 
 .profile-image img {
-	width: 47px;
+    width: 47px;
 }
+
+.custom-button {
+    background: transparent !important;
+    border: 2px solid currentColor !important;
+    color: #6a4ec1 !important;
+    line-height: 23px !important;
+}
+
+.custom-button:hover {
+    background: #6a4ec1 !important;
+    color: #ffffff !important;
+}
+
+.get-statred {
+    line-height: 23px !important;
+}
+
+/* .custom-heading-div {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+
+}
+
+.custom-heading-div h2 {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.custom-heading-div h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #6a4ec1, #6a4ec1);
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+.custom-heading-div {
+    text-align: center;
+}
+
+.heading-style {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.heading-style span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Border + Cross design */
+.heading-style::before,
+.heading-style::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+    height: 3px;
+    background: #6a4ec1;
+}
+
+.heading-style::before {
+    left: 0;
+}
+
+.heading-style::after {
+    right: 0;
+}
+
+/* Cross icon in the middle */
+.heading-style::after,
+.heading-style::before {
+}
+
+.heading-style span::after {
+    content: "✕";
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 0 8px;
+    color: #6a4ec1;
+    font-size: 1rem;
+}
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.page-pagination.theme-pagination {
+    padding-bottom: 60px !important;
+}
+
+#blog-page {
+    padding-bottom: 0 !important;
+}
+
+#post-slider {
+    max-width: 1140px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+#post-slider .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+/* #post-slider .title {
+    font-size: 20px;
+    font-weight: 700;
+} */
+
+#post-slider .title {
+    position: relative;
+    padding-left: 15px; /* space for the border */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827; /* adjust as needed */
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+#post-slider .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+.ps-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+.ps-arrow.left {
+    left: -22px;
+}
+.ps-arrow.right {
+    right: -22px;
+}
+.ps-viewport {
+    overflow: hidden;
+    border-radius: 12px;
+}
+.ps-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    gap: 12px;
+    padding: 12px;
+}
+.post-card {
+    flex: 0 0 calc(33.333% - 8px);
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.post-image {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+.post-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.post-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    color: #6b7280;
+}
+.post-category {
+    background: rgba(99, 102, 241, 0.1);
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #4f46e5;
+}
+.post-title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #0f172a;
+}
+.post-desc {
+    font-size: 16px;
+    color: #374151;
+    flex: 1;
+}
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+.author-av {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+    .post-card {
+        flex: 0 0 calc(50% - 8px);
+    }
+}
+@media (max-width: 640px) {
+    .post-card {
+        flex: 0 0 100%;
+    }
+    .ps-arrow.left {
+        left: 6px;
+    }
+    .ps-arrow.right {
+        right: 6px;
+    }
+}
+
+/*==========================
+CASE STUDIES SLIDER SECTION CSS
+============================*/
+.cs-slider {
+    max-width: 1140px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 65px;
+}
+.cs-slider .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.cs-slider .title {
+    position: relative;
+    padding-left: 15px; /* space for the border */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827; /* adjust as needed */
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.cs-slider .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+/* arrows */
+.cs-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 12;
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    background: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
+}
+.cs-arrow.left {
+    left: -20px;
+}
+.cs-arrow.right {
+    right: -20px;
+}
+.cs-arrow:active {
+    transform: translateY(-50%) scale(0.98);
+}
+@media (max-width: 640px) {
+    .cs-arrow.left {
+        left: 8px;
+    }
+    .cs-arrow.right {
+        right: 8px;
+    }
+}
+
+.cs-viewport {
+    overflow: hidden;
+    border-radius: 12px;
+}
+.cs-track {
+    display: flex;
+    gap: 18px;
+    padding: 14px;
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    align-items: stretch;
+}
+
+/* card (same style as your case study design) */
+/* এই অংশটা আগের CSS-এ replace করো */
+.cs-card {
+    flex: 0 0 calc(33.333% - 12px);
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.04);
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.04);
+    display: flex;
+    flex-direction: column;
+    height: 440px; /* ✅ Fixed height */
+}
+
+.cs-hero {
+    width: 100%;
+    height: 180px; /* ✅ image fixed height */
+    object-fit: cover;
+    display: block;
+}
+
+.cs-body {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.cs-category {
+    font-size: 12px;
+    color: #4f46e5;
+    font-weight: 700;
+    background: rgba(99, 102, 241, 0.08);
+    padding: 4px 8px;
+    border-radius: 999px;
+    display: inline-block;
+}
+.cs-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+}
+.cs-excerpt {
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.45;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* ✅ Limit text lines */
+    -webkit-box-orient: vertical;
+    flex: 1;
+}
+
+.cs-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(15, 23, 42, 0.03);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.6)
+    );
+    flex-shrink: 0;
+    min-height: 60px; /* ✅ footer fixed height */
+}
+.cs-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cs-author img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.cs-author-name {
+    font-weight: 700;
+    font-size: 13px;
+}
+.cs-date {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+@media (max-width: 1000px) {
+    .cs-card {
+        flex: 0 0 calc(50% - 12px);
+    }
+}
+@media (max-width: 640px) {
+    .cs-card {
+        flex: 0 0 100%;
+    }
+}
+
+/* small accessibility */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/*===================================
+Feature section css style
+======================================*/
+
+#features-2 .title {
+    position: relative;
+    padding-left: 15px; /* space for the border */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827; /* adjust as needed */
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+#features-2 .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+#features-2 .sub-title {
+    font-size: 16px !important;
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+/*===================================
+Service section - 6 css style
+======================================*/
+
+#features-6 .title {
+    position: relative;
+    padding-left: 15px; /* space for the border */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827; /* adjust as needed */
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 20px;
+    /* margin-left: 5px; */
+}
+
+#features-6 .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+/*=================================
+Trusted client
+===================================*/
+.brands-section {
+    padding-bottom: 60px;
+}
+
+.brands-section .title {
+    position: relative;
+    padding-left: 15px; /* space for the border */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827; /* adjust as needed */
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+
+.brands-section .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+#brand-slider {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center; /* vertically center content */
+    justify-content: center; /* horizontally center (optional, looks cleaner) */
+    height: 120px; /* set a fixed height for the logo area */
+}
+
+.brand-logo img {
+    max-height: 100%; /* make sure the image fits within the div */
+    object-fit: contain; /* keep proper aspect ratio */
+}
+
+.owl-carousel .owl-item img {
+    display: block;
+    width: 80%;
+}
+
+/*==================================
+Review section custom design
+=====================================*/
+
+/* Reviews slider — plain CSS (no Tailwind) */
+
+/* outer wrapper mimics previous layout and centered container */
+.reviews-wrapper {
+	position: relative;
+	padding: 80px 12px;
+	background: transparent;
+}
+.reviews-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* arrows */
+.reviews-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.reviews-prev { left: -56px; }
+.reviews-next { right: -56px; }
+
+/* viewport */
+.reviews-viewport {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* track */
+.reviews-track {
+  display: flex;
+  gap: 16px;
+  padding: 8px 6px;
+  align-items: stretch;
+  transition: transform 0.7s cubic-bezier(.25,.8,.25,1);
+}
+
+/* columns (one review item) — three per view on desktop */
+.review-col {
+  flex: 0 0 calc(33.333% - 16px);
+  max-width: calc(33.333% - 16px);
+}
+
+/* responsive: 2-per then 1-per */
+@media (max-width: 1000px) {
+  .review-col { flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); }
+  .reviews-prev { left: -36px; }
+  .reviews-next { right: -36px; }
+}
+@media (max-width: 640px) {
+  .review-col { flex: 0 0 100%; max-width: 100%; }
+  .reviews-prev { left: 8px; }
+  .reviews-next { right: 8px; }
+}
+
+/* review card design (matches your previous visual style) */
+.review-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 35px 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* small quote icon styling */
+.quote-icon { font-size: 80px; opacity: 0.08; margin-top: -20px; margin-left: -6px; }
+.quote { font-family: serif; }
+
+/* review text */
+.review-text {
+	margin-top: -82px;
+}
+.review-body { color: #1f2937; line-height: 1.5; margin: 0 0 12px; }
+
+/* author row (avatar left, meta right) */
+.author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+.author-avatar img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.author-meta { padding-left: 8px; }
+.author-name { margin: 0; font-weight: 700; font-size: 15px; }
+.author-profession { margin: 2px 0 0; font-weight: 300; font-size: 13px; color: #6b7280; }
+
+/* ensure the card heights are consistent */
+.reviews-track, .review-card { min-height: 220px; }
+
+/* clones will keep same size; no extra styles needed */
