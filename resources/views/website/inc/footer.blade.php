@@ -1,5 +1,5 @@
         <footer id="footer-3"
-            class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px] footer !pb-[50px] lg:max-xl:!pb-[35px] md:max-lg:!pb-[25px] sm:max-md:!pb-[30px] xsm:max-sm:!pb-[30px] footer">
+            class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px] footer">
             <div class="container">
                 <!-- FOOTER CONTENT -->
                 <div class="flex flex-wrap mx-[calc(-0.4*_1.5rem)] ">
@@ -100,7 +100,8 @@
                             <!-- Mail Link -->
                             <p
                                 class="footer-mail-link ico-25 !ml-0 !mb-[20px] lg:max-xl:!mb-[14px] md:max-lg:!mb-[10px]">
-                                <a class="font-normal" href="mailto:yourdomain@mail.com">{{ $website_settings->email_one ?? '' }}</a>
+                                <a class="font-normal"
+                                    href="mailto:yourdomain@mail.com">{{ $website_settings->email_one ?? '' }}</a>
                             </p>
                             <!-- Social Links -->
                             <ul class="footer-socials ico-25 !text-center clearfix inline-block !m-0">
@@ -122,8 +123,7 @@
                 </div>
 
                 <!-- END FOOTER CONTENT -->
-                <hr
-                    class=" mt-[30px] !mb-[50px] lg:max-xl:!mt-[10px] lg:max-xl:lg:!mb-[35px] md:max-lg:!mt-[5px] md:max-lg:!mb-[25px] sm:max-md:!mt-[15px] sm:max-md:!mb-[30px] xsm:max-sm:!mt-[5px] xsm:max-sm:!mb-[30px]">
+                <hr class="custom-footer-divider">
                 <!-- FOOTER DIVIDER LINE -->
                 <!-- BOTTOM FOOTER -->
                 <div class="bottom-footer">
@@ -139,11 +139,11 @@
                         <div
                             class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                             <div class="bottom-secondary-link ico-15 text-right text-end">
-                                <p class="p-sm !mb-0"><a href="https://themeforest.net/user/elite-themes24">Made
+                                <p class="p-sm !mb-0"><a href="https://linkhigher.com/">Made
                                         with
                                         <span
                                             class="flaticon-heart color--pink-400 relative px-[2px] py-0 top-px sm:max-md:px-[2px] sm:max-md:py-0 sm:max-md:top-[1.5px] xsm:max-sm:px-[2px] xsm:max-sm:py-0 xsm:max-sm:top-[1.5px]"></span>
-                                        by @elite-themes24</a>
+                                        by @Link_Higher</a>
                                 </p>
                             </div>
                         </div>

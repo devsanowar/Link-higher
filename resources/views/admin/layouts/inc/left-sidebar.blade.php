@@ -209,22 +209,6 @@
             </li>
 
 
-            <!--Project with category Menu-->
-            <li class="menu-item {{ request()->routeIs(['category.*', 'project.*']) ? 'active open' : '' }}">
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="zmdi zmdi-case"></i><span>Case Studies</span>
-                </a>
-                <ul class="ml-menu">
-                    <li class="{{ request()->routeIs('category.*') ? 'active' : '' }}">
-                        <a href="{{ route('category.index') }}">Category</a>
-                    </li>
-
-                    <li class="{{ request()->routeIs('project.*') ? 'active' : '' }}">
-                        <a href="{{ route('project.index') }}">Case studies</a>
-                    </li>
-
-                </ul>
-            </li>
 
             <!--Employe Menu-->
             <li class="{{ request()->routeIs(['country.*']) ? 'active open' : '' }}">

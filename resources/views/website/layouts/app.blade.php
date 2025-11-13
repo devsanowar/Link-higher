@@ -21,7 +21,7 @@
     @include('website.inc.style')
 </head>
 
-<body>
+<body id="@yield('page_id')">
     <!-- PRELOADER SPINNER
                   ============================================= -->
     {{-- <div id="loading" class="loading--theme  h-full w-full fixed z-[99999999] mt--0 top-0 bg-[#f5f5f9]">

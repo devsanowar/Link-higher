@@ -22,7 +22,7 @@
                                     <tr>
                                         <th>SN</th>
                                         <th>Title</th>
-                                        <th>Category</th>
+                                        <th>Service</th>
                                         <th>Website Url</th>
                                         <th>Start date</th>
                                         <th>End date</th>
@@ -30,24 +30,13 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>SN</th>
-                                        <th>Title</th>
-                                        <th>Category</th>
-                                        <th>Website Url</th>
-                                        <th>Start date</th>
-                                        <th>End date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
+                                
                                 <tbody>
                                     @foreach ($cases as $key => $case)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $case->title ?? '' }}</td>
-                                            <td>{{ $case->category->category_name ?? '' }}</td>
+                                            <td>{{ $case->service->service_title ?? '' }}</td>
                                             <td>{{ Str::limit($case->website_url ?? '', 20, '...') }}</td>
                                             <td>{{ $case->start_date ?? '' }}</td>
                                             <td>{{ $case->end_date }}</td>

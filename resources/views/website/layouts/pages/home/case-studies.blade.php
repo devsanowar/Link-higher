@@ -21,83 +21,39 @@
 
     <div class="cs-viewport">
         <div class="cs-track" id="cs-track">
-            <!-- EXAMPLE CARDS: replace these with your server-side loop (.cs-card) -->
-            <article class="cs-card">
-                <img class="cs-hero" src="https://picsum.photos/seed/cs1/1200/800" alt="case study image" />
-                <div class="cs-body">
-                    <div class="cs-category">Performance</div>
-                    <h3 class="cs-title">
-                        How Company X reduced delivery time by 40%
-                    </h3>
-                    <p class="cs-excerpt">
-                        Short summary / excerpt of the case study. Keep it to 2 lines
-                        for consistent card heights and neat layout.
-                    </p>
-                </div>
-                <div class="cs-footer">
-                    <div class="cs-author">
-                        <img src="https://i.pravatar.cc/100?img=32" alt="author" />
-                        <div class="cs-author-name">Jabir IT</div>
-                    </div>
-                    <div class="cs-date">Nov 12, 2025</div>
-                </div>
-            </article>
 
-            <article class="cs-card">
-                <img class="cs-hero" src="https://picsum.photos/seed/cs2/1200/800" alt="case study image" />
-                <div class="cs-body">
-                    <div class="cs-category">UX</div>
-                    <h3 class="cs-title">Redesigning checkout — conversion up 25%</h3>
-                    <p class="cs-excerpt">
-                        Short summary highlighting the problem, solution and measurable
-                        impact for easy scannability.
-                    </p>
-                </div>
-                <div class="cs-footer">
-                    <div class="cs-author">
-                        <img src="https://i.pravatar.cc/100?img=18" alt="author" />
-                        <div class="cs-author-name">Sadia</div>
+            @forelse ($caseStudies as $caseStudy)
+                <article class="cs-card">
+                    @if($caseStudy->image)
+                    <img class="cs-hero" src="{{ asset($caseStudy->image) }}" alt="case study image" />
+                    @else
+                    <img class="cs-hero" src="https://picsum.photos/seed/cs2/1200/800" alt="case study image" />
+                    @endif
+                    <div class="cs-body">
+                        <div class="cs-category">{{{ $caseStudy->service->service_title ?? '' }}}</div>
+                        <h3 class="cs-title">{{ $caseStudy->title ?? '' }}</h3>
+                        <p class="cs-excerpt">
+                            {!! Str::limit($caseStudy->description, 200, '...') !!}
+                        </p>
                     </div>
-                    <div class="cs-date">Oct 29, 2025</div>
-                </div>
-            </article>
+                    <div class="cs-footer">
+                        <div class="cs-author">
+                            @if($caseStudy->user && $caseStudy->user->image)
+                                <img src="{{ asset($caseStudy->user->image) }}" alt="author" />
+                            @else
+                                <img src="https://i.pravatar.cc/100?img=18" alt="author" />
+                            @endif
+                            <div class="cs-author-name">{{ $caseStudy->user->name ?? 'Unknown Author' }}</div>
+                        </div>
 
-            <article class="cs-card">
-                <img class="cs-hero" src="https://picsum.photos/seed/cs3/1200/800" alt="case study image" />
-                <div class="cs-body">
-                    <div class="cs-category">Operations</div>
-                    <h3 class="cs-title">Automating inventory — errors reduced</h3>
-                    <p class="cs-excerpt">
-                        A concise summary that communicates the before/after in one or
-                        two short sentences.
-                    </p>
-                </div>
-                <div class="cs-footer">
-                    <div class="cs-author">
-                        <img src="https://i.pravatar.cc/100?img=10" alt="author" />
-                        <div class="cs-author-name">Fahim</div>
+                        <div class="cs-date">{{ $caseStudy->created_at->format('M d, Y') }}</div>
                     </div>
-                    <div class="cs-date">Sep 18, 2025</div>
-                </div>
-            </article>
+                </article>
+            @empty
+            <h2>No case studies found ! please add case studies.</h2>
+            @endforelse
 
-            <article class="cs-card">
-                <img class="cs-hero" src="https://picsum.photos/seed/cs4/1200/800" alt="case study image" />
-                <div class="cs-body">
-                    <div class="cs-category">Strategy</div>
-                    <h3 class="cs-title">Scaling sales team — revenue x2</h3>
-                    <p class="cs-excerpt">
-                        Brief summary of tactics used and measurable business impact.
-                    </p>
-                </div>
-                <div class="cs-footer">
-                    <div class="cs-author">
-                        <img src="https://i.pravatar.cc/100?img=22" alt="author" />
-                        <div class="cs-author-name">Riaz</div>
-                    </div>
-                    <div class="cs-date">Aug 05, 2025</div>
-                </div>
-            </article>
+
 
             <!-- Add more .cs-card elements as needed (or render via Blade). -->
         </div>

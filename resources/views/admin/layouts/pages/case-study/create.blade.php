@@ -67,22 +67,22 @@
                             {{-- Category --}}
                             <div class="row clearfix">
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                    <label for="category_id">Category <strong class="text-danger">*</strong></label>
+                                    <label for="service_id">Services <strong class="text-danger">*</strong></label>
                                 </div>
                                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
                                     <div class="form-group">
-                                        <select id="category_id" name="category_id"
-                                            class="form-control show-tick @error('category_id') is-invalid @enderror"
+                                        <select id="service_id" name="service_id"
+                                            class="form-control show-tick @error('service_id') is-invalid @enderror"
                                             required>
-                                            <option value="">-- Select Category --</option>
-                                            @foreach ($categories ?? [] as $cat)
+                                            <option value="">-- Select service --</option>
+                                            @foreach ($services ?? [] as $cat)
                                                 <option value="{{ $cat->id }}"
-                                                    {{ old('category_id') == $cat->id ? 'selected' : '' }}>
-                                                    {{ $cat->category_name }}
+                                                    {{ old('service_id') == $cat->id ? 'selected' : '' }}>
+                                                    {{ $cat->service_title }}
                                                 </option>
                                             @endforeach
                                         </select>
-                                        @error('category_id')
+                                        @error('service_id')
                                             <span class="text-danger small">{{ $message }}</span>
                                         @enderror
                                     </div>

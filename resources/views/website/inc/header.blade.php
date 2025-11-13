@@ -105,6 +105,10 @@
                                 </li>
                                 <!-- END MEGAMENU -->
                                 <!-- SIMPLE NAVIGATION LINK -->
+                                <li class="nl-simple" aria-haspopup="true"><a href="{{ route('site.page') }}"
+                                        class="h-link">Sites</a></li>
+
+                                <!-- SIMPLE NAVIGATION LINK -->
                                 <li class="nl-simple" aria-haspopup="true"><a href="{{ route('blog.page') }}"
                                         class="h-link">Blog</a></li>
 

@@ -2,6 +2,11 @@
 <div class="reviews-wrapper">
   <div class="reviews-container">
 
+    <div class="header">
+            <div class="title">Client Reviews</div>
+
+        </div>
+
     <button id="rev-prev" class="reviews-arrow reviews-prev" aria-label="Previous review">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>

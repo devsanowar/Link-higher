@@ -1,126 +1,77 @@
 @extends('website.layouts.app')
 @section('title', 'Contact Page')
+@section('page_id', 'contact-page')
 @section('website_content')
     <section id="service-page-breadcrumb">
-        <div class="breadcrumb-container">
-            <h2 class="breadcrumb-title">Contact Us Page</h2>
-            <ul class="breadcrumb-list">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><span>›</span></li>
-                <li class="active">Contact</li>
-            </ul>
+        <div class="container">
+            <div class="breadcrumb-container">
+                <h2 class="breadcrumb-title">Contact Us Page</h2>
+                <ul class="breadcrumb-list">
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><span>›</span></li>
+                    <li class="active">Contact</li>
+                </ul>
+            </div>
         </div>
     </section>
 
 
-    <section id="features-6" class="pb--100 !pb-[100px] lg:max-xl:!pb-[80px] md:max-lg:!pb-[70px] features-section division">
+    <section id="features-6" class="features-section">
         <div class="container">
-            <!-- FEATURES-6 WRAPPER -->
-            <div class="fbox-wrapper !text-center">
-                <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] row-cols-1 row-cols-md-2 row-cols-lg-4">
+            <!-- FEATURES WRAPPER -->
+            <div class="features-wrapper">
+                <div class="features-row">
 
                     <!-- FEATURE BOX #1 -->
-                    <div
-                        class="col md:max-lg:w-6/12 lg:max-xl:w-3/12 xl:w-3/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div class="fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px] service-custom-design">
-                            <!-- Icon -->
-                            <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
-                                <div class="shape-ico relative inline-block m-0">
-                                    <img src="
-                                    {{ asset('frontend') }}/images/icons/phone.png"
-                                        alt="Service One" class="relative z-[2] w-16 h-16 object-contain mx-auto" />
-                                </div>
+                    <div class="feature-box">
+                        <div class="fbox-inner">
+                            <div class="fbox-icon">
+                                <img src="{{ asset('frontend/images/icons/phone.png') }}" alt="Phone Number">
                             </div>
-                            <!-- Text -->
-                            <div class="fbox-txt">
-
-                                <h6
-                                    class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                    Phone Number
-                                </h6>
-
-                                <p class="!mb-0">
-                                    {{ $website_settings->phone_one }}
-                                </p>
-                                <p class="!mb-0">
-                                    {{ $website_settings->phone_two }}
-                                </p>
+                            <div class="fbox-content">
+                                <h6>Phone Number</h6>
+                                <p>{{ $website_settings->phone_one }}</p>
+                                <p>{{ $website_settings->phone_two }}</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- FEATURE BOX #2 -->
-                    <div
-                        class="col md:max-lg:w-6/12 lg:max-xl:w-3/12 xl:w-3/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div class="fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px] service-custom-design">
-                            <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
-                                <div class="shape-ico relative inline-block m-0">
-                                    <img src="{{ asset('frontend') }}/images/icons/gmail.png" alt="Service Two"
-                                        class="relative z-[2] w-16 h-16 object-contain mx-auto" />
-                                </div>
+                    <div class="feature-box">
+                        <div class="fbox-inner">
+                            <div class="fbox-icon">
+                                <img src="{{ asset('frontend/images/icons/gmail.png') }}" alt="Email">
                             </div>
-                            <div class="fbox-txt">
-
-                                <h6
-                                    class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                    Email
-                                </h6>
-
-                                <p class="!mb-0">
-                                    {{ $website_settings->email_one ?? '' }}
-                                </p>
-                                <p class="!mb-0">
-                                    {{ $website_settings->email_two ?? '' }}
-                                </p>
+                            <div class="fbox-content">
+                                <h6>Email</h6>
+                                <p>{{ $website_settings->email_one ?? '' }}</p>
+                                <p>{{ $website_settings->email_two ?? '' }}</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- FEATURE BOX #3 -->
-                    <div
-                        class="col md:max-lg:w-6/12 lg:max-xl:w-3/12 xl:w-3/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div class="fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px] service-custom-design">
-                            <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
-                                <div class="shape-ico relative inline-block m-0">
-                                    <img src="{{ asset('frontend') }}/images/icons/gps.png" alt="Service Three"
-                                        class="relative z-[2] w-16 h-16 object-contain mx-auto" />
-                                </div>
+                    <div class="feature-box">
+                        <div class="fbox-inner">
+                            <div class="fbox-icon">
+                                <img src="{{ asset('frontend/images/icons/gps.png') }}" alt="Address (Office One)">
                             </div>
-                            <div class="fbox-txt">
-
-                                <h6
-                                    class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                    Address (Office One)
-                                </h6>
-
-                                <p class="!mb-0">
-                                    {{ $website_settings->address_one }}
-                                </p>
-
+                            <div class="fbox-content">
+                                <h6>Address (Office One)</h6>
+                                <p>{{ $website_settings->address_one }}</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- FEATURE BOX #4 -->
-                    <div
-                        class="col md:max-lg:w-6/12 lg:max-xl:w-3/12 xl:w-3/12 flex-[0_0_auto] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                        <div class="fbox-6 fb-1 wow fadeInUp md:max-lg:!mb-[35px] service-custom-design">
-                            <div class="fbox-ico ico-55 !mb-[20px] xsm:max-sm:!mb-[20px]">
-                                <div class="shape-ico relative inline-block m-0">
-                                    <img src="{{ asset('frontend') }}/images/icons/location-pin.png" alt="Service Four"
-                                        class="relative z-[2] w-16 h-16 object-contain mx-auto" />
-                                </div>
+                    <div class="feature-box">
+                        <div class="fbox-inner">
+                            <div class="fbox-icon">
+                                <img src="{{ asset('frontend/images/icons/location-pin.png') }}" alt="Address (Office Two)">
                             </div>
-                            <div class="fbox-txt">
-                                <h6
-                                    class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[10px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] xsm:max-sm:!mb-[15px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
-                                    Address (Office Two)
-                                </h6>
-
-                                <p class="!mb-0">
-                                    {{ $website_settings->address_two ?? '' }}
-                                </p>
-
+                            <div class="fbox-content">
+                                <h6>Address (Office Two)</h6>
+                                <p>{{ $website_settings->address_two ?? '' }}</p>
                             </div>
                         </div>
                     </div>
@@ -128,11 +79,10 @@
                 </div>
                 <!-- End row -->
             </div>
-            <!-- END FEATURES-6 WRAPPER -->
+            <!-- End features-wrapper -->
         </div>
-        <!-- End container -->
     </section>
-    <!-- END FEATURES-6 -->
+
 
     <!-- DIVIDER LINE -->
     <hr
@@ -190,7 +140,8 @@
                             </div>
 
                             <div class="w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                                <p class="p-lg text-[#353f4f] !text-[1.125rem] !leading-none font-medium !mb-[10px] pl-[8px]">
+                                <p
+                                    class="p-lg text-[#353f4f] !text-[1.125rem] !leading-none font-medium !mb-[10px] pl-[8px]">
                                     Services:
                                 </p>
 
@@ -199,7 +150,8 @@
                                         class="form-control block w-full email xl:!h-[62px] bg-[#f5f6f8] border shadow-[0_0_0_0] !text-[#3a4a56] !text-[1rem] !font-normal mb--30 mb-[30px] p-[0_15px] rounded-[6px] border-solid border-transparent lg:max-xl:!h-[54px] md:max-lg:!h-[52px] sm:max-md:!h-[54px] xsm:max-sm:!h-[54px] focus:shadow-none focus:bg-[#fcfdfd] focus:border-[#1680fb] focus:[outline:0px_none]">
                                         <option value="">-- Select a service --</option>
                                         @foreach ($services as $service)
-                                        <option value="{{ $service->service_title ?? '' }}">{{ $service->service_title ?? '' }}</option>
+                                            <option value="{{ $service->service_title ?? '' }}">
+                                                {{ $service->service_title ?? '' }}</option>
                                         @endforeach
                                     </select>
                                 </div>

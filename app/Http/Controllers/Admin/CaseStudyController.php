@@ -1,32 +1,33 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\CaseStudyCategory;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class CaseStudyController extends Controller
 {
     public function index()
     {
-        $cases = CaseStudy::with('category')->latest()->where("status", 1)->get();
+        $cases            = CaseStudy::with('service')->latest()->where("status", 1)->get();
         $trashedDataCount = CaseStudy::onlyTrashed()->count();
         return view("admin.layouts.pages.case-study.index", compact("cases", "trashedDataCount"));
     }
 
     public function create()
     {
-        $categories = CaseStudyCategory::where("status", 1)->get();
-        return view("admin.layouts.pages.case-study.create", compact("categories"));
+        $services = Service::where("status", 1)->select(['id', 'service_title'])->get();
+        return view("admin.layouts.pages.case-study.create", compact("services"));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'category_id'        => 'required|exists:case_study_categories,id',
+            'service_id'         => 'required|exists:services,id',
             'title'              => 'required|string|max:255',
             'description'        => 'required|string',
             'overview_challenge' => 'nullable|string',
@@ -83,7 +84,7 @@ class CaseStudyController extends Controller
 
         // ===== Create Case Study =====
         $caseStudy                     = new CaseStudy();
-        $caseStudy->category_id        = $request->category_id;
+        $caseStudy->service_id         = $request->service_id;
         $caseStudy->title              = $request->title;
         $caseStudy->description        = $request->description;
         $caseStudy->overview_challenge = $request->overview_challenge;
@@ -103,6 +104,8 @@ class CaseStudyController extends Controller
         // gallery images -> JSON (schema: longText)
         $caseStudy->images = json_encode($galleryPaths);
 
+        $caseStudy->user_id = Auth::id();
+
         $caseStudy->status = (int) ($request->status ?? 1);
         $caseStudy->save();
 
@@ -114,9 +117,9 @@ class CaseStudyController extends Controller
 
     public function edit($id)
     {
-        $case       = CaseStudy::findOrFail($id);
-        $categories = CaseStudyCategory::where("status", 1)->get();
-        return view("admin.layouts.pages.case-study.edit", compact("case", "categories"));
+        $case     = CaseStudy::findOrFail($id);
+        $services = Service::where("status", 1)->select(['id', 'service_title'])->get();
+        return view("admin.layouts.pages.case-study.edit", compact("case", "services"));
     }
 
     public function update(Request $request, $id)
@@ -124,7 +127,7 @@ class CaseStudyController extends Controller
         $case = CaseStudy::findOrFail($id);
 
         $request->validate([
-            'category_id'               => 'required|exists:case_study_categories,id',
+            'service_id'               => 'required|exists:services,id',
             'title'                     => 'required|string|max:255',
             'description'               => 'required|string',
             'overview_challenge'        => 'nullable|string',
@@ -162,7 +165,7 @@ class CaseStudyController extends Controller
         }
 
         // ---------- assign basic fields ----------
-        $case->category_id        = $request->category_id;
+        $case->service_id        = $request->service_id;
         $case->title              = $request->title;
         $case->description        = $request->description;
         $case->overview_challenge = $request->overview_challenge;
@@ -251,6 +254,9 @@ class CaseStudyController extends Controller
         // save gallery (JSON)
         $case->images = json_encode($existing);
 
+        // ---------- set current user id ----------
+        $case->user_id = auth()->id();
+
         // ---------- persist ----------
         $case->save();
 
@@ -274,20 +280,23 @@ class CaseStudyController extends Controller
     }
 
     // Trashed case studies
-    public function trashed(){
+    public function trashed()
+    {
         $cases = CaseStudy::onlyTrashed();
         return view("admin.layouts.pages.case-study.recycle-bin", compact("cases"));
     }
 
     // Restore a trashed case study
-    public function restore($id){
+    public function restore($id)
+    {
         $case = CaseStudy::onlyTrashed()->findOrFail($id);
         $case->restore();
         return redirect()->route('case.study.trashed')->with('success', 'Case Study restored successfully.');
     }
 
     // Permanently delete a trashed case study
-    public function forceDelete($id){
+    public function forceDelete($id)
+    {
         $case = CaseStudy::onlyTrashed()->findOrFail($id);
 
         // delete main image

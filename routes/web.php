@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\Frontend\ServicePlanController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\SitePageController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
@@ -37,6 +38,9 @@ Route::get('cart-page', [CartPageController::class, 'index'])->name('cart.page')
 Route::post('/cart/add-plan/{plan}', [CartPageController::class, 'addPlan'])->name('cart.addPlan');
 Route::post('/cart/update-qty/{key}', [CartPageController::class, 'updateQty'])->name('cart.updateQty');
 Route::post('/cart/remove/{key}', [CartPageController::class, 'remove'])->name('cart.remove');
+
+// Site page controller
+Route::get('site-page', [SitePageController::class, 'index'])->name('site.page');
 
 
 // Checkout route

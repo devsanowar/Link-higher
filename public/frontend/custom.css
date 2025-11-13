@@ -1302,9 +1302,9 @@ CASE STUDIES SLIDER SECTION CSS
 }
 .cs-excerpt {
     color: #374151;
-    font-size: 14px;
-    line-height: 1.45;
-    /* overflow: hidden; */
+    font-size: 16px;
+    line-height: 1.6;
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* ✅ Limit text lines */
@@ -1488,112 +1488,530 @@ Review section custom design
 
 /* outer wrapper mimics previous layout and centered container */
 .reviews-wrapper {
-	position: relative;
-	padding: 80px 12px;
-	background: transparent;
+    position: relative;
+    padding: 80px 12px;
+    background: transparent;
 }
 .reviews-container {
-  max-width: 1140px;
-  margin: 0 auto;
-  position: relative;
+    max-width: 1140px;
+    margin: 0 auto;
+    position: relative;
 }
 
 /* arrows */
 .reviews-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 60;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: #fff;
-  border: 1px solid rgba(15,23,42,0.06);
-  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-.reviews-prev { left: -56px; }
-.reviews-next { right: -56px; }
+.reviews-prev {
+    left: -56px;
+}
+.reviews-next {
+    right: -56px;
+}
 
 /* viewport */
 .reviews-viewport {
-  overflow: hidden;
-  border-radius: 8px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 /* track */
 .reviews-track {
-  display: flex;
-  gap: 16px;
-  padding: 8px 6px;
-  align-items: stretch;
-  transition: transform 0.7s cubic-bezier(.25,.8,.25,1);
+    display: flex;
+    gap: 16px;
+    padding: 8px 6px;
+    align-items: stretch;
+    transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* columns (one review item) — three per view on desktop */
 .review-col {
-  flex: 0 0 calc(33.333% - 16px);
-  max-width: calc(33.333% - 16px);
+    flex: 0 0 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
 }
 
 /* responsive: 2-per then 1-per */
 @media (max-width: 1000px) {
-  .review-col { flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); }
-  .reviews-prev { left: -36px; }
-  .reviews-next { right: -36px; }
+    .review-col {
+        flex: 0 0 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+    .reviews-prev {
+        left: -36px;
+    }
+    .reviews-next {
+        right: -36px;
+    }
 }
 @media (max-width: 640px) {
-  .review-col { flex: 0 0 100%; max-width: 100%; }
-  .reviews-prev { left: 8px; }
-  .reviews-next { right: 8px; }
+    .review-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .reviews-prev {
+        left: 8px;
+    }
+    .reviews-next {
+        right: 8px;
+    }
 }
 
 /* review card design (matches your previous visual style) */
 .review-card {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 35px 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.04);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 35px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 /* small quote icon styling */
-.quote-icon { font-size: 80px; opacity: 0.08; margin-top: -20px; margin-left: -6px; }
-.quote { font-family: serif; }
+.quote-icon {
+    font-size: 80px;
+    opacity: 0.08;
+    margin-top: -20px;
+    margin-left: -6px;
+}
+.quote {
+    font-family: serif;
+}
 
 /* review text */
 .review-text {
-	margin-top: -82px;
+    margin-top: -82px;
 }
-.review-body { color: #1f2937; line-height: 1.5; margin: 0 0 12px; }
+.review-body {
+    color: #1f2937;
+    line-height: 1.5;
+    margin: 0 0 12px;
+}
 
 /* author row (avatar left, meta right) */
 .author-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
 }
 .author-avatar img {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
 }
-.author-meta { padding-left: 8px; }
-.author-name { margin: 0; font-weight: 700; font-size: 15px; }
-.author-profession { margin: 2px 0 0; font-weight: 300; font-size: 13px; color: #6b7280; }
+.author-meta {
+    padding-left: 8px;
+}
+.author-name {
+    margin: 0;
+    font-weight: 700;
+    font-size: 15px;
+}
+.author-profession {
+    margin: 2px 0 0;
+    font-weight: 300;
+    font-size: 13px;
+    color: #6b7280;
+}
 
 /* ensure the card heights are consistent */
-.reviews-track, .review-card { min-height: 220px; }
+.reviews-track,
+.review-card {
+    min-height: 220px;
+}
 
 /* clones will keep same size; no extra styles needed */
+
+#site-page footer ul {
+    padding-left: 0;
+}
+
+#site-page footer ul li a {
+    text-decoration: none;
+    color: #6c757d;
+}
+
+#site-page  #menu-items li a {
+	text-decoration: none;
+}
+
+#site-page #service-category h4 {
+	border-bottom: 1px solid #f6f6f657;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 5px;
+    box-sizing: border-box;
+}
+
+#site-page .sub-menu li a {
+	text-decoration: none;
+}
+
+.footer-mail-link a {
+	color: #ffffffba !important;
+	text-decoration: none;
+}
+.bottom-secondary-link.ico-15.text-right.text-end a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+#site-page-data-table {
+    padding-top: 130px;
+    padding-bottom: 40px;
+}
+
+#site-page-data-table .card-header.bg-primary.text-white {
+    background: #e6e6e629 !important;
+    color: #000 !important;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#site-page-data-table .card-header.bg-primary.text-white h4 {
+    font-weight: bold;
+}
+
+#site-page-data-table .tabler-head-design {
+    background: linear-gradient(135deg, #5229f2, #a91063);
+}
+
+.tabler-head-design th span {
+    color: #fff;
+    font-size: 16px;
+}
+
+.data-table-body td {
+    color: #fff;
+    font-size: 16px;
+}
+
+.data-table-body td a {
+    text-decoration: none;
+    /* padding: 7px 20px; */
+    color: #5229f2;
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    /* background: linear-gradient(135deg, #5229f2, #a91063); */
+}
+
+.data-table-body td:hover a {
+    color: #a91063;
+}
+.active > .page-link,
+.page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-color: linear-gradient(135deg, #5229f2, #a91063);
+}
+
+.pagination .page-link {
+    color: #000;
+}
+
+#site-page-data-table .table > :not(caption) > * > * {
+    padding-block: 8px !important;
+}
+.data-table-body tr td {
+    color: #606060;
+}
+
+
+#site-page-data-table {
+    padding: 130px 0 40px 0;
+}
+.responsive-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	background: #fff;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	padding: 15px;
+}
+
+/* 🔸 Table Base Style (তোমার class গুলো রেখে দিয়েছি) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.tabler-head-design {
+    background: #0d6efd;
+    color: #fff;
+}
+
+.tabler-head-design th {
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid #e5e5e5;
+    white-space: nowrap;
+}
+
+.data-table-body td {
+    padding: 10px 14px;
+    border: 1px solid #e5e5e5;
+    white-space: nowrap;
+}
+
+.data-table-body tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.data-table-body a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.data-table-body a:hover {
+    text-decoration: underline;
+}
+
+/* 🔸 Responsive Breakpoints */
+@media (max-width: 768px) {
+    .responsive-table-wrapper {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+        min-width: 500px;
+    }
+
+    .tabler-head-design th,
+    .data-table-body td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 13px;
+        min-width: 400px;
+    }
+}
+
+
+.site-page-title h4 {
+    position: relative;
+	margin-bottom: 0;
+	text-align: left;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #000 !important;
+    padding-left: 15px;
+}
+
+.site-page-title h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 5px;
+    height: 80%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 5px;
+}
+
+
+
+
+.custom-badge-success {
+	color: #28a745;
+    text-align: center;
+}
+
+/* Danger badge (red) */
+.custom-badge-danger {
+    color: #dc3545; /* red */
+}
+
+/* Optional: hover effect */
+.custom-badge:hover {
+    opacity: 0.85;
+}
+
+.data-table-body td{
+    text-align: left !important;
+}
+
+
+
+/* Features Section Base */
+.features-section {
+	padding: 80px 0;
+	background: #f9f9f9;
+}
+
+/* .features-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+} */
+
+
+#contact-page #service-page-breadcrumb {
+	margin-bottom: 0;
+}
+
+.features-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+/* Feature Box */
+.feature-box {
+	flex: 1 1 calc(25% - 30px);
+	background: #fff;
+	border-radius: 12px;
+	padding: 25px 20px 20px 20px;
+	text-align: center;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* Inner content */
+.fbox-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Icon */
+.fbox-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Heading */
+.fbox-content h6 {
+	font-size: 20px;
+	font-weight: 700;
+	color: #000;
+	margin-bottom: 8px;
+}
+
+/* Text */
+.fbox-content p {
+	font-size: 16px;
+	color: #333;
+	margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .feature-box {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .feature-box {
+        flex: 1 1 100%;
+    }
+    .fbox-content h6 {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+
+#footer-3 {
+	/* background: #ddd; */
+	background: #17136A;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+    padding-bottom: 20px !important;
+}
+
+#footer-3 h6 {
+	color: #fff !important;
+}
+
+.foo-links.clearfix li a {
+	color: #ffffffa3 !important;
+}
+
+
+.footer-copyright p {
+	color: #ffffffc2 !important;
+}
+
+
+.bottom-secondary-link.ico-15.text-right.text-end a {
+	color: #ffffffc2;
+	text-decoration: none;
+}
+
+.custom-footer-divider {
+	color: #fff;
+}
+
+
+.footer-socials span[class^="flaticon-"]::before, span[class*=" flaticon-"]::before {
+	color: #ffffffa3;
+}
+
+
+
+.reviews-wrapper .title {
+	position: relative;
+	padding-left: 15px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #111827;
+	text-transform: uppercase;
+	margin-left: 5px;
+}
+
+.reviews-wrapper .title::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 6px;
+	height: 75%;
+	background: linear-gradient(135deg, #5229f2, #a91063);
+	border-radius: 2px;
+}
+
+
+.post-desc {
+	display: none;
+}
