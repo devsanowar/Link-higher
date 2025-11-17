@@ -1,7 +1,8 @@
 @extends('website.layouts.app')
 @section('title', 'Service Page')
+@section('page_id', 'service-page')
 @section('website_content')
-    <section id="service-page-breadcrumb">
+    <section id="service-page-breadcrumb" class="container">
         <div class="breadcrumb-container">
             <h2 class="breadcrumb-title">Our Services</h2>
             <ul class="breadcrumb-list">
@@ -44,7 +45,7 @@
                                     </a>
                                     <p class="!mb-0">
                                         {!! Str::limit($service->service_short_description, 50, '...') !!}
-                                        
+
                                     </p>
                                 </div>
                             </div>

@@ -1,37 +1,29 @@
-{{-- <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+{{-- @extends('layouts.app')
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
+<div class="container">
+    <h2>Forgot Password</h2>
+
+    @if (session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+    @endif
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" name="email" class="form-control" required value="{{ old('email') }}">
+            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
+        <button type="submit" class="btn btn-primary mt-2">Send Reset Link</button>
     </form>
-</x-guest-layout> --}}
-
+</div>
+@endsection --}}
 
 @extends('website.layouts.app')
-@section('title', 'Passowrd Reset link')
-@section('page_id', 'reset_page')
+@section('title', 'Customer reset password link')
+@section('page_id', 'reset-link-page')
 @section('website_content')
-
-    <!-- PAGE CONTENT
-                      ============================================= -->
     <div id="page" class="page font--jakarta">
         <!-- RESET PASSWORD PAGE
                          ====================================== -->
@@ -45,14 +37,14 @@
                         <div
                             class="login-page-logo !text-center mb-[45px] lg:max-xl:!mb-[40px] md:max-lg:!mb-[40px] xsm:max-sm:!mb-[40px]">
                             <img class="img-fluid light-theme-img w-auto max-w-[inherit] xl:!max-h-[45px] lg:max-xl:!max-h-[40px] md:max-lg:!max-h-[35px] xsm:max-sm:!max-h-[40px] inline-block"
-                                src="{{ asset('frontend') }}/images/logo-blue.png" alt="logo-image">
+                            src="{{ asset($website_settings->website_logo ?? 'frontend/images/logo-blue-white.png') }}" alt="logo-image">
                             <img class="img-fluid dark-theme-img w-auto max-w-[inherit] xl:!max-h-[45px] lg:max-xl:!max-h-[40px] md:max-lg:!max-h-[35px] xsm:max-sm:!max-h-[40px] inline-block"
-                                src="{{ asset('frontend') }}/images/logo-blue-white.png" alt="logo-image">
+                            src="{{ asset($website_settings->website_logo ?? 'frontend/images/logo-blue-white.png') }}" alt="logo-image">
                         </div>
                         <!-- RESET PASSWORD FORM -->
                         <div
                             class="reset-page-wrapper !text-center mx-[10px] my-0 lg:max-xl:m-0 md:max-lg:mx-[30px] md:max-lg:my-0 sm:max-md:mx-[45px] sm:max-md:my-0 xsm:max-sm:mx-[15px] xsm:max-sm:my-0">
-                            <form name="resetpasswordform" action="{{ route('password.email') }}" method="POST" class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] reset-password-form rounded-[10px] [border:1px_solid_#fafafa] shadow-[0px_15px_20px_0px_rgba(5,5,5,0.05)] pt-[50px] !pb-[25px] px-[30px] bg-white lg:max-xl:pt-[40px] lg:max-xl:!pb-[15px] lg:max-xl:px-[25px] md:max-lg:pt-[35px] md:max-lg:!pb-[10px] md:max-lg:px-[25px] xsm:max-sm:pt-[40px] xsm:max-sm:!pb-[15px] xsm:max-sm:px-[20px]">
+                            <form name="resetpasswordform" action="{{ route('customer.password.email') }}" method="POST" class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] reset-password-form rounded-[10px] [border:1px_solid_#fafafa] shadow-[0px_15px_20px_0px_rgba(5,5,5,0.05)] pt-[50px] !pb-[25px] px-[30px] bg-white lg:max-xl:pt-[40px] lg:max-xl:!pb-[15px] lg:max-xl:px-[25px] md:max-lg:pt-[35px] md:max-lg:!pb-[10px] md:max-lg:px-[25px] xsm:max-sm:pt-[40px] xsm:max-sm:!pb-[15px] xsm:max-sm:px-[20px]">
 
                                 @csrf
 
@@ -111,83 +103,5 @@
         </section>
         <!-- END RESET PASSWORD PAGE -->
     </div>
-    <!-- END PAGE CONTENT -->
-    <!-- EXTERNAL SCRIPTS
-                      ============================================= -->
-    <script src="js/jquery-3.7.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/jquery.appear.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/pricing-toggle.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/reset-form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/lunar.js"></script>
-    <script src="js/wow.js"></script>
-    <!-- Custom Script -->
-    <script src="js/custom.js"></script>
-    <script>
-        $(document).on({
-            "contextmenu": function(e) {
-                console.log("ctx menu button:", e.which);
-
-                // Stop the context menu
-                e.preventDefault();
-            },
-            "mousedown": function(e) {
-                console.log("normal mouse down:", e.which);
-            },
-            "mouseup": function(e) {
-                console.log("normal mouse up:", e.which);
-            }
-        });
-    </script>
-    <script>
-        $(function() {
-            $(".switch").click(function() {
-                $("body").toggleClass("theme--dark");
-                if ($("body").hasClass("theme--dark")) {
-                    $(".switch").text("Light Mode");
-                } else {
-                    $(".switch").text("Dark Mode");
-                }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            if ($("body").hasClass("theme--dark")) {
-                $(".switch").text("Light Mode");
-            } else {
-                $(".switch").text("Dark Mode");
-            }
-        });
-    </script>
-    <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
-    <!--
-                      <script>
-                          var _gaq = _gaq || [];
-                          _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-                          _gaq.push(['_trackPageview']);
-
-                          (function() {
-                              var ga = document.createElement('script');
-                              ga.type = 'text/javascript';
-                              ga.async = true;
-                              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
-                                  '.google-analytics.com/ga.js';
-                              var s = document.getElementsByTagName('script')[0];
-                              s.parentNode.insertBefore(ga, s);
-                          })();
-                      </script>
-                      -->
-    <script src="js/changer.js"></script>
-    <script defer src="js/styleswitch.js"></script>
-
 
 @endsection

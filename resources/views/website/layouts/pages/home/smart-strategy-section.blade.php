@@ -1,5 +1,5 @@
 <section id="lnk-1"
-    class=" pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px]  ct-02 content-section division">
+    class="smart-strategy ct-02 content-section division">
     <div class="container">
         <!-- SECTION CONTENT (ROW) -->
         <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  items-center">

@@ -1,5 +1,5 @@
-<section id="banner-7" class="banner-section">
-        <div class="banner-overlay py--100 py-[100px] lg:max-xl:py-[80px] md:max-lg:py-[70px] ">
+<section id="banner-7" class="cta-section" style="background-image: url({{ asset('/frontend/images/01.jpg') }});">
+        <div class="banner-overlay">
             <div class="container">
                 <!-- BANNER-7 WRAPPER -->
                 <div class="banner-7-wrapper">

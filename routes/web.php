@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CaseStudyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\LegalController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\AboutPageController;
 use App\Http\Controllers\Frontend\BlogPageController;
+use App\Http\Controllers\Frontend\CaseStudiesController;
 use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\Frontend\ServicePlanController;
@@ -48,6 +50,15 @@ Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout
 Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('order.process');
 Route::get('order/confirmation/{id}', [CheckoutController::class, 'showOrderConfirmation'])->name('order.success');
 
+// PayPal routes
+Route::get('/paypal/redirect/{order}', [CheckoutController::class, 'paypalRedirect'])->name('paypal.redirect');
+Route::get('/paypal/callback', [CheckoutController::class, 'paypalCallback'])->name('paypal.callback');
+
+// Paddle routes (if you want server-side redirect)
+Route::get('/paddle/redirect/{order}', [CheckoutController::class, 'paddleRedirect'])->name('paddle.redirect');
+Route::post('/paddle/webhook', [CheckoutController::class, 'paddleWebhook'])->name('paddle.webhook'); // webhook endpoint
+Route::get('order/confirmation/{id}', [CheckoutController::class, 'showOrderConfirmation'])->name('order.success');
+
 
 
 Route::get('faq-page', [FaqPageController::class, 'index'])->name('faq.page');
@@ -56,6 +67,11 @@ Route::post('contact-form/submit', [ContactUsPageController::class, 'submit'])->
 
 // PricingPage Route
 Route::get('/pricing-page', [PricingPageController::class, 'index'])->name('pricing.page');
+
+// Case studdy controller
+Route::get('case/study', [CaseStudiesController::class, 'index'])->name('case.study.page');
+Route::get('case/study/{id}', [CaseStudiesController::class, 'caseDetails'])->name('case.study.details');
+
 
 
 

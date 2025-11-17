@@ -1,20 +1,13 @@
 <section id="faqs-3" class="py--100 py-[100px] lg:max-xl:py-[80px] md:max-lg:py-[70px] faqs-section">
     <div class="container">
         <!-- SECTION TITLE -->
-        <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
-            <div class="md:w-10/12 lg:max-xl:w-9/12 xl:w-9/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
-                <div
-                    class="section-title !text-center mb--70 xl:!mb-[70px] lg:max-xl:!mb-[55px] md:max-lg:!mb-[45px] sm:max-md:!mb-[40px] xsm:max-sm:!mb-[40px]">
-                    <!-- Title -->
-                    <h2
-                        class="s-50 w--700 xl:!text-[3.125rem] lg:max-xl:!text-[2.875rem] md:max-lg:!text-[2.64705rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold !tracking-[-0.5px] leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35]">
-                        Questions & Answers</h2>
-                    <!-- Text -->
-                    <p
-                        class="s-21 color--grey xl:!text-[1.3125rem] xl:!mt-[18px] !mb-0 lg:max-xl:!mt-[15px] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.32352rem] md:max-lg:!mt-3 sm:max-md:!text-[1.21875rem] sm:max-md:!mt-3 xsm:max-sm:!text-[1.1875rem] xsm:max-sm:!mt-3 xsm:max-sm:px-[3%] xsm:max-sm:py-0">
-                        Ligula risus auctor tempus magna feugiat lacinia.</p>
-                </div>
+        <div class="flex justify-left" style="margin-bottom:20px">
+
+            <div class="header">
+                <div class="title">FAQ (Frequently Ask Question)</div>
+
             </div>
+
         </div>
         <!-- FAQs-3 QUESTIONS -->
         @php

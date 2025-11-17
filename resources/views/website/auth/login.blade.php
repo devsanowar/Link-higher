@@ -113,7 +113,7 @@
                                                 <div class="reset-password-link">
                                                     <p
                                                         class="p-sm relative xl:!text-[0.9rem] leading-none -mt-[8px] xl:!mb-[10px] md:max-lg:!text-[1rem] md:max-lg:!mt-[-3px] md:max-lg:!mb-[10px] sm:max-md:!text-[1rem] sm:max-md:!mt-0 sm:max-md:!mb-[10px] xsm:max-sm:!text-[1rem] xsm:max-sm:!mt-0 xsm:max-sm:!mb-[8px]">
-                                                        <a href="reset-password.html" class="color--theme">Forgot your
+                                                        <a href="{{ route('customer.password.request') }}" class="color--theme">Forgot your
                                                             password?</a></p>
                                                 </div>
                                             </div>

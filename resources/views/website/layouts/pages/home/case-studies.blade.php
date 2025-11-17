@@ -24,16 +24,28 @@
 
             @forelse ($caseStudies as $caseStudy)
                 <article class="cs-card">
-                    @if($caseStudy->image)
-                    <img class="cs-hero" src="{{ asset($caseStudy->image) }}" alt="case study image" />
-                    @else
-                    <img class="cs-hero" src="https://picsum.photos/seed/cs2/1200/800" alt="case study image" />
-                    @endif
+                    <div class="cs-hero-wrapper">
+                            @if ($caseStudy->image)
+                                <img class="cs-hero" src="{{ asset($caseStudy->image) }}" alt="case study image"
+                                    style="transition: transform 0.3s ease;" />
+                            @else
+                                <img class="cs-hero" src="https://picsum.photos/seed/cs2/1200/800" alt="case study image"
+                                    style="transition: transform 0.3s ease;" />
+                            @endif
+                            <a href="{{ route('case.study.details', $caseStudy->id) }}" class="cs-hover-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 5c-7.633 0-11.999 6.692-12 6.698L0 12l.001.302C.002 12.308 4.368 19 12 19s11.998-6.692 12-6.698L24 12l-.001-.302C23.998 11.692 19.632 5 12 5zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+                                    <circle cx="12" cy="12" r="2.5" />
+                                </svg>
+                            </a>
+                        </div>
                     <div class="cs-body">
                         <div class="cs-category">{{{ $caseStudy->service->service_title ?? '' }}}</div>
                         <h3 class="cs-title">{{ $caseStudy->title ?? '' }}</h3>
                         <p class="cs-excerpt">
-                            {!! Str::limit($caseStudy->description, 200, '...') !!}
+                            {!! Str::limit($caseStudy->description, 120, '...') !!}
                         </p>
                     </div>
                     <div class="cs-footer">

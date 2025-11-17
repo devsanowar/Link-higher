@@ -1,5 +1,6 @@
 @extends('website.layouts.app')
 @section('title', 'Home Page')
+@section('page_id', 'home-page')
 @section('website_content')
 
     @include('website.layouts.pages.home.hero-section')

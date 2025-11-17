@@ -2,18 +2,18 @@
 @section('title', 'Cart Page')
 @section('website_content')
 
-    <div id="plan-details-page">
-        <section id="service-page-breadcrumb">
-            <div class="breadcrumb-container">
-                <h2 class="breadcrumb-title">Cart Page</h2>
-                <ul class="breadcrumb-list">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><span>›</span></li>
-                    <li class="active">Cart</li>
-                </ul>
-            </div>
-        </section>
+<section id="service-page-breadcrumb"  class="container">
+    <div class="breadcrumb-container">
+        <h2 class="breadcrumb-title">Cart Page</h2>
+        <ul class="breadcrumb-list">
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><span>›</span></li>
+            <li class="active">Cart</li>
+        </ul>
+    </div>
+</section>
 
+<div id="plan-details-page" style="margin-top: 40px">
         <div class="container">
             <div class="wrap">
                 <div class="card">

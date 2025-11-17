@@ -2,7 +2,7 @@
 @section('title', 'Contact Page')
 @section('page_id', 'contact-page')
 @section('website_content')
-    <section id="service-page-breadcrumb">
+    <section id="service-page-breadcrumb"  class="container">
         <div class="container">
             <div class="breadcrumb-container">
                 <h2 class="breadcrumb-title">Contact Us Page</h2>

@@ -11,6 +11,19 @@
 @endpush
 
 @section('website_content')
+
+    <section id="service-page-breadcrumb" class="container">
+        <div class="breadcrumb-container">
+            <h2 class="breadcrumb-title">Our Sites</h2>
+            <ul class="breadcrumb-list">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><span>›</span></li>
+                <li class="active">Site</li>
+            </ul>
+        </div>
+    </section>
+
+
     <section id="site-page-data-table">
         <div class="container">
             <div class="site-page-title">

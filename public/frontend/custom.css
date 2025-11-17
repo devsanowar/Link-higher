@@ -39,14 +39,14 @@
 
 #service-page-breadcrumb {
     background: linear-gradient(135deg, #5229f2, #a91063);
-    margin: 100px 0 80px 0;
-    padding: 60px 0;
+    margin: 100px auto 0px;
+    padding: 40px 0;
     text-align: center;
     color: #fff;
     position: relative;
     overflow: hidden;
+    border-radius: 20px;
 }
-
 /* #service-page-breadcrumb::before {
     content: "";
     position: absolute;
@@ -652,9 +652,6 @@ button.btn.btn-primary.custom-submit-button {
 }
 
 @media (max-width: 420px) {
-    body {
-        padding: 18px;
-    }
     .info h1 {
         font-size: 20px;
     }
@@ -1025,6 +1022,7 @@ table.cart tbody td {
 
 #blog-page {
     padding-bottom: 0 !important;
+    padding-top: 40px;
 }
 
 #post-slider {
@@ -1181,7 +1179,7 @@ CASE STUDIES SLIDER SECTION CSS
     max-width: 1140px;
     margin: 0 auto;
     position: relative;
-    padding-top: 65px;
+    padding-top: 50px;
 }
 .cs-slider .header {
     display: flex;
@@ -1287,13 +1285,13 @@ CASE STUDIES SLIDER SECTION CSS
 }
 
 .cs-category {
-    font-size: 12px;
-    color: #4f46e5;
-    font-weight: 700;
-    background: rgba(99, 102, 241, 0.08);
-    padding: 4px 8px;
-    border-radius: 999px;
-    display: inline-block;
+	font-size: 12px;
+	color: #6D21C5;
+	font-weight: 700;
+	background: rgba(99, 102, 241, 0.08);
+	padding: 4px 8px;
+	border-radius: 999px;
+	display: inline-block;
 }
 .cs-title {
     font-size: 16px;
@@ -1489,9 +1487,36 @@ Review section custom design
 /* outer wrapper mimics previous layout and centered container */
 .reviews-wrapper {
     position: relative;
-    padding: 80px 12px;
+    padding: 60px 0px;
     background: transparent;
 }
+
+#faqs-3 {
+    padding: 60px 0;
+}
+
+#faqs-3 .title {
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+#faqs-3 .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
 .reviews-container {
     max-width: 1140px;
     margin: 0 auto;
@@ -1650,26 +1675,26 @@ Review section custom design
     color: #6c757d;
 }
 
-#site-page  #menu-items li a {
-	text-decoration: none;
+#site-page #menu-items li a {
+    text-decoration: none;
 }
 
 #site-page #service-category h4 {
-	border-bottom: 1px solid #f6f6f657;
-	color: #fff;
-	font-size: 20px;
-	font-weight: bold;
-	padding-bottom: 5px;
+    border-bottom: 1px solid #f6f6f657;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 5px;
     box-sizing: border-box;
 }
 
 #site-page .sub-menu li a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .footer-mail-link a {
-	color: #ffffffba !important;
-	text-decoration: none;
+    color: #ffffffba !important;
+    text-decoration: none;
 }
 .bottom-secondary-link.ico-15.text-right.text-end a {
     color: #6c757d;
@@ -1738,18 +1763,17 @@ Review section custom design
     color: #606060;
 }
 
-
 #site-page-data-table {
-    padding: 130px 0 40px 0;
+    padding: 60px 0 40px 0;
 }
 .responsive-table-wrapper {
-	width: 100%;
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
-	background: #fff;
-	border-radius: 6px;
-	border: 1px solid #ddd;
-	padding: 15px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 15px;
 }
 
 /* 🔸 Table Base Style (তোমার class গুলো রেখে দিয়েছি) */
@@ -1815,14 +1839,13 @@ table {
     }
 }
 
-
 .site-page-title h4 {
     position: relative;
-	margin-bottom: 0;
-	text-align: left;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: #000 !important;
+    margin-bottom: 0;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #000 !important;
     padding-left: 15px;
 }
 
@@ -1837,11 +1860,8 @@ table {
     border-radius: 5px;
 }
 
-
-
-
 .custom-badge-success {
-	color: #28a745;
+    color: #28a745;
     text-align: center;
 }
 
@@ -1855,16 +1875,22 @@ table {
     opacity: 0.85;
 }
 
-.data-table-body td{
+.data-table-body td {
     text-align: left !important;
 }
 
-
+.smart-strategy {
+    padding: 60px 0;
+}
 
 /* Features Section Base */
 .features-section {
-	padding: 80px 0;
-	background: #f9f9f9;
+    padding: 60px 0;
+    background: #f9f9f9;
+}
+
+#service-page .features-section {
+    background: #ffffff;
 }
 
 /* .features-wrapper {
@@ -1874,31 +1900,30 @@ table {
     justify-content: space-between;
 } */
 
-
 #contact-page #service-page-breadcrumb {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .features-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 /* Feature Box */
 .feature-box {
-	flex: 1 1 calc(25% - 30px);
-	background: #fff;
-	border-radius: 12px;
-	padding: 25px 20px 20px 20px;
-	text-align: center;
-	box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-	transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 calc(25% - 30px);
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px 20px 20px 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* Inner content */
@@ -1919,17 +1944,17 @@ table {
 
 /* Heading */
 .fbox-content h6 {
-	font-size: 20px;
-	font-weight: 700;
-	color: #000;
-	margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
 }
 
 /* Text */
 .fbox-content p {
-	font-size: 16px;
-	color: #333;
-	margin-bottom: 4px;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
 }
 
 /* Responsive */
@@ -1948,70 +1973,439 @@ table {
     }
 }
 
-
-
-
 #footer-3 {
-	/* background: #ddd; */
-	background: #17136A;
-	border-top-right-radius: 20px;
-	border-top-left-radius: 20px;
+    /* background: #ddd; */
+    background: #17136a;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
     padding-bottom: 20px !important;
 }
 
 #footer-3 h6 {
-	color: #fff !important;
+    color: #fff !important;
 }
 
 .foo-links.clearfix li a {
-	color: #ffffffa3 !important;
+    color: #ffffffa3 !important;
 }
-
 
 .footer-copyright p {
-	color: #ffffffc2 !important;
+    color: #ffffffc2 !important;
 }
 
-
 .bottom-secondary-link.ico-15.text-right.text-end a {
-	color: #ffffffc2;
-	text-decoration: none;
+    color: #ffffffc2;
+    text-decoration: none;
 }
 
 .custom-footer-divider {
-	color: #fff;
+    color: #fff;
 }
 
-
-.footer-socials span[class^="flaticon-"]::before, span[class*=" flaticon-"]::before {
-	color: #ffffffa3;
+.footer-socials span[class^="flaticon-"]::before,
+span[class*=" flaticon-"]::before {
+    color: #ffffffa3;
 }
-
-
 
 .reviews-wrapper .title {
-	position: relative;
-	padding-left: 15px;
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: #111827;
-	text-transform: uppercase;
-	margin-left: 5px;
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    text-transform: uppercase;
+    margin-left: 5px;
 }
 
 .reviews-wrapper .title::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 6px;
-	height: 75%;
-	background: linear-gradient(135deg, #5229f2, #a91063);
-	border-radius: 2px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
 }
-
 
 .post-desc {
-	display: none;
+    display: none;
 }
+
+.about-us img {
+    border-radius: 20px;
+}
+
+.about-us-text {
+    padding: 0 30px;
+}
+
+#project-1 {
+    padding-top: 50px;
+}
+
+/* Main background section */
+.cta-section.cta-section {
+    position: relative;
+    background-image: url("/frontend/images/your-banner.jpg"); /* এখানে তোমার image path দেবে */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    margin-bottom: 40px;
+}
+
+/* Dark/Color overlay */
+.cta-section .banner-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 60px 0;
+}
+
+.cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55); /* Overlay color */
+    z-index: 1;
+}
+
+/* Make all text white inside */
+.cta-section .banner-7-txt h2,
+.cta-section .banner-7-txt p,
+.cta-section .banner-7-txt a {
+    color: #ffffff !important;
+}
+
+#role-page {
+    padding-top: 50px;
+    padding-bottom: 55px;
+}
+.inner-page-title {
+    margin-bottom: 10px;
+}
+
+.inner-page-title h2 {
+    font-size: 40px;
+}
+
+.service-feature h2 {
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #111827;
+    text-transform: uppercase;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.service-feature h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+.service-feature ul li {
+    list-style: none;
+}
+
+.service-feature .flaticon-check {
+    padding: 10px 10px;
+}
+
+#faqs-2 .inner-page-title {
+    margin-bottom: 20px !important;
+}
+
+#faq-sec-title .title {
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    text-transform: uppercase;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+#faq-sec-title .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+.faq-content .accordion-thumb {
+    padding: 18px 10px;
+    background: #dddddd57;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px #ddd;
+    border-radius: 10px;
+}
+
+.faq-content .accordion-panel {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.faq-content .accordion-item {
+    margin-bottom: 20px;
+}
+
+/* Accordion thumb default position */
+.accordion-thumb {
+    position: relative;
+    padding-right: 30px; /* space for + icon */
+    cursor: pointer;
+}
+
+/* Default icon: PLUS */
+.accordion-thumb::after {
+    content: "+";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* When active/open → show MINUS */
+.accordion-item.active .accordion-thumb::after {
+    content: "–";
+    font-size: 28px;
+    font-weight: 600;
+    color: #ff4f5a; /* optional highlight */
+}
+
+/* ------------------ Case Study Cards ------------------ */
+/* --------------------
+   Case Studies Cards
+-------------------- */
+.cs-hero-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-hero-wrapper img {
+    display: block;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.cs-hero-wrapper:hover img {
+    transform: scale(1.1); /* zoom effect */
+}
+
+.cs-hover-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    padding: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cs-hero-wrapper:hover .cs-hover-icon {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.cs-hover-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+    transition: transform 0.3s ease;
+}
+
+.cs-hover-icon:hover svg {
+    transform: scale(1.2);
+}
+
+
+
+
+/* --------------------
+   Responsive
+-------------------- */
+@media (max-width: 1024px) {
+    .cs-card {
+        flex: 1 1 calc(50% - 16px); /* 2 cards per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .cs-card {
+        flex: 1 1 100% !important;
+    }
+
+    #home-page .cs-card {
+	flex: 0 0 100% !important;
+}
+    article.cs-card {
+        height: 415px !important;
+    }
+
+    #service-page-breadcrumb {
+        margin-top: 63px !important;
+    }
+
+    .wsmobileheader .smllogo {
+        margin-top: 15px !important;
+    }
+
+    .wsanimated-arrow {
+        margin-top: 15px !important;
+    }
+
+    .wsmobileheader {
+        height: 63px !important;
+    }
+
+    .inner-page-hero,
+    .page-hero-section-overlay {
+        margin-top: 0px !important;
+        margin-bottom: 40px !important;
+        padding-top: 24px !important;
+    }
+
+    #role-page {
+        padding-top: 50px;
+        padding-bottom: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .products-section {
+        padding: 30px 20px;
+    }
+    .products-section h2 {
+        margin-bottom: 25px;
+    }
+
+    .custom-section-title {
+        margin-bottom: 25px;
+    }
+
+    .features-section {
+        padding: 30px 0;
+    }
+
+    .post-author {
+        padding: 12px 0px 0px 0px !important;
+        border-top: 1px solid #dddddd7d;
+    }
+}
+
+@media (max-width: 480px) {
+    .cs-body {
+        padding: 8px 12px;
+    }
+    .cs-title {
+        font-size: 16px;
+    }
+    .cs-excerpt {
+        font-size: 15px;
+    }
+    .cs-footer {
+        padding: 8px 12px;
+    }
+}
+
+/*======== Case study single page============*/
+.caseStudy-description {
+    padding-top: 40px;
+}
+.caseStudy-description h2 {
+    font-size: 36px;
+    margin-bottom: 22px !important;
+    padding-bottom: 20px;
+}
+
+.caseStudy-description .caseStudy-title {
+    margin-bottom: 20px;
+}
+
+.caseStudy-priview-img {
+    margin-bottom: 20px;
+}
+
+.caseStudy-txt h5 {
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.caseStudy-image.caseStudy-preview {
+    padding-bottom: 10px !important;
+}
+
+.caseStudy-image.caseStudy-inner-img.video-preview {
+    margin-top: 0;
+}
+
+.flaticon-next::before {
+    font-size: 1rem !important;
+}
+
+
+/*==========Post Author ===========*/
+
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+}
+
+.post-desc {
+    flex-grow: 1;
+}
+
+
+.post-author {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+}
+
+
+/*Case studies*/
+
+
+
+

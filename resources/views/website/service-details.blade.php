@@ -2,7 +2,7 @@
 @section('title', 'Service Details Page')
 
 @section('website_content')
-    <section id="service-page-breadcrumb">
+    <section id="service-page-breadcrumb" class="container">
         <div class="breadcrumb-container">
             <h2 class="breadcrumb-title"> Service Details page</h2>
             <ul class="breadcrumb-list">
@@ -15,17 +15,14 @@
         </div>
     </section>
 
-    <section id="role-page"
-        class="pb--80 pb-[80px] lg:max-xl:!pb-[60px] md:max-lg:!pb-[50px] inner-page-hero division pt-[0px] lg:max-xl:pt-[0px] md:max-lg:!mt-[0px] md:max-lg:pt-[0px]">
+    <section id="role-page" class="inner-page-hero">
         <div class="container">
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
                 <div class="xl:w-10/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
                     <!-- INNER PAGE TITLE -->
-                    <div
-                        class="inner-page-title !text-left xl:!mb-[50px] lg:max-xl:!mb-[35px] md:max-lg:!mb-[25px] xsm:max-sm:!mb-[25px] sm:max-md:!mb-[25px]">
+                    <div class="inner-page-title !text-left">
 
-                        <h2
-                            class="s-52 w--700 xl:!text-[3.25rem] lg:max-xl:!text-[3rem] md:max-lg:!text-[2.79411rem] sm:max-md:!text-[2.375rem] xsm:max-sm:!text-[2.0625rem] !font-bold leading-[1.25] font-Jakarta sm:max-md:!leading-[1.35] xsm:max-sm:!leading-[1.35] tracking-[0]">
+                        <h2 class="s-52 w--700">
                             {{ $service->service_title ?? '' }}</h2>
 
                     </div>
@@ -36,20 +33,27 @@
                             {!! $service->service_long_description ?? '' !!}
                         </p>
 
-                        @php
-                            $features = json_decode($service->service_features ?? '[]', true) ?: [];
-                        @endphp
 
-                        <!-- List -->
-                        @if (!empty($features))
-                            <ul class="simple-list long-list">
-                                @foreach ($features as $item)
-                                    <li class="list-item">
-                                        <p>{{ $item }}</p>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
+                        <div class="service-feature">
+                            @php
+                                $features = json_decode($service->service_features ?? '[]', true) ?: [];
+                            @endphp
+
+                            <h2>Features</h2>
+
+                            <!-- List -->
+                            @if (!empty($features))
+                                <ul class="simple-list long-list">
+                                    @foreach ($features as $item)
+                                        <li class="list-item">
+                                            <p><span class="flaticon-check"></span>{{ $item }}</p>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+
+
                     </div>
                     <!-- END TEXT BLOCK -->
                 </div>
@@ -111,7 +115,7 @@
         class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
 
     <section id="features-6"
-        class="other-services pb--100 !pb-[100px] lg:max-xl:!pb-[80px] md:max-lg:!pb-[70px]  features-section division">
+        class="other-services features-section division">
         <div class="container">
 
             <h2 class="custom-section-title">Other Services</h2>

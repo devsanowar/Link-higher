@@ -1,8 +1,20 @@
 @extends('website.layouts.app')
 @section('title', 'Blog Page')
 @section('website_content')
+    <section id="service-page-breadcrumb" class="container">
+        <div class="breadcrumb-container">
+            <h2 class="breadcrumb-title">Blog Page</h2>
+            <ul class="breadcrumb-list">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><span>›</span></li>
+                <li class="active">Blog</li>
+            </ul>
+        </div>
+    </section>
+
+
     <section id="blog-page"
-        class="inner-page-hero blog-page-section pt-[180px] lg:max-xl:pt-[160px] md:max-lg:!mt-[80px] md:max-lg:pt-[70px]">
+        class="inner-page-hero blog-page-section">
         <div class="container">
             <div class="posts-wrapper">
                 <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]">

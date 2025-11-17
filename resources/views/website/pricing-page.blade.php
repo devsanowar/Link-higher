@@ -25,7 +25,7 @@
 @endpush
 @section('website_content')
 
-    <section id="service-page-breadcrumb">
+    <section id="service-page-breadcrumb"  class="container">
         <div class="breadcrumb-container">
             <h2 class="breadcrumb-title"> Package Plan Page</h2>
             <ul class="breadcrumb-list">

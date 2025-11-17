@@ -2,7 +2,7 @@
 @section('title', 'Portfolio Page')
 @section('website_content')
 
-    <section id="service-page-breadcrumb">
+    <section id="service-page-breadcrumb"  class="container">
         <div class="breadcrumb-container">
             <h2 class="breadcrumb-title"> Portfolio Page</h2>
             <ul class="breadcrumb-list">

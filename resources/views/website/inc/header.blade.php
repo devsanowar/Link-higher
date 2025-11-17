@@ -6,7 +6,7 @@
                         class="smllogo md:max-lg:!block md:max-lg:!mt-[22px] md:max-lg:!pl-[22px] sm:max-md:!block sm:max-md:!mt-[23px] sm:max-md:!pl-[18px] xsm:max-sm:!block xsm:max-sm:!mt-[23px] xsm:max-sm:!pl-[16px]">
                         @if ($website_settings->website_logo)
                             <img class="md:w-auto  md:max-lg:!max-w-[inherit] md:max-lg:!max-h-[34px] sm:max-md:!w-auto sm:max-md:!max-w-[inherit] sm:max-md:!max-h-[34px] xsm:max-sm:!w-auto xsm:max-sm:!max-w-[inherit] xsm:max-sm:!max-h-[34px]"
-                                src="{{ $website_settings->website_logo }}" alt="mobile-logo">
+                                src="{{ asset($website_settings->website_logo) }}" alt="mobile-logo">
                         @else
                             <img class="md:w-auto  md:max-lg:!max-w-[inherit] md:max-lg:!max-h-[34px] sm:max-md:!w-auto sm:max-md:!max-w-[inherit] sm:max-md:!max-h-[34px] xsm:max-sm:!w-auto xsm:max-sm:!max-w-[inherit] xsm:max-sm:!max-h-[34px]"
                                 src="{{ asset('frontend') }}/images/logo-purple.png" alt="mobile-logo">
@@ -121,7 +121,7 @@
                                         </li>
 
                                         <li class="nl-simple" aria-haspopup="true"><a
-                                                href="{{ route('portfolio.page') }}" class="h-link">Portfolio</a>
+                                                href="{{ route('case.study.page') }}" class="h-link">Case Study</a>
                                         </li>
 
                                         <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}"
