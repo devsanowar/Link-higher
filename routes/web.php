@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\Frontend\ServicePlanController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
+use App\Http\Controllers\Frontend\EmployeController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\SitePageController;
 
@@ -31,6 +32,9 @@ Route::get('service-page/{id}/details', [ServicePageController::class, 'serviceD
 // Post page route
 Route::get('blog-page', [BlogPageController::class, 'index'])->name('blog.page');
 Route::get('blog-details/{slug}', [BlogPageController::class, 'blogDetails'])->name('blog.details');
+
+// Employee Controller route
+Route::get('/employe', [EmployeController::class, 'employePage'])->name('employe.page');
 
 // Service plan route
 Route::get('service-plan/{id}/details', [ServicePlanController::class, 'servicePlanDetails'])->name('service.plan.details.page');

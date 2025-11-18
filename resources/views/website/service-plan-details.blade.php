@@ -3,18 +3,18 @@
 @section('website_content')
 
 
-    <div id="plan-details-page">
-        <section id="service-page-breadcrumb">
-            <div class="breadcrumb-container">
-                <h2 class="breadcrumb-title">Plan Details Page</h2>
-                <ul class="breadcrumb-list">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><span>›</span></li>
-                    <li class="active">Details Page</li>
-                </ul>
-            </div>
-        </section>
+    <section id="service-page-breadcrumb" class="container">
+        <div class="breadcrumb-container">
+            <h2 class="breadcrumb-title">Plan Details Page</h2>
+            <ul class="breadcrumb-list">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><span>›</span></li>
+                <li class="active">Details Page</li>
+            </ul>
+        </div>
+    </section>
 
+    <div id="plan-details-page">
 
         <div class="container">
 

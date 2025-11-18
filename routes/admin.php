@@ -82,6 +82,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     });
 
     Route::prefix('User-management')->group(function () {
+        Route::get('/customer', [UserManageMentController::class, 'customerUser'])->name('customer.management.page');
         Route::get('/', [UserManageMentController::class, 'index'])->name('user.management.index');
         Route::post('/store', [UserManageMentController::class, 'store'])->name('users.store');
         Route::get('/edit/{id}', [UserManageMentController::class, 'edit'])->name('user.management.edit');
@@ -191,7 +192,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     Route::prefix('post')->group(function () {
         Route::resource('post-category', PostCategoryController::class);
         Route::resource('post', PostController::class);
-        
+
     });
 
 

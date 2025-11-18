@@ -23,12 +23,12 @@ class AboutPageController extends Controller
         $whoWeAre = WhoWeAre::first();
         $clients = TrustedClient::where('status',1)->latest()->get();
 
-        $employelists = Employe::where('status', 1)
+        $employes = Employe::where('status', 1)
                     ->orderBy('order','asc')
-                    ->latest()
+                    ->latest()->take(4)
                     ->get();
 
         $reviews = Review::where('status',1)->latest()->get();
-        return view("website.about-page", compact("about", "missionVision", "achievements", "whoWeAre", "clients", "employelists", "reviews"));
+        return view("website.about-page", compact("about", "missionVision", "achievements", "whoWeAre", "clients", "employes", "reviews"));
     }
 }

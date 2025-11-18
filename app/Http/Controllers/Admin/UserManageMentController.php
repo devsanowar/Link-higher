@@ -11,10 +11,17 @@ use Illuminate\Validation\Rules\Password;
 
 class UserManageMentController extends Controller
 {
+
     public function index()
     {
-        $users = User::all();
+        $users = User::where('system_admin', '!=', 'customer')->get();
         return view("admin.layouts.pages.users.index", compact("users"));
+    }
+
+    public function customerUser()
+    {
+        $customers = User::where('system_admin', 'customer')->latest()->get();
+        return view("admin.layouts.pages.users.customer", compact("customers"));
     }
 
     public function store(Request $request)

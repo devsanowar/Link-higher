@@ -124,6 +124,10 @@
                                                 href="{{ route('case.study.page') }}" class="h-link">Case Study</a>
                                         </li>
 
+                                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('employe.page') }}"
+                                                class="h-link">Employe</a>
+                                        </li>
+
                                         <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}"
                                                 class="h-link">FAQs</a>
                                         </li>

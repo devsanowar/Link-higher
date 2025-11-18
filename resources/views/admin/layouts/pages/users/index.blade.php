@@ -10,12 +10,19 @@
             <div class="col-lg-12 col-md-12 col-sm-12 mt-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">All Users</h4>
+                        <h4 class="mb-0">All Customers</h4>
 
-                        <a href="javascript:void(0)" id="addUserBtn" class="btn btn-primary">
-                            <i class="zmdi zmdi-account-add"></i> Add User
-                        </a>
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('customer.management.page') }}" class="btn btn-warning mr-2">
+                                <i class="zmdi zmdi-accounts"></i> All Customer
+                            </a>
+
+                            <a href="javascript:void()" id="addUserBtn" class="btn btn-primary">
+                                <i class="zmdi zmdi-account-add"></i> All User
+                            </a>
+                        </div>
                     </div>
+
 
                     @include('admin.layouts.pages.users.add_user')
 

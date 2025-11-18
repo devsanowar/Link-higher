@@ -1,3 +1,7 @@
+p{
+    font-size: 16px !important;
+}
+
 /* আইকন-কন্টেইনারে ব্লব ব্যাকগ্রাউন্ড */
 .icon-card {
     --blob-w: 135px; /* xl */
@@ -1285,13 +1289,13 @@ CASE STUDIES SLIDER SECTION CSS
 }
 
 .cs-category {
-	font-size: 12px;
-	color: #6D21C5;
-	font-weight: 700;
-	background: rgba(99, 102, 241, 0.08);
-	padding: 4px 8px;
-	border-radius: 999px;
-	display: inline-block;
+    font-size: 12px;
+    color: #6d21c5;
+    font-weight: 700;
+    background: rgba(99, 102, 241, 0.08);
+    padding: 4px 8px;
+    border-radius: 999px;
+    display: inline-block;
 }
 .cs-title {
     font-size: 16px;
@@ -2220,7 +2224,7 @@ span[class*=" flaticon-"]::before {
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 12px;
     transition: all 0.3s ease;
@@ -2245,9 +2249,6 @@ span[class*=" flaticon-"]::before {
     transform: scale(1.2);
 }
 
-
-
-
 /* --------------------
    Responsive
 -------------------- */
@@ -2263,8 +2264,8 @@ span[class*=" flaticon-"]::before {
     }
 
     #home-page .cs-card {
-	flex: 0 0 100% !important;
-}
+        flex: 0 0 100% !important;
+    }
     article.cs-card {
         height: 415px !important;
     }
@@ -2370,9 +2371,7 @@ span[class*=" flaticon-"]::before {
     font-size: 1rem !important;
 }
 
-
 /*==========Post Author ===========*/
-
 
 .post-card {
     display: flex;
@@ -2394,7 +2393,6 @@ span[class*=" flaticon-"]::before {
     flex-grow: 1;
 }
 
-
 .post-author {
     margin-top: auto;
     display: flex;
@@ -2404,8 +2402,495 @@ span[class*=" flaticon-"]::before {
 }
 
 
-/*Case studies*/
+#who-we-are {
+	padding: 65px 0;
+}
 
+/* ===== Team Section ===== */
+.team-section {
+	padding: 50px 0px 65px 0px;
+}
 
+#about-page .team-section {
+	padding: 50px 0px 65px 0px;
+	background: #EDEBF9;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
 
+.team-section .title {
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
 
+.team-section .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: #555;
+    max-width: 500px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+/* ===== Team Grid ===== */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 35px;
+}
+
+/* ===== Team Card ===== */
+.team-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Container */
+.team-image {
+    width: 140px;
+    height: 140px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid #eee;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Team Name */
+.team-name {
+    margin-top: 18px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+/* Profession / Role */
+.team-role {
+    font-size: 15px;
+    color: #777;
+    margin-top: 5px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* Global */
+
+.mision-vision-about-section {
+    padding: 80px 0;
+    background: #f8f9fc;
+}
+
+/* .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+} */
+
+.row-mission {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.col-mission {
+    flex: 1 1 calc(50% - 40px);
+    min-width: 280px;
+}
+
+.mision-vision-about-section .title {
+    position: relative;
+    padding-left: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.mision-vision-about-section .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 75%;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 2px;
+}
+
+.text-block {
+    background: #ffffff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    border: 1px solid #e6e9ef;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+}
+
+.text-block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #222;
+    letter-spacing: -0.3px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        flex: 1 1 100%;
+    }
+
+    .text-block {
+        padding: 25px 28px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+}
+
+/* Container */
+/* .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+
+/* Statistic Section */
+.statistic-section {
+    padding: 60px 0 40px 0;
+}
+
+/* Responsive padding adjustments */
+@media (max-width: 1200px) {
+    .statistic-section {
+        padding: 80px 0;
+    }
+}
+@media (max-width: 992px) {
+    .statistic-section {
+        padding: 70px 0;
+    }
+}
+
+/* Row */
+.statistic-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    gap: 30px;
+}
+
+/* Column */
+.statistic-col {
+    flex: 1 1 calc(33.333% - 30px);
+    max-width: calc(33.333% - 30px);
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .statistic-col {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .statistic-col {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* Statistic Block */
+.statistic-block {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* Digit */
+.statistic-digit h2 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #999;
+    padding-bottom: 15px;
+    line-height: 1.2;
+}
+
+@media (max-width: 1200px) {
+    .statistic-digit h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .statistic-digit h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .statistic-digit h2 {
+        font-size: 2.25rem;
+    }
+}
+
+/* Text */
+.statistic-text h5 {
+    font-size: 1.1875rem;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+    .statistic-text h5 {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .statistic-text h5 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .statistic-text h5 {
+        font-size: 1.3125rem;
+    }
+}
+
+/* Background Image */
+.newsletter-section {
+    background: url("your-image.jpg") center/cover no-repeat;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Overlay */
+.newsletter-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 60px 0;
+}
+
+/* Container */
+/* .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+} */
+
+/* Row (Side-by-Side Layout) */
+.newsletter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap; /* IMPORTANT: This keeps them side-by-side */
+    gap: 30px;
+}
+
+/* Columns */
+.newsletter-col {
+    flex: 1;
+}
+
+/* Left Text */
+.left-col h4 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Right Form */
+.newsletter-form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    width: 100%;
+    max-width: 460px;
+}
+
+/* Email Input */
+.input-group input {
+    flex: 1;
+    padding: 14px 15px;
+    border-radius: 6px 0 0 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Button */
+.input-group button {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    color: #fff;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.input-group button:hover {
+    background: linear-gradient(135deg, #5229f2, #a91063);
+}
+
+.newsletter-section .btn {
+    display: block;
+    height: 60px;
+    width: 100%;
+}
+
+/* Message */
+.form-notification {
+    color: #ffb5b5;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .newsletter-row {
+        flex-wrap: wrap; /* mobile এ নিচে আসবে */
+        text-align: center;
+    }
+
+    .newsletter-form {
+        justify-content: center;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group input,
+    .input-group button {
+        border-radius: 6px;
+        width: 100%;
+    }
+
+    .input-group button {
+        margin-top: 10px;
+    }
+
+    #about-page .about-us {
+        padding-top: 0 !important;
+        margin-top: 65px !important;
+        padding-bottom: 0px !important;
+    }
+    .about-us-text {
+        padding: 15px 15px;
+    }
+
+    .mision-vision-about-section {
+        padding: 50px 0;
+        background: #f8f9fc;
+    }
+
+    #about-page .statistic-section {
+        padding: 40px 0;
+    }
+
+    #about-page #statistic-5 .statistic-digit {
+        margin-inline: 0% !important;
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
+    #about-page .statistic-block {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    #about-page .statistic-digit h2 {
+        border-bottom: 2px solid #99999924;
+    }
+
+    #who-we-are {
+        padding-top: 40px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .team-section {
+        padding: 44px 0px;
+    }
+
+    .reviews-wrapper {
+        padding: 30px 0px;
+    }
+
+    .reviews-wrapper .title {
+        margin-left: 10px;
+    }
+
+    #about-page .newsletter-row {
+        display: block;
+    }
+}
+
+#plan-details-page {
+	margin-top: 20px;
+}

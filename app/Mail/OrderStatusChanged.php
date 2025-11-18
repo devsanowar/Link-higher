@@ -30,8 +30,12 @@ class OrderStatusChanged extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your Order #' . $this->order->id . ' status updated'
-        );
+        from: new \Illuminate\Mail\Mailables\Address(
+            config('mail.from.address'),    // from email
+            config('app.name')              // from name (website name)
+        ),
+        subject: 'Your Order #' . $this->order->id . ' status updated'
+    );
     }
 
     /**
