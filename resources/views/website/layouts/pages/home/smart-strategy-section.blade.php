@@ -1,4 +1,4 @@
-<section id="lnk-1"
+<section id="smart-strategy-section"
     class="smart-strategy ct-02 content-section division">
     <div class="container">
         <!-- SECTION CONTENT (ROW) -->

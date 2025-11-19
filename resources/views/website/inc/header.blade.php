@@ -125,7 +125,7 @@
                                         </li>
 
                                         <li class="nl-simple" aria-haspopup="true"><a href="{{ route('employe.page') }}"
-                                                class="h-link">Employe</a>
+                                                class="h-link">Team Members</a>
                                         </li>
 
                                         <li class="nl-simple" aria-haspopup="true"><a href="{{ route('faq.page') }}"

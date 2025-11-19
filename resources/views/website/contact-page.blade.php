@@ -90,8 +90,8 @@
 
 
     <!-- CONTACTS-1 -->
-    <section id="contacts-1"
-        class="pb--50 xl:!pb-[50px] lg:max-xl:!pb-[40px] md:max-lg:!pb-[30px]  inner-page-hero contacts-section division pt-[100px] lg:max-xl:pt-[80px] md:max-lg:!mt-[60px] md:max-lg:pt-[70px]">
+    <section id="contact-section"
+        class="inner-page-hero contacts-section division">
         <div class="container">
             <!-- SECTION TITLE -->
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
@@ -213,7 +213,7 @@
 
     <section id="map-1" class="map-section">
         <div
-            class="map-overlay py-[60px] lg:max-xl:py-[45px] md:max-lg:!text-center md:max-lg:pt-[40px] md:max-lg:!pb-[30px] md:max-lg:px-[18%] sm:max-md:pt-[50px] sm:max-md:!pb-[40px] xsm:max-sm:pt-[50px] xsm:max-sm:!pb-[40px]">
+            class="map-overlay">
 
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] items-center row-cols-1 row-cols-lg-2">
 

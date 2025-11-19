@@ -1,5 +1,5 @@
-<section id="features-2" class="pt--90 pt-[90px] lg:max-xl:pt-[70px] md:max-lg:pt-[60px]  features-section division">
-    <div class="container">
+<section id="features-2" class="features-section division">
+    <div class="container custom-features">
         <!-- SECTION TITLE -->
         <div class="header">
             <div class="title">{{ $goalProgressSectionTitile->section_title ?? '' }}</div>

@@ -157,12 +157,12 @@
                     <i class="zmdi zmdi-shopping-cart"></i><span>Product</span>
                 </a>
                 <ul class="ml-menu">
-                    <li class="{{ request()->routeIs('product-category.*') ? 'active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('product-category.*') ? 'active' : '' }}">
                         <a href="{{ route('product-category.index') }}">Category</a>
-                    </li>
+                    </li> --}}
 
                     <li class="{{ request()->routeIs('products.*') ? 'active' : '' }}">
-                        <a href="{{ route('products.index') }}">Products</a>
+                        <a href="{{ route('products.index') }}">Sites</a>
                     </li>
                 </ul>
             </li>
@@ -219,7 +219,7 @@
 
 
             <!--Project with category Menu-->
-            <li class="menu-item {{ request()->routeIs(['project-category.*', 'project.*']) ? 'active open' : '' }}">
+            {{-- <li class="menu-item {{ request()->routeIs(['project-category.*', 'project.*']) ? 'active open' : '' }}">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="zmdi zmdi-case"></i><span>Portfolio</span>
                 </a>
@@ -233,7 +233,7 @@
                     </li>
 
                 </ul>
-            </li>
+            </li> --}}
 
             <!--Employe Menu-->
             <li class="{{ request()->routeIs(['employe.*']) ? 'active open' : '' }}">

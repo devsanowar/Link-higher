@@ -82,19 +82,23 @@
                 </section>
 
                 <section id="faq-section" class="faq" aria-label="FAQ">
-                    <h2 class="custom-section-title">FAQ</h2>
+                    <div class="container">
+                        <h2 class="custom-section-title">FAQ</h2>
 
-                    @foreach ($faqs as $faq)
-                        <div class="q" data-index="0">
-                            <div class="q-text">{{ $faq->question ?? '' }}</div>
-                            <div class="arrow">▾</div>
-                        </div>
-                        <div class="a" data-index="0">
-                            <p>{!! $faq->answer ?? '' !!}
-                            </p>
-                        </div>
-                    @endforeach
+                        @foreach ($faqs as $i => $faq)
+                            <div class="q" data-index="{{ $i }}">
+                                <div class="q-text">{{ $faq->question }}</div>
+                                <div class="arrow" style="{{ $i == 0 ? 'transform: rotate(180deg);' : '' }}">▾</div>
+                            </div>
+
+                            <div class="a {{ $i == 0 ? 'open' : '' }}" data-index="{{ $i }}"
+                                style="max-height: {{ $i == 0 ? '300px' : '0' }};">
+                                <p>{!! $faq->answer !!}</p>
+                            </div>
+                        @endforeach
+                    </div>
                 </section>
+
             </div>
         </div>
 
@@ -103,25 +107,40 @@
 
 @push('scripts')
     <script>
-        // Simple accordion for FAQ
         (function() {
             const qs = document.querySelectorAll('.q');
-            qs.forEach(q => q.addEventListener('click', () => {
-                const idx = q.dataset.index;
-                const ans = document.querySelector('.a[data-index="' + idx + '"]');
-                const open = ans.classList.contains('open');
-                // close all
-                document.querySelectorAll('.a.open').forEach(a => {
-                    a.classList.remove('open');
-                    a.style.maxHeight = 0
-                });
-                document.querySelectorAll('.q .arrow').forEach(ar => ar.style.transform = '');
-                if (!open) {
+
+            qs.forEach(q => {
+                q.addEventListener('click', () => {
+
+                    const idx = q.dataset.index;
+                    const ans = document.querySelector('.a[data-index="' + idx + '"]');
+                    const arrow = q.querySelector('.arrow');
+                    const isOpen = ans.classList.contains('open');
+
+                    // যদি ইতিমধ্যে ওপেন থাকে → ক্লিক করলে ক্লোজ করে দাও
+                    if (isOpen) {
+                        ans.classList.remove('open');
+                        ans.style.maxHeight = 0;
+                        arrow.style.transform = '';
+                        return; // এখানে শেষ
+                    }
+
+                    // প্রথমে সবকিছু বন্ধ করে দাও
+                    document.querySelectorAll('.a').forEach(a => {
+                        a.classList.remove('open');
+                        a.style.maxHeight = 0;
+                    });
+                    document.querySelectorAll('.q .arrow').forEach(ar => {
+                        ar.style.transform = '';
+                    });
+
+                    // ক্লিক করা প্রশ্ন ওপেন হবে
                     ans.classList.add('open');
                     ans.style.maxHeight = ans.scrollHeight + 'px';
-                    q.querySelector('.arrow').style.transform = 'rotate(180deg)';
-                }
-            }));
+                    arrow.style.transform = 'rotate(180deg)';
+                });
+            });
         })();
     </script>
 @endpush

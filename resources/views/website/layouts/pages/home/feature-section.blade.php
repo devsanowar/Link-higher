@@ -1,10 +1,10 @@
-<section id="features-6" class="pb--100 !pb-[100px] lg:max-xl:!pb-[80px] md:max-lg:!pb-[70px]  features-section division">
+<section id="features-6" class="pb--100 features-section division">
     <div class="container">
         <!-- FEATURES-6 WRAPPER -->
         <div class="fbox-wrapper !text-center">
             <div class="header">
                 <div class="title">Services</div>
-                
+
             </div>
 
             <div style="margin-bottom: 20px"

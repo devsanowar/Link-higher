@@ -29890,11 +29890,7 @@ body.theme--dark {
     padding-top: calc(var(--spacing) * 5) !important;
     padding-bottom: 22px !important;
   }
-  #faqs-2.faqs-section .accordion-thumb {
-    padding-inline: calc(var(--spacing) * 0) !important;
-    padding-top: calc(var(--spacing) * 5) !important;
-    padding-bottom: 25px !important;
-  }
+
   .faqs-section .accordion-item .accordion-thumb:after, .faqs-section .accordion-item.is-active .accordion-thumb:after {
     top: 23px !important;
     right: calc(var(--spacing) * 0) !important;
@@ -29902,7 +29898,7 @@ body.theme--dark {
   }
   #faqs-2.faqs-section .accordion-item .accordion-thumb:after, #faqs-2.faqs-section .accordion-item.is-active .accordion-thumb:after {
     top: 22px !important;
-    right: 2px !important;
+    right: 12px !important;
     font-size: 0.9rem !important;
   }
   .accordion-panel {

@@ -1,4 +1,4 @@
-p{
+p {
     font-size: 16px !important;
 }
 
@@ -403,7 +403,7 @@ button.btn.btn-primary.custom-submit-button {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #e74c3c;
+    background: #a91063;
     color: #fff;
     padding: 5px 10px;
     font-size: 0.8rem;
@@ -453,12 +453,15 @@ button.btn.btn-primary.custom-submit-button {
 }
 
 .add-to-cart {
-    background: #3498db;
     color: #fff;
+    background: linear-gradient(135deg, #5229f2, #a91063);
 }
 
 .add-to-cart:hover {
-    background: #2980b9;
+    .add-to-cart {
+        color: #fff;
+        background: linear-gradient(135deg, #6e49ff, #c11373);
+    }
 }
 
 .view-details {
@@ -1033,13 +1036,12 @@ table.cart tbody td {
     max-width: 1140px;
     margin: 0 auto;
     position: relative;
-    padding-top: 60px;
+    padding-top: 0px;
     padding-bottom: 40px;
 }
 #post-slider .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
 }
 /* #post-slider .title {
     font-size: 20px;
@@ -1414,7 +1416,7 @@ Service section - 6 css style
     text-transform: uppercase;
     text-align: left;
     margin-bottom: 20px;
-    /* margin-left: 5px; */
+    margin-left: -10px;
 }
 
 #features-6 .title::before {
@@ -1445,7 +1447,7 @@ Trusted client
     text-transform: uppercase;
     text-align: left;
     margin-bottom: 20px;
-    margin-left: 0px;
+    margin-left: -13px;
 }
 
 .brands-section .title::before {
@@ -1491,12 +1493,12 @@ Review section custom design
 /* outer wrapper mimics previous layout and centered container */
 .reviews-wrapper {
     position: relative;
-    padding: 60px 0px;
+    padding: 50px 0px;
     background: transparent;
 }
 
 #faqs-3 {
-    padding: 60px 0;
+    padding: 50px 0;
 }
 
 #faqs-3 .title {
@@ -1780,6 +1782,11 @@ Review section custom design
     padding: 15px;
 }
 
+#home-page .responsive-table-wrapper {
+    border: unset;
+    padding: 0;
+}
+
 /* 🔸 Table Base Style (তোমার class গুলো রেখে দিয়েছি) */
 table {
     width: 100%;
@@ -1851,6 +1858,7 @@ table {
     font-weight: bold;
     color: #000 !important;
     padding-left: 15px;
+    font-size: 1.5rem;
 }
 
 .site-page-title h4::before {
@@ -1858,8 +1866,8 @@ table {
     position: absolute;
     left: 0;
     top: 5px;
-    width: 5px;
-    height: 80%;
+    width: 6px;
+    height: 70%;
     background: linear-gradient(135deg, #5229f2, #a91063);
     border-radius: 5px;
 }
@@ -2057,7 +2065,7 @@ span[class*=" flaticon-"]::before {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 
 /* Dark/Color overlay */
@@ -2155,11 +2163,11 @@ span[class*=" flaticon-"]::before {
 }
 
 .faq-content .accordion-thumb {
-    padding: 18px 10px;
     background: #dddddd57;
     box-sizing: border-box;
     box-shadow: 2px 2px 2px #ddd;
     border-radius: 10px;
+    padding: 20px 15px;
 }
 
 .faq-content .accordion-panel {
@@ -2401,19 +2409,18 @@ span[class*=" flaticon-"]::before {
     padding-top: 12px;
 }
 
-
 #who-we-are {
-	padding: 65px 0;
+    padding: 65px 0;
 }
 
 /* ===== Team Section ===== */
 .team-section {
-	padding: 50px 0px 65px 0px;
+    padding: 50px 0px 65px 0px;
 }
 
 #about-page .team-section {
-	padding: 50px 0px 65px 0px;
-	background: #EDEBF9;
+    padding: 50px 0px 65px 0px;
+    background: #edebf9;
 }
 .container {
     max-width: 1200px;
@@ -2509,7 +2516,7 @@ span[class*=" flaticon-"]::before {
 /* Global */
 
 .mision-vision-about-section {
-    padding: 80px 0;
+    padding: 60px 0;
     background: #f8f9fc;
 }
 
@@ -2608,7 +2615,7 @@ span[class*=" flaticon-"]::before {
 
 /* Statistic Section */
 .statistic-section {
-    padding: 60px 0 40px 0;
+    padding: 50px 0 30px 0;
 }
 
 /* Responsive padding adjustments */
@@ -2889,8 +2896,342 @@ span[class*=" flaticon-"]::before {
     #about-page .newsletter-row {
         display: block;
     }
+
+    #home-page .hero-section {
+        margin-top: 64px !important;
+        padding-top: 35px !important;
+        padding-bottom: 35px !important;
+    }
+
+    .hero-section .quick-form .input-group-btn {
+        margin: 5px 0px !important;
+    }
+
+    #home-page .brands-section {
+        padding-bottom: 50px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .features-section {
+        padding: 30px 11px !important;
+    }
+
+    #home-page .fbox-ico,
+    .fbox-ico.ico-rounded,
+    .fbox-ico.ico-square {
+        margin-bottom: 0px !important;
+    }
+
+    .service-custom-design {
+        margin-bottom: 20px !important;
+    }
+
+    .features-section h6,
+    .fbox-txt h5,
+    .rows-2 .fbox-11 h6,
+    .fbox-wrapper .row-cols-md-2 h6 {
+        margin-bottom: 5px !important;
+    }
+
+    #smart-strategy-section {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .custom-features {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .site-button {
+        margin-top: 15px;
+    }
+
+    #post-slider .header {
+        padding: 0 6px;
+    }
+
+    .whychose-feature {
+        padding: 0 12px;
+    }
+    .whychose-feature-item {
+        margin-bottom: 10px;
+        padding: 25px 15px !important;
+    }
+
+    #cs-slider .header {
+        padding-left: 7px;
+        margin-bottom: 0px;
+    }
+
+    .cs-slider {
+        padding-top: 35px;
+    }
+
+    .button-cta-one {
+        margin-bottom: 0px !important;
+    }
+
+    .cta-button-two {
+        border: 2px solid #ddd;
+    }
+
+    #faq-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 5px !important;
+        padding-right: 5px;
+    }
+
+    .service-feature .flaticon-check {
+        padding: 8px 8px 7px 8px;
+        background: linear-gradient(135deg, #5229f2, #a91063);
+        border-radius: 50px;
+        display: inline-block;
+        color: #fff;
+        margin-right: 5px;
+        line-height: 10px;
+    }
+    .service-feature .flaticon-check::before {
+        font-size: 15px;
+    }
+
+    #plan-details-page .info {
+        margin-top: 0;
+    }
+
+    #plan-details-page .img-wrap {
+        padding: 0px;
+    }
+
+    #cart-page #plan-details-page {
+        margin-bottom: 35px;
+    }
+
+    #site-page-data-table {
+        padding: 30px 0 40px 0;
+    }
+
+    #site-page-data-table .ms-auto {
+        margin-left: auto !important;
+        margin-top: -10px;
+    }
+
+    #site-page-data-table #example_info {
+        padding-top: 0;
+    }
+
+    #service-page-breadcrumb {
+        padding: 20px 0;
+    }
+
+    #blog-page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .blog-post {
+        border: 1px solid #ddd;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        margin-bottom: 0 !important;
+    }
+
+    .blog-post-img img {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .blog-post-txt {
+        padding: 10px;
+    }
+
+    .blog-post-img {
+        margin-bottom: 8px !important;
+    }
+
+    .page-pagination.theme-pagination {
+        padding-bottom: 30px !important;
+    }
+
+    .blog-post-meta {
+        margin-bottom: 15px;
+    }
+
+    .post-content {
+        padding: 0 15px;
+    }
+
+    #single-post {
+        padding-bottom: 0px !important;
+    }
+
+    #single-post.inner-page-hero,
+    .page-hero-section-overlay {
+        margin-bottom: 20px !important;
+    }
+
+    .statistic-text h5 {
+        font-size: 18px !important;
+        font-weight: 600;
+        color: #555;
+    }
+
+    #who-we-are {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #about-page .brands-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .team-section .title {
+        margin-left: 0;
+    }
+
+    .section-subtitle {
+        padding-left: 0px;
+        margin-top: -5px !important;
+    }
+
+    .team-grid {
+        gap: 15px;
+    }
+
+    #about-page .team-section {
+        padding: 50px 0px 50px 0px;
+    }
+
+    #case-study-page .title {
+        margin-bottom: 15px !important;
+    }
+
+    #cs-slider {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #caseStudy-details {
+        padding-top: 0 !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #case-single-page .caseStudy-data {
+        padding: 0 7px;
+    }
+
+    .case-study-summary {
+        margin-top: 20px;
+        text-transform: uppercase;
+    }
+
+    .more-caseStudys h3 {
+        font-size: 20px !important;
+        margin-top: 20px;
+    }
+
+    #case-single-page .breadcrumb-title {
+        font-size: 22px;
+    }
+
+    .caseStudy-description {
+        padding-top: 30px;
+    }
+
+    .faq-content .accordion-thumb {
+        padding: 15px 10px !important;
+    }
+
+    #contactForm {
+        padding: 0 15px;
+    }
+
+    .map-section {
+        padding-top: 0px !important;
+    }
+}
+
+.map-section {
+    padding-top: 40px;
+}
+
+#case-study-page .cs-track {
+    gap: 15px;
+    padding: 0;
+}
+
+#case-study-page .title {
+    margin-bottom: 0px;
+}
+
+.blog-post-img {
+    margin-bottom: 20px;
+}
+
+.blog-post-txt h6 {
+    margin-top: 10px;
+}
+
+#single-post {
+    padding-top: 45px;
+    padding-bottom: 40px;
+}
+
+.post-tag {
+    color: #a51169;
+    text-transform: uppercase;
+}
+
+.blog-post-meta {
+    margin-top: 22px;
+}
+
+.cta-button-two {
+    border: 2px solid #ddd;
 }
 
 #plan-details-page {
-	margin-top: 20px;
+    margin-top: 20px;
+}
+
+.custom-arrow-btn {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #5229f2, #a91063);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
+
+.custom-arrow-btn:hover {
+    background-color: #ffffff;
+}
+
+.custom-arrow-btn .arrow {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 0.5rem;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+    transition: transform 0.3s;
+}
+
+.custom-arrow-btn:hover .arrow {
+    transform: rotate(-45deg) translateX(3px);
+}
+
+#home-page #site-page-data-table {
+    padding: 35px 0 40px 0;
 }

@@ -1,5 +1,6 @@
 @extends('website.layouts.app')
 @section('title', 'Case Studies Single Page')
+@section('page_id', 'case-single-page')
 @section('website_content')
     <section id="service-page-breadcrumb" class="container">
         <div class="breadcrumb-container">
@@ -12,8 +13,8 @@
         </div>
     </section>
 
-    <section id="caseStudy-1"
-        class="inner-page-hero single-caseStudy pt-[0px] lg:max-xl:pt-[0px] md:max-lg:!mt-[0px] md:max-lg:pt-[0px]">
+    <section id="caseStudy-details"
+        class="inner-page-hero single-caseStudy">
         <div class="container">
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
                 <!-- caseStudy DISCRIPTION -->
@@ -125,7 +126,7 @@
                             @endphp
 
                             @if ($imgs->isNotEmpty())
-                                <div style="padding: 10px 10px 20px 10px;"
+                                <div id="image-gallery"
                                     class="flex flex-wrap image-gallery">
                                     @foreach ($imgs as $i => $imgUrl)
                                         <div
@@ -199,7 +200,7 @@
                         <!-- END caseStudy TEXT -->
                         <!-- MORE caseStudyS BUTTON -->
                         <div
-                            class="more-caseStudys ico-25 !text-end pb--100 xl:!pb-[100px] lg:max-xl:!pb-[80px] md:max-lg:!pb-[70px] mt-[65px] lg:max-xl:!mt-[50px] md:max-lg:!mt-[45px] sm:max-md:!mt-[45px] xsm:max-sm:!mt-[45px]">
+                            class="more-caseStudys ico-25 !text-end">
                             <a href="{{ route('case.study.page') }}">
                                 <h3
                                     class="s-38 w--700 !font-bold inline-block !underline">

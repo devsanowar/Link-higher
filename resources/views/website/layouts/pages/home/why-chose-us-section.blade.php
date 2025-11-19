@@ -9,20 +9,20 @@
             @endphp
 
             <div
-                class="md:w-7/12 lg:max-xl:w-7/12 xl:w-7/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full order-last order-md-2 md:max-lg:order-2 lg:max-xl:order-2 xl:order-2">
+                class="whychose-feature md:w-7/12 lg:max-xl:w-7/12 xl:w-7/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full order-last order-md-2 md:max-lg:order-2 lg:max-xl:order-2 xl:order-2">
                 <div class="fbox-13-wrapper wow fadeInRight pr-[45px] lg:max-xl:pr-[30px] md:max-lg:pr-0">
 
                     {{-- প্রতি রোতে ৪টা করে নেবো (বাম কলামে ২টা + ডান কলামে ২টা) --}}
                     @foreach ($reasons->chunk(4) as $group)
-                        <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] ">
+                        <div class=" flex flex-wrap mx-[calc(-0.5*_1.5rem)] ">
 
                             {{-- LEFT COLUMN --}}
                             <div
-                                class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
+                                class="xl:w-6/12 lg:max-xl:w-6/12 md:max-lg:w-6/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">
                                 @foreach ($group->slice(0, 2) as $reason)
                                     {{-- FEATURE BOX --}}
                                     <div
-                                        class="fbox-12 bg--white-100 block-shadow rounded-[12px] {{ $loop->first ? 'mb--30 xl:!mb-[30px]' : '' }} px-[35px] py-[32px] lg:max-xl:!p-[30px] md:max-lg:px-[18px] md:max-lg:py-[22px] sm:max-md:!px-[50px] sm:max-md:py-[40px] xsm:max-sm:px-[30px] xsm:max-sm:py-[35px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
+                                        class="whychose-feature-item fbox-12 bg--white-100 block-shadow rounded-[12px] {{ $loop->first ? 'mb--30 xl:!mb-[30px]' : '' }} px-[35px] py-[32px] lg:max-xl:!p-[30px] md:max-lg:px-[18px] md:max-lg:py-[22px] sm:max-md:!px-[50px] sm:max-md:py-[40px] xsm:max-sm:px-[30px] xsm:max-sm:py-[35px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
 
                                         <!-- Icon -->
                                         <div class="fbox-ico ico-50 !mb-[20px] xsm:max-sm:!mb-[20px]">
@@ -60,7 +60,7 @@
                                 @foreach ($group->slice(2, 2) as $reason)
                                     {{-- FEATURE BOX --}}
                                     <div
-                                        class="fbox-12 bg--white-100 block-shadow rounded-[12px] {{ $loop->first ? 'mb--30 xl:!mb-[30px]' : '' }} px-[35px] py-[32px] lg:max-xl:!p-[30px] md:max-lg:px-[18px] md:max-lg:py-[22px] sm:max-md:!px-[50px] sm:max-md:py-[40px] xsm:max-sm:px-[30px] xsm:max-sm:py-[35px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
+                                        class="whychose-feature-item fbox-12 bg--white-100 block-shadow rounded-[12px] {{ $loop->first ? 'mb--30 xl:!mb-[30px]' : '' }} px-[35px] py-[32px] lg:max-xl:!p-[30px] md:max-lg:px-[18px] md:max-lg:py-[22px] sm:max-md:!px-[50px] sm:max-md:py-[40px] xsm:max-sm:px-[30px] xsm:max-sm:py-[35px] shadow-[0_4px_12px_0_rgba(0,0,0,0.08)]">
 
                                         <!-- Icon -->
                                         <div class="fbox-ico ico-50 !mb-[20px] xsm:max-sm:!mb-[20px]">

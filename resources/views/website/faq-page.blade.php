@@ -67,7 +67,7 @@
                             <p
                                 class="p-lg leading-none !mb-0 lg:max-xl:!text-[1.125rem] md:max-lg:!text-[1.125rem] sm:max-md:!text-[1.125rem] xsm:max-sm:!text-[1.125rem]">
                                 Have any questions?
-                                <a href="contacts.html"
+                                <a href="{{ route('contact.page') }}"
                                     class="color--theme font-medium !underline hover:text-[#353f4f] hover:!underline">Get
                                     in Touch</a>
                             </p>

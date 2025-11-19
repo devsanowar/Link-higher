@@ -4,11 +4,11 @@
 @section('website_content')
     <section id="service-page-breadcrumb" class="container">
         <div class="breadcrumb-container">
-            <h2 class="breadcrumb-title">Employe Page</h2>
+            <h2 class="breadcrumb-title">Team Page</h2>
             <ul class="breadcrumb-list">
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li><span>›</span></li>
-                <li class="active">Employe</li>
+                <li class="active">Team</li>
             </ul>
         </div>
     </section>
@@ -16,7 +16,7 @@
     <section class="team-section">
         <div class="container">
             <div class="header">
-                <div class="title">Our Employe</div>
+                <div class="title">Our Team</div>
                 <p class="section-subtitle">Meet the talented professionals behind our success</p>
             </div>
 

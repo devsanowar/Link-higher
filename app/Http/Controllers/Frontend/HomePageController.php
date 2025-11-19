@@ -7,6 +7,7 @@ use App\Models\Faq;
 use App\Models\Post;
 use App\Models\Reason;
 use App\Models\Review;
+use App\Models\Product;
 use App\Models\Service;
 use App\Models\CaseStudy;
 use App\Models\WhyChoseUs;
@@ -45,6 +46,13 @@ class HomePageController extends Controller
         $cta = Cta::first();
         $caseStudies = CaseStudy::with('service')->where('status', 1)->latest()->get();
         $posts = Post::with(['category','user'])->where('status', 1)->latest()->take(15)->get();
-        return view("website.home", compact("hero","services", "smartStrategy", "smarterWorkFlowImage", "smarterWorkFlows", "goalProgressSectionTitile", "goalProgesses", "smartSolution", "smartSolutionFeatures", "whyChoseUs", "reasons", "customerFocusTone", "reviews", "clients", "faqs", "cta", "caseStudies", "posts"));
+
+        $sites = Product::with('category')
+                ->where('status', 1)
+                ->latest()
+                ->take(10)
+                ->get();
+
+        return view("website.home", compact("hero","services", "smartStrategy", "smarterWorkFlowImage", "smarterWorkFlows", "goalProgressSectionTitile", "goalProgesses", "smartSolution", "smartSolutionFeatures", "whyChoseUs", "reasons", "customerFocusTone", "reviews", "clients", "faqs", "cta", "caseStudies", "posts", "sites"));
     }
 }

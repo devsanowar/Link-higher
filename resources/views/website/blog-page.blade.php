@@ -23,7 +23,7 @@
                         <div class="md:w-6/12 lg:w-4/12 xl:w-4/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full ">
                             <div class="blog-post wow fadeInUp mb--40 mb-[40px]">
                                 <!-- BLOG POST IMAGE -->
-                                <div class="blog-post-img !mb-[35px]">
+                                <div class="blog-post-img">
                                     @if ($post->featured_image)
                                         <img class="img-fluid rounded-[16px] " src="{{ asset($post->featured_image) }}"
                                             alt="blog-post-image">
@@ -36,7 +36,7 @@
                                 <div class="blog-post-txt">
                                     <!-- Post Tag -->
                                     <span
-                                        class="post-tag color--red-400 block xl:!text-[0.75rem] font-semibold tracking-[0] uppercase xl:!mb-[20px] font-Jakarta lg:max-xl:!text-[0.85rem] lg:max-xl:!mb-[15px] md:max-lg:!text-[0.85rem] md:max-lg:!mb-[12px] xsm:max-sm:!text-[0.825rem] xsm:max-sm:!mb-[14px]">{{ $post->category->category_name }}</span>
+                                        class="post-tag color--red-400 block xl:!text-[0.75rem] font-semibold tracking-[0] uppercase font-Jakarta lg:max-xl:!text-[0.85rem] md:max-lg:!text-[0.85rem] md:max-lg:!mb-[12px] xsm:max-sm:!text-[0.825rem] ">{{ $post->category->category_name }}</span>
                                     <!-- Post Link -->
                                     <h6
                                         class="s-20 w--700 xl:!text-[1.25rem] lg:max-xl:!text-[1.18755rem] md:max-lg:!text-[1.397058rem] sm:max-md:!text-[1.4375rem] xsm:max-sm:!text-[1.3125rem] !font-bold xl:!mb-[15px] lg:max-xl:!mb-[12px] md:max-lg:!mb-[12px] sm:max-md:!mb-[18px] xsm:max-sm:!mb-[14px] leading-[1.35] font-Jakarta sm:max-md:!leading-[1.4] xsm:max-sm:!leading-[1.4]">
@@ -142,8 +142,6 @@
                     </div>
                 </div>
             </div>
-
-            <hr class="divider w-full h-px bg-transparent bg-[linear-gradient(90deg,rgba(206,211,246,0)_0,#bbb_38%,#bbb_64%,rgba(206,211,246,0)_99%)] opacity-40 !m-0 ![border:none]">
 
         </div>
     </section>

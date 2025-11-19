@@ -34,7 +34,7 @@ Route::get('blog-page', [BlogPageController::class, 'index'])->name('blog.page')
 Route::get('blog-details/{slug}', [BlogPageController::class, 'blogDetails'])->name('blog.details');
 
 // Employee Controller route
-Route::get('/employe', [EmployeController::class, 'employePage'])->name('employe.page');
+Route::get('/team', [EmployeController::class, 'employePage'])->name('employe.page');
 
 // Service plan route
 Route::get('service-plan/{id}/details', [ServicePlanController::class, 'servicePlanDetails'])->name('service.plan.details.page');

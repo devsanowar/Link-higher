@@ -16,9 +16,9 @@
                                 <!-- Buttons -->
                                 <div class="btns-group inline-block">
                                     <a href="{{ $cta->button_one_url ?? '#' }}"
-                                        class="btn !rounded-[4px]  btn--theme hover--theme mr-[15px] lg:max-xl:mr-[12px] md:max-lg:mr-[10px] xsm:max-sm:!mb-[15px] xsm:max-sm:mx-[8px]">{{ $cta->button_one_name }}
+                                        class="btn !rounded-[4px]  btn--theme hover--theme mr-[15px] lg:max-xl:mr-[12px] button-cta-one">{{ $cta->button_one_name }}
                                     </a>
-                                    <a href="{{ $cta->button_two_url ?? '#' }}" class="btn  !rounded-[4px]  btn--tra-black hover--theme">{{ $cta->button_two_name }}</a>
+                                    <a href="{{ $cta->button_two_url ?? '#' }}" class="btn  !rounded-[4px] cta-button-two hover--theme">{{ $cta->button_two_name }}</a>
                                 </div>
                                 <!-- Button Text -->
                                 <p

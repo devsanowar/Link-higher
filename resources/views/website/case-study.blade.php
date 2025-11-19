@@ -47,7 +47,7 @@
                                 <h3 class="cs-title">{{ $caseStudy->title ?? '' }}</h3>
                             </a>
                             <p class="cs-excerpt" style="margin-bottom: 0">
-                                {!! Str::limit($caseStudy->description, 140, '...') !!}
+                                {!! Str::limit($caseStudy->description, 135, '...') !!}
                             </p>
                         </div>
                         <div class="cs-footer">
