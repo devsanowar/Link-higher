@@ -3,9 +3,9 @@
         <!-- SECTION TITLE -->
         <div class="header">
             <div class="title">{{ $goalProgressSectionTitile->section_title ?? '' }}</div>
-            <div class="sub-title" style="color: #6b7280; font-size: 13px">
+            {{-- <div class="sub-title" style="color: #6b7280; font-size: 13px">
                 {{ $goalProgressSectionTitile->section_subtitle ?? '' }}
-            </div>
+            </div> --}}
         </div>
         {{-- <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  justify-center">
             <div class="md:w-10/12 lg:max-xl:w-9/12 xl:w-9/12 w-full flex-[0_0_auto] px-[calc(0.5*_1.5rem)] max-w-full">

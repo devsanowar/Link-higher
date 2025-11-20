@@ -167,23 +167,24 @@ p {
 }
 
 .custom-section-title {
-    position: relative;
-    font-size: 28px;
-    font-weight: 700;
-    color: #1e293b;
-    padding-left: 18px;
-    margin-bottom: 35px;
+	position: relative;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #1e293b;
+	padding-left: 15px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
 }
 
 .custom-section-title::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 5px;
-    height: 80%;
-    background: linear-gradient(135deg, #5229f2, #a91063);
-    border-radius: 5px;
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 5px;
+	width: 6px;
+	height: 75%;
+	background: linear-gradient(135deg, #5229f2, #a91063);
+	border-radius: 5px;
 }
 
 #faqs-2 {
@@ -355,12 +356,11 @@ button.btn.btn-primary.custom-submit-button {
 }
 
 .products-section h2 {
-    font-size: 30px;
-    margin-bottom: 40px;
-    color: #333;
-    text-transform: uppercase;
+	font-size: 30px;
+	margin-bottom: 20px;
+	color: #333;
+	text-transform: uppercase;
 }
-
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -604,9 +604,21 @@ button.btn.btn-primary.custom-submit-button {
 }
 /* FAQ section */
 #faq-section {
-    padding-top: 60px;
-    background: #dddddd2b;
-    padding-bottom: 60px;
+	padding-top: 40px;
+	background: #dddddd2b;
+	padding-bottom: 40px;
+}
+
+
+#faq-section .custom-section-title {
+	position: relative;
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+}
+
+#faq-section  .custom-section-title::before {
+	width: 6px;
+	height: 75%;
 }
 
 .faq {
@@ -1033,11 +1045,11 @@ table.cart tbody td {
 }
 
 #post-slider {
-    max-width: 1140px;
-    margin: 0 auto;
-    position: relative;
-    padding-top: 0px;
-    padding-bottom: 40px;
+	max-width: 1140px;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 40px;
 }
 #post-slider .header {
     display: flex;
@@ -1185,13 +1197,13 @@ CASE STUDIES SLIDER SECTION CSS
     max-width: 1140px;
     margin: 0 auto;
     position: relative;
-    padding-top: 50px;
+    padding-top: 40px;
 }
 .cs-slider .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    margin-bottom: 0px;
 }
 .cs-slider .title {
     position: relative;
@@ -1897,8 +1909,8 @@ table {
 
 /* Features Section Base */
 .features-section {
-    padding: 60px 0;
-    background: #f9f9f9;
+	padding: 50px 0;
+	background: #f9f9f9;
 }
 
 #service-page .features-section {
@@ -2091,8 +2103,8 @@ span[class*=" flaticon-"]::before {
 }
 
 #role-page {
-    padding-top: 50px;
-    padding-bottom: 55px;
+	padding-top: 30px;
+	padding-bottom: 40px;
 }
 .inner-page-title {
     margin-bottom: 10px;
@@ -2435,6 +2447,7 @@ span[class*=" flaticon-"]::before {
     color: #111827;
     text-transform: uppercase;
     margin-left: 5px;
+    margin-bottom: 0;
 }
 
 .team-section .title::before {
@@ -3165,7 +3178,7 @@ span[class*=" flaticon-"]::before {
 }
 
 #case-study-page .title {
-    margin-bottom: 0px;
+    margin-bottom: 15px;
 }
 
 .blog-post-img {
@@ -3233,5 +3246,5 @@ span[class*=" flaticon-"]::before {
 }
 
 #home-page #site-page-data-table {
-    padding: 35px 0 40px 0;
+	padding: 27px 0 40px 0;
 }

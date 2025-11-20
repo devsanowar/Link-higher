@@ -77,18 +77,18 @@
                         <a href="{{ route('home.smart-strategy.index') }}">Smart Strategy</a>
                     </li>
 
-                    <li class="{{ request()->routeIs('home.smarter-workflows.*') ? 'active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('home.smarter-workflows.*') ? 'active' : '' }}">
                         <a href="{{ route('home.smarter-workflows.index') }}">Smarter Workflows</a>
-                    </li>
+                    </li> --}}
 
-                    <li class="{{ request()->routeIs('home.goal-progress-insight.*') ? 'active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('home.goal-progress-insight.*') ? 'active' : '' }}">
                         <a href="{{ route('home.goal-progress-insight.index') }}">Goal Progress Insights</a>
-                    </li>
+                    </li> --}}
 
-                    <li
+                    {{-- <li
                         class="{{ request()->routeIs('home.smart-solution.*', 'home.smart-solution-features.*') ? 'active' : '' }}">
                         <a href="{{ route('home.smart-solution.index') }}">Smart Solution</a>
-                    </li>
+                    </li> --}}
 
                     <li class="{{ request()->routeIs('home.achievements.*') ? 'active' : '' }}">
                         <a href="{{ route('home.achievements.index') }}">Achievements</a>
@@ -100,9 +100,9 @@
                         <a href="{{ route('home.why-chose-us.index') }}">Why chose us</a>
                     </li>
 
-                    <li class="{{ request()->routeIs('home.customer-focus-tone.*') ? 'active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('home.customer-focus-tone.*') ? 'active' : '' }}">
                         <a href="{{ route('home.customer-focus-tone.index') }}">Customer focus tone</a>
-                    </li>
+                    </li> --}}
 
                     <li class="{{ request()->routeIs('home.cta.*') ? 'active' : '' }}">
                         <a href="{{ route('home.cta.index') }}">CTA</a>
