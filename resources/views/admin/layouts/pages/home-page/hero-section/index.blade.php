@@ -11,110 +11,105 @@
                     <form id="heroSectionForm" class="form_label" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="title">Title <strong class="text-danger">*</strong></label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="title" class="form-control" name="title"
-                                            placeholder="Enter title" value="{{ old('title', $heroSection->title ?? '') }}">
-                                    </div>
+                        {{-- Title --}}
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label">Title <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+
+                                    <input type="text" name="title" class="form-control"
+                                        value="{{ old('title', $heroSection->title ?? '') }}"
+                                        placeholder="Enter hero title">
                                 </div>
+                                <span class="text-danger error-text title_error"></span>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="short_description">Short Description <strong
-                                        class="text-danger">*</strong></label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                            <textarea class="form-control" name="short_description" id="short_description" placeholder="Enter short description">{!! $heroSection->short_description ?? '' !!}</textarea>
-                                    </div>
+                        {{-- Short Description --}}
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label">Short Description <span
+                                    class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+                                    <textarea name="short_description" class="form-control" rows="3" placeholder="Enter short description">{!! $heroSection->short_description ?? '' !!}</textarea>
                                 </div>
+                                <span class="text-danger error-text short_description_error"></span>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="hero_image">Image <strong class="text-danger">*</strong></label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="file" id="hero_image" class="form-control" name="image"
-                                            placeholder="Enter short description">
-                                    </div>
+                        {{-- Image --}}
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label">Hero Image <span class="text-danger">*</span></label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                                <span class="text-danger error-text image_error"></span>
+                                <div class="mt-2">
                                     @if (!empty($heroSection->image))
-                                        <img id="previewImage" src="{{ asset($heroSection->image) }}" alt="Client Image"
-                                            class="mt-2 border rounded" width="120">
+                                        <img id="previewImage" src="{{ asset($heroSection->image) }}" class="border rounded"
+                                            width="150">
                                     @else
-                                        <img id="previewImage" src="#" alt="Preview Image"
-                                            class="mt-2 border rounded d-none" width="120">
+                                        <img id="previewImage" src="#" class="border rounded d-none" width="150">
                                     @endif
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="button_one">Button one </label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="button_one" class="form-control" name="button_one"
-                                            placeholder="Enter button name" value="{{ old('button_one', $heroSection->button_one ?? '') }}">
-                                    </div>
+                        {{-- Button One --}}
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label">Button One</label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+                                    <input type="text" name="button_one" class="form-control"
+                                        placeholder="Enter button 1 text"
+                                        value="{{ old('button_one', $heroSection->button_one ?? '') }}">
                                 </div>
+                                <span class="text-danger error-text button_one_error"></span>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="button_one_url">Button one url</label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="button_one_url" class="form-control" name="button_one_url"
-                                            placeholder="Enter button url" value="{{ old('button_one_url', $heroSection->button_one_url ?? '') }}">
-                                    </div>
+                        {{-- Button One URL --}}
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label">Button One URL</label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+                                    <input type="text" name="button_one_url" class="form-control"
+                                        placeholder="Enter button 1 URL"
+                                        value="{{ old('button_one_url', $heroSection->button_one_url ?? '') }}">
                                 </div>
+                                <span class="text-danger error-text button_one_url_error"></span>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="button_two">Button Two </label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="button_two" class="form-control" name="button_two"
-                                            placeholder="Enter button name" value="{{ old('button_two', $heroSection->button_two ?? '') }}">
-                                    </div>
+                        {{-- Button Two --}}
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label">Button Two</label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+                                    <input type="text" name="button_two" class="form-control"
+                                        placeholder="Enter button 2 text"
+                                        value="{{ old('button_two', $heroSection->button_two ?? '') }}">
                                 </div>
+
+                                <span class="text-danger error-text button_two_error"></span>
                             </div>
                         </div>
 
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 form-control-label">
-                                <label for="button_two_url">Button Two Url </label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" id="button_two_url" class="form-control" name="button_two_url"
-                                            placeholder="Enter button url" value="{{ old('button_two_url', $heroSection->button_two_url ?? '') }}">
-                                    </div>
+                        {{-- Button Two URL --}}
+                        <div class="form-group row mb-4">
+                            <label class="col-md-3 col-form-label">Button Two URL</label>
+                            <div class="col-md-9">
+                                <div class="form-line">
+                                    <input type="text" name="button_two_url" class="form-control"
+                                        placeholder="Enter button 2 URL"
+                                        value="{{ old('button_two_url', $heroSection->button_two_url ?? '') }}">
                                 </div>
+
+                                <span class="text-danger error-text button_two_url_error"></span>
                             </div>
                         </div>
+
 
 
                         <!-- Update Settings Button -->
@@ -148,7 +143,6 @@
                 reader.readAsDataURL(this.files[0]);
             });
 
-            // Ajax form submit
             $("#heroSectionForm").submit(function(e) {
                 e.preventDefault();
                 let formData = new FormData(this);
@@ -157,12 +151,16 @@
                 $('#btnSpinner').removeClass('d-none');
                 $('#submitBtn').prop('disabled', true);
 
+                // Clear previous error messages
+                $('.error-text').text('');
+
                 $.ajax({
                     url: "{{ route('home.hero.section.update') }}",
                     type: "POST",
                     data: formData,
                     contentType: false,
                     processData: false,
+
                     success: function(response) {
                         if (response.status === 'success') {
                             toastr.success(response.message);
@@ -173,17 +171,20 @@
                             toastr.error(response.message ?? 'Something went wrong!');
                         }
                     },
+
                     error: function(xhr) {
                         if (xhr.status === 422) {
+                            // Show validation errors under each input
                             $.each(xhr.responseJSON.errors, function(key, value) {
-                                toastr.error(value[0]);
+                                $('.' + key + '_error').text(value[0]);
                             });
                         } else {
-                            toastr.error('An unexpected error occurred. Please try again.');
+                            toastr.error("An unexpected error occurred.");
                         }
                     },
+
                     complete: function() {
-                        $('#btnText').text('Update');
+                        $('#btnText').text('UPDATE');
                         $('#btnSpinner').addClass('d-none');
                         $('#submitBtn').prop('disabled', false);
                     }

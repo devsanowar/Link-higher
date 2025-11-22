@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/css/main.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/css/authentication.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/css/color_skins.css">
+
+    <style>
+        .theme-orange .authentication .card .header {
+	background: #dedede;
+}
+    </style>
 </head>
 
 <body class="theme-orange">

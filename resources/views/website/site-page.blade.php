@@ -107,12 +107,17 @@
 
 
             $('#example').DataTable({
-                "pageLength": 20,
-                "lengthMenu": [20, 25, 50, 100],
-                "order": [
+                pageLength: 20,
+                lengthMenu: [20, 25, 50, 100],
+                order: [
                     [0, "asc"]
                 ],
+                language: {
+                    searchPlaceholder: "Search here...",
+                    search: ""
+                }
             });
+
         });
     </script>
 @endpush

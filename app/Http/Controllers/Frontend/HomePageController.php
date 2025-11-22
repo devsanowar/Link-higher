@@ -29,7 +29,7 @@ class HomePageController extends Controller
 {
     public function index(){
         $hero = HeroSection::first();
-        $services = Service::all();
+        $services = Service::take(4)->get();
         $smartStrategy = SmartStrategy::first();
         $smarterWorkFlowImage = SmarterWorkflowsImage::first();
         $smarterWorkFlows = SmarterWorkflow::all();

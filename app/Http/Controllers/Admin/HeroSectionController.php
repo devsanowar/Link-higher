@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateHeroSectionRequest;
 use App\Models\HeroSection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -14,17 +15,8 @@ class HeroSectionController extends Controller
         return view("admin.layouts.pages.home-page.hero-section.index", compact("heroSection"));
     }
 
-    public function update(Request $request)
+    public function update(UpdateHeroSectionRequest $request)
     {
-        $request->validate([
-            'title'             => ['required', 'string', 'max:255'],
-            'short_description' => ['required', 'string'],
-            'image'             => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
-            'button_one'        => ['nullable', 'string', 'max:255'],
-            'button_one_url'    => ['nullable', 'string', 'url'],
-            'button_two'        => ['nullable', 'string', 'max:255'],
-            'button_two_url'    => ['nullable', 'string', 'url'],
-        ]);
 
         $hero = HeroSection::first();
 

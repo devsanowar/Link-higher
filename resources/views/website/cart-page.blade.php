@@ -14,7 +14,7 @@
         </div>
     </section>
 
-    <div id="plan-details-page" style="margin-top: 40px">
+    <div id="plan-details-page" style="margin-top: 40px; margin-bottom: 40px;">
         <div class="container">
             <div class="wrap">
                 <div class="card">
