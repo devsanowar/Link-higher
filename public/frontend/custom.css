@@ -3268,5 +3268,7 @@ span[class*=" flaticon-"]::before {
 	border-color: #5229f2 !important;
 }
 
-
+.hero-7-img img{
+    border-radius: 20px;
+}
 

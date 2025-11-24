@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\ServicePlanController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
 use App\Http\Controllers\Frontend\EmployeController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\PartnerSiteController;
 use App\Http\Controllers\Frontend\SitePageController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
@@ -77,11 +78,12 @@ Route::get('case/study', [CaseStudiesController::class, 'index'])->name('case.st
 Route::get('case/study/{id}', [CaseStudiesController::class, 'caseDetails'])->name('case.study.details');
 
 
+Route::get('/partner-site', [PartnerSiteController::class, 'index']);
 
 
 
 // Legal page route
-Route::get('/privacy-policy/page', [LegalController::class, 'privacyPolicy'])->name('privacy.policy.page');
+Route::get('/privacy-plicy/page', [LegalController::class, 'privacyPolicy'])->name('privacy.policy.page');
 Route::get('/terms-and-condition/page', [LegalController::class, 'termsAndCondition'])->name('terms.condition.page');
 Route::get('/return-refund/page', [LegalController::class, 'returnRefund'])->name('return.refund.page');
 

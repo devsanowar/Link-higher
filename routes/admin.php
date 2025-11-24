@@ -44,6 +44,7 @@ use App\Http\Controllers\Admin\CaseStudyCategoryController;
 use App\Http\Controllers\Admin\CustomerFocusToneController;
 use App\Http\Controllers\Admin\SmartSolutionFeatureController;
 use App\Http\Controllers\Admin\About\MissionAndVissionController;
+use App\Http\Controllers\Admin\SiteListController;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
 
@@ -260,5 +261,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin', 'verified'])->group(fu
     // Return & Refund Policy route here
     Route::get('/return-refund-policy', [ReturnAndRefundController::class, 'index'])->name('return.refund.policy.index');
     Route::put('/return-refund-policy/update', [ReturnAndRefundController::class, 'update'])->name('return.refund.policy.update');
+
+    // Partner site list route
+    Route::resource('partner-sites', SiteListController::class);
 
 });

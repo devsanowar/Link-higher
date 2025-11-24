@@ -34,14 +34,13 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead class="tabler-head-design">
                         <tr>
-                            <th>ID</th>
-                            <th>Website Name</th>
+                            <th>S/N</th>
                             <th>Website Url</th>
                             <th>Moz DA</th>
                             <th>Moz PA</th>
                             <th>Ahrefs DR</th>
                             <th>Traffic</th>
-                            {{-- <th>Niche</th> --}}
+                            <th>Category/Niche</th>
                             <th>G News</th>
                             <th>Price</th>
                         </tr>
@@ -50,12 +49,12 @@
                         @forelse ($sites as $key => $site)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $site->product_name ?? '' }}</td>
                                 <td>{{ $site->website_url ?? '' }}</td>
                                 <td>{{ $site->moz_da ?? '' }}</td>
                                 <td>{{ $site->moz_pa ?? '' }}</td>
                                 <td>{{ $site->ahrefs_dr ?? '' }}</td>
                                 <td>{{ $site->traffic ?? '' }}</td>
+                                <td>{{ $site->category->category_name ?? '' }}</td>
                                 <td>
                                     @if ($site->news == 1)
                                         <span class="custom-badge custom-badge-success">YES</span>

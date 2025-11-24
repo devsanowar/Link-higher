@@ -312,6 +312,12 @@
                 </ul>
             </li>
 
+            <!--Partner site Menu-->
+            <li class="{{ request()->routeIs(['partner-sites.*']) ? 'active open' : '' }}">
+                <a href="{{ route('partner-sites.index') }}"><i class="zmdi zmdi-link"></i><span>Own Sites</span>
+                </a>
+            </li>
+
             <li class="header">LEGAL PAGE</li>
 
             <li class="menu-item {{ request()->routeIs(['privacy.policy.*']) ? 'active open' : '' }}">

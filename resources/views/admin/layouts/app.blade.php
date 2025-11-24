@@ -22,7 +22,7 @@
 
 <body class="theme-red">
 <!-- Page Loader -->
-@include('admin.layouts.inc.page-loader')
+{{-- @include('admin.layouts.inc.page-loader') --}}
 
 
 <!-- Top Bar -->

@@ -1,3 +1,8 @@
+    {{-- <section
+  id="hero-7"
+  class="gr--perl hero-section relative md:max-lg:!mt-[80px] z-[3]"
+  style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;"> --}}
+
     <section id="hero-7" class="gr--perl hero-section relative md:max-lg:!mt-[80px] z-[3] ">
         <div class="hero-overlay">
             <div class="container">
