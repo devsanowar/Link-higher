@@ -1,4 +1,4 @@
-<section id="features-6" class="pb--100 features-section division">
+<section id="features-6" class="pb--100 features-section division" style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;">
     <div class="container">
         <!-- FEATURES-6 WRAPPER -->
         <div class="fbox-wrapper !text-center">

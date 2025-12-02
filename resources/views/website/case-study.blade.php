@@ -14,12 +14,9 @@
     </section>
 
 
-    <section class="cs-slider" id="cs-slider" aria-label="Case studies">
-        <div class="header">
-            <div class="title">Case Studies</div>
-        </div>
-
-        <div class="cs-viewport">
+    <section class="cs-study" id="cs-study" aria-label="Case studies">
+        <div class="case-container">
+            <div class="cs-viewport">
             <div class="cs-track" id="cs-track" style="display: flex; flex-wrap: wrap; gap: 20px;">
                 @forelse ($caseStudies as $caseStudy)
                     <article class="cs-card"
@@ -68,6 +65,7 @@
                     <h2>No case studies found! Please add case studies.</h2>
                 @endforelse
             </div>
+        </div>
         </div>
     </section>
 

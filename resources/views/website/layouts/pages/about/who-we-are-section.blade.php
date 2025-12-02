@@ -1,5 +1,5 @@
 <section id="who-we-are"
-        class="bg--04 bg--fixed ct-01 content-section division bg-[url(./images/bg-04.jpg)] bg-no-repeat bg-[center_center] bg-cover bg-scroll sm:max-md:w-auto xsm:max-sm:w-auto w-full">
+        class="bg--04 bg--fixed ct-01 content-section division bg-no-repeat bg-[center_center] bg-cover bg-scroll sm:max-md:w-auto xsm:max-sm:w-auto w-full" style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;">
         <div class="container">
             <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  items-center">
                 <!-- TEXT BLOCK -->

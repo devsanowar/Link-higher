@@ -56,6 +56,127 @@
         <!-- END FOOTER-3 -->
     </div>
     <!-- END PAGE CONTENT -->
+
+    <!-- WhatsApp Floating Button -->
+    {{-- @if(request()->is('/'))
+    <a href="https://wa.me/8801XXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    @endif --}}
+
+
+{{-- <div id="chat-widget">
+
+    <!-- Floating Message Icon -->
+    <div id="chat-toggle">💬</div>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="hidden">
+
+        <!-- Header -->
+        <div class="chat-header">
+            <strong>Sanwoar Web Agency</strong><br>
+            <small>Live Assistant</small>
+        </div>
+
+        <!-- Body -->
+        <div class="chat-body" id="messages">
+            <div class="msg bot">
+                <span>হ্যালো! 👋 কোন সার্ভিস সম্পর্কে জানতে চান?</span>
+            </div>
+
+            <div class="quick-questions">
+                <button class="quick-btn" data-text="Tell me about Link Building service">Link Building</button>
+                <button class="quick-btn" data-text="Tell me about SEO service">SEO</button>
+                <button class="quick-btn" data-text="Tell me about Website service">Website</button>
+                <button class="quick-btn" data-text="Tell me about Content Writing service">Content Writing</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="chat-footer">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+</div> --}}
+
+
+
+<div id="chat-widget">
+
+    <!-- Floating Message Icon -->
+    <div id="chat-toggle">💬</div>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="hidden">
+
+        <!-- Header -->
+        <div class="chat-header">
+            <strong>Link Higher - Web Agency</strong><br>
+            <small>Live Assistant</small>
+        </div>
+
+        <!-- Body -->
+        <div class="chat-body" id="messages">
+            <div class="msg bot">
+                <span>হ্যালো! 👋 কোন সার্ভিস সম্পর্কে জানতে চান?</span>
+            </div>
+
+            <div class="quick-questions">
+                <button class="quick-btn" data-text="Tell me about Link Building service">Link Building</button>
+                <button class="quick-btn" data-text="Tell me about SEO service">SEO</button>
+                <button class="quick-btn" data-text="Tell me about Website service">Website</button>
+                <button class="quick-btn" data-text="Tell me about Content Writing service">Content Writing</button>
+            </div>
+
+            <!-- 🔹 Live Support / Quote Request box -->
+            <div class="support-box">
+                <p>ডিটেইল কোট বা প্রজেক্ট নিয়ে কথা বলতে চাইলে লাইভ সাপোর্টে যান।</p>
+                <button id="liveSupportBtn">💬 লাইভ সাপোর্ট / কোট রিকোয়েস্ট</button>
+            </div>
+
+            <!-- 🔹 Hidden Support Form -->
+            <div class="support-form" id="supportForm" style="display:none; margin-top:8px;">
+                <h4 style="margin-bottom:6px;">Project Details দিন</h4>
+                <form id="supportRequestForm">
+                    <input type="text" name="name" placeholder="নাম *" required>
+                    <input type="email" name="email" placeholder="ইমেইল (optional)">
+                    <input type="text" name="phone" placeholder="মোবাইল (optional)">
+                    <select name="service_type">
+                        <option value="">সার্ভিস নির্বাচন করুন</option>
+                        <option value="Link Building">Link Building</option>
+                        <option value="SEO Service">SEO Service</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="Content Writing">Content Writing</option>
+                    </select>
+                    <input type="text" name="website_url" placeholder="Website URL (যদি থাকে)">
+                    <select name="budget_range">
+                        <option value="">Budget range (optional)</option>
+                        <option value="Under $200">$200 এর নিচে</option>
+                        <option value="$200 - $500">$200 - $500</option>
+                        <option value="$500 - $1000">$500 - $1000</option>
+                        <option value="Above $1000">$1000 এর উপরে</option>
+                    </select>
+                    <textarea name="message" placeholder="আপনার প্রজেক্ট সম্পর্কে লিখুন *" rows="3" required></textarea>
+                    <button type="submit">রিকোয়েস্ট সাবমিট করুন</button>
+                </form>
+                <p id="supportSuccessMsg" style="display:none; font-size:13px; margin-top:5px;"></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="chat-footer">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
     <!-- EXTERNAL SCRIPTS
     ============================================= -->
     <!-- JS FILES -->

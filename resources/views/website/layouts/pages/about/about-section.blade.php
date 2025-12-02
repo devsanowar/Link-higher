@@ -1,4 +1,4 @@
-<section id="hero-7" class="about-us gr--perl hero-section relative md:max-lg:!mt-[80px] z-[3] ">
+<section id="hero-7" class="about-us gr--perl hero-section relative md:max-lg:!mt-[80px] z-[3] " style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;">
         <div class="hero-overlay">
             <div class="container">
                 <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)] items-center">

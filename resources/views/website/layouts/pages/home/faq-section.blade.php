@@ -1,4 +1,4 @@
-<section id="faq-section" class="faq" aria-label="FAQ" style="margin-top: 0">
+<section id="faq-section" style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;" class="faq" aria-label="FAQ" style="margin-top: 0">
     <div class="container">
         <h2 class="custom-section-title">FAQ</h2>
 

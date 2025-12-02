@@ -1,5 +1,5 @@
 <section id="features-13"
-    class="shape--bg  shape--white-500 features-section division after:bg-[#f2f4f8] pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px] after:absolute after:content-[''] after:z-[-1] after:w-[48%] after:h-[72%] after:top-[21%] lg:max-xl:after:!w-6/12 lg:max-xl:after:!h-[76%] lg:max-xl:after:!top-[18%] md:max-lg:after:!w-[52%] md:max-lg:after:!h-3/4 md:max-lg:after:!top-[19%] xsm:max-sm:after:!h-[64%] xsm:max-sm:after:!top-[32.35%]">
+    class="shape--bg  shape--white-500 features-section division pt--100 pt-[100px] lg:max-xl:pt-[80px] md:max-lg:pt-[70px] after:absolute after:content-[''] after:z-[-1] after:w-[48%] after:h-[72%] after:top-[21%] lg:max-xl:after:!w-6/12 lg:max-xl:after:!h-[76%] lg:max-xl:after:!top-[18%] md:max-lg:after:!w-[52%] md:max-lg:after:!h-3/4 md:max-lg:after:!top-[19%] xsm:max-sm:after:!h-[64%] xsm:max-sm:after:!top-[32.35%]" >
     <div class="container">
         <div class="flex flex-wrap mx-[calc(-0.5*_1.5rem)]  items-center">
             <!-- FEATURES-13 WRAPPER -->

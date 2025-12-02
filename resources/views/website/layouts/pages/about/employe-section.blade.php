@@ -1,4 +1,4 @@
-<section class="team-section">
+<section class="team-section" style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;">
     <div class="container">
         <div class="header">
             <div class="title">Our Team</div>

@@ -13,6 +13,9 @@
     <!-- ON SCROLL ANIMATION -->
     <link href="{{ asset('frontend/css/animate.css') }}" rel="stylesheet">
 
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> --}}
+
+
     <!-- TEMPLATE CSS -->
     <link href="{{ asset('frontend/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/custom.css') }}" rel="stylesheet">

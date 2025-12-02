@@ -1,5 +1,6 @@
-<section class="cs-slider" id="cs-slider" aria-label="Case studies slider">
-    <div class="header">
+<section class="cs-slider" id="cs-slider" aria-label="Case studies slider" style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;">
+    <div class="case-container">
+        <div class="header">
         <div class="title">Case Studies</div>
         {{-- <div style="color: #6b7280; font-size: 13px">
             Seamless loop — author left, date right
@@ -69,5 +70,6 @@
 
             <!-- Add more .cs-card elements as needed (or render via Blade). -->
         </div>
+    </div>
     </div>
 </section>

@@ -46,7 +46,7 @@
 
 
 <section id="newsletter-1" class="newsletter-section"
-    style="background: url('{{ asset('frontend/images/05.jpg') }}') center/cover no-repeat;">
+    style="background: url('{{ asset('frontend/images/hero-bg-3.png') }}') repeat;">
 
     <div class="newsletter-overlay">
         <div class="container">

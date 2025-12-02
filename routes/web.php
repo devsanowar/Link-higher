@@ -1,25 +1,27 @@
 <?php
 
-use App\Http\Controllers\Admin\CaseStudyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\LegalController;
+use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Admin\CaseStudyController;
+use App\Http\Controllers\Frontend\ChatbotController;
+use App\Http\Controllers\Frontend\EmployeController;
 use App\Http\Controllers\Frontend\FaqPageController;
 use App\Http\Controllers\Frontend\ProjectController;
+use App\Http\Controllers\Frontend\SupportController;
+use App\Http\Controllers\Frontend\BlogPageController;
 use App\Http\Controllers\Frontend\CartPageController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\SitePageController;
 use App\Http\Controllers\Frontend\AboutPageController;
-use App\Http\Controllers\Frontend\BlogPageController;
 use App\Http\Controllers\Frontend\CaseStudiesController;
+use App\Http\Controllers\Frontend\PartnerSiteController;
 use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\ServicePageController;
 use App\Http\Controllers\Frontend\ServicePlanController;
 use App\Http\Controllers\Frontend\ContactUsPageController;
-use App\Http\Controllers\Frontend\EmployeController;
-use App\Http\Controllers\Frontend\OrderController;
-use App\Http\Controllers\Frontend\PartnerSiteController;
-use App\Http\Controllers\Frontend\SitePageController;
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
@@ -88,6 +90,17 @@ Route::get('/terms-and-condition/page', [LegalController::class, 'termsAndCondit
 Route::get('/return-refund/page', [LegalController::class, 'returnRefund'])->name('return.refund.page');
 
 
+// Route::get('/chat', function () {
+//     return view('website.chat');
+// })->name('chat.page');
+
+// Route::post('/chatbot/send', [ChatbotController::class, 'send'])->name('chatbot.send');
+// Route::post('/support/request', [SupportController::class, 'store'])->name('support.request');
+
+
+Route::post('/chatbot/send', [ChatbotController::class, 'send'])->name('chatbot.send');
+
+Route::post('/support/request', [SupportController::class, 'store'])->name('support.request');
 
 
 // Route::get('/dashboard', function () {
