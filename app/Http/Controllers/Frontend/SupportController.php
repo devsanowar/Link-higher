@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Mail\SupportRequestMail;
-use App\Mail\SupportRequestThankYouMail;
-use App\Models\SupportRequest;
 use Illuminate\Http\Request;
+use App\Models\SupportRequest;
+use App\Models\WebsiteSetting;
+use App\Mail\SupportRequestMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SupportRequestThankYouMail;
 
 class SupportController extends Controller
 {
@@ -45,6 +46,9 @@ class SupportController extends Controller
         // DB তে save
         $support = SupportRequest::create($data);
 
+        $settings = WebsiteSetting::select('website_title')->first();
+        $siteName = $settings->website_title ?? config('app.name');
+
         // 1️⃣ Admin / Agency email এ notification
         Mail::to('sanowargiit22@gmail.com')
             ->queue(new SupportRequestMail($support));
@@ -52,7 +56,7 @@ class SupportController extends Controller
         // 2️⃣ Client কে Thank You mail (যদি email দেয়)
         if (! empty($support->email)) {
             Mail::to($support->email)
-                ->queue(new SupportRequestThankYouMail($support));
+                ->queue(new SupportRequestThankYouMail($support, $siteName));
         }
 
         return response()->json([

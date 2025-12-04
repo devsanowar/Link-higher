@@ -104,11 +104,6 @@ Route::post('/chatbot/send', [ChatbotController::class, 'send'])->name('chatbot.
 Route::post('/support/request', [SupportController::class, 'store'])->name('support.request');
 
 
-// redirect to Google
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
-
-// callback from Google
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 
 // Route::get('/dashboard', function () {

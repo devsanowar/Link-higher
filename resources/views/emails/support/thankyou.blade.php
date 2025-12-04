@@ -1,8 +1,8 @@
 @component('mail::message')
 # Thank you, {{ $support->name }}! 🙌
 
-আমরা আপনার সাপোর্ট/কোট রিকোয়েস্টটি পেয়েছি।
-আমাদের টিম খুব দ্রুতই আপনার সাথে যোগাযোগ করবে। 🙂
+We’ve received your support/quote request.
+Our team will get back to you shortly. 🙂
 
 @if($support->service_type)
 **Service Type:** {{ $support->service_type }}
@@ -13,16 +13,17 @@
 @endif
 
 @if($support->budget_range)
-**Approx. Budget:** {{ $support->budget_range }}
+**Estimated Budget:** {{ $support->budget_range }}
 @endif
 
 ---
 
-আপনি যা লিখেছেন:
+Here’s what you submitted:
 
 > {{ $support->message }}
 
-যদি এর মধ্যে কিছু আপডেট থাকে বা ভুল হয়, আপনি সরাসরি এই ইমেইলের Reply দিয়েও আমাদের জানাতে পারেন।
+If you need to add anything or correct any detail,
+you can simply **reply to this email**, and we’ll handle it from there.
 
 Thanks again,
 **{{ config('app.name') }}**

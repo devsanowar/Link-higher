@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Frontend\CustomerDashboardController;
 use App\Http\Controllers\Frontend\Auth\CustomerLoginController;
 use App\Http\Controllers\Frontend\Auth\CustomerProfileController;
@@ -28,6 +29,12 @@ Route::prefix("customer")->group(function () {
 
     Route::post('customer/password/reset', [CustomerResetPasswordController::class, 'reset'])
         ->name('customer.password.update');
+
+    // redirect to Google
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+
+// callback from Google
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
     Route::middleware(['role:customer'])->group(function () {
         Route::get('/dashboard', [CustomerDashboardController::class, 'dashboard'])->name('customer.dashboard');

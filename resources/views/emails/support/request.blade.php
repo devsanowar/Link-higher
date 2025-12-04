@@ -136,7 +136,7 @@
 
             <div class="card">
                 <h2>📩 New Support Request</h2>
-                <p>আপনার ওয়েবসাইটে নতুন একটি সাপোর্ট / কোট রিকোয়েস্ট সাবমিট করা হয়েছে। নিচে ডিটেইল দেওয়া হলো:</p>
+                <p>A new support/quote request was submitted on your website. Below are the details:</p>
 
                 {{-- Client Info --}}
                 <h3>🧑‍💼 Client Information</h3>
@@ -197,8 +197,7 @@
                 </div>
 
                 <p class="note">
-                    💡 Note: যদি ক্লায়েন্ট ইমেইল দিয়ে থাকে, এই মেইলে <strong>Reply</strong> করলেই সরাসরি ক্লায়েন্টের
-                    কাছে চলে যাবে (Reply-To সেট করা থাকলে)।
+                    💡 Note: If the client provided an email, replying to this message will directly reach the client (Reply-To is automatically set).
                 </p>
             </div>
 
