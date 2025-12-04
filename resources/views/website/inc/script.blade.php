@@ -23,22 +23,32 @@
 <!-- JS LOGIC -->
 <script>
     // UI elements
-    const chatToggle   = document.getElementById('chat-toggle');
-    const chatWindow   = document.getElementById('chat-window');
-    const messagesDiv  = document.getElementById('messages');
-    const sendBtn      = document.getElementById('sendBtn');
+    const chatHeaderToggle = document.getElementById('chatHeaderToggle');
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const messagesDiv = document.getElementById('messages');
+    const sendBtn = document.getElementById('sendBtn');
     const messageInput = document.getElementById('messageInput');
 
     // 🔹 Live support elements
-    const liveSupportBtn     = document.getElementById('liveSupportBtn');
-    const supportFormDiv     = document.getElementById('supportForm');
+    const liveSupportBtn = document.getElementById('liveSupportBtn');
+    const supportFormDiv = document.getElementById('supportForm');
     const supportRequestForm = document.getElementById('supportRequestForm');
-    const supportSuccessMsg  = document.getElementById('supportSuccessMsg');
+    const supportSuccessMsg = document.getElementById('supportSuccessMsg');
 
     // Toggle Chat Open/Close
     chatToggle.addEventListener('click', () => {
         chatWindow.classList.toggle('hidden');
     });
+
+    // Header arrow click → hide chat
+    if (chatHeaderToggle) {
+        chatHeaderToggle.addEventListener('click', () => {
+            chatWindow.classList.add('hidden'); // শুধু hide করবে
+            // চাইলে toggle করতে পারো:
+            // chatWindow.classList.toggle('hidden');
+        });
+    }
 
     // Append message
     function appendMessage(text, sender = 'user') {
@@ -54,13 +64,15 @@
     // Send to Laravel server (chatbot.send)
     async function sendToServer(text) {
         try {
-            const response = await fetch('{{ route("chatbot.send") }}', {
+            const response = await fetch('{{ route('chatbot.send') }}', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                     "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
                 },
-                body: JSON.stringify({ message: text })
+                body: JSON.stringify({
+                    message: text
+                })
             });
 
             const data = await response.json();
@@ -113,7 +125,7 @@
             const formData = new FormData(supportRequestForm);
 
             try {
-                const response = await fetch('{{ route("support.request") }}', {
+                const response = await fetch('{{ route('support.request') }}', {
                     method: 'POST',
                     headers: {
                         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
@@ -125,7 +137,8 @@
                 const data = await response.json();
 
                 if (data.success) {
-                    supportSuccessMsg.textContent = 'ধন্যবাদ! খুব দ্রুতই আমাদের টিম আপনার সাথে যোগাযোগ করবে।';
+                    supportSuccessMsg.textContent =
+                        'ধন্যবাদ! খুব দ্রুতই আমাদের টিম আপনার সাথে যোগাযোগ করবে।';
                     supportSuccessMsg.style.display = 'block';
                     supportRequestForm.reset();
                 } else {
@@ -138,6 +151,26 @@
             }
         });
     }
+</script>
+
+<script>
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        });
+    });
 </script>
 
 

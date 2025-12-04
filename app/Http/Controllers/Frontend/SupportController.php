@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-use App\Models\SupportRequest;
-use App\Mail\SupportRequestMail;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
+use App\Mail\SupportRequestMail;
 use App\Mail\SupportRequestThankYouMail;
+use App\Models\SupportRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SupportController extends Controller
 {
@@ -31,8 +30,7 @@ class SupportController extends Controller
     //     ]);
     // }
 
-
-public function store(Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'name'         => 'required|string|max:255',
@@ -52,7 +50,7 @@ public function store(Request $request)
             ->queue(new SupportRequestMail($support));
 
         // 2️⃣ Client কে Thank You mail (যদি email দেয়)
-        if (!empty($support->email)) {
+        if (! empty($support->email)) {
             Mail::to($support->email)
                 ->queue(new SupportRequestThankYouMail($support));
         }

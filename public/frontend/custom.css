@@ -3221,7 +3221,8 @@ span[class*=" flaticon-"]::before {
 }
 
 .cta-button-two {
-    border: 2px solid #ddd;
+	border: 1.5px solid #ddd;
+	padding: 12px 20px;
 }
 
 #plan-details-page {
@@ -3229,20 +3230,20 @@ span[class*=" flaticon-"]::before {
 }
 
 .custom-arrow-btn {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #5229f2, #a91063);
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    margin-top: 30px;
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	padding: 0.75rem 1.5rem;
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: #fff;
+	background: linear-gradient(135deg, #5229f2, #a91063);
+	border-radius: 0.5rem;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	margin-top: 30px;
+	border: none;
 }
-
 .custom-arrow-btn:hover {
     background-color: #ffffff;
 }
@@ -3358,7 +3359,7 @@ span[class*=" flaticon-"]::before {
     height: 60px;
     bottom: 25px;
     right: 25px;
-    background-color: #25D366;
+    background: linear-gradient(135deg, #5229f2, #a91063) !important;
     color: #fff;
     border-radius: 50px;
     text-align: center;
@@ -3372,72 +3373,11 @@ span[class*=" flaticon-"]::before {
 }
 
 .whatsapp-float:hover {
-    background-color: #1ebe5d;
+    background: linear-gradient(135deg, #5129f2d3, #a91064d4) !important;
     transform: scale(1.1);
 }
 
 
-/* .quick-questions {
-    margin-bottom: 10px;
-}
-.quick-questions p {
-    font-size: 13px;
-    margin-bottom: 6px;
-    color: #555;
-}
-.quick-btn {
-    padding: 5px 10px;
-    margin: 3px 3px 3px 0;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    background: #f0f2f5;
-    font-size: 12px;
-    cursor: pointer;
-}
-.quick-btn:hover {
-    background: #e4e6eb;
-}
-.support-box {
-    margin-top: 10px;
-    padding: 10px;
-    background: #fff3cd;
-    border: 1px solid #ffeeba;
-    border-radius: 6px;
-    font-size: 13px;
-}
-.support-box button {
-    margin-top: 5px;
-    padding: 6px 10px;
-    border-radius: 4px;
-    border: none;
-    background: #ffc107;
-    cursor: pointer;
-}
-.support-form {
-    margin-top: 10px;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-}
-.support-form input,
-.support-form textarea {
-    width: 100%;
-    padding: 6px;
-    margin-bottom: 6px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 13px;
-}
-.support-form button {
-    padding: 6px 12px;
-    border-radius: 4px;
-    border: none;
-    background: #28a745;
-    color: #fff;
-    cursor: pointer;
-}
- */
 
 
 
@@ -3452,7 +3392,7 @@ span[class*=" flaticon-"]::before {
     #chat-toggle {
         width: 55px;
         height: 55px;
-        background: #28a745;
+        background: linear-gradient(135deg, #5229f2, #a91063) !important;
         color: #fff;
         border-radius: 50%;
         display: flex;
@@ -3465,7 +3405,7 @@ span[class*=" flaticon-"]::before {
     }
 
     #chat-toggle:hover {
-        background: #218838;
+        background: linear-gradient(135deg, #5129f2d2, #a91064d7) !important;
     }
 
     #chat-window {
@@ -3487,13 +3427,13 @@ span[class*=" flaticon-"]::before {
     }
 
     /* Header */
-    .chat-header {
+    /* .chat-header {
         padding: 12px;
         background: #343a40;
         color: #fff;
         font-size: 14px;
         border-bottom: 1px solid #222;
-    }
+    } */
 
     /* Body */
     .chat-body {
@@ -3524,7 +3464,7 @@ span[class*=" flaticon-"]::before {
         padding: 6px 12px;
         border-radius: 4px;
         border: none;
-        background: #28a745;
+        background: linear-gradient(135deg, #5229f2, #a91063) !important;
         color: white;
         cursor: pointer;
     }
@@ -3540,11 +3480,12 @@ span[class*=" flaticon-"]::before {
     }
 
     .msg.user span {
-        background: #007bff;
+        background: #3D11F6;
         color: #fff;
         padding: 6px 10px;
         border-radius: 15px 0 15px 15px;
         display: inline-block;
+        margin-top: 10px;
     }
 
     .msg.bot span {
@@ -3577,10 +3518,13 @@ span[class*=" flaticon-"]::before {
     .support-box {
     margin-top: 8px;
     padding: 8px;
-    background: #fff3cd;
+    background: #3f11f622;
     border-radius: 6px;
     font-size: 13px;
-    border: 1px solid #ffeeba;
+    border: 1px solid #3f11f627;
+}
+.support-box p{
+    margin-bottom: 10px;
 }
 
 .support-box button {
@@ -3588,9 +3532,10 @@ span[class*=" flaticon-"]::before {
     padding: 6px 10px;
     border-radius: 4px;
     border: none;
-    background: #ffc107;
+    background: linear-gradient(135deg, #5229f2, #a91063) !important;
     cursor: pointer;
     font-size: 13px;
+    color: #fff;
 }
 
 .support-form form input,
@@ -3608,8 +3553,74 @@ span[class*=" flaticon-"]::before {
     padding: 6px 10px;
     border-radius: 4px;
     border: none;
-    background: #28a745;
+    background: linear-gradient(135deg, #5229f2, #a91063) !important;
     color: #fff;
     cursor: pointer;
     font-size: 13px;
+}
+
+
+.chat-header {
+    padding: 12px;
+    background: linear-gradient(135deg, #5229f2, #a91063) !important;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header-text {
+    line-height: 1.2;
+}
+
+.chat-header-toggle {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 4px;
+}
+
+.chat-header-toggle:hover {
+    opacity: 0.8;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+#backToTop {
+	position: fixed;
+	right: 2.2%;
+	bottom: 15%;
+	padding: 5px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 20px;
+	background: linear-gradient(135deg, #5229f2, #a91063) !important;
+	color: #fff;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+	font-weight: bold;
+}
+
+#backToTop.show {
+  display: inline-flex;
+}
+
+#backToTop:hover {
+  opacity: 0.85;
+}
+
+.btn--theme {
+	color: #fff !important;
+	border: unset;
+	background: linear-gradient(135deg, #5129f2d2, #a91064d7) !important;
 }

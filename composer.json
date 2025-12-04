@@ -12,6 +12,7 @@
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^3.1",
         "laravel/framework": "^12.0",
+        "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
         "paddlehq/paddle-php-sdk": "^1.14",
         "php-http/guzzle7-adapter": "^1.1",

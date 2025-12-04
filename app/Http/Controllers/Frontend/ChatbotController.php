@@ -56,33 +56,33 @@ class ChatbotController extends Controller
     private function generateReply(string $message): string
     {
         // 1) Specific keyword / intent detect
-        if ($this->contains($message, ['link building'])) {
+        if ($this->contains($message, ['link building', 'linkbuilding', 'লিঙ্ক বিল্ডিং'])) {
             return $this->linkBuildingReply();
         }
 
-        if ($this->contains($message, ['seo', 'এস্যো', 'এসইও'])) {
+        if ($this->contains($message, ['seo', 'এস ই ইউ', 'SEO', 'search engine optimization'])) {
             return $this->seoReply();
         }
 
-        if ($this->contains($message, ['website', 'ওয়েবসাইট', 'web design', 'development'])) {
+        if ($this->contains($message, ['website', 'Website', 'web design', 'development', 'ওয়েবসাইট', 'ওয়েব ডিজাইন'])) {
             return $this->websiteReply();
         }
 
-        if ($this->contains($message, ['content writing', 'কন্টেন্ট', 'article'])) {
+        if ($this->contains($message, ['content writing', 'কন্টেন্ট', 'article', 'blog writing', 'content', 'লেখা', 'ব্লগ'])) {
             return $this->contentReply();
         }
 
-        if ($this->contains($message, ['price', 'pricing', 'দাম', 'cost'])) {
-            return "আমাদের সার্ভিসের দাম প্রজেক্টের ধরন অনুযায়ী ভ্যারিয়েশন হয়। আপনি চাইলে নিচের 'লাইভ সাপোর্ট' থেকে ডিটেইল কোট রিকোয়েস্ট করতে পারেন। 🙂";
+        if ($this->contains($message, ['price', 'pricing', 'দাম', 'cost', 'rate', 'charges', 'মূল্য', 'কত', 'ফি', 'কিমান', 'কতটাকা', 'কত টাকা', 'কত খরচ'])) {
+            return "Our service pricing varies depending on the type of project. If you’d like, you can request a detailed quote from the 'Live Support' option below. 🙂";
         }
 
         // 2) Greeting
         if ($this->contains($message, ['hi', 'hello', 'hey', 'হ্যালো', 'সালাম', 'assalamu'])) {
-            return "হ্যালো! 👋 আমরা একটি Web Agency এবং Link Building, SEO, Website Development, আর Content Writing সার্ভিস দেই।\n\nআপনি কোন সার্ভিস সম্পর্কে জানতে চান? উপরের অপশনগুলো থেকেও সিলেক্ট করতে পারেন।";
+            return "Hello! 👋 We are a web agency and we provide Link Building, SEO, Website Development, and Content Writing services.\n\nWhich service would you like to know about? You can also select from the options above.\n\n";
         }
 
         // 3) Fallback default
-        return "ধন্যবাদ! 🙂 আপনি কোন সার্ভিস সম্পর্কে জানতে চান তা একটু ক্লিয়ার করে লিখবেন?\n\nAvailable services:\n- Link Building\n- SEO Service\n- Website Development\n- Content Writing\n\nঅথবা সরাসরি কথা বলতে নিচের 'লাইভ সাপোর্ট' ব্যবহার করতে পারেন।";
+        return "Thank you! 🙂 Could you please write a bit more clearly which service you want to know about?\n\nAvailable services:\n- Link Building\n- SEO Service\n- Website Development\n- Content Writing\n\nOr, if you want to talk directly, you can use the 'Live Support' option avobe.";
     }
 
     private function contains(string $message, array $keywords): bool
@@ -97,22 +97,22 @@ class ChatbotController extends Controller
 
     private function linkBuildingReply(): string
     {
-        return "🔗 *Link Building Service*\n\n- High-authority niche relevant sites\n- White-hat manual outreach\n- DR 30+ / 50+ options\n- Monthly reporting\n\nডিটেইল কোট বা স্যাম্পল রিপোর্ট পেতে 'লাইভ সাপোর্টে কথা বলুন' বাটনে ক্লিক করুন।";
+        return "🔗 *Link Building Service*\n\n- High-authority niche relevant sites\n- White-hat manual outreach\n- DR 30+ / 50+ options\n- Monthly reporting\n\nTo get a detailed quote or a sample report, click the 'Live Support' button to talk with us.";
     }
 
     private function seoReply(): string
     {
-        return "📈 *SEO Service*\n\n- Technical SEO Audit\n- On-page optimization\n- Keyword research\n- Monthly performance report\n\nআপনার website URL দিলে আমরা ফ্রি basic SEO review দিতে পারি।";
+        return "📈 *SEO Service*\n\n- Technical SEO audit\n- On-page optimization\n- Keyword research\n- Monthly performance report\n\nIf you share your website URL, we can provide a free basic SEO review.";
     }
 
     private function websiteReply(): string
     {
-        return "💻 *Website Design & Development*\n\n- Business website\n- Portfolio / Agency site\n- Landing pages\n- Laravel / WordPress based solutions\n\nস্টার্টিং প্যাকেজ: basic website from ১৫,০০০৳+ ।ডিটেইল জানতে 'লাইভ সাপোর্ট' থেকে কন্টাক্ট করুন।";
+        return "💻 *Website Design & Development*\n\n- Business website\n- Portfolio / agency site\n- Landing pages\n- Laravel / WordPress based solutions\n\nStarting package: basic website from $150+. For more details, please contact us via 'Live Support'.";
     }
 
     private function contentReply(): string
     {
-        return "✍️ *Content Writing Service*\n\n- SEO optimized blog/article\n- Website content & landing page copy\n- Product description\n\nপ্রতি word / per article rate কনটেন্ট টাইপ অনুযায়ী ভ্যারিয়েশন হয়। কাস্টম কোটের জন্য আপনার প্রয়োজন লিখে দিন অথবা লাইভ সাপোর্ট ফর্ম ব্যবহার করুন।";
+        return "✍️ *Content Writing Service*\n\n- SEO-optimized blog/article\n- Website content & landing page copy\n- Product descriptions\n\nPer-word / per-article rates vary depending on the content type. For a custom quote, write down your requirements or use the Live Support form.";
     }
 
 }

@@ -42,7 +42,7 @@
 
                                             <!-- Google Button -->
                                             <div class="flex[1_0_0%] w-full max-w-full px-[calc(0.5*_1.5rem)]">
-                                                <a href="#"
+                                                <a href="{{ route('google.redirect') }}"
                                                     class="btn btn-google ico-left w-full text-[#333] xl:!text-[0.95rem] bg-white ![border:1px_solid_#cccccc] hover:![border:1px_solid_#333333] md:max-lg:!text-[1rem] sm:max-md:!text-[1rem] xsm:max-sm:!text-[1rem]">
                                                     <img class="relative xl:!w-[22px] xl:!h-[22px] right-[5px] -top-[2px] md:max-lg:!w-[18px] md:max-lg:!h-[18px] md:max-lg:-top-[2px] sm:max-md:w-5 sm:max-md:!h-5 sm:max-md:right-[5px] sm:max-md:-top-[2px] xsm:max-sm:w-5 xsm:max-sm:!h-5 xsm:max-sm:right-[5px] xsm:max-sm:-top-[2px] inline-block"
                                                         src="{{ asset('frontend/images/png_icons/google.png') }}"

@@ -32,7 +32,7 @@ class CustomerRegisterController extends Controller
         Auth::login($user);
 
         // সফল হলে যেখানে নেবে সেট করো
-        return redirect()->intended('/customer/dashboard')->with('success', 'Account created successfully!');
+        return redirect()->intended('/')->with('success', 'Account created successfully!');
     }
 
     // public function logout()

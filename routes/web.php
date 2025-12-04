@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Frontend\LegalController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Admin\CaseStudyController;
@@ -101,6 +102,13 @@ Route::get('/return-refund/page', [LegalController::class, 'returnRefund'])->nam
 Route::post('/chatbot/send', [ChatbotController::class, 'send'])->name('chatbot.send');
 
 Route::post('/support/request', [SupportController::class, 'store'])->name('support.request');
+
+
+// redirect to Google
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+
+// callback from Google
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 
 // Route::get('/dashboard', function () {
